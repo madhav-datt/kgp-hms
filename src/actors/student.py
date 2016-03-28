@@ -18,7 +18,7 @@ class Student(object):
     def __init__(self, student_ID, password, name, gender, address,
                 contact_number, photograph, hall_ID, room_no, room_type):
         """
-
+        Init Student with details from Admission Letter
         """
 
         self.student_ID = student_ID
@@ -31,4 +31,7 @@ class Student(object):
         self.hall_ID = hall_ID
         self.room_no = room_no
         self.room_type = room_type
-        self.total_dues = 0.;
+
+        # Total dues payable by student
+        # total_dues = room_rent + mess_charges + amenities_charges
+        self.total_dues = 0.
