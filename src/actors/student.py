@@ -114,3 +114,16 @@ class Student(object):
     @room_type.setter
     def room_type(self, room_type):
         self._room_type = room_type
+
+    # total_dues getter function
+    @property
+    def total_dues(self):
+        return self._total_dues
+
+    def calculate_total_dues (self):
+        """
+        Calculate total dues payable by student
+        total_dues = room_rent + mess_charges + amenities_charges
+        """
+
+        #TODO: Add based on DB querying functionalities
