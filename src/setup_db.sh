@@ -40,7 +40,8 @@ FLUSH PRIVILEGES;
 EOF
 
 # Save encrypted password to local config file
-echo "hmsuser Password has been set to hmspasstmp. Re-enter this password to create tables"
+echo "hmsuser Password has been set to hmspasstmp"
+echo "Re-enter this password to start table creation"
 mysql_config_editor set --login-path=local --host=localhost --user=hmsuser --password
 
 # Create Student table

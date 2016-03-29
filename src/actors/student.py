@@ -45,6 +45,7 @@ class Student(object):
 
         # Mess charges payable by student
         self.mess_charge = 0.
+        self.total_dues = 0.
 
     # student_ID getter and setter functions
     @property
