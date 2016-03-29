@@ -39,10 +39,14 @@ GRANT ALL PRIVILEGES ON hmskgp . * TO 'hmsuser'@'localhost';
 FLUSH PRIVILEGES;
 EOF
 
+# Save encrypted password to local config file
+echo "hmsuser Password has been set to hmspasstmp. Re-enter this password to create tables"
+mysql_config_editor set --login-path=local --host=localhost --user=hmsuser --password
+
 # Create Student table
 echo ""
 echo "Creating Students Table..."
-cat << EOF | /usr/bin/mysql -u hmsuser -phmspasstmp
+cat << EOF | /usr/bin/mysql --login-path=local
 USE hmskgp;
 CREATE TABLE student(
    student_ID INT NOT NULL AUTO_INCREMENT,
@@ -62,7 +66,7 @@ EOF
 # Create Warden table
 echo ""
 echo "Creating Wardens Table..."
-cat << EOF | /usr/bin/mysql -u hmsuser -phmspasstmp
+cat << EOF | /usr/bin/mysql --login-path=local
 USE hmskgp;
 CREATE TABLE warden(
    warden_ID INT NOT NULL AUTO_INCREMENT,
@@ -78,7 +82,7 @@ EOF
 # Create Hall table
 echo ""
 echo "Creating Halls Table..."
-cat << EOF | /usr/bin/mysql -u hmsuser -phmspasstmp
+cat << EOF | /usr/bin/mysql --login-path=local
 USE hmskgp;
 CREATE TABLE student(
    hall_ID INT NOT NULL AUTO_INCREMENT,
@@ -110,7 +114,7 @@ EOF
 # Create Worker table
 echo ""
 echo "Creating Workers Table..."
-cat << EOF | /usr/bin/mysql -u hmsuser -phmspasstmp
+cat << EOF | /usr/bin/mysql --login-path=local
 USE hmskgp;
 CREATE TABLE worker(
    worker_ID INT NOT NULL AUTO_INCREMENT,
@@ -128,7 +132,7 @@ EOF
 # Create Worker Attendance table
 echo ""
 echo "Creating Worker Attendances Table..."
-cat << EOF | /usr/bin/mysql -u hmsuser -phmspasstmp
+cat << EOF | /usr/bin/mysql --login-path=local
 USE hmskgp;
 CREATE TABLE attendance(
    worker_ID INT NOT NULL,
@@ -141,7 +145,7 @@ EOF
 # Create Complaint Attendance table
 echo ""
 echo "Creating Student Complaints Table..."
-cat << EOF | /usr/bin/mysql -u hmsuser -phmspasstmp
+cat << EOF | /usr/bin/mysql --login-path=local
 USE hmskgp;
 CREATE TABLE complaint(
    complaint_ID INT NOT NULL AUTO_INCREMENT,

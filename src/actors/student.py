@@ -143,6 +143,6 @@ class Student(object):
         Calculate total dues payable by student
         total_dues = room_rent + mess_charges + amenities_charges
         """
-        return self.mess_charge + 
+        return self.mess_charge +
 
         #TODO: Add based on DB querying functionalities
