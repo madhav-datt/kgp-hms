@@ -116,6 +116,7 @@ CREATE TABLE worker(
    worker_ID INT NOT NULL AUTO_INCREMENT,
    name VARCHAR(50),
    email VARCHAR(50),
+   worker_type CHAR,
    monthly_salary FLOAT(10,2),
    daily_wage FLOAT(10,2),
    hall_ID INT NOT NULL,
@@ -126,17 +127,29 @@ EOF
 
 # Create Worker Attendance table
 echo ""
-echo "Creating Workers Table..."
+echo "Creating Worker Attendances Table..."
 cat << EOF | /usr/bin/mysql -u hmsuser -phmspasstmp
 USE hmskgp;
-CREATE TABLE worker(
-   worker_ID INT NOT NULL AUTO_INCREMENT,
-   name VARCHAR(50),
-   email VARCHAR(50),
-   monthly_salary FLOAT(10,2),
-   daily_wage FLOAT(10,2),
-   hall_ID INT NOT NULL,
+CREATE TABLE attendance(
+   worker_ID INT NOT NULL,
+   monthly_attendance INT,
    PRIMARY KEY (worker_ID),
-   FOREIGN KEY (hall_ID) REFERENCES hall(hall_ID)
+   FOREIGN KEY (worker_ID) REFERENCES worker(worker_ID)
+   );
+EOF
+
+# Create Complaint Attendance table
+echo ""
+echo "Creating Student Complaints Table..."
+cat << EOF | /usr/bin/mysql -u hmsuser -phmspasstmp
+USE hmskgp;
+CREATE TABLE complaint(
+   complaint_ID INT NOT NULL AUTO_INCREMENT,
+   student_ID INT NOT NULL,
+   action_status CHAR,
+   description BLOB,
+   action_report BLOB,
+   PRIMARY KEY (worker_ID),
+   FOREIGN KEY (student_ID) REFERENCES student(student_ID)
    );
 EOF
