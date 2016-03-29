@@ -14,16 +14,17 @@ class Student(object):
     """Contains details of Student
 
     Attributes:
-        student_ID: An integer to uniquely identify student
-        password: A string hashed after adding salt
-        name: string
-        address: string
-        contact_number: string
-        photograph: image
-        hall_ID: An integer to identify hall of residence
-        room_no: string
-        room_type: Either an "S" for single, or a "D" for double room
-        total_dues: A float to calculate total amount due by student
+        student_ID: Integer to uniquely identify student
+        password: Hashed string after adding salt
+        name: String
+        address: String
+        contact_number: String
+        photograph: Image
+        hall_ID: Integer to identify hall of residence
+        room_no: String
+        room_type: "S" for single, "D" for double room
+        mess_charge: Float with mess charges payable by student
+        total_dues: Float with calculation of total amount due by student
     """
 
     def __init__(self, student_ID, password, name, gender, address,
@@ -42,9 +43,8 @@ class Student(object):
         self.room_no = room_no
         self.room_type = room_type
 
-        # Total dues payable by student
-        # total_dues = room_rent + mess_charges + amenities_charges
-        self.total_dues = 0.
+        # Mess charges payable by student
+        self.mess_charge = 0.
 
     # student_ID getter and setter functions
     @property
@@ -127,15 +127,22 @@ class Student(object):
     def room_type(self, room_type):
         self._room_type = room_type
 
+    # mess_charge getter and setter functions
+    @property
+    def mess_charge(self):
+        return self._mess_charge
+
+    @mess_charge.setter
+    def mess_charge(self, mess_charge):
+        self._mess_charge = mess_charge
+
     # total_dues getter function
     @property
     def total_dues(self):
-        return self._total_dues
-
-    def calculate_total_dues (self):
         """
         Calculate total dues payable by student
         total_dues = room_rent + mess_charges + amenities_charges
         """
+        return self.mess_charge + 
 
         #TODO: Add based on DB querying functionalities
