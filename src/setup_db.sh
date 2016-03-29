@@ -46,15 +46,97 @@ cat << EOF | /usr/bin/mysql -u hmsuser -phmspasstmp
 USE hmskgp;
 CREATE TABLE student(
    student_ID INT NOT NULL AUTO_INCREMENT,
-   password VARCHAR(200) NOT NULL
-   name VARCHAR(50)
-   address VARCHAR(50)
-   contact_number VARCHAR(15)
-   hall_ID INT NOT NULL
-   room_no VARCHAR(5)
-   mess_charge FLOAT(10,2)
-   room_type CHAR
-   PRIMARY KEY (student_ID)
+   password VARCHAR(200) NOT NULL,
+   name VARCHAR(50),
+   address VARCHAR(50),
+   contact_number VARCHAR(15),
+   hall_ID INT NOT NULL,
+   room_no VARCHAR(5),
+   mess_charge FLOAT(10,2),
+   room_type CHAR,
+   PRIMARY KEY (student_ID),
+   FOREIGN KEY (hall_ID) REFERENCES hall(hall_ID)
+   );
+EOF
+
+# Create Warden table
+echo ""
+echo "Creating Wardens Table..."
+cat << EOF | /usr/bin/mysql -u hmsuser -phmspasstmp
+USE hmskgp;
+CREATE TABLE warden(
+   warden_ID INT NOT NULL AUTO_INCREMENT,
+   password VARCHAR(200) NOT NULL,
+   name VARCHAR(50),
+   email VARCHAR(50),
+   hall_ID INT NOT NULL,
+   PRIMARY KEY (warden_ID),
+   FOREIGN KEY (hall_ID) REFERENCES hall(hall_ID)
+   );
+EOF
+
+# Create Hall table
+echo ""
+echo "Creating Halls Table..."
+cat << EOF | /usr/bin/mysql -u hmsuser -phmspasstmp
+USE hmskgp;
+CREATE TABLE student(
+   hall_ID INT NOT NULL AUTO_INCREMENT,
+   name VARCHAR(50),
+   warden_ID INT NOT NULL,
+   clerk_ID INT NOT NULL,
+   mess_manager_ID INT NOT NULL,
+   status CHAR,
+   single_room_count INT,
+   double_room_count INT,
+   single_room_occupancy INT,
+   double_room_occupancy INT,
+   single_room_rent FLOAT(10,2),
+   double_room_rent FLOAT(10,2),
+   amenities_charge FLOAT(10,2),
+   mess_account FLOAT(10,2),
+   amenities_account FLOAT(10,2),
+   repair_account FLOAT(10,2),
+   salary_account FLOAT(10,2),
+   others_account FLOAT(10,2),
+   rent_account FLOAT(10,2),
+   PRIMARY KEY (hall_ID),
+   FOREIGN KEY (warden_ID) REFERENCES warden(warden_ID),
+   FOREIGN KEY (clerk_ID) REFERENCES worker(worker_ID),
+   FOREIGN KEY (mess_manager_ID) REFERENCES worker(worker_ID)
+   );
+EOF
+
+# Create Worker table
+echo ""
+echo "Creating Workers Table..."
+cat << EOF | /usr/bin/mysql -u hmsuser -phmspasstmp
+USE hmskgp;
+CREATE TABLE worker(
+   worker_ID INT NOT NULL AUTO_INCREMENT,
+   name VARCHAR(50),
+   email VARCHAR(50),
+   monthly_salary FLOAT(10,2),
+   daily_wage FLOAT(10,2),
+   hall_ID INT NOT NULL,
+   PRIMARY KEY (worker_ID),
+   FOREIGN KEY (hall_ID) REFERENCES hall(hall_ID)
+   );
+EOF
+
+# Create Worker Attendance table
+echo ""
+echo "Creating Workers Table..."
+cat << EOF | /usr/bin/mysql -u hmsuser -phmspasstmp
+USE hmskgp;
+CREATE TABLE worker(
+   worker_ID INT NOT NULL AUTO_INCREMENT,
+   name VARCHAR(50),
+   email VARCHAR(50),
+   monthly_salary FLOAT(10,2),
+   daily_wage FLOAT(10,2),
+   hall_ID INT NOT NULL,
+   PRIMARY KEY (worker_ID),
    FOREIGN KEY (hall_ID) REFERENCES hall(hall_ID)
    );
 EOF
