@@ -8,6 +8,9 @@
 """
 
 from __future__ import division
+from database import db_func as db
+from databade import password_validation as pv
+from requests import printer
 import warnings
 
 class HallManagement(object):
@@ -32,3 +35,9 @@ class HallManagement(object):
     @password.setter
     def password(self, password):
         self._password = password
+
+    def activate_payment_link(self):
+        """
+        Activate link for payment by Student
+        Used by Student to pay total_dues
+        """
