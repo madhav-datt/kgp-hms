@@ -80,6 +80,16 @@ CREATE TABLE warden(
    );
 EOF
 
+# Create HallManagement table
+echo ""
+echo "Creating Hall Management Table..."
+cat << EOF | /usr/bin/mysql --login-path=local
+USE hmskgp;
+CREATE TABLE hmc(
+   password VARCHAR(200) NOT NULL,
+   );
+EOF
+
 # Create Hall table
 echo ""
 echo "Creating Halls Table..."

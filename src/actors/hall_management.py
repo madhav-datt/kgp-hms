@@ -20,12 +20,18 @@ class HallManagement(object):
         password: Hashed string after adding salt
     """
 
-    def __init__(password):
+    def __init__(password, rebuild = false):
         """
         Init Hall Management as a singleton class on with initial details
         """
-        # TODO: Make a singleton class
-        self.password = pv.hash_password(password)
+        
+        # The rebuild flag, if true, denotes that the object is being made from
+        # data already present in the database
+        # If false, a new data row is added to the specific table
+        if rebuild == false:
+            self._password = pv.hash_password(password)
+        else:
+            self.password = password
 
     # password getter and setter functions
     @property
@@ -35,6 +41,7 @@ class HallManagement(object):
     @password.setter
     def password(self, password):
         self._password = pv.hash_password(password)
+        db.update("hmc", "*", "password", self.password)
 
     def activate_payment_link(self):
         """

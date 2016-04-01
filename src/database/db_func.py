@@ -105,7 +105,7 @@ def add(table, **param):
 
     # Commit to database
     cnx.commit()
-    
+
     primary_key = cursor.lastrowid()
     cursor.close()
     cnx.close()
@@ -135,6 +135,8 @@ def update(table, primary_key, field, value):
         cursor.execute(update_row, (table, field, value, "worker_ID", primary_key))
     elif table == "complaint":
         cursor.execute(update_row, (table, field, value, "complaint_ID", primary_key))
+    elif table == "hmc":
+        cursor.execute(update_row, (table, field, value, "password", primary_key))
     else: #TODO Don't print, throw as notification/box
         print "Table not recognized. Update failed"
 

@@ -29,15 +29,19 @@ class Warden(object):
         Init Warden with details for object creation
         """
 
-        self.password = pv.hash_password(password)
         self.name = name
         self.email = email
         self.hall_ID = hall_ID
 
+        # The rebuild flag, if true, denotes that the object is being made from
+        # data already present in the database
+        # If false, a new data row is added to the specific table
         if rebuild == false
+            self.password = pv.hash_password(password)
             self.warden_ID = db.add("warden", "password" = self.password,
             "name" = self.name, "email" = self.email, "hall_ID" = self.hall_ID)
         else:
+            self.password = password
             self.warden_ID = warden_ID
 
     # warden_ID getter and setter functions

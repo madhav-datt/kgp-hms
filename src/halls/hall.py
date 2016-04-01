@@ -65,6 +65,9 @@ class Hall(object):
         self.rent_account = 0.
         self.others_account = 0.
 
+        # The rebuild flag, if true, denotes that the object is being made from
+        # data already present in the database
+        # If false, a new data row is added to the specific table
         if rebuild == false:
             self.hall_ID = db.add("name" = self.name,
             "warden_ID" = self.warden_ID,
