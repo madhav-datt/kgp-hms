@@ -36,7 +36,7 @@ class Student(object):
         """
 
         self.student_ID = student_ID
-        self.password = password
+        self.password = pv.hash_password(password)
         self.name = name
         self.address = address
         self.contact_number = contact_number
@@ -65,7 +65,7 @@ class Student(object):
 
     @password.setter
     def password(self, password):
-        self._password = password
+        self._password = pv.hash_password(password)
 
     # name getter and setter functions
     @property

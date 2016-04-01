@@ -18,7 +18,7 @@ def hash_password(password):
     """
     return bcrypt.hashpw(password, bcrypt.gensalt())
 
-def auth_password(password, correct_password):
+def check_password(password, correct_password):
     """
     Check that a unhashed password matches one that has previously been
     """

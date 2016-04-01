@@ -29,7 +29,7 @@ class Warden(object):
         """
 
         self.warden_ID = warden_ID
-        self.password = password
+        self.password = pv.hash_password(password)
         self.name = name
         self.email = email
         self.hall_ID = hall_ID
@@ -50,7 +50,7 @@ class Warden(object):
 
     @password.setter
     def password(self, password):
-        self._password = password
+        self._password = pv.hash_password(password)
 
     # name getter and setter functions
     @property

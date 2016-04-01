@@ -25,7 +25,7 @@ class HallManagement(object):
         Init Hall Management as a singleton class on with initial details
         """
         # TODO: Make a singleton class
-        self.password = password;
+        self.password = pv.hash_password(password)
 
     # password getter and setter functions
     @property
@@ -34,7 +34,7 @@ class HallManagement(object):
 
     @password.setter
     def password(self, password):
-        self._password = password
+        self._password = pv.hash_password(password)
 
     def activate_payment_link(self):
         """
