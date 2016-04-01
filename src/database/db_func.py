@@ -51,7 +51,7 @@ def add(table, **param):
     Order of database entries must be followed exactly
 
     Example:
-    add("student", name = "John", password = "secretword", address = "home",
+    add("student", password = "secretword", name = "John", address = "home",
     contact_number = "9876543210", hall_ID = 4, room_no = "B-334",
     mess_charge = 250.5, room_type = "S")
     """
@@ -109,11 +109,39 @@ def add(table, **param):
     cnx.close()
 
 
-def update():
+def update(table, primary_key, field, value):
+    """
+    Update field value in table using corresponding Primary Key
+    Can only update one field at a time
+    """
+
+    cnx = connect()
+    cursor = cnx.cursor()
+
+    update_row = ("UPDATE %s SET %s = %s WHERE %s = %s")
+
+    # Update row of data from table
+    if table == "student":
+        cursor.execute(update_row, (table, field, value, "student_ID", primary_key))
+    elif table == "warden":
+        cursor.execute(update_row, (table, field, value, "warden_ID", primary_key))
+    elif table == "hall":
+        cursor.execute(update_row, (table, field, value, "hall_ID", primary_key))
+    elif table == "worker":
+        cursor.execute(update_row, (table, field, value, "worker_ID", primary_key))
+    elif table == "complaint":
+        cursor.execute(update_row, (table, field, value, "complaint_ID", primary_key))
+    else: #TODO Don't print, throw as notification/box
+        print "Table not recognized. Update failed"
+
+    cursor.close()
+    cnx.close()
+
 
 def get(table, primary_key, field):
     """
     Query database to get field from a particular table using Primary Key value
+    Can only get one field at a time
     """
 
     cnx = connect()
@@ -134,12 +162,41 @@ def get(table, primary_key, field):
         cursor.execute(query, (field, table, "complaint_ID", primary_key))
     else: #TODO Don't print, throw as notification/box
         print "Table not recognized. Query failed"
+        cursor.close()
+        cnx.close()
+        return None
 
     # Get queried value as array with one data value
     queried = curson.fetchone()
+
     cursor.close()
     cnx.close()
     return queried[0]
 
 
-def delete():
+def delete(table, primary_key):
+    """
+    Delete value from table corresponding to Primary Key
+    """
+
+    cnx = connect()
+    cursor = cnx.cursor()
+
+    delete_row = ("DELETE FROM %s WHERE %s = %s")
+
+    # Delete row of data from table
+    if table == "student":
+        cursor.execute(delete_row, (table, "student_ID", primary_key))
+    elif table == "warden":
+        cursor.execute(delete_row, (table, "warden_ID", primary_key))
+    elif table == "hall":
+        cursor.execute(delete_row, (table, "hall_ID", primary_key))
+    elif table == "worker":
+        cursor.execute(delete_row, (table, "worker_ID", primary_key))
+    elif table == "complaint":
+        cursor.execute(delete_row, (table, "complaint_ID", primary_key))
+    else: #TODO Don't print, throw as notification/box
+        print "Table not recognized. Delete failed"
+
+    cursor.close()
+    cnx.close()
