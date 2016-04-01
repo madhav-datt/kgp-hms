@@ -10,6 +10,11 @@
 from __future__ import division
 import warnings
 
+def set_connect():
+    """
+    Set initial connection with MySQL server, with hmsuser credentials
+    """
+
 def add():
 
 def update():

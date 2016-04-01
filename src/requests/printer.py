@@ -10,13 +10,12 @@
 from __future__ import division
 import warnings
 
-def print_statement(hall):
+def print_statement(hall_ID):
 
-def issue_cheque(hall):
+def issue_cheque(hall_ID):
 
-def generate_salary_list(hall):
+def generate_salary_list(hall_ID):
 
-def print_receipt(hall):
+def print_receipt(hall_ID):
 
-def issue_student_admission_letter(student):
-    
+def issue_student_admission_letter(student_ID):
