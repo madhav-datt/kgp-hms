@@ -125,21 +125,9 @@ CREATE TABLE worker(
    monthly_salary FLOAT(10,2),
    daily_wage FLOAT(10,2),
    hall_ID INT NOT NULL,
-   PRIMARY KEY (worker_ID),
-   FOREIGN KEY (hall_ID) REFERENCES hall(hall_ID)
-   );
-EOF
-
-# Create Worker Attendance table
-echo ""
-echo "Creating Worker Attendances Table..."
-cat << EOF | /usr/bin/mysql --login-path=local
-USE hmskgp;
-CREATE TABLE attendance(
-   worker_ID INT NOT NULL,
    monthly_attendance INT,
    PRIMARY KEY (worker_ID),
-   FOREIGN KEY (worker_ID) REFERENCES worker(worker_ID)
+   FOREIGN KEY (hall_ID) REFERENCES hall(hall_ID)
    );
 EOF
 
