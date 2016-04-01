@@ -12,13 +12,6 @@ import mysql.connector
 from mysql.connector import errorcode
 from __future__ import print_function
 
-# Sign-in credentials for MySQL server
-config = {
-  'user': 'hmsuser',
-  'password': 'hmspasstmp',
-  'host': 'localhost',
-  'database': 'hmskgp',
-}
 
 def connect():
     """
@@ -26,6 +19,14 @@ def connect():
     Handle errors through codes
     Function only opens connection, does not close
     """
+
+    # Sign-in credentials for MySQL server
+    config = {
+      'user': 'hmsuser',
+      'password': 'hmspasstmp',
+      'host': 'localhost',
+      'database': 'hmskgp',
+    }
 
     try:
         cnx = mysql.connector.connect(**config)
@@ -42,6 +43,7 @@ def connect():
         return cnx
 
     return None
+
 
 def add(table, **param):
     """
@@ -83,17 +85,61 @@ def add(table, **param):
                     "(student_ID, action_status, description, action_report) "
                     "VALUES (%s, %s, %s, %s)")
 
-
-
     cnx = connect()
-    if table == "student":
+    cursor = cnx.cursor()
 
+    # Insert new row of data into table
+    if table == "student":
+        cursor.execute(add_student, param)
+    elif table == "warden":
+        cursor.execute(add_warden, param)
+    elif table == "hall":
+        cursor.execute(add_hall, param)
+    elif table == "worker":
+        cursor.execute(add_worker, param)
+    elif table == "complaint":
+        cursor.execute(add_complaint, param)
+    else: #TODO Don't print, throw as notification/box
+        print "Table not recognized. Insert failed"
+
+    # Commit to database
+    cnx.commit()
+
+    cursor.close()
+    cnx.close()
 
 
 def update():
 
-def get():
+def get(table, primary_key, field):
+    """
+    Query database to get field from a particular table using Primary Key value
+    """
 
-def get_object():
+    cnx = connect()
+    cursor = cnx.cursor()
+
+    query = ("SELECT %s FROM %s WHERE %s = %s")
+
+    # Query data from table
+    if table == "student":
+        cursor.execute(query, (field, table, "student_ID", primary_key))
+    elif table == "warden":
+        cursor.execute(query, (field, table, "warden_ID", primary_key))
+    elif table == "hall":
+        cursor.execute(query, (field, table, "hall_ID", primary_key))
+    elif table == "worker":
+        cursor.execute(query, (field, table, "worker_ID", primary_key))
+    elif table == "complaint":
+        cursor.execute(query, (field, table, "complaint_ID", primary_key))
+    else: #TODO Don't print, throw as notification/box
+        print "Table not recognized. Query failed"
+
+    # Get queried value as array with one data value
+    queried = curson.fetchone()
+    cursor.close()
+    cnx.close()
+    return queried[0]
+
 
 def delete():
