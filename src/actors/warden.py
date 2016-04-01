@@ -23,25 +23,27 @@ class Warden(object):
         hall_ID: Integer to identify hall of residence
     """
 
-    def __init__(self, warden_ID, password, name, email, hall_ID):
+    def __init__(self, password, name, email, hall_ID, rebuild = false,
+                warden_ID = None):
         """
         Init Warden with details for object creation
         """
 
-        self.warden_ID = warden_ID
         self.password = pv.hash_password(password)
         self.name = name
         self.email = email
         self.hall_ID = hall_ID
 
+        if rebuild == false
+            self.warden_ID = db.add("warden", "password" = self.password,
+            "name" = self.name, "email" = self.email, "hall_ID" = self.hall_ID)
+        else:
+            self.warden_ID = warden_ID
+
     # warden_ID getter and setter functions
     @property
     def warden_ID(self):
         return self._warden_ID
-
-    @warden_ID.setter
-    def warden_ID(self, warden_ID):
-        self._warden_ID = warden_ID
 
     # password getter and setter functions
     @property
@@ -51,6 +53,7 @@ class Warden(object):
     @password.setter
     def password(self, password):
         self._password = pv.hash_password(password)
+        db.update ("warden", self.warden_ID, "password", self.password)
 
     # name getter and setter functions
     @property
@@ -60,6 +63,7 @@ class Warden(object):
     @name.setter
     def name(self, name):
         self._name = name
+        db.update ("warden", self.warden_ID, "name", self.name)
 
     # email getter and setter functions
     @property
@@ -69,6 +73,7 @@ class Warden(object):
     @email.setter
     def email(self, email):
         self._email = email
+        db.update ("warden", self.warden_ID, "email", self.email)
 
     # hall_ID getter and setter functions
     @property
@@ -78,3 +83,4 @@ class Warden(object):
     @hall_ID.setter
     def hall_ID(self, hall_ID):
         self._hall_ID = hall_ID
+        db.update ("warden", self.warden_ID, "hall_ID", self.hall_ID)

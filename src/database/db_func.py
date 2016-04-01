@@ -101,12 +101,16 @@ def add(table, **param):
         cursor.execute(add_complaint, param)
     else: #TODO Don't print, throw as notification/box
         print "Table not recognized. Insert failed"
+        return None
 
     # Commit to database
     cnx.commit()
-
+    
+    primary_key = cursor.lastrowid()
     cursor.close()
     cnx.close()
+
+    return primary_key
 
 
 def update(table, primary_key, field, value):

@@ -36,15 +36,14 @@ class Hall(object):
         others_account: Float with miscellaneous account remaining
     """
 
-    def __init__(self, hall_ID, name, status, single_room_count,
+    def __init__(self, name, status, single_room_count,
                 double_room_count, single_room_occupancy, double_room_occupancy,
                 single_room_rent, double_room_rent, warden_ID, mess_manager_ID,
-                clerk_ID, amenities_charge):
+                clerk_ID, amenities_charge, rebuild = false, hall_ID = None):
         """
         Init Hall with details from HMC
         """
 
-        self.hall_ID = hall_ID
         self.name = name
         self.status = status
         self.single_room_count = single_room_count
@@ -66,4 +65,24 @@ class Hall(object):
         self.rent_account = 0.
         self.others_account = 0.
 
-    
+        if rebuild == false:
+            self.hall_ID = db.add("name" = self.name,
+            "warden_ID" = self.warden_ID,
+            "clerk_ID" = self.clerk_ID,
+            "mess_manager_ID" = self.mess_manager_ID,
+            "status" = self.status,
+            "single_room_count" = self.single_room_count,
+            "double_room_count" = self.double_room_count,
+            "single_room_occupancy" = self.single_room_occupancy,
+            "double_room_occupancy" = self.double_room_occupancy,
+            "single_room_rent" = self.single_room_rent,
+            "double_room_rent" = self.double_room_rent,
+            "amenities_charge" = self.amenities_charge,
+            "mess_account" = self.mess_account,
+            "amenities_account" = self.amenities_account,
+            "repair_account" = self.repair_account,
+            "salary_account" = self.salary_account,
+            "others_account" = self.others_account,
+            "rent_account" = self.rent_account)
+        else:
+            self.hall_ID = hall_ID

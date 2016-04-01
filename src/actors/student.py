@@ -29,18 +29,16 @@ class Student(object):
         total_dues: Float with calculation of total amount due by student
     """
 
-    def __init__(self, student_ID, password, name, gender, address,
-                contact_number, photograph, hall_ID, room_no, room_type):
+    def __init__(self, password, name, address, contact_number,
+                hall_ID, room_no, room_type, rebuild = false, student_ID = None):
         """
         Init Student with details from Admission Letter
         """
 
-        self.student_ID = student_ID
         self.password = pv.hash_password(password)
         self.name = name
         self.address = address
         self.contact_number = contact_number
-        self.photograph = photograph
         self.hall_ID = hall_ID
         self.room_no = room_no
         self.room_type = room_type
@@ -49,14 +47,22 @@ class Student(object):
         self.mess_charge = 0.
         self.total_dues = 0.
 
-    # student_ID getter and setter functions
+        # The rebuild flag, if true, denotes that the object is being made from
+        # data already present in the database
+        # If false, a new data row is added to the specific table
+        if rebuild == false
+            self.student_ID = db.add("student", "password" = self.password,
+            "name" = self.name, "address" = self.address,
+            "contact_number" = self.contact_number, "hall_ID" = self.hall_ID,
+            "room_no" = self.room_no, "mess_charge" = self.mess_charge,
+            "room_type" = self.room_type)
+        else:
+            self.student_ID = student_ID
+
+    # student_ID getter functions
     @property
     def student_ID(self):
         return self._student_ID
-
-    @student_ID.setter
-    def student_ID(self, student_ID):
-        self._student_ID = student_ID
 
     # password getter and setter functions
     @property
@@ -66,6 +72,7 @@ class Student(object):
     @password.setter
     def password(self, password):
         self._password = pv.hash_password(password)
+        db.update ("student", self.student_ID, "password", self.password)
 
     # name getter and setter functions
     @property
@@ -75,6 +82,7 @@ class Student(object):
     @name.setter
     def name(self, name):
         self._name = name
+        db.update ("student", self.student_ID, "name", self.name)
 
     # address getter and setter functions
     @property
@@ -84,6 +92,7 @@ class Student(object):
     @address.setter
     def address(self, address):
         self._address = address
+        db.update ("student", self.student_ID, "address", self.address)
 
     # contact_number getter and setter functions
     @property
@@ -93,15 +102,7 @@ class Student(object):
     @contact_number.setter
     def contact_number(self, contact_number):
         self._contact_number = contact_number
-
-    # photograph getter and setter functions
-    @property
-    def photograph(self):
-        return self._photograph
-
-    @photograph.setter
-    def photograph(self, photograph):
-        self._photograph = photograph
+        db.update ("student", self.student_ID, "contact_number", self.contact_number)
 
     # hall_ID getter and setter functions
     @property
@@ -111,6 +112,7 @@ class Student(object):
     @hall_ID.setter
     def hall_ID(self, hall_ID):
         self._hall_ID = hall_ID
+        db.update ("student", self.student_ID, "hall_ID", self.hall_ID)
 
     # room_no getter and setter functions
     @property
@@ -120,6 +122,7 @@ class Student(object):
     @room_no.setter
     def room_no(self, room_no):
         self._room_no = room_no
+        db.update ("student", self.student_ID, "room_no", self.room_no)
 
     # room_type getter and setter functions
     @property
@@ -129,6 +132,7 @@ class Student(object):
     @room_type.setter
     def room_type(self, room_type):
         self._room_type = room_type
+        db.update ("student", self.student_ID, "room_type", self.room_type)
 
     # mess_charge getter and setter functions
     @property
@@ -138,6 +142,7 @@ class Student(object):
     @mess_charge.setter
     def mess_charge(self, mess_charge):
         self._mess_charge = mess_charge
+        db.update ("student", self.student_ID, "mess_charge", self.mess_charge)
 
     # total_dues getter function
     @property
@@ -146,6 +151,5 @@ class Student(object):
         Calculate total dues payable by student
         total_dues = room_rent + mess_charges + amenities_charges
         """
-        return self.mess_charge +
-
-        #TODO: Add based on DB querying functionalities
+        return self.mess_charge + db.get("hall", hall_ID, "room_rent") +
+        db.get("hall", hall_ID, "amenities_charges")
