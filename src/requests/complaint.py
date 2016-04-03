@@ -1,0 +1,90 @@
+#
+# Software Engineering Lab - Assignment 5
+# IIT Kharagpur - Hall Management System
+#
+
+"""
+@ authors: Madhav Datt (14CS30015), Avikalp Srivastava (14CS10008)
+"""
+
+from __future__ import division
+from database import db_func as db
+from databade import password_validation as pv
+import warnings
+
+class Student(object):
+    """Contains details of Complaint lodged by Student
+
+    Attributes:
+        complaint_ID: Integer to uniquely identify complaint
+        student_ID: Integer to uniquely identify student who lodged the complaint
+        action_status: "P" for pending, "T" for action taken
+        description: String with Complaint description
+        action_report: String with ATR
+    """
+
+    def __init__(self, student_ID, action_status, description, action_report,
+                rebuild = false, complaint_ID = None):
+        """
+        Init Complaint with details given by Student
+        """
+
+        self.student_ID = student_ID
+        self.action_status = action_status
+        self.description = description
+        self.action_report = action_report
+
+        # The rebuild flag, if true, denotes that the object is being made from
+        # data already present in the database
+        # If false, a new data row is added to the specific table
+        if rebuild == false:
+            self.complaint_ID = db.add("complaint", "student_ID" = self.student_ID,
+            "action_status" = self.action_status, "description" = self.description,
+            "action_report" = self.action_report)
+        else:
+            self.complaint_ID = complaint_ID
+
+    # complaint_ID getter functions
+    @property
+    def complaint_ID(self):
+        return self._complaint_ID
+
+    # student_ID getter and setter functions
+    @property
+    def student_ID(self):
+        return self._student_ID
+
+    @student_ID.setter
+    def student_ID(self, student_ID):
+        self._student_ID = student_ID
+        db.update ("complaint", self.complaint_ID, "student_ID", self.student_ID)
+
+    # action_status getter and setter functions
+    @property
+    def action_status(self):
+        return self._action_status
+
+    @action_status.setter
+    def action_status(self, action_status):
+        self._action_status = action_status
+        db.update ("complaint", self.complaint_ID, "action_status", self.action_status)
+
+    # description getter and setter functions
+    @property
+    def description(self):
+        return self._description
+
+    @description.setter
+    def description(self, description):
+        self._description = description
+        db.update ("complaint", self.complaint_ID, "description", self.description)
+
+    # action_report getter and setter functions
+    @property
+    def action_report(self):
+        return self._action_report
+
+    @action_report.setter
+    def action_report(self, action_report):
+        self._action_report = action_report
+        db.update ("complaint", self.complaint_ID, "action_report", self.action_report)
