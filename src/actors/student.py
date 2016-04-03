@@ -49,7 +49,7 @@ class Student(object):
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
         # If false, a new data row is added to the specific table
-        if rebuild == false
+        if rebuild == false:
             self.password = pv.hash_password(password)
             self.student_ID = db.add("student", "password" = self.password,
             "name" = self.name, "address" = self.address,

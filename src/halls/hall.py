@@ -15,7 +15,7 @@ class Hall(object):
     """Contains details of Hall
 
     Attributes:
-        hall_ID: Integer to uniquely identify student
+        hall_ID: Integer to uniquely identify hall
         name: String
         status: Character "N" for New, "O" for Old Hall
         single_room_count: Integer
