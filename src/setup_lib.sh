@@ -13,7 +13,7 @@
 apt-get install python.bcrpyt
 
 # Install PyPDF2 for handling PDF printing
-apt-get install pyhton.pypdf2
+apt-get install python.pypdf2
 
 # Install MySQL Python Connector API
 wget -P ~/Downloads http://dev.mysql.com/get/Downloads/Connector-Python/mysql-connector-python_2.1.3-1ubuntu15.04_all.deb

@@ -73,7 +73,7 @@ class Student(object):
     @password.setter
     def password(self, password):
         self._password = pv.hash_password(password)
-        db.update ("student", self.student_ID, "password", self.password)
+        db.update("student", self.student_ID, "password", self.password)
 
     # name getter and setter functions
     @property
@@ -83,7 +83,7 @@ class Student(object):
     @name.setter
     def name(self, name):
         self._name = name
-        db.update ("student", self.student_ID, "name", self.name)
+        db.update("student", self.student_ID, "name", self.name)
 
     # address getter and setter functions
     @property
@@ -93,7 +93,7 @@ class Student(object):
     @address.setter
     def address(self, address):
         self._address = address
-        db.update ("student", self.student_ID, "address", self.address)
+        db.update("student", self.student_ID, "address", self.address)
 
     # contact_number getter and setter functions
     @property
@@ -103,7 +103,7 @@ class Student(object):
     @contact_number.setter
     def contact_number(self, contact_number):
         self._contact_number = contact_number
-        db.update ("student", self.student_ID, "contact_number", self.contact_number)
+        db.update("student", self.student_ID, "contact_number", self.contact_number)
 
     # hall_ID getter and setter functions
     @property
@@ -113,7 +113,7 @@ class Student(object):
     @hall_ID.setter
     def hall_ID(self, hall_ID):
         self._hall_ID = hall_ID
-        db.update ("student", self.student_ID, "hall_ID", self.hall_ID)
+        db.update("student", self.student_ID, "hall_ID", self.hall_ID)
 
     # room_no getter and setter functions
     @property
@@ -123,7 +123,7 @@ class Student(object):
     @room_no.setter
     def room_no(self, room_no):
         self._room_no = room_no
-        db.update ("student", self.student_ID, "room_no", self.room_no)
+        db.update("student", self.student_ID, "room_no", self.room_no)
 
     # room_type getter and setter functions
     @property
@@ -133,7 +133,7 @@ class Student(object):
     @room_type.setter
     def room_type(self, room_type):
         self._room_type = room_type
-        db.update ("student", self.student_ID, "room_type", self.room_type)
+        db.update("student", self.student_ID, "room_type", self.room_type)
 
     # mess_charge getter and setter functions
     @property
@@ -143,7 +143,7 @@ class Student(object):
     @mess_charge.setter
     def mess_charge(self, mess_charge):
         self._mess_charge = mess_charge
-        db.update ("student", self.student_ID, "mess_charge", self.mess_charge)
+        db.update("student", self.student_ID, "mess_charge", self.mess_charge)
 
     # total_dues getter function
     @property

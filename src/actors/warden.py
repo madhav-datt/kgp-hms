@@ -57,7 +57,7 @@ class Warden(object):
     @password.setter
     def password(self, password):
         self._password = pv.hash_password(password)
-        db.update ("warden", self.warden_ID, "password", self.password)
+        db.update("warden", self.warden_ID, "password", self.password)
 
     # name getter and setter functions
     @property
@@ -67,7 +67,7 @@ class Warden(object):
     @name.setter
     def name(self, name):
         self._name = name
-        db.update ("warden", self.warden_ID, "name", self.name)
+        db.update("warden", self.warden_ID, "name", self.name)
 
     # email getter and setter functions
     @property
@@ -77,7 +77,7 @@ class Warden(object):
     @email.setter
     def email(self, email):
         self._email = email
-        db.update ("warden", self.warden_ID, "email", self.email)
+        db.update("warden", self.warden_ID, "email", self.email)
 
     # hall_ID getter and setter functions
     @property
@@ -87,4 +87,4 @@ class Warden(object):
     @hall_ID.setter
     def hall_ID(self, hall_ID):
         self._hall_ID = hall_ID
-        db.update ("warden", self.warden_ID, "hall_ID", self.hall_ID)
+        db.update("warden", self.warden_ID, "hall_ID", self.hall_ID)
