@@ -10,6 +10,7 @@
 from __future__ import division
 from fpdf import FPDF
 import warnings
+import time
 
 def print_statement(Hall):
     """
@@ -35,7 +36,7 @@ def print_statement(Hall):
     # Write generated output file to PDF
     pdf.output(('hall_statement_%s', hall_ID), 'F')
 
-def issue_cheque(type, key_ID):
+def issue_cheque(name, amount):
     """
     Print salary and payment cheques with worker_ID
     Print hall payment cheques with hall_ID
@@ -43,6 +44,15 @@ def issue_cheque(type, key_ID):
 
     pdf = FPDF('P', 'mm', 'A4')
     pdf.set_font('Times', 'B', 14)
+
+    pdf.multi_cell(0, 5, 'Cheque Payment System')
+    pdf.ln()
+    pdf.multi_cell(0, 5, ('Pay: %s', name))
+    pdf.ln()
+    pdf.multi_cell(0, 5, ('The amount of: Rs. %s', amount))
+    pdf.ln()
+    pdf.multi_cell(0, 5, ('Issued on: %s', time.strftime("%d/%m/%Y")))
+    pdf.ln()
 
     # Write generated output file to PDF
     pdf.output(('hall_statement_%s', hall_ID), 'F')
@@ -52,9 +62,26 @@ def generate_salary_list(Hall):
     Print list of all employees and respective salary details for specified hall
     """
 
+    pdf = FPDF('P', 'mm', 'A4')
+    pdf.set_font('Times', 'B', 14)
+
+    #TODO
+
+    # Write generated output file to PDF
+    pdf.output(('hall_statement_%s', hall_ID), 'F')
+
 def print_receipt(Hall):
     """
+    Print receipts related to specified Hall
     """
+
+    pdf = FPDF('P', 'mm', 'A4')
+    pdf.set_font('Times', 'B', 14)
+
+    #TODO
+
+    # Write generated output file to PDF
+    pdf.output(('hall_statement_%s', hall_ID), 'F')
 
 def issue_student_admission_letter(Student):
     """
@@ -79,4 +106,4 @@ def issue_student_admission_letter(Student):
     pdf.ln()
 
     # Write generated output file to PDF
-    pdf.output(('hall_statement_%s', hall_ID), 'F')
+    pdf.output(('admission_letter_%s', Student.student_ID), 'F')
