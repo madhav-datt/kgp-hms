@@ -85,6 +85,15 @@ def add(table, **param):
                     "(student_ID, action_status, description, action_report) "
                     "VALUES (%s, %s, %s, %s)")
 
+    add_hmc = ("INSERT INTO hmc "
+                "(password) "
+                "VALUES (%s)")
+
+    add_grant_request = ("INSERT INTO grant_request "
+                        "(clerk_salary, gardener_salary, attendant_salary, \
+                        other_charges, attendant_count, gardener_count, hall_ID) "
+                        "VALUES (%s, %s, %s, %s, %s, %s, %s)")
+
     cnx = connect()
     cursor = cnx.cursor()
 
@@ -99,6 +108,10 @@ def add(table, **param):
         cursor.execute(add_worker, param)
     elif table == "complaint":
         cursor.execute(add_complaint, param)
+    elif table == "hmc":
+        cursor.execute(add_hmc, param)
+    elif table == "grant_request":
+        cursor.execute(add_grant_request, param)
     else: #TODO Don't print, throw as notification/box
         print "Table not recognized. Insert failed"
         return None
@@ -137,6 +150,8 @@ def update(table, primary_key, field, value):
         cursor.execute(update_row, (table, field, value, "complaint_ID", primary_key))
     elif table == "hmc":
         cursor.execute(update_row, (table, field, value, "password", primary_key))
+    elif table == "grant_request":
+        cursor.execute(update_row, (table, field, value, "grant_ID", primary_key))
     else: #TODO Don't print, throw as notification/box
         print "Table not recognized. Update failed"
 
@@ -166,6 +181,8 @@ def get(table, primary_key, field):
         cursor.execute(query, (field, table, "worker_ID", primary_key))
     elif table == "complaint":
         cursor.execute(query, (field, table, "complaint_ID", primary_key))
+    elif table == "hmc":
+        cursor.execute(query, (field, table, "password", primary_key))
     else: #TODO Don't print, throw as notification/box
         print "Table not recognized. Query failed"
         cursor.close()
@@ -201,6 +218,8 @@ def delete(table, primary_key):
         cursor.execute(delete_row, (table, "worker_ID", primary_key))
     elif table == "complaint":
         cursor.execute(delete_row, (table, "complaint_ID", primary_key))
+    elif table == "grant_request":
+        cursor.execute(delete_row, (table, "grant_ID", primary_key))
     else: #TODO Don't print, throw as notification/box
         print "Table not recognized. Delete failed"
 

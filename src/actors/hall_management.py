@@ -15,6 +15,7 @@ import warnings
 
 class HallManagement(object):
     """Contains details of HallManagement
+    Paramater "*" must be passed wherever primary key is required for db operations
 
     Attributes:
         password: Hashed string after adding salt
@@ -30,6 +31,7 @@ class HallManagement(object):
         # If false, a new data row is added to the specific table
         if rebuild == false:
             self._password = pv.hash_password(password)
+            db.add("hmc", "password" = self.password)
         else:
             self.password = password
 
