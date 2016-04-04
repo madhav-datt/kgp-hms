@@ -12,8 +12,11 @@
 # Install bcrypt for password hashing and authentication
 apt-get install python.bcrpyt
 
-# Install PyPDF2 for handling PDF printing
-apt-get install python.pypdf2
+# Install PyFPDF - a library for PDF document generation under Python
+git clone https://github.com/reingart/pyfpdf.git
+cd pyfpdf
+python setup.py install
+cd ..
 
 # Install MySQL Python Connector API
 wget -P ~/Downloads http://dev.mysql.com/get/Downloads/Connector-Python/mysql-connector-python_2.1.3-1ubuntu15.04_all.deb
