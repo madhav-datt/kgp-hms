@@ -89,3 +89,111 @@ class Hall(object):
             "rent_account" = self.rent_account)
         else:
             self.hall_ID = hall_ID
+
+    # name setter functions
+    @name.setter
+    def name(self, name):
+        self._name = name
+        db.update("hall", self.hall_ID, "name", self.name)
+
+    # warden_ID setter functions
+    @warden_ID.setter
+    def warden_ID(self, warden_ID):
+        self._warden_ID = warden_ID
+        db.update("hall", self.hall_ID, "warden_ID", self.warden_ID)
+
+    # clerk_ID setter functions
+    @clerk_ID.setter
+    def clerk_ID(self, clerk_ID):
+        self._clerk_ID = clerk_ID
+        db.update("hall", self.hall_ID, "clerk_ID", self.clerk_ID)
+
+    # mess_manager_ID setter functions
+    @mess_manager_ID.setter
+    def mess_manager_ID(self, mess_manager_ID):
+        self._mess_manager_ID = mess_manager_ID
+        db.update("hall", self.hall_ID, "mess_manager_ID", self.mess_manager_ID)
+
+    # status setter functions
+    @status.setter
+    def status(self, status):
+        self._status = status
+        db.update("hall", self.hall_ID, "status", self.status)
+
+    # single_room_count setter functions
+    @single_room_count.setter
+    def single_room_count(self, single_room_count):
+        self._single_room_count = single_room_count
+        db.update("hall", self.hall_ID, "single_room_count", self.single_room_count)
+
+    # double_room_count setter functions
+    @double_room_count.setter
+    def double_room_count(self, double_room_count):
+        self._double_room_count = double_room_count
+        db.update("hall", self.hall_ID, "double_room_count", self.double_room_count)
+
+    # single_room_occupancy setter functions
+    @single_room_occupancy.setter
+    def single_room_occupancy(self, single_room_occupancy):
+        self._single_room_occupancy = single_room_occupancy
+        db.update("hall", self.hall_ID, "single_room_occupancy", self.single_room_occupancy)
+
+    # double_room_occupancy setter functions
+    @double_room_occupancy.setter
+    def double_room_occupancy(self, double_room_occupancy):
+        self._double_room_occupancy = double_room_occupancy
+        db.update("hall", self.hall_ID, "double_room_occupancy", self.double_room_occupancy)
+
+    # password setter functions
+    @password.setter
+    def password(self, password):
+        self._password = password
+        db.update("hall", self.hall_ID, "password", self.password)
+
+    # password setter functions
+    @password.setter
+    def password(self, password):
+        self._password = password
+        db.update("hall", self.hall_ID, "password", self.password)
+
+    # password setter functions
+    @password.setter
+    def password(self, password):
+        self._password = password
+        db.update("hall", self.hall_ID, "password", self.password)
+
+    # password setter functions
+    @password.setter
+    def password(self, password):
+        self._password = password
+        db.update("hall", self.hall_ID, "password", self.password)
+
+    # password setter functions
+    @password.setter
+    def password(self, password):
+        self._password = password
+        db.update("hall", self.hall_ID, "password", self.password)
+
+    # password setter functions
+    @password.setter
+    def password(self, password):
+        self._password = password
+        db.update("hall", self.hall_ID, "password", self.password)
+
+    # password setter functions
+    @password.setter
+    def password(self, password):
+        self._password = password
+        db.update("hall", self.hall_ID, "password", self.password)
+
+    # password setter functions
+    @password.setter
+    def password(self, password):
+        self._password = password
+        db.update("hall", self.hall_ID, "password", self.password)
+
+    # password setter functions
+    @password.setter
+    def password(self, password):
+        self._password = password
+        db.update("hall", self.hall_ID, "password", self.password)
