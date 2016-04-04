@@ -105,8 +105,8 @@ class Student(object):
         else:
             action_status_report = "Taken"
 
-    return complaint_string, (self.complaint_ID, self.description,
-            action_status_report, self.action_report)
+    return (complaint_string, (self.complaint_ID, self.description,
+            action_status_report, self.action_report))
 
     def remove(self):
         """
