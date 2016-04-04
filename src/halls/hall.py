@@ -144,56 +144,56 @@ class Hall(object):
         self._double_room_occupancy = double_room_occupancy
         db.update("hall", self.hall_ID, "double_room_occupancy", self.double_room_occupancy)
 
-    # password setter functions
-    @password.setter
-    def password(self, password):
-        self._password = password
-        db.update("hall", self.hall_ID, "password", self.password)
+    # single_room_rent setter functions
+    @single_room_rent.setter
+    def single_room_rent(self, single_room_rent):
+        self._single_room_rent = single_room_rent
+        db.update("hall", self.hall_ID, "single_room_rent", self.single_room_rent)
 
-    # password setter functions
-    @password.setter
-    def password(self, password):
-        self._password = password
-        db.update("hall", self.hall_ID, "password", self.password)
+    # double_room_rent setter functions
+    @double_room_rent.setter
+    def double_room_rent(self, double_room_rent):
+        self._double_room_rent = double_room_rent
+        db.update("hall", self.hall_ID, "double_room_rent", self.double_room_rent)
 
-    # password setter functions
-    @password.setter
-    def password(self, password):
-        self._password = password
-        db.update("hall", self.hall_ID, "password", self.password)
+    # amenities_charge setter functions
+    @amenities_charge.setter
+    def amenities_charge(self, amenities_charge):
+        self._amenities_charge = amenities_charge
+        db.update("hall", self.hall_ID, "amenities_charge", self.amenities_charge)
 
-    # password setter functions
-    @password.setter
-    def password(self, password):
-        self._password = password
-        db.update("hall", self.hall_ID, "password", self.password)
+    # mess_account setter functions
+    @mess_account.setter
+    def mess_account(self, mess_account):
+        self._mess_account = mess_account
+        db.update("hall", self.hall_ID, "mess_account", self.mess_account)
 
-    # password setter functions
-    @password.setter
-    def password(self, password):
-        self._password = password
-        db.update("hall", self.hall_ID, "password", self.password)
+    # amenities_account setter functions
+    @amenities_account.setter
+    def amenities_account(self, amenities_account):
+        self._amenities_account = amenities_account
+        db.update("hall", self.hall_ID, "amenities_account", self.amenities_account)
 
-    # password setter functions
-    @password.setter
-    def password(self, password):
-        self._password = password
-        db.update("hall", self.hall_ID, "password", self.password)
+    # repair_account setter functions
+    @repair_account.setter
+    def repair_account(self, repair_account):
+        self._repair_account = repair_account
+        db.update("hall", self.hall_ID, "repair_account", self.repair_account)
 
-    # password setter functions
-    @password.setter
-    def password(self, password):
-        self._password = password
-        db.update("hall", self.hall_ID, "password", self.password)
+    # salary_account setter functions
+    @salary_account.setter
+    def salary_account(self, salary_account):
+        self._salary_account = salary_account
+        db.update("hall", self.hall_ID, "salary_account", self.salary_account)
 
-    # password setter functions
-    @password.setter
-    def password(self, password):
-        self._password = password
-        db.update("hall", self.hall_ID, "password", self.password)
+    # others_account setter functions
+    @others_account.setter
+    def others_account(self, others_account):
+        self._others_account = others_account
+        db.update("hall", self.hall_ID, "others_account", self.others_account)
 
-    # password setter functions
-    @password.setter
-    def password(self, password):
-        self._password = password
-        db.update("hall", self.hall_ID, "password", self.password)
+    # rent_account setter functions
+    @rent_account.setter
+    def rent_account(self, rent_account):
+        self._rent_account = rent_account
+        db.update("hall", self.hall_ID, "rent_account", self.rent_account)
