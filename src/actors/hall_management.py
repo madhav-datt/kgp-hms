@@ -50,3 +50,24 @@ class HallManagement(object):
         Activate link for payment by Student
         Used by Student to pay total_dues
         """
+
+        self.payment_is_active = true
+        db.update("hmc", "*", "payment_is_active", self.payment_is_active)
+
+    def activate_payment_link(self):
+        """
+        Activate link for payment by Student
+        Used by Student to pay total_dues
+        """
+
+        self.payment_is_active = true
+        db.update("hmc", "*", "payment_is_active", self.payment_is_active)
+
+    def deactivate_payment_link(self):
+        """
+        Activate link for payment by Student
+        Used by Student to pay total_dues
+        """
+
+        self.payment_is_active = false
+        db.update("hmc", "*", "payment_is_active", self.payment_is_active)

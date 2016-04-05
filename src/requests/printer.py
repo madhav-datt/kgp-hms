@@ -83,7 +83,7 @@ def print_receipt(Hall):
     # Write generated output file to PDF
     pdf.output(('hall_statement_%s', hall_ID), 'F')
 
-def issue_student_admission_letter(Student):
+def issue_student_admission_letter(Student, body):
     """
     Print letter for Student at time of admission
     Contains details as provided by the Student
@@ -103,6 +103,9 @@ def issue_student_admission_letter(Student):
     pdf.multi_cell(0, 5, ('Hall Allotted: %s', db.get("hall", Student.hall_ID, "name")))
     pdf.ln()
     pdf.multi_cell(0, 5, ('Room Allotted: %s', Student.room_no))
+    pdf.ln()
+    pdf.ln()
+    pdf.multi_cell(0, 5, ('%s', body)
     pdf.ln()
 
     # Write generated output file to PDF

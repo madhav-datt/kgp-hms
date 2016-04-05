@@ -106,6 +106,7 @@ cat << EOF | /usr/bin/mysql --login-path=local
 USE hmskgp;
 CREATE TABLE hmc(
    password VARCHAR(200) NOT NULL,
+   payment_is_active CHAR
    );
 EOF
 
