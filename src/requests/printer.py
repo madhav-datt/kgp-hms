@@ -65,7 +65,9 @@ def generate_salary_list(Hall):
     pdf = FPDF('P', 'mm', 'A4')
     pdf.set_font('Times', 'B', 14)
 
-    #TODO
+    pdf.multi_cell(0, 5, ('Hall Salary List: Hall %s', Hall.hall_ID))
+    pdf.ln()
+    
 
     # Write generated output file to PDF
     pdf.output(('hall_statement_%s', hall_ID), 'F')
