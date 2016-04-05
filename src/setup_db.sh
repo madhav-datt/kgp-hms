@@ -149,8 +149,8 @@ cat << EOF | /usr/bin/mysql --login-path=local
 USE hmskgp;
 CREATE TABLE worker(
    worker_ID INT NOT NULL AUTO_INCREMENT,
+   password VARCHAR(200),
    name VARCHAR(50),
-   email VARCHAR(50),
    worker_type CHAR,
    monthly_salary FLOAT(10,2),
    daily_wage FLOAT(10,2),

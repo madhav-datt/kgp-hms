@@ -24,20 +24,22 @@ class Clerk(Worker):
         monthly_attendance: Integer with monthly attendance count for daily workers
     """
 
-    def __init__(self, name, hall_ID, email, monthly_salary, rebuild = false,
+    def __init__(self, name, hall_ID, password, monthly_salary, rebuild = false,
                 worker_ID = None):
         """
         Init Clerk with details as recruited by HMC or Warden
         """
 
-        Worker.__init__(self, name, hall_ID, email, monthly_salary, None, None)
+        Worker.__init__(self, name, hall_ID, monthly_salary, None, None)
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
         # If false, a new data row is added to the specific table
         if rebuild == false:
-            self.worker_ID = db.add("Worker", "name" = self.name, "email" = self.email,
+            self.password = pv.hash_password(password)
+            self.worker_ID = db.add("Worker", "name" = self.name,
             "worker_type" = "C", "monthly_salary" = self.monthly_salary,
             "daily_wage" = 0, "hall_ID" = self.hall_ID, "monthly_attendance" = 0)
         else:
+            self.password = password
             self.worker_ID = worker_ID

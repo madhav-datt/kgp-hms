@@ -10,6 +10,10 @@
 import warnings
 import mysql.connector
 from mysql.connector import errorcode
+from halls import hall
+from actors import student, warden, hall_management
+from requests import complaint, grant_request
+from workers import attendant, clerk, mess_manager, worker
 from __future__ import print_function
 
 
@@ -44,6 +48,21 @@ def connect():
 
     return None
 
+def rebuild(table):
+    """
+    Rebuild object dictionary for specified table
+    """
+
+    cnx = connect()
+    cursor = cnx.cursor()
+
+    query = ("SELECT * from %s")
+
+    if table == "student":
+        cursor.execute(query, )
+
+    cursor.close()
+    cnx.close()
 
 def add(table, **param):
     """

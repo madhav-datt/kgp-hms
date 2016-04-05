@@ -37,9 +37,9 @@ class Hall(object):
     """
 
     def __init__(self, name, status, single_room_count,
-                double_room_count, single_room_occupancy, double_room_occupancy,
-                single_room_rent, double_room_rent, warden_ID, mess_manager_ID,
-                clerk_ID, amenities_charge, rebuild = false, hall_ID = None):
+                double_room_count, single_room_rent, double_room_rent,
+                warden_ID, mess_manager_ID, clerk_ID, amenities_charge,
+                rebuild = false, hall_ID = None):
         """
         Init Hall with details from HMC
         """
@@ -48,8 +48,8 @@ class Hall(object):
         self.status = status
         self.single_room_count = single_room_count
         self.double_room_count = double_room_count
-        self.single_room_occupancy = single_room_occupancy
-        self.double_room_occupancy = double_room_occupancy
+        self.single_room_occupancy = 0
+        self.double_room_occupancy = 0
         self.single_room_rent = single_room_rent
         self.double_room_rent = double_room_rent
         self.warden_ID = warden_ID

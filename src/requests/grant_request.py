@@ -124,10 +124,23 @@ class GrantRequest(object):
         db.update("grant_request", self.grant_ID, "gardener_count", self.gardener_count)
 
 
-    def make(): #TODO: What Exactly is this supposed to do?
+    def approve():
         """
         Approve GrantRequest by HMC
         Amounts will be added to Hall Accounts based on approved request
+        """
+
+        Hall.mess_account += 
+        Hall.amenities_account
+        Hall.salary_account
+        Hall.repair_account
+        Hall.others_account
+        Hall.rent_account
+
+    def reject():
+        """
+        Reject GrantRequest by HMC
+        Delete request from database and notify warden
         """
 
 
