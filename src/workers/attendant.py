@@ -41,3 +41,23 @@ class Attendant(Worker):
             "hall_ID" = self.hall_ID, "monthly_attendance" = self.monthly_attendance)
         else:
             self.worker_ID = worker_ID
+
+    # daily_wage getter and setter functions
+    @property
+    def daily_wage(self):
+        return self._daily_wage
+
+    @daily_wage.setter
+    def daily_wage(self, daily_wage):
+        self._daily_wage = daily_wage
+        db.update("worker", self.worker_ID, "daily_wage", self.daily_wage)
+
+    # monthly_attendance getter and setter functions
+    @property
+    def monthly_attendance(self):
+        return self._monthly_attendance
+
+    @monthly_attendance.setter
+    def monthly_attendance(self, monthly_attendance):
+        self._monthly_attendance = monthly_attendance
+        db.update("worker", self.worker_ID, "monthly_attendance", self.monthly_attendance)

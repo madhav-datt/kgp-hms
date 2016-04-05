@@ -43,3 +43,23 @@ class MessManager(Worker):
         else:
             self.password = password
             self.worker_ID = worker_ID
+
+    # password getter and setter functions
+    @property
+    def password(self):
+        return self._password
+
+    @password.setter
+    def password(self, password):
+        self._password = pv.hash_password(password)
+        db.update("warden", self.warden_ID, "password", self.password)
+
+    # monthly_salary getter and setter functions
+    @property
+    def monthly_salary(self):
+        return self._monthly_salary
+
+    @monthly_salary.setter
+    def monthly_salary(self, monthly_salary):
+        self._monthly_salary = monthly_salary
+        db.update("worker", self.worker_ID, "monthly_salary", self.monthly_salary)

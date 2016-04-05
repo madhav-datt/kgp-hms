@@ -48,6 +48,7 @@ def connect():
 
     return None
 
+
 def rebuild(table):
     """
     Rebuild object dictionary for specified table
@@ -103,8 +104,8 @@ def rebuild(table):
             table_obj = HallManagement(row[0], row[1])
 
         elif table == "grant_request":
-            table_obj = GrantRequest(row[1], row[2], row[3], row[4], row[5],
-                                row[6], row[8], true, row[0])
+            table_obj = GrantRequest(row[7], row[1], row[2], row[3], row[4],
+                                    row[5], row[6], true, row[0])
 
         data_table.append((row[0], table_obj))
 
@@ -112,6 +113,7 @@ def rebuild(table):
     cnx.close()
 
     return data_table
+
 
 def add(table, **param):
     """
