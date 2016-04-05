@@ -25,7 +25,7 @@ class Attendant(Worker):
     """
 
     def __init__(self, name, hall_ID, daily_wage, monthly_attendance,
-                rebuild = false, worker_ID = None):
+                rebuild = False, worker_ID = None):
         """
         Init MessManager with details as recruited by HMC or Warden
         """
@@ -34,8 +34,8 @@ class Attendant(Worker):
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
-        # If false, a new data row is added to the specific table
-        if rebuild == false:
+        # If False, a new data row is added to the specific table
+        if rebuild == False:
             self.worker_ID = db.add("Worker", "name" = self.name,
             "worker_type" = "A", "monthly_salary" = 0, "daily_wage" = self.daily_wage,
             "hall_ID" = self.hall_ID, "monthly_attendance" = self.monthly_attendance)

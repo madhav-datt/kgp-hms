@@ -87,12 +87,9 @@ cat << EOF | /usr/bin/mysql --login-path=local
 USE hmskgp;
 CREATE TABLE grant_request(
    grant_ID INT NOT NULL AUTO_INCREMENT,
-   clerk_salary FLOAT(10,2),
-   gardener_salary FLOAT(10,2),
-   attendant_salary FLOAT(10,2),
-   other_charges FLOAT(10,2),
-   attendant_count INT,
-   gardener_count INT,
+   repair_charge FLOAT(10,2),
+   other_charge FLOAT(10,2),
+   salary_charge FLOAT(10,2),
    hall_ID INT NOT NULL,
    PRIMARY KEY (grant_ID),
    FOREIGN KEY (hall_ID) REFERENCES hall(hall_ID)

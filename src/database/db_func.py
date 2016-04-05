@@ -160,9 +160,8 @@ def add(table, **param):
                 "VALUES (%s, %s)")
 
     add_grant_request = ("INSERT INTO grant_request "
-                        "(clerk_salary, gardener_salary, attendant_salary, \
-                        other_charges, attendant_count, gardener_count, hall_ID) "
-                        "VALUES (%s, %s, %s, %s, %s, %s, %s)")
+                        "(repair_charge, other_charge, salary_charge, hall_ID) "
+                        "VALUES (%s, %s, %s, %s)")
 
     cnx = connect()
     cursor = cnx.cursor()
@@ -251,6 +250,8 @@ def get(table, primary_key, field):
         cursor.execute(query, (field, table, "worker_ID", primary_key))
     elif table == "complaint":
         cursor.execute(query, (field, table, "complaint_ID", primary_key))
+    elif table == "grant_request":
+        cursor.execute(query, (field, table, "grant_ID", primary_key))
     elif table == "hmc":
         cursor.execute(query, (field, table, "password", primary_key))
     else: #TODO Don't print, throw as notification/box

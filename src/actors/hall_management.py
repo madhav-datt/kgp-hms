@@ -21,17 +21,17 @@ class HallManagement(object):
         password: Hashed string after adding salt
     """
 
-    def __init__(self, password, rebuild = false, payment_is_active = false):
+    def __init__(self, password, rebuild = False, payment_is_active = False):
         """
         Init Hall Management as a singleton class on with initial details
         """
 
-        self.payment_is_active = false
+        self.payment_is_active = False
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
-        # If false, a new data row is added to the specific table
-        if rebuild == false:
+        # If False, a new data row is added to the specific table
+        if rebuild == False:
             self._password = pv.hash_password(password)
             db.add("hmc", "password" = self.password)
         else:
@@ -71,5 +71,5 @@ class HallManagement(object):
         Used by Student to pay total_dues
         """
 
-        self.payment_is_active = false
+        self.payment_is_active = False
         db.update("hmc", "*", "payment_is_active", self.payment_is_active)

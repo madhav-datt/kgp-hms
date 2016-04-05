@@ -30,7 +30,7 @@ class Student(object):
     """
 
     def __init__(self, password, name, address, contact_number,
-                hall_ID, room_no, room_type, rebuild = false, student_ID = None):
+                hall_ID, room_no, room_type, rebuild = False, student_ID = None):
         """
         Init Student with details from Admission Letter
         """
@@ -48,8 +48,8 @@ class Student(object):
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
-        # If false, a new data row is added to the specific table
-        if rebuild == false:
+        # If False, a new data row is added to the specific table
+        if rebuild == False:
             self.password = pv.hash_password(password)
             self.student_ID = db.add("student", "password" = self.password,
             "name" = self.name, "address" = self.address,
@@ -152,7 +152,7 @@ class Student(object):
         Calculate total dues payable by student
         total_dues = room_rent + mess_charges + amenities_charges
         """
-        
+
         if self.room_type = "S":
             room_rent = db.get("hall", hall_ID, "single_room_rent")
         elif self.room_type = "D":
