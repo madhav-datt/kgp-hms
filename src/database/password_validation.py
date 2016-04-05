@@ -23,6 +23,6 @@ def check_password(password, correct_password):
     Check that a unhashed password matches one that has previously been
     """
     if bcrypt.hashpw(password, correct_password) == correct_password:
-        return true
+        return True
 
-    return false
+    return False

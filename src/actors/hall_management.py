@@ -16,7 +16,6 @@ import warnings
 class HallManagement(object):
     """Contains details of HallManagement
     Paramater "*" must be passed wherever primary key is required for db operations
-
     Attributes:
         password: Hashed string after adding salt
     """
@@ -30,7 +29,7 @@ class HallManagement(object):
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
-        # If false, a new data row is added to the specific table
+        # If False, a new data row is added to the specific table
         if rebuild == False:
             self._password = pv.hash_password(password)
             db.add("hmc", "password" = self.password)
@@ -71,5 +70,5 @@ class HallManagement(object):
         Used by Student to pay total_dues
         """
 
-        self.payment_is_active = false
+        self.payment_is_active = False
         db.update("hmc", "*", "payment_is_active", self.payment_is_active)

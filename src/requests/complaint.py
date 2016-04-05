@@ -24,7 +24,7 @@ class Student(object):
     """
 
     def __init__(self, student_ID, action_status, description, action_report,
-                rebuild = false, complaint_ID = None):
+                rebuild = False, complaint_ID = None):
         """
         Init Complaint with details given by Student
         """
@@ -36,8 +36,8 @@ class Student(object):
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
-        # If false, a new data row is added to the specific table
-        if rebuild == false:
+        # If False, a new data row is added to the specific table
+        if rebuild == False:
             self.complaint_ID = db.add("complaint", "student_ID" = self.student_ID,
             "action_status" = self.action_status, "description" = self.description,
             "action_report" = self.action_report)

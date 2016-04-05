@@ -39,7 +39,7 @@ class Hall(object):
     def __init__(self, name, status, single_room_count,
                 double_room_count, single_room_rent, double_room_rent,
                 warden_ID, mess_manager_ID, clerk_ID, amenities_charge,
-                rebuild = false, hall_ID = None):
+                rebuild = False, hall_ID = None):
         """
         Init Hall with details from HMC
         """
@@ -67,8 +67,8 @@ class Hall(object):
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
-        # If false, a new data row is added to the specific table
-        if rebuild == false:
+        # If False, a new data row is added to the specific table
+        if rebuild == False:
             self.hall_ID = db.add("name" = self.name,
             "warden_ID" = self.warden_ID,
             "clerk_ID" = self.clerk_ID,

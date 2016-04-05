@@ -57,9 +57,10 @@ def issue_cheque(name, amount):
     # Write generated output file to PDF
     pdf.output(('hall_statement_%s', hall_ID), 'F')
 
-def generate_salary_list(Hall):
+def generate_salary_list(Hall, worker_list):
     """
     Print list of all employees and respective salary details for specified hall
+    Take dict of Worker objects as parameter
     """
 
     pdf = FPDF('P', 'mm', 'A4')
@@ -67,20 +68,58 @@ def generate_salary_list(Hall):
 
     pdf.multi_cell(0, 5, ('Hall Salary List: Hall %s', Hall.hall_ID))
     pdf.ln()
-    
+
+    worker_list = db.rebuild("worker")
+    for key in worker_list:
+        if worker_list[key].hall_ID = Hall.hall_ID:
+            if row[3] == "M":
+                title = "Mess Manager"
+                wage = worker_list[key].monthly_salary
+            elif row[3] == "C":
+                title = "Clerk"
+                wage = worker_list[key].monthly_salary
+            elif row[3] == "A":
+                title = "Attendant"
+                wage = worker_list[key].daily_wage
+
+            pdf.multi_cell(0, 5, ('%s: %s (%s) - Rs. %s', worker_list[key].worker_ID,
+            worker_list[key].name, title, wage))
+            pdf.ln()
 
     # Write generated output file to PDF
-    pdf.output(('hall_statement_%s', hall_ID), 'F')
+    pdf.output(('hall_salary_%s', hall_ID), 'F')
 
-def print_receipt(Hall):
+def print_receipt(Student):
     """
-    Print receipts related to specified Hall
+    Print receipts related to specified Student
+    Contain all three amounts paid - mess fees, room rent, amenities charge
     """
 
     pdf = FPDF('P', 'mm', 'A4')
     pdf.set_font('Times', 'B', 14)
 
-    #TODO
+    pdf.multi_cell(0, 5, 'Student Dues Payment Receipt')
+    pdf.ln()
+    pdf.multi_cell(0, 5, ('Student ID: %s', Student.student_ID))
+    pdf.ln()
+    pdf.multi_cell(0, 5, ('Name: %s', Student.name))
+    pdf.ln()
+    pdf.multi_cell(0, 5, ('Mess Fees: %s', Student.mess_charge))
+    pdf.ln()
+
+    if self.room_type = "S":
+        room_rent = db.get("hall", hall_ID, "single_room_rent")
+    elif self.room_type = "D":
+        room_rent = db.get("hall", hall_ID, "double_room_rent")
+
+    pdf.multi_cell(0, 5, ('Room Rent: %s', room_rent))
+    pdf.ln()
+
+    pdf.multi_cell(0, 5, ('Amenities Charge: %s', db.get("hall", self.hall_ID, "amenities_charge")))
+    pdf.ln()
+
+    pdf.multi_cell(0, 5, ('Total Amount Paid: %s', Student.total_dues()))
+    pdf.ln()
 
     # Write generated output file to PDF
     pdf.output(('hall_statement_%s', hall_ID), 'F')

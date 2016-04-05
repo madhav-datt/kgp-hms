@@ -16,39 +16,28 @@ class GrantRequest(object):
 
     Attributes:
         hall_ID: Uniquely identify created GrantRequest
-        clerk_salary: Float
-        attendant_salary: Float
-        gardener_salary: Float
-        other_charges: Float
-        attendant_count: Integer
-        gardener_count: Integer
+        repair_charge: Float
+        other_charge: Float
     """
 
-    def __init__(self, hall_ID, clerk_salary, gardener_salary, attendant_salary,
-                other_charges, attendant_count, gardener_count, rebuild = false,
+    def __init__(self, hall_ID, repair_charge, other_charge, rebuild = false,
                 grant_ID = None):
         """
         Init GrantRequest Object with details from Warden
         """
         self.hall_ID = hall_ID
-        self.clerk_salary = clerk_salary
-        self.attendant_salary = attendant_salary
-        self.gardener_salary = gardener_salary
-        self.other_charges = other_charges
-        self.attendant_count = attendant_count
-        self.gardener_count = gardener_count
+        self.repair_charge = repair_charge
+        self.other_charge = other_charge
+        self.salary_charge = 0.
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
         # If false, a new data row is added to the specific table
         if rebuild == false:
             self.grant_ID = db.add("grant_request",
-            "clerk_salary" = self.clerk_salary,
-            "gardener_salary" = self.gardener_salary,
-            "attendant_salary" = self.attendant_salary,
-            "other_charges" = self.other_charges,
-            "attendant_count" = self.attendant_count,
-            "gardener_count" = self.gardener_count,
+            "repair_charge" = self.repair_charge,
+            "other_charge" = self.other_charge,
+            "salary_charge" = self.salary_charge,
             "hall_ID" = self.hall_ID)
         else:
             self.grant_ID = grant_ID
@@ -63,79 +52,57 @@ class GrantRequest(object):
         self._hall_ID = hall_ID
         db.update("grant_request", self.grant_ID, "hall_ID", self.hall_ID)
 
-    # clerk_salary getter and setter functions
+    # repair_charge getter and setter functions
     @property
-    def clerk_salary(self):
-        return self._clerk_salary
+    def repair_charge(self):
+        return self._repair_charge
 
-    @clerk_salary.setter
-    def clerk_salary(self, clerk_salary):
-        self._clerk_salary = clerk_salary
-        db.update("grant_request", self.grant_ID, "clerk_salary", self.clerk_salary)
+    @repair_charge.setter
+    def repair_charge(self, repair_charge):
+        self._repair_charge = repair_charge
+        db.update("grant_request", self.grant_ID, "repair_charge", self.repair_charge)
 
-    # attendant_salary getter and setter functions
+    # other_charge getter and setter functions
     @property
-    def attendant_salary(self):
-        return self._attendant_salary
+    def other_charge(self):
+        return self._other_charge
 
-    @attendant_salary.setter
-    def attendant_salary(self, attendant_salary):
-        self._attendant_salary = attendant_salary
-        db.update("grant_request", self.grant_ID, "attendant_salary", self.attendant_salary)
+    @other_charge.setter
+    def other_charge(self, other_charge):
+        self._other_charge = other_charge
+        db.update("grant_request", self.grant_ID, "other_charge", self.other_charge)
 
-    # gardener_salary getter and setter functions
+    # salary_charge getter and setter functions
     @property
-    def gardener_salary(self):
-        return self._gardener_salary
+    def salary_charge(self):
+        worker_table = db.rebuild("worker")
+        total_salary = 0.
 
-    @gardener_salary.setter
-    def gardener_salary(self, gardener_salary):
-        self._gardener_salary = gardener_salary
-        db.update("grant_request", self.grant_ID, "gardener_salary", self.gardener_salary)
+        for key in worker_table:
+            if worker_table[key].hall_ID = self.hall_ID:
+                if worker_table[key].daily_wage = 0:
+                    total_salary = total_salary + worker_table[key].monthly_salary
+                else:
+                    total_salary = total_salary + \
+                    worker_table[key].daily_wage * \
+                    worker_table[key].monthly_attendance
 
-    # other_charges getter and setter functions
-    @property
-    def other_charges(self):
-        return self._other_charges
+        return total_salary
 
-    @other_charges.setter
-    def other_charges(self, other_charges):
-        self._other_charges = other_charges
-        db.update("grant_request", self.grant_ID, "other_charges", self.other_charges)
-
-    # attendant_count getter and setter functions
-    @property
-    def attendant_count(self):
-        return self._attendant_count
-
-    @attendant_count.setter
-    def attendant_count(self, attendant_count):
-        self._attendant_count = attendant_count
-        db.update("grant_request", self.grant_ID, "attendant_count", self.attendant_count)
-
-    # gardener_count getter and setter functions
-    @property
-    def gardener_count(self):
-        return self._gardener_count
-
-    @gardener_count.setter
-    def gardener_count(self, gardener_count):
-        self._gardener_count = gardener_count
-        db.update("grant_request", self.grant_ID, "gardener_count", self.gardener_count)
-
-
-    def approve():
+    def approve(salary_charge, other_charge, repair_charge):
         """
         Approve GrantRequest by HMC
         Amounts will be added to Hall Accounts based on approved request
         """
 
-        Hall.mess_account += 
-        Hall.amenities_account
-        Hall.salary_account
-        Hall.repair_account
-        Hall.others_account
-        Hall.rent_account
+        hall_table = db.rebuild("hall")
+
+        hall_table[hall_ID].salary_account = hall_table[hall_ID].salary_account + salary_charge
+        hall_table[hall_ID].other_charge = hall_table[hall_ID].other_charge + other_charge
+        hall_table[hall_ID].repair_charge = hall_table[hall_ID].repair_charge + repair_charge
+
+        db.delete("grant_request", self.grant_ID)
+        del self
 
     def reject():
         """
@@ -143,21 +110,5 @@ class GrantRequest(object):
         Delete request from database and notify warden
         """
 
-
-    def view():
-        """
-        Return formatted string with details of grant request
-        String includes grant_ID, hall_ID and provided details
-        """
-
-        grant_string = ("%d: %s\n" \
-                        "Clerk Salary: %s\n \
-                        Gardener Salary: %s\n \
-                        Attendant Salary: %s\n \
-                        Other Charges: %s\n \
-                        Attendant Count: %s\n \
-                        Gardener Count: %s\n")
-
-    return grant_string, (self.grant_ID, self.hall_ID, self.clerk_salary,
-            self.gardener_salary, self.attendant_salary, self.other_charges,
-            self.attendant_count, self.gardener_count)
+        db.delete("grant_request", self.grant_ID)
+        del self

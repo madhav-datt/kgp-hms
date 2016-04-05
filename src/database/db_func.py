@@ -8,6 +8,7 @@
 """
 
 import warnings
+import ctypes
 import mysql.connector
 from mysql.connector import errorcode
 from halls import hall.Hall
@@ -35,13 +36,16 @@ def connect():
     try:
         cnx = mysql.connector.connect(**config)
 
-    except mysql.connector.Error as err: #TODO Don't print, throw as notification/box
+    except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-            print "Incorrect credentials, please contact your administrator"
+            ctypes.windll.user32.MessageBoxA(0, "Incorrect credentials, please contact your administrator",
+            "Database Error", 1)
         elif err.errno == errorcode.ER_BAD_DB_ERROR:
-            print "Database does not exist, please contact your administrator"
+            ctypes.windll.user32.MessageBoxA(0, "Database does not exist, please contact your administrator",
+            "Database Error", 1)
         else:
-            print err + " Please contact your administrator"
+            ctypes.windll.user32.MessageBoxA(0, err + " Please contact your administrator",
+            "Database Error", 1)
 
     else:
         return cnx
@@ -64,8 +68,9 @@ def rebuild(table):
         table == "hall" or table == "grant_request" or table == "worker" or
         table == "complaint":
         cursor.execute(query, table)
-    else: #TODO Don't print, throw as notification/box
-        print "Table not recognized. Object build failed"
+    else:
+        ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Object build failed",
+        "Database Error", 1)
         return None
 
     cursor.fetchall()
@@ -73,14 +78,14 @@ def rebuild(table):
         # Insert new row of data into table
         if table == "student":
             table_obj = Student(row[1], row[2], row[3], row[4], row[5],
-                                row[6], row[8], true, row[0])
+                                row[6], row[8], True, row[0])
 
         elif table == "warden":
-            table_obj = Warden(row[1], row[2], row[3], row[4], true, row[0])
+            table_obj = Warden(row[1], row[2], row[3], row[4], True, row[0])
 
         elif table == "hall":
             table_obj = Hall(row[1], row[5], row[6], row[7], row[10], row[11],
-                            row[2], row[4], row[3], row[12], true, row[0])
+                            row[2], row[4], row[3], row[12], True, row[0])
 
             table_obj.mess_account = row[13]
             table_obj.amenities_account = row[14]
@@ -91,21 +96,21 @@ def rebuild(table):
 
         elif table == "worker":
             if row[3] == "M":
-                table_obj = MessManager(row[2], row[6], row[1], row[4], true, row[0])
+                table_obj = MessManager(row[2], row[6], row[1], row[4], True, row[0])
             elif row[3] == "C":
-                table_obj = Clerk(row[2], row[6], row[1], row[4], true, row[0])
+                table_obj = Clerk(row[2], row[6], row[1], row[4], True, row[0])
             elif row[3] == "A":
-                table_obj = Attendant(row[2], row[6], row[5], row[7], true, row[0])
+                table_obj = Attendant(row[2], row[6], row[5], row[7], True, row[0])
 
         elif table == "complaint":
-            table_obj = Complaint(row[1], row[2], row[3], row[4], true, row[0])
+            table_obj = Complaint(row[1], row[2], row[3], row[4], True, row[0])
 
         elif table == "hmc":
             table_obj = HallManagement(row[0], row[1])
 
         elif table == "grant_request":
             table_obj = GrantRequest(row[7], row[1], row[2], row[3], row[4],
-                                    row[5], row[6], true, row[0])
+                                    row[5], row[6], True, row[0])
 
         data_table.append((row[0], table_obj))
 
@@ -160,9 +165,8 @@ def add(table, **param):
                 "VALUES (%s, %s)")
 
     add_grant_request = ("INSERT INTO grant_request "
-                        "(clerk_salary, gardener_salary, attendant_salary, \
-                        other_charges, attendant_count, gardener_count, hall_ID) "
-                        "VALUES (%s, %s, %s, %s, %s, %s, %s)")
+                        "(repair_charge, other_charge, salary_charge, hall_ID) "
+                        "VALUES (%s, %s, %s, %s)")
 
     cnx = connect()
     cursor = cnx.cursor()
@@ -182,8 +186,10 @@ def add(table, **param):
         cursor.execute(add_hmc, param)
     elif table == "grant_request":
         cursor.execute(add_grant_request, param)
-    else: #TODO Don't print, throw as notification/box
-        print "Table not recognized. Insert failed"
+    else:
+        ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Insert failed",
+        "Database Error", 1)
+        print
         return None
 
     # Commit to database
@@ -222,8 +228,9 @@ def update(table, primary_key, field, value):
         cursor.execute(update_row, (table, field, value, "password", primary_key))
     elif table == "grant_request":
         cursor.execute(update_row, (table, field, value, "grant_ID", primary_key))
-    else: #TODO Don't print, throw as notification/box
-        print "Table not recognized. Update failed"
+    else:
+        ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Update failed",
+        "Database Error", 1)
 
     cursor.close()
     cnx.close()
@@ -251,10 +258,14 @@ def get(table, primary_key, field):
         cursor.execute(query, (field, table, "worker_ID", primary_key))
     elif table == "complaint":
         cursor.execute(query, (field, table, "complaint_ID", primary_key))
+    elif table == "grant_request":
+        cursor.execute(query, (field, table, "grant_ID", primary_key))
     elif table == "hmc":
         cursor.execute(query, (field, table, "password", primary_key))
-    else: #TODO Don't print, throw as notification/box
-        print "Table not recognized. Query failed"
+    else:
+        ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Query failed",
+        "Database Error", 1)
+
         cursor.close()
         cnx.close()
         return None
@@ -290,8 +301,9 @@ def delete(table, primary_key):
         cursor.execute(delete_row, (table, "complaint_ID", primary_key))
     elif table == "grant_request":
         cursor.execute(delete_row, (table, "grant_ID", primary_key))
-    else: #TODO Don't print, throw as notification/box
-        print "Table not recognized. Delete failed"
+    else:
+        ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Delete failed",
+        "Database Error", 1)
 
     cursor.close()
     cnx.close()

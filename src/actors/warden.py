@@ -23,7 +23,7 @@ class Warden(object):
         hall_ID: Integer to identify hall of residence
     """
 
-    def __init__(self, password, name, email, hall_ID, rebuild = false,
+    def __init__(self, password, name, email, hall_ID, rebuild = False,
                 warden_ID = None):
         """
         Init Warden with details for object creation
@@ -35,8 +35,8 @@ class Warden(object):
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
-        # If false, a new data row is added to the specific table
-        if rebuild == false
+        # If False, a new data row is added to the specific table
+        if rebuild == False
             self.password = pv.hash_password(password)
             self.warden_ID = db.add("warden", "password" = self.password,
             "name" = self.name, "email" = self.email, "hall_ID" = self.hall_ID)
