@@ -9,7 +9,7 @@
 
 from __future__ import division
 from database import db_func as db
-from databade import password_validation as pv
+from database import password_validation as pv
 from requests import printer
 import warnings
 
@@ -21,17 +21,17 @@ class HallManagement(object):
         password: Hashed string after adding salt
     """
 
-    def __init__(self, password, rebuild = false, payment_is_active = false):
+    def __init__(self, password, rebuild = False, payment_is_active = False):
         """
         Init Hall Management as a singleton class on with initial details
         """
 
-        self.payment_is_active = false
+        self.payment_is_active = False
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
         # If false, a new data row is added to the specific table
-        if rebuild == false:
+        if rebuild == False:
             self._password = pv.hash_password(password)
             db.add("hmc", "password" = self.password)
         else:

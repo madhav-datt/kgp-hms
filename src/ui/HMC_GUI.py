@@ -4,6 +4,10 @@ from PyQt4.QtCore import *
 from PyQt4 import QtCore, QtGui
 #from database import password_validation as pv
 import HMC_Window
+from actors import student
+from actors import warden
+from database import db_func as db
+from halls import hall
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -12,30 +16,74 @@ except AttributeError:
         return s
 
 
+student_list = db.rebuild("student")
+
 class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
     def __init__(self):
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
+
+        '''
+        Custom UI starting, based on data available in the databases
+        '''
+        hmc_obj = db.rebuild("hmc")
+        if hmc_obj.payment_is_active == True:
+            self.pushButton_5.setEnabled(False)
+        else:
+            self.pushButton_5.setEnabled(True)
+
         '''
         Linking "Issue Admission Letter Button to its functionality
         '''
-#        self.pushButton_4.clicked.connect(self.issue_admission_letter)
-'''
+        self.pushButton_4.clicked.connect(self.issue_admission_letter)
+
     def issue_admission_letter(self):
         name = self.lineEdit_16.text()
         gender = self.comboBox.currentText()
         contact = self.lineEdit_15.text()
         address = self.lineEdit_18.text()
         student_hall = self.comboBox_2.currentText()
-        student_hall_ID =
+        student_hall_ID = 1
         room_no = self.lineEdit_13.text()
         if self.comboBox_3.currentText() == "Single":
             room_type = 'S'
         else:
             room_type = 'D'
         password = self.lineEdit_12.text()
-        <file_name.py>.student_list.append(Student(password, name, address, contact, student_hall_ID, room_no, room_type))
-'''
+        new_student = student.Student(password, name, address, contact, student_hall_ID, room_no, room_type)
+        student_list.update({new_student.student_ID, new_student})
+
+    def activate_payment_link(self):
+        hmc_obj = db.rebuild("hmc")
+        hmc_obj.activate_payment_link()
+
+    def deactivate_payment_link(self):
+        hmc_obj = db.rebuild("hmc")
+        hmc_obj.activate_payment_link()
+
+    def add_hall(self):
+        name = self.lineEdit_4.text()
+        status = self.comboBox_4.currentText()
+        if status == "Single"
+            status = "S"
+        else:
+            status = "D"
+        single_room_count = self.spinBox_8.text()
+        single_room_rent = self.doubleSpinBox.text()
+        double_room_count = self.spinBox_9.text()
+        double_room_rent = self.doubleSpinBox_2.text()
+        warden_name = self.lineEdit_8.text()
+        warden_pw = self.lineEdit_9.text()
+        manager_name = self.lineEdit_10.text()
+        manager_pw = self.lineEdit_11.text()
+        manager_salary = self.doubleSpinBox_3.text()
+        clerk_name = self.lineEdit_14.text()
+        clerk_pw = self.lineEdit_17.text()
+        clerk_salary = self.doubleSpinBox_4.text()
+        new_warden = warden.Warden(warden_pw, warden_name, )
+        new_hall = hall.Hall(name, status, single_room_count, double_room_count, single_room_rent, double_room_rent, warden_ID, mess_manager_ID, clerk_ID, amenities_charge,rebuild=false, hall_ID=None)
+
+
 app = QApplication(sys.argv)
 form = HMCWindowClass()
 form.show()
