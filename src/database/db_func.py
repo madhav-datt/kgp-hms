@@ -8,6 +8,7 @@
 """
 
 import warnings
+import ctypes
 import mysql.connector
 from mysql.connector import errorcode
 from halls import hall
@@ -35,13 +36,16 @@ def connect():
     try:
         cnx = mysql.connector.connect(**config)
 
-    except mysql.connector.Error as err: #TODO Don't print, throw as notification/box
+    except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-            print "Incorrect credentials, please contact your administrator"
+            ctypes.windll.user32.MessageBoxA(0, "Incorrect credentials, please contact your administrator",
+            "Database Error", 1)
         elif err.errno == errorcode.ER_BAD_DB_ERROR:
-            print "Database does not exist, please contact your administrator"
+            ctypes.windll.user32.MessageBoxA(0, "Database does not exist, please contact your administrator",
+            "Database Error", 1)
         else:
-            print err + " Please contact your administrator"
+            ctypes.windll.user32.MessageBoxA(0, err + " Please contact your administrator",
+            "Database Error", 1)
 
     else:
         return cnx
@@ -64,8 +68,9 @@ def rebuild(table):
         table == "hall" or table == "grant_request" or table == "worker" or
         table == "complaint":
         cursor.execute(query, table)
-    else: #TODO Don't print, throw as notification/box
-        print "Table not recognized. Object build failed"
+    else:
+        ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Object build failed",
+        "Database Error", 1)
         return None
 
     cursor.fetchall()
@@ -181,8 +186,10 @@ def add(table, **param):
         cursor.execute(add_hmc, param)
     elif table == "grant_request":
         cursor.execute(add_grant_request, param)
-    else: #TODO Don't print, throw as notification/box
-        print "Table not recognized. Insert failed"
+    else:
+        ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Insert failed",
+        "Database Error", 1)
+        print
         return None
 
     # Commit to database
@@ -221,8 +228,9 @@ def update(table, primary_key, field, value):
         cursor.execute(update_row, (table, field, value, "password", primary_key))
     elif table == "grant_request":
         cursor.execute(update_row, (table, field, value, "grant_ID", primary_key))
-    else: #TODO Don't print, throw as notification/box
-        print "Table not recognized. Update failed"
+    else:
+        ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Update failed",
+        "Database Error", 1)
 
     cursor.close()
     cnx.close()
@@ -254,8 +262,10 @@ def get(table, primary_key, field):
         cursor.execute(query, (field, table, "grant_ID", primary_key))
     elif table == "hmc":
         cursor.execute(query, (field, table, "password", primary_key))
-    else: #TODO Don't print, throw as notification/box
-        print "Table not recognized. Query failed"
+    else:
+        ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Query failed",
+        "Database Error", 1)
+
         cursor.close()
         cnx.close()
         return None
@@ -291,8 +301,9 @@ def delete(table, primary_key):
         cursor.execute(delete_row, (table, "complaint_ID", primary_key))
     elif table == "grant_request":
         cursor.execute(delete_row, (table, "grant_ID", primary_key))
-    else: #TODO Don't print, throw as notification/box
-        print "Table not recognized. Delete failed"
+    else:
+        ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Delete failed",
+        "Database Error", 1)
 
     cursor.close()
     cnx.close()
