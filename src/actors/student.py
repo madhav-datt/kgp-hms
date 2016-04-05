@@ -152,5 +152,11 @@ class Student(object):
         Calculate total dues payable by student
         total_dues = room_rent + mess_charges + amenities_charges
         """
-        return self.mess_charge + db.get("hall", hall_ID, "room_rent") +
+        
+        if self.room_type = "S":
+            room_rent = db.get("hall", hall_ID, "single_room_rent")
+        elif self.room_type = "D":
+            room_rent = db.get("hall", hall_ID, "double_room_rent")
+
+        return self.mess_charge + room_rent +
         db.get("hall", hall_ID, "amenities_charges")
