@@ -21,10 +21,12 @@ class HallManagement(object):
         password: Hashed string after adding salt
     """
 
-    def __init__(self, password, rebuild = false):
+    def __init__(self, password, rebuild = false, payment_is_active = false):
         """
         Init Hall Management as a singleton class on with initial details
         """
+
+        self.payment_is_active = false
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database

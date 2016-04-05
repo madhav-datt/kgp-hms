@@ -1,4 +1,4 @@
-#
+
 # Software Engineering Lab - Assignment 5
 # IIT Kharagpur - Hall Management System
 #
@@ -9,3 +9,35 @@
 
 from __future__ import division
 from database import db_func as db
+import warnings
+
+class Attendant(Worker):
+    """Contains details of Worker Instance
+
+    Attributes:
+        worker_ID: Integer to uniquely identify worker
+        name: String
+        hall_ID: Integer to uniquely identify hall
+        email: String
+        monthly_salary: Float
+        daily_wage: Float
+        monthly_attendance: Integer with monthly attendance count for daily workers
+    """
+
+    def __init__(self, name, hall_ID, daily_wage, monthly_attendance,
+                rebuild = false, worker_ID = None):
+        """
+        Init MessManager with details as recruited by HMC or Warden
+        """
+
+        Worker.__init__(self, name, hall_ID, None, None, daily_wage, monthly_attendance)
+
+        # The rebuild flag, if true, denotes that the object is being made from
+        # data already present in the database
+        # If false, a new data row is added to the specific table
+        if rebuild == false:
+            self.worker_ID = db.add("Worker", "name" = self.name,
+            "worker_type" = "M", "monthly_salary" = self.monthly_salary,
+            "daily_wage" = 0, "hall_ID" = self.hall_ID, "monthly_attendance" = 0)
+        else:
+            self.worker_ID = worker_ID

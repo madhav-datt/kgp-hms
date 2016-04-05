@@ -57,12 +57,66 @@ def rebuild(table):
     cursor = cnx.cursor()
 
     query = ("SELECT * from %s")
+    data_table = {}
 
-    if table == "student":
-        cursor.execute(query, )
+    if table == "student" or table == "warden" or table == "hmc" or
+        table == "hall" or table == "grant_request" or table == "worker" or
+        table == "complaint":
+        cursor.execute(query, table)
+    else: #TODO Don't print, throw as notification/box
+        print "Table not recognized. Object build failed"
+        return None
+
+    cursor.fetchall()
+    for row in cursor:
+        # Insert new row of data into table
+        if table == "student":
+            table_obj = Student(row[1], row[2], row[3], row[4], row[5],
+                                row[6], row[8], true, row[0])
+
+        elif table == "warden":
+            table_obj = Warden(row[1], row[2], row[3], row[4], true, row[0])
+
+        elif table == "hall":
+            table_obj = Hall(row[1], row[5], row[6], row[7], row[10], row[11],
+                            row[2], row[4], row[3], row[12], true, row[0])
+
+            table_obj.mess_account = row[13]
+            table_obj.amenities_account = row[14]
+            table_obj.repair_account = row[15]
+            table_obj.salary_account = row[16]
+            table_obj.others_account = row[17]
+            table_obj.rent_account = row[18]
+
+        elif table == "worker":
+            password, name, worker_type, monthly_salary, daily_wage, \
+            hall_ID, monthly_attendance
+
+name, hall_ID, password, monthly_salary, rebuild = false, worker_ID = None
+
+            if row[3] == "M":
+                table_obj = MessManager(row[2], row[6], row[1], row[4], true, row[0])
+            elif row[3] == "C":
+                table_obj = MessManager(row[2], row[6], row[1], row[4], true, row[0])
+            elif row[3] == "A":
+                table_obj = Attendant()
+
+        elif table == "complaint":
+            table_obj = Student(row[1], row[2], row[3], row[4], row[5],
+                                row[6], row[8], true, row[0])
+        elif table == "hmc":
+            table_obj = HallManagement(row[0], row[1])
+
+        elif table == "grant_request":
+            table_obj = Student(row[1], row[2], row[3], row[4], row[5],
+                                row[6], row[8], true, row[0])
+
+        data_table.append((row[0], table_obj))
 
     cursor.close()
     cnx.close()
+
+    return data_table
 
 def add(table, **param):
     """
@@ -96,7 +150,7 @@ def add(table, **param):
                 %s, %s, %s, %s, %s)")
 
     add_worker = ("INSERT INTO worker "
-                    "(name, email, worker_type, monthly_salary, daily_wage, \
+                    "(password, name, worker_type, monthly_salary, daily_wage, \
                     hall_ID, monthly_attendance) "
                     "VALUES (%s, %s, %s, %s, %s, %s, %s)")
 
@@ -105,8 +159,8 @@ def add(table, **param):
                     "VALUES (%s, %s, %s, %s)")
 
     add_hmc = ("INSERT INTO hmc "
-                "(password) "
-                "VALUES (%s)")
+                "(password, payment_is_active) "
+                "VALUES (%s, %s)")
 
     add_grant_request = ("INSERT INTO grant_request "
                         "(clerk_salary, gardener_salary, attendant_salary, \

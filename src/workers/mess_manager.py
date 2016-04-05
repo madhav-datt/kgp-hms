@@ -30,7 +30,7 @@ class MessManager(Worker):
         Init MessManager with details as recruited by HMC or Warden
         """
 
-        Worker.__init__(self, name, hall_ID, monthly_salary, None, None)
+        Worker.__init__(self, name, hall_ID, password, monthly_salary, None, None)
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
