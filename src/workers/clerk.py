@@ -30,7 +30,7 @@ class Clerk(Worker):
         Init Clerk with details as recruited by HMC or Warden
         """
 
-        Worker.__init__(self, name, hall_ID, password, monthly_salary, None, None)
+        Worker.__init__(self, name, hall_ID, password, monthly_salary, 0, 0)
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database

@@ -9,7 +9,7 @@
 
 from __future__ import division
 from database import db_func as db
-from databade import password_validation as pv
+from database import password_validation as pv
 from requests import printer
 import warnings
 

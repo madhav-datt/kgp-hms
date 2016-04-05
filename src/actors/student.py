@@ -154,9 +154,9 @@ class Student(object):
         """
 
         if self.room_type = "S":
-            room_rent = db.get("hall", hall_ID, "single_room_rent")
+            room_rent = db.get("hall", self.hall_ID, "single_room_rent")
         elif self.room_type = "D":
-            room_rent = db.get("hall", hall_ID, "double_room_rent")
+            room_rent = db.get("hall", self.hall_ID, "double_room_rent")
 
         return self.mess_charge + room_rent +
-        db.get("hall", hall_ID, "amenities_charges")
+        db.get("hall", self.hall_ID, "amenities_charges")

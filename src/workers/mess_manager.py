@@ -30,7 +30,7 @@ class MessManager(Worker):
         Init MessManager with details as recruited by HMC or Warden
         """
 
-        Worker.__init__(self, name, hall_ID, password, monthly_salary, None, None)
+        Worker.__init__(self, name, hall_ID, password, monthly_salary, 0, 0)
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
@@ -63,3 +63,18 @@ class MessManager(Worker):
     def monthly_salary(self, monthly_salary):
         self._monthly_salary = monthly_salary
         db.update("worker", self.worker_ID, "monthly_salary", self.monthly_salary)
+
+    def compute_mess_payment(self):
+        """
+        Compute total money due to hall in form of mess payments
+        Sum of each student resident's mess charge
+        """
+
+        student_table = db.rebuild("student")
+        mess_total = 0.
+
+        for key in student_table:
+            if student_table[key].hall_ID == self.hall_ID:
+                mess_total = mess_total + student_table[key].mess_charge
+
+        return mess_total

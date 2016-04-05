@@ -30,7 +30,8 @@ class Attendant(Worker):
         Init MessManager with details as recruited by HMC or Warden
         """
 
-        Worker.__init__(self, name, hall_ID, None, None, daily_wage, monthly_attendance)
+        Worker.__init__(self, name, hall_ID, 0, 0, daily_wage, monthly_attendance)
+        self.total_wage = 0.
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
@@ -61,3 +62,8 @@ class Attendant(Worker):
     def monthly_attendance(self, monthly_attendance):
         self._monthly_attendance = monthly_attendance
         db.update("worker", self.worker_ID, "monthly_attendance", self.monthly_attendance)
+
+    # total_wage getter functions
+    @property
+    def total_wage(self):
+        return self.daily_wage * self.monthly_attendance
