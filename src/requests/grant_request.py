@@ -76,14 +76,20 @@ class GrantRequest(object):
     @property
     def salary_charge(self):
         worker_table = db.rebuild("worker")
+        total_salary = 0.
 
         for key in worker_table:
             if worker_table[key].hall_ID = self.hall_ID:
-                if
+                if worker_table[key].daily_wage = 0:
+                    total_salary = total_salary + worker_table[key].monthly_salary
+                else:
+                    total_salary = total_salary + \
+                    worker_table[key].daily_wage * \
+                    worker_table[key].monthly_attendance
 
-        return
+        return total_salary
 
-    def approve():
+    def approve(salary_charge, other_charge, repair_charge):
         """
         Approve GrantRequest by HMC
         Amounts will be added to Hall Accounts based on approved request
@@ -91,15 +97,18 @@ class GrantRequest(object):
 
         hall_table = db.rebuild("hall")
 
-        hall_table[hall_ID].mess_account = hall_table[hall_ID].mess_account +
-        Hall.amenities_account
-        Hall.salary_account
-        Hall.repair_account
-        Hall.others_account
-        Hall.rent_account
+        hall_table[hall_ID].salary_account = hall_table[hall_ID].salary_account + salary_charge
+        hall_table[hall_ID].other_charge = hall_table[hall_ID].other_charge + other_charge
+        hall_table[hall_ID].repair_charge = hall_table[hall_ID].repair_charge + repair_charge
+
+        db.delete("grant_request", self.grant_ID)
+        del self
 
     def reject():
         """
         Reject GrantRequest by HMC
         Delete request from database and notify warden
         """
+
+        db.delete("grant_request", self.grant_ID)
+        del self
