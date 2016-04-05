@@ -89,26 +89,21 @@ def rebuild(table):
             table_obj.rent_account = row[18]
 
         elif table == "worker":
-            password, name, worker_type, monthly_salary, daily_wage, \
-            hall_ID, monthly_attendance
-
-name, hall_ID, password, monthly_salary, rebuild = false, worker_ID = None
-
             if row[3] == "M":
                 table_obj = MessManager(row[2], row[6], row[1], row[4], true, row[0])
             elif row[3] == "C":
-                table_obj = MessManager(row[2], row[6], row[1], row[4], true, row[0])
+                table_obj = Clerk(row[2], row[6], row[1], row[4], true, row[0])
             elif row[3] == "A":
-                table_obj = Attendant()
+                table_obj = Attendant(row[2], row[6], row[5], row[7], true, row[0])
 
         elif table == "complaint":
-            table_obj = Student(row[1], row[2], row[3], row[4], row[5],
-                                row[6], row[8], true, row[0])
+            table_obj = Complaint(row[1], row[2], row[3], row[4], true, row[0])
+
         elif table == "hmc":
             table_obj = HallManagement(row[0], row[1])
 
         elif table == "grant_request":
-            table_obj = Student(row[1], row[2], row[3], row[4], row[5],
+            table_obj = GrantRequest(row[1], row[2], row[3], row[4], row[5],
                                 row[6], row[8], true, row[0])
 
         data_table.append((row[0], table_obj))
