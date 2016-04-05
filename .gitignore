@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# PyQt UI Design extensions
+*.ui
+
 # Distribution / packaging
 .Python
 env/
