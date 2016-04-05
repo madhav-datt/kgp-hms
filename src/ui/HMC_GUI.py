@@ -2,10 +2,10 @@ import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from PyQt4 import QtCore, QtGui
-#from database import password_validation as pv
+from database import password_validation as pv
 import HMC_Window
-from actors import student
-from actors import warden
+from actors import student, warden
+from workers import mess_manager, clerk
 from database import db_func as db
 from halls import hall
 
@@ -26,6 +26,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         '''
         Custom UI starting, based on data available in the databases
         '''
+
         hmc_obj = db.rebuild("hmc")
         if hmc_obj.payment_is_active == True:
             self.pushButton_5.setEnabled(False)
@@ -37,6 +38,10 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         '''
         self.pushButton_4.clicked.connect(self.issue_admission_letter)
 
+
+    '''
+    Adding specific ui elements for student functionalities tab
+    '''
     def issue_admission_letter(self):
         name = self.lineEdit_16.text()
         gender = self.comboBox.currentText()
@@ -61,13 +66,18 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         hmc_obj = db.rebuild("hmc")
         hmc_obj.activate_payment_link()
 
+
+    '''
+    Adding specific ui elements for add hall tab
+    '''
     def add_hall(self):
         name = self.lineEdit_4.text()
         status = self.comboBox_4.currentText()
-        if status == "Single"
+        if status == "Single":
             status = "S"
         else:
             status = "D"
+        amenities_charge = self.doubleSpinBox_5.text()
         single_room_count = self.spinBox_8.text()
         single_room_rent = self.doubleSpinBox.text()
         double_room_count = self.spinBox_9.text()
@@ -80,8 +90,40 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         clerk_name = self.lineEdit_14.text()
         clerk_pw = self.lineEdit_17.text()
         clerk_salary = self.doubleSpinBox_4.text()
-        new_warden = warden.Warden(warden_pw, warden_name, )
-        new_hall = hall.Hall(name, status, single_room_count, double_room_count, single_room_rent, double_room_rent, warden_ID, mess_manager_ID, clerk_ID, amenities_charge,rebuild=false, hall_ID=None)
+        new_warden = warden.Warden(warden_pw, warden_name, "warden_kgp@gmail.com", 0) #TODO : default email fro warden = ?
+        new_mess_manager = mess_manager.MessManager(manager_name, 0, manager_pw, manager_salary)
+        new_clerk = clerk.Clerk(clerk_name, 0, clerk_pw, clerk_salary)
+        new_hall = hall.Hall(name, status, single_room_count, double_room_count,
+                             single_room_rent, double_room_rent, new_warden.warden_ID, new_mess_manager.mess_manager_ID,
+                             new_clerk.worker_ID, amenities_charge)
+        new_warden.hall_ID = new_hall.hall_ID
+        new_mess_manager.hall_ID = new_hall.hall_ID
+        new_clerk.hall_ID = new_hall.hall_ID
+        #TODO : confirm that above setters update db
+
+    '''
+    Adding custom ui for grant request tab
+    '''
+
+    '''
+    Setting up the listWidget, showing hall names with a pending grant request
+    '''
+    def set_list(self):
+        hall_dict = db.rebuild("hall")
+        grant_req_dict = db.rebuild("grant_request")
+        self.listWidget.clear()
+        hall_names = [grant_req_dict[req].name for req in grant_req_dict]
+        self.listWidget.addItems(hall_names)
+
+
+
+
+def find_hall_ID_by_name(self, name):
+    hall_dict = db.rebuild("hall")
+    for key in hall_dict:
+        if hall_dict[key].name == name:
+            return key
+    return -1
 
 
 app = QApplication(sys.argv)
