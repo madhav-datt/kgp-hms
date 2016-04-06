@@ -7,8 +7,8 @@
 @ authors: Madhav Datt (14CS30015), Avikalp Srivastava (14CS10008)
 """
 
-from __future__ import division
 from fpdf import FPDF
+from database import db_func as db
 import warnings
 import time
 
@@ -34,7 +34,7 @@ def print_statement(Hall):
     pdf.ln()
 
     # Write generated output file to PDF
-    pdf.output(('hall_statement_%s', hall_ID), 'F')
+    pdf.output(('hall_statement_%s', Hall.hall_ID), 'F')
 
 def issue_cheque(name, amount):
     """
@@ -55,7 +55,7 @@ def issue_cheque(name, amount):
     pdf.ln()
 
     # Write generated output file to PDF
-    pdf.output(('hall_statement_%s', hall_ID), 'F')
+    pdf.output(('cheque_%s', name), 'F')
 
 def generate_salary_list(Hall, worker_list):
     """
@@ -71,23 +71,23 @@ def generate_salary_list(Hall, worker_list):
 
     worker_list = db.rebuild("worker")
     for key in worker_list:
-        if worker_list[key].hall_ID = Hall.hall_ID:
-            if row[3] == "M":
-                title = "Mess Manager"
-                wage = worker_list[key].monthly_salary
-            elif row[3] == "C":
-                title = "Clerk"
-                wage = worker_list[key].monthly_salary
-            elif row[3] == "A":
-                title = "Attendant"
-                wage = worker_list[key].daily_wage
+        if worker_list[key].hall_ID == Hall.hall_ID: #TODO TODO TODO
+#            if row[3] == "M":
+#                title = "Mess Manager"
+#                wage = worker_list[key].monthly_salary
+#            elif row[3] == "C":
+#                title = "Clerk"
+#                wage = worker_list[key].monthly_salary
+#            elif row[3] == "A":
+#                title = "Attendant"
+#                wage = worker_list[key].daily_wage
 
             pdf.multi_cell(0, 5, ('%s: %s (%s) - Rs. %s', worker_list[key].worker_ID,
             worker_list[key].name, title, wage))
             pdf.ln()
 
     # Write generated output file to PDF
-    pdf.output(('hall_salary_%s', hall_ID), 'F')
+    pdf.output(('hall_salary_%s', Hall.hall_ID), 'F')
 
 def print_receipt(Student):
     """
@@ -107,22 +107,22 @@ def print_receipt(Student):
     pdf.multi_cell(0, 5, ('Mess Fees: %s', Student.mess_charge))
     pdf.ln()
 
-    if self.room_type = "S":
-        room_rent = db.get("hall", hall_ID, "single_room_rent")
-    elif self.room_type = "D":
-        room_rent = db.get("hall", hall_ID, "double_room_rent")
+    if Student.room_type == "S":
+        room_rent = db.get("hall", Student.hall_ID, "single_room_rent")
+    elif Student.room_type == "D":
+        room_rent = db.get("hall", Student.hall_ID, "double_room_rent")
 
     pdf.multi_cell(0, 5, ('Room Rent: %s', room_rent))
     pdf.ln()
 
-    pdf.multi_cell(0, 5, ('Amenities Charge: %s', db.get("hall", self.hall_ID, "amenities_charge")))
+    pdf.multi_cell(0, 5, ('Amenities Charge: %s', db.get("hall", Student.hall_ID, "amenities_charge")))
     pdf.ln()
 
     pdf.multi_cell(0, 5, ('Total Amount Paid: %s', Student.total_dues()))
     pdf.ln()
 
     # Write generated output file to PDF
-    pdf.output(('hall_statement_%s', hall_ID), 'F')
+    pdf.output(('receipt_%s', Student.hall_ID), 'F')
 
 def issue_student_admission_letter(Student, body):
     """
@@ -146,7 +146,7 @@ def issue_student_admission_letter(Student, body):
     pdf.multi_cell(0, 5, ('Room Allotted: %s', Student.room_no))
     pdf.ln()
     pdf.ln()
-    pdf.multi_cell(0, 5, ('%s', body)
+    pdf.multi_cell(0, 5, ('%s', body))
     pdf.ln()
 
     # Write generated output file to PDF

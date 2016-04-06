@@ -7,9 +7,8 @@
 @ authors: Madhav Datt (14CS30015), Avikalp Srivastava (14CS10008)
 """
 
-from __future__ import division
 from database import db_func as db
-from databade import password_validation as pv
+from database import password_validation as pv
 import warnings
 
 class Warden(object):

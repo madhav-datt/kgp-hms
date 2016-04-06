@@ -7,9 +7,8 @@
 @ authors: Madhav Datt (14CS30015), Avikalp Srivastava (14CS10008)
 """
 
-from __future__ import division
 from database import db_func as db
-from databade import password_validation as pv
+from database import password_validation as pv
 import warnings
 
 class Student(object):
@@ -89,6 +88,7 @@ class Student(object):
         self._action_report = action_report
         db.update("complaint", self.complaint_ID, "action_report", self.action_report)
 
+
     def view(self):
         """
         Return formatted string with details of complaint
@@ -100,13 +100,13 @@ class Student(object):
                             "Action Report: %s")
 
         # Designate Action Status details
-        if action_status == "P":
+        if self.action_status == "P":
             action_status_report = "Pending"
         else:
             action_status_report = "Taken"
 
-    return (complaint_string, (self.complaint_ID, self.description,
-            action_status_report, self.action_report))
+        return (complaint_string, (self.complaint_ID, self.description,
+                action_status_report, self.action_report))
 
     def remove(self):
         """

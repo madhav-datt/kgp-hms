@@ -9,9 +9,11 @@
 
 from __future__ import division
 from database import db_func as db
+from database import pass_validation as pv
 import warnings
+import worker
 
-class Clerk(Worker):
+class Clerk(worker.Worker):
     """Contains details of Worker Instance
 
     Attributes:
@@ -30,7 +32,7 @@ class Clerk(Worker):
         Init Clerk with details as recruited by HMC or Warden
         """
 
-        Worker.__init__(self, name, hall_ID, password, monthly_salary, 0, 0)
+        worker.Worker.__init__(self, name, hall_ID, password, monthly_salary, 0, 0)
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database

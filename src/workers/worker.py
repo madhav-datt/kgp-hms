@@ -36,7 +36,6 @@ class Worker(object):
         self.monthly_salary = monthly_salary
         self.daily_wage = daily_wage
         self.monthly_attendance = monthly_attendance
-        self.worker_ID = worker_ID
 
     # name getter and setter functions
     @property

@@ -7,7 +7,6 @@
 @ authors: Madhav Datt (14CS30015), Avikalp Srivastava (14CS10008)
 """
 
-from __future__ import division
 from database import db_func as db
 
 class GrantRequest(object):
@@ -33,7 +32,7 @@ class GrantRequest(object):
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
         # If false, a new data row is added to the specific table
-        if rebuild == false:
+        if rebuild == False:
             self.grant_ID = db.add("grant_request",
             "repair_charge" = self.repair_charge,
             "other_charge" = self.other_charge,
@@ -79,8 +78,8 @@ class GrantRequest(object):
         total_salary = 0.
 
         for key in worker_table:
-            if worker_table[key].hall_ID = self.hall_ID:
-                if worker_table[key].daily_wage = 0:
+            if worker_table[key].hall_ID == self.hall_ID:
+                if worker_table[key].daily_wage == 0:
                     total_salary = total_salary + worker_table[key].monthly_salary
                 else:
                     total_salary = total_salary + \
@@ -89,7 +88,7 @@ class GrantRequest(object):
 
         return total_salary
 
-    def approve(salary_charge, other_charge, repair_charge):
+    def approve(self, salary_charge, other_charge, repair_charge):
         """
         Approve GrantRequest by HMC
         Amounts will be added to Hall Accounts based on approved request
@@ -104,7 +103,7 @@ class GrantRequest(object):
         db.delete("grant_request", self.grant_ID)
         del self
 
-    def reject():
+    def reject(self):
         """
         Reject GrantRequest by HMC
         Delete request from database and notify warden

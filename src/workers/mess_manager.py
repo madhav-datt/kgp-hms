@@ -9,9 +9,11 @@
 
 from __future__ import division
 from database import db_func as db
+from database import password_validation as pv
+import worker
 import warnings
 
-class MessManager(Worker):
+class MessManager(worker.Worker):
     """Contains details of Worker Instance
 
     Attributes:
@@ -30,7 +32,7 @@ class MessManager(Worker):
         Init MessManager with details as recruited by HMC or Warden
         """
 
-        Worker.__init__(self, name, hall_ID, password, monthly_salary, 0, 0)
+        worker.Worker.__init__(self, name, hall_ID, password, monthly_salary, 0, 0)
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database

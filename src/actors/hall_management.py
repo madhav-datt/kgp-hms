@@ -28,7 +28,7 @@ class HallManagement(object):
 
         self.payment_is_active = False
 
-        # The rebuild flag, if true, denotes that the object is being made from
+        # The rebuild flag, if True, denotes that the object is being made from
         # data already present in the database
         # If False, a new data row is added to the specific table
         if rebuild == False:
@@ -53,7 +53,7 @@ class HallManagement(object):
         Used by Student to pay total_dues
         """
 
-        self.payment_is_active = true
+        self.payment_is_active = True
         db.update("hmc", "*", "payment_is_active", self.payment_is_active)
 
     def activate_payment_link(self):
@@ -62,7 +62,7 @@ class HallManagement(object):
         Used by Student to pay total_dues
         """
 
-        self.payment_is_active = true
+        self.payment_is_active = True
         db.update("hmc", "*", "payment_is_active", self.payment_is_active)
 
     def deactivate_payment_link(self):

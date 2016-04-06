@@ -7,7 +7,6 @@
 @ authors: Madhav Datt (14CS30015), Avikalp Srivastava (14CS10008)
 """
 
-from __future__ import division
 from database import db_func as db
 import warnings
 
@@ -69,7 +68,7 @@ class Hall(object):
         # data already present in the database
         # If False, a new data row is added to the specific table
         if rebuild == False:
-            self.hall_ID = db.add("name" = self.name,
+            self.hall_ID = db.add("hall", "name" = self.name,
             "warden_ID" = self.warden_ID,
             "clerk_ID" = self.clerk_ID,
             "mess_manager_ID" = self.mess_manager_ID,

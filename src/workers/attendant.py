@@ -10,8 +10,9 @@
 from __future__ import division
 from database import db_func as db
 import warnings
+import worker
 
-class Attendant(Worker):
+class Attendant(worker.Worker):
     """Contains details of Worker Instance
 
     Attributes:
@@ -30,7 +31,7 @@ class Attendant(Worker):
         Init MessManager with details as recruited by HMC or Warden
         """
 
-        Worker.__init__(self, name, hall_ID, 0, 0, daily_wage, monthly_attendance)
+        worker.Worker.__init__(self, name, hall_ID, 0, 0, daily_wage, monthly_attendance)
         self.total_wage = 0.
 
         # The rebuild flag, if true, denotes that the object is being made from

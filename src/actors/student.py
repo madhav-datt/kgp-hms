@@ -7,7 +7,6 @@
 @ authors: Madhav Datt (14CS30015), Avikalp Srivastava (14CS10008)
 """
 
-from __future__ import division
 from database import db_func as db
 from database import password_validation as pv
 import warnings
@@ -161,9 +160,9 @@ class Student(object):
         total_dues = room_rent + mess_charges + amenities_charges
         """
 
-        if self.room_type = "S":
+        if self.room_type == "S":
             room_rent = db.get("hall", self.hall_ID, "single_room_rent")
-        elif self.room_type = "D":
+        elif self.room_type == "D":
             room_rent = db.get("hall", self.hall_ID, "double_room_rent")
 
         return self.mess_charge + room_rent +

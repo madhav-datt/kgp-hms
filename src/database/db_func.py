@@ -15,7 +15,6 @@ from halls import hall
 from actors import student, warden, hall_management
 from requests import complaint, grant_request
 from workers import attendant, clerk, mess_manager, worker
-from __future__ import print_function
 
 
 def connect():
@@ -64,8 +63,8 @@ def rebuild(table):
     query = ("SELECT * from %s")
     data_table = {}
 
-    if table == "student" or table == "warden" or table == "hmc" or
-        table == "hall" or table == "grant_request" or table == "worker" or
+    if table == "student" or table == "warden" or table == "hmc" or \
+        table == "hall" or table == "grant_request" or table == "worker" or \
         table == "complaint":
         cursor.execute(query, table)
     else:
@@ -77,14 +76,14 @@ def rebuild(table):
     for row in cursor:
         # Insert new row of data into table
         if table == "student":
-            table_obj = Student(row[1], row[2], row[3], row[4], row[5],
+            table_obj = student.Student(row[1], row[2], row[3], row[4], row[5],
                                 row[6], row[8], True, row[0])
 
         elif table == "warden":
-            table_obj = Warden(row[1], row[2], row[3], row[4], row[5], True, row[0])
+            table_obj = warden.Warden(row[1], row[2], row[3], row[4], row[5], True, row[0])
 
         elif table == "hall":
-            table_obj = Hall(row[1], row[5], row[6], row[7], row[10], row[11],
+            table_obj = hall.Hall(row[1], row[5], row[6], row[7], row[10], row[11],
                             row[2], row[4], row[3], row[12], True, row[0])
 
             table_obj.mess_account = row[13]
@@ -96,21 +95,21 @@ def rebuild(table):
 
         elif table == "worker":
             if row[3] == "M":
-                table_obj = MessManager(row[2], row[6], row[1], row[4], True, row[0])
+                table_obj = mess_manager.MessManager(row[2], row[6], row[1], row[4], True, row[0])
             elif row[3] == "C":
-                table_obj = Clerk(row[2], row[6], row[1], row[4], True, row[0])
+                table_obj = clerk.Clerk(row[2], row[6], row[1], row[4], True, row[0])
             elif row[3] == "A":
-                table_obj = Attendant(row[2], row[6], row[5], row[7], True, row[0])
+                table_obj = attendant.Attendant(row[2], row[6], row[5], row[7], True, row[0])
 
         elif table == "complaint":
-            table_obj = Complaint(row[1], row[2], row[3], row[4], True, row[0])
+            table_obj = complaint.Complaint(row[1], row[2], row[3], row[4], True, row[0])
 
         elif table == "hmc":
-            table_obj = HallManagement(row[0], row[1])
+            table_obj = hall_management.HallManagement(row[0], row[1])
 
         elif table == "grant_request":
-            table_obj = GrantRequest(row[7], row[1], row[2], row[3], row[4],
-                                    row[5], row[6], True, row[0])
+            table_obj = grant_request.GrantRequest(row[7], row[1], row[2], row[3], row[4],
+                                                    row[5], row[6], True, row[0])
 
         data_table[row[0]] = table_obj
 
