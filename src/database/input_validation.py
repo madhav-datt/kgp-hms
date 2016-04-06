@@ -27,3 +27,29 @@ def valid_phone(contact_number):
     if re.match(r'[789]\d{9}', contact_number)
         return True
     return False
+
+def int_input(input_str):
+    """
+    Parse passed text string input to integer
+    Return None if input contains characters apart from digits
+    """
+
+    try:
+        input_val = int(input_str)
+    except ValueError:
+        input_val = None
+
+    return input_val
+
+def float_input(input_str):
+    """
+    Parse passed text string input to float
+    Return None if input contains characters apart from digits
+    """
+
+    try:
+        input_val = float(input_str)
+    except ValueError:
+        input_val = None
+
+    return input_val
