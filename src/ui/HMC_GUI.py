@@ -163,7 +163,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
                 self.label_23.setText("")
 
 
-        
+
 
 def find_hall_ID_by_name(self, name):
     hall_dict = db.rebuild("hall")
