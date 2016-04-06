@@ -23,8 +23,8 @@ class Warden(object):
         hall_ID: Integer to identify hall of residence
     """
 
-    def __init__(self, password, name, email, hall_ID, rebuild = False,
-                warden_ID = None):
+    def __init__(self, password, name, email, hall_ID, controlling_warden = False,
+                rebuild = False, warden_ID = None):
         """
         Init Warden with details for object creation
         """
@@ -32,6 +32,7 @@ class Warden(object):
         self.name = name
         self.email = email
         self.hall_ID = hall_ID
+        self.controlling_warden = controlling_warden
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
@@ -39,7 +40,8 @@ class Warden(object):
         if rebuild == False
             self.password = pv.hash_password(password)
             self.warden_ID = db.add("warden", "password" = self.password,
-            "name" = self.name, "email" = self.email, "hall_ID" = self.hall_ID)
+            "name" = self.name, "email" = self.email, "hall_ID" = self.hall_ID,
+            "controlling_warden" = self.controlling_warden)
         else:
             self.password = password
             self.warden_ID = warden_ID
@@ -69,6 +71,16 @@ class Warden(object):
         self._name = name
         db.update("warden", self.warden_ID, "name", self.name)
 
+    # controlling_warden getter and setter functions
+    @property
+    def controlling_warden(self):
+        return self._controlling_warden
+
+    @controlling_warden.setter
+    def controlling_warden(self, controlling_warden):
+        self._controlling_warden = controlling_warden
+        db.update("warden", self.warden_ID, "controlling_warden", self.controlling_warden)
+
     # email getter and setter functions
     @property
     def address(self):
@@ -88,3 +100,25 @@ class Warden(object):
     def hall_ID(self, hall_ID):
         self._hall_ID = hall_ID
         db.update("warden", self.warden_ID, "hall_ID", self.hall_ID)
+
+    def total_occupancy(self):
+        """
+        Return dictionary with occupancy of all Halls
+        Works only if called on object with controlling_warden = True
+        Return None if not called by controlling_warden object
+        """
+
+        if self.controlling_warden == False:
+            return None
+
+        hall_table = db.rebuild("hall")
+
+        # Dictionary occupancy_table as elements in the following form
+        # {hall_name : (single_room_occupancy, double_room_occupancy)}
+        occupancy_table = {}
+        for key in hall_table:
+            occupancy_table.append((hall_table[key].name,
+            (hall_table[key].single_room_occupancy,
+            hall_table[key].double_room_occupancy)))
+
+        return occupancy_table

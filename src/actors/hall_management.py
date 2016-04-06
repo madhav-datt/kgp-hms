@@ -16,7 +16,7 @@ import warnings
 class HallManagement(object):
     """Contains details of HallManagement
     Paramater "*" must be passed wherever primary key is required for db operations
-    
+
     Attributes:
         password: Hashed string after adding salt
     """
@@ -73,4 +73,3 @@ class HallManagement(object):
 
         self.payment_is_active = False
         db.update("hmc", "*", "payment_is_active", self.payment_is_active)
-        

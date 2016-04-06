@@ -46,6 +46,14 @@ class Student(object):
         self.mess_charge = 0.
         self.total_dues = 0.
 
+        # Update hall room occupancy based on room allocation to Student
+        if self.room_type == "S":
+            curr_occupancy = db.get("hall", self.hall_ID, "single_room_occupancy")
+            db.update("hall", self.hall_ID, "single_room_occupancy", int(curr_occupancy) + 1)
+        elif self.room_type == "D":
+            curr_occupancy = db.get("hall", self.hall_ID, "double_room_occupancy")
+            db.update("hall", self.hall_ID, "double_room_occupancy", int(curr_occupancy) + 1)
+
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
         # If False, a new data row is added to the specific table

@@ -81,7 +81,7 @@ def rebuild(table):
                                 row[6], row[8], True, row[0])
 
         elif table == "warden":
-            table_obj = Warden(row[1], row[2], row[3], row[4], True, row[0])
+            table_obj = Warden(row[1], row[2], row[3], row[4], row[5], True, row[0])
 
         elif table == "hall":
             table_obj = Hall(row[1], row[5], row[6], row[7], row[10], row[11],
@@ -139,8 +139,8 @@ def add(table, **param):
                     "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
 
     add_warden = ("INSERT INTO warden "
-                    "(password, name, email, hall_ID) "
-                    "VALUES (%s, %s, %s, %s)")
+                    "(password, name, email, hall_ID, controlling_warden) "
+                    "VALUES (%s, %s, %s, %s, %s)")
 
     add_hall = ("INSERT INTO hall "
                 "(name, warden_ID, clerk_ID, mess_manager_ID, status, \

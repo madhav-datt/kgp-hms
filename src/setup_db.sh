@@ -22,6 +22,7 @@ service mysql start
 # Address security concerns in default MySQL installation
 # For use in production environment: Recommended answers N Y Y Y Y to run all
 # required parts of the script
+echo "Switching to secure installation..."
 mysql_secure_installation
 
 echo ""
@@ -40,7 +41,8 @@ FLUSH PRIVILEGES;
 EOF
 
 # Save encrypted password to local config file
-echo "hmsuser Password has been set to hmspasstmp"
+echo ""
+echo "hmsuser: Password has been set to hmspasstmp"
 echo "Re-enter this password to start table creation"
 mysql_config_editor set --login-path=local --host=localhost --user=hmsuser --password
 
@@ -75,6 +77,7 @@ CREATE TABLE warden(
    name VARCHAR(50),
    email VARCHAR(50),
    hall_ID INT NOT NULL,
+   controlling_warden VARCHAR(6)
    PRIMARY KEY (warden_ID),
    FOREIGN KEY (hall_ID) REFERENCES hall(hall_ID)
    );
