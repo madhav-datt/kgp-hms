@@ -6,8 +6,10 @@ from PyQt4 import QtCore, QtGui
 import HMC_Window
 from actors import student, warden
 from workers import mess_manager, clerk
+from requests import grant_request
 from database import db_func as db
 from halls import hall
+from database import input_validation
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -27,11 +29,12 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         Custom UI starting, based on data available in the databases
         '''
 
-        hmc_obj = db.rebuild("hmc")
-        if hmc_obj.payment_is_active == True:
-            self.pushButton_5.setEnabled(False)
-        else:
-            self.pushButton_5.setEnabled(True)
+        hmc_dict = db.rebuild("hmc")
+        for key in hmc_dict:
+            if hmc_dict[key].payment_is_active == True:
+                self.pushButton_5.setEnabled(False)
+            else:
+                self.pushButton_5.setEnabled(True)
 
         '''
         Linking "Issue Admission Letter Button to its functionality
@@ -119,8 +122,48 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
     To be invoked upon pushing "View Request" button
     '''
     def get_warden_req(self):
+        grant_req_dict = db.rebuild("grant_request")
         hall_name = self.listWidget.currentItem()
-        self.label_23.setText()
+        hall_ID = find_hall_ID_by_name(hall_name)
+        self.label_23.setText(hall_name)
+        for req in grant_req_dict:
+            if grant_req_dict[req].hall_ID == hall_ID:
+                self.lineEdit.setText(grant_req_dict[req].salary_charge())
+                self.doubleSpinBox_6.setValue(input_validation.float_input(self.lineEdit.text()))
+                self.lineEdit_3.setText(grant_req_dict[req].repair_charge())
+                self.doubleSpinBox_7.setValue(input_validation.float_input(self.lineEdit_3.text()))
+                self.lineEdit_4.setText(grant_req_dict[req].other_charge())
+                self.doubleSpinBox_8.setValue(input_validation.float_input(self.lineEdit_4.text()))
+
+    '''
+    To be invoked on  pushing the issue grant button
+    '''
+    def issue_grant(self):
+        if self.label_23.text() == "":
+            return
+        grant_req_dict = db.rebuild("grant_request")
+        hall_name = self.label_23.text()
+        hall_ID = find_hall_ID_by_name(hall_name)
+        for req in grant_req_dict:
+            if grant_req_dict[req].hall_ID == hall_ID:
+                grant_req_dict[req].approve(self.doubleSpinBox_6.value(), self.doubleSpinBox_8.value(), self.doubleSpinBox_7.value()) #TODO : check if value works and change .text() above
+                self.set_list()
+                self.label_23.setText("")
+
+    def reject_grant(self):
+        if self.label_23.text() == "":
+            return
+        grant_req_dict = db.rebuild("grant_request")
+        hall_name = self.label_23.text()
+        hall_ID = find_hall_ID_by_name(hall_name)
+        for req in grant_req_dict:
+            if grant_req_dict[req].hall_ID == hall_ID:
+                grant_req_dict[req].reject()
+                self.set_list()
+                self.label_23.setText("")
+
+    
+        
 
 def find_hall_ID_by_name(self, name):
     hall_dict = db.rebuild("hall")
