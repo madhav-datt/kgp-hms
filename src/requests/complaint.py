@@ -37,9 +37,9 @@ class Student(object):
         # data already present in the database
         # If False, a new data row is added to the specific table
         if rebuild == False:
-            self.complaint_ID = db.add("complaint", "student_ID" = self.student_ID,
-            "action_status" = self.action_status, "description" = self.description,
-            "action_report" = self.action_report)
+            self.complaint_ID = db.add("complaint", student_ID = self.student_ID,
+            action_status = self.action_status, description = self.description,
+            action_report = self.action_report)
         else:
             self.complaint_ID = complaint_ID
 

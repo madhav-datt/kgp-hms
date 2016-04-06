@@ -38,9 +38,9 @@ class Warden(object):
         # If False, a new data row is added to the specific table
         if rebuild == False:
             self.password = pv.hash_password(password)
-            self.warden_ID = db.add("warden", "password" = self.password,
-            "name" = self.name, "email" = self.email, "hall_ID" = self.hall_ID,
-            "controlling_warden" = self.controlling_warden)
+            self.warden_ID = db.add("warden", password = self.password,
+            name = self.name, email = self.email, hall_ID = self.hall_ID,
+            controlling_warden = self.controlling_warden)
         else:
             self.password = password
             self.warden_ID = warden_ID

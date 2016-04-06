@@ -38,9 +38,9 @@ class Attendant(worker.Worker):
         # data already present in the database
         # If False, a new data row is added to the specific table
         if rebuild == False:
-            self.worker_ID = db.add("Worker", "name" = self.name,
-            "worker_type" = "A", "monthly_salary" = 0, "daily_wage" = self.daily_wage,
-            "hall_ID" = self.hall_ID, "monthly_attendance" = self.monthly_attendance)
+            self.worker_ID = db.add("Worker", name = self.name,
+            worker_type = "A", monthly_salary = 0, daily_wage = self.daily_wage,
+            hall_ID = self.hall_ID, monthly_attendance = self.monthly_attendance)
         else:
             self.worker_ID = worker_ID
 

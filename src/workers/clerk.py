@@ -39,9 +39,9 @@ class Clerk(worker.Worker):
         # If False, a new data row is added to the specific table
         if rebuild == False:
             self.password = pv.hash_password(password)
-            self.worker_ID = db.add("Worker", "password" = self.password, "name" = self.name,
-            "worker_type" = "C", "monthly_salary" = self.monthly_salary,
-            "daily_wage" = 0, "hall_ID" = self.hall_ID, "monthly_attendance" = 0)
+            self.worker_ID = db.add("Worker", password = self.password, name = self.name,
+            worker_type = "C", monthly_salary = self.monthly_salary,
+            daily_wage = 0, hall_ID = self.hall_ID, monthly_attendance = 0)
         else:
             self.password = password
             self.worker_ID = worker_ID

@@ -33,7 +33,7 @@ class HallManagement(object):
         # If False, a new data row is added to the specific table
         if rebuild == False:
             self._password = pv.hash_password(password)
-            db.add("hmc", "password" = self.password)
+            db.add("hmc", password = self.password)
         else:
             self.password = password
 
