@@ -9,6 +9,7 @@
 
 from fpdf import FPDF
 from database import db_func as db
+from workers import worker
 import warnings
 import time
 
@@ -71,16 +72,16 @@ def generate_salary_list(Hall, worker_list):
 
     worker_list = db.rebuild("worker")
     for key in worker_list:
-        if worker_list[key].hall_ID == Hall.hall_ID: #TODO TODO TODO
-#            if row[3] == "M":
-#                title = "Mess Manager"
-#                wage = worker_list[key].monthly_salary
-#            elif row[3] == "C":
-#                title = "Clerk"
-#                wage = worker_list[key].monthly_salary
-#            elif row[3] == "A":
-#                title = "Attendant"
-#                wage = worker_list[key].daily_wage
+        if worker_list[key].hall_ID == Hall.hall_ID:
+            if isinstance(worker_list[key].hall_ID, worker.MessManager):
+                title = "Mess Manager"
+                wage = worker_list[key].monthly_salary
+            elif isinstance(worker_list[key].hall_ID, worker.Clerk):
+                title = "Clerk"
+                wage = worker_list[key].monthly_salary
+            elif isinstance(worker_list[key].hall_ID, worker.Attendant):
+                title = "Attendant"
+                wage = worker_list[key].daily_wage
 
             pdf.multi_cell(0, 5, ('%s: %s (%s) - Rs. %s', worker_list[key].worker_ID,
             worker_list[key].name, title, wage))

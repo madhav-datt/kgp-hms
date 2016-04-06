@@ -58,11 +58,11 @@ class Student(object):
         # If False, a new data row is added to the specific table
         if rebuild == False:
             self.password = pv.hash_password(password)
-            self.student_ID = db.add("student", "password" = self.password,
-            "name" = self.name, "address" = self.address,
-            "contact_number" = self.contact_number, "hall_ID" = self.hall_ID,
-            "room_no" = self.room_no, "mess_charge" = self.mess_charge,
-            "room_type" = self.room_type)
+            self.student_ID = db.add("student", password = self.password,
+            name = self.name, address = self.address,
+            contact_number = self.contact_number, hall_ID = self.hall_ID,
+            room_no = self.room_no, mess_charge = self.mess_charge,
+            room_type = self.room_type)
         else:
             self.password = password
             self.student_ID = student_ID

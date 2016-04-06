@@ -96,9 +96,12 @@ class GrantRequest(object):
 
         hall_table = db.rebuild("hall")
 
-        hall_table[hall_ID].salary_account = hall_table[hall_ID].salary_account + salary_charge
-        hall_table[hall_ID].other_charge = hall_table[hall_ID].other_charge + other_charge
-        hall_table[hall_ID].repair_charge = hall_table[hall_ID].repair_charge + repair_charge
+        hall_table[self.hall_ID].salary_account = \
+        hall_table[self.hall_ID].salary_account + salary_charge
+        hall_table[self.hall_ID].other_charge = \
+        hall_table[self.hall_ID].other_charge + other_charge
+        hall_table[self.hall_ID].repair_charge = \
+        hall_table[self.hall_ID].repair_charge + repair_charge
 
         db.delete("grant_request", self.grant_ID)
         del self

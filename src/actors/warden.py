@@ -36,7 +36,7 @@ class Warden(object):
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
         # If False, a new data row is added to the specific table
-        if rebuild == False
+        if rebuild == False:
             self.password = pv.hash_password(password)
             self.warden_ID = db.add("warden", "password" = self.password,
             "name" = self.name, "email" = self.email, "hall_ID" = self.hall_ID,
