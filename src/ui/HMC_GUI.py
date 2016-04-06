@@ -2,7 +2,7 @@ import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from PyQt4 import QtCore, QtGui
-#from database import password_validation as pv
+from database import password_validation as pv
 import HMC_Window
 from actors import student, warden
 from workers import mess_manager, clerk
@@ -17,8 +17,6 @@ except AttributeError:
     def _fromUtf8(s):
         return s
 
-
-student_list = db.rebuild("student")
 
 class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
     def __init__(self):
@@ -59,6 +57,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
             room_type = 'D'
         password = self.lineEdit_12.text()
         new_student = student.Student(password, name, address, contact, student_hall_ID, room_no, room_type)
+        student_list = db.rebuild("student")
         student_list.update({new_student.student_ID, new_student})
 
     def activate_payment_link(self):
