@@ -2,7 +2,7 @@ import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from PyQt4 import QtCore, QtGui
-from database import password_validation as pv
+#from database import password_validation as pv
 import HMC_Window
 from actors import student, warden
 from workers import mess_manager, clerk
@@ -115,8 +115,12 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         hall_names = [grant_req_dict[req].name for req in grant_req_dict]
         self.listWidget.addItems(hall_names)
 
-
-
+    '''
+    To be invoked upon pushing "View Request" button
+    '''
+    def get_warden_req(self):
+        hall_name = self.listWidget.currentItem()
+        self.label_23.setText()
 
 def find_hall_ID_by_name(self, name):
     hall_dict = db.rebuild("hall")
