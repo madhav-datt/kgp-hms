@@ -112,7 +112,7 @@ def rebuild(table):
             table_obj = GrantRequest(row[7], row[1], row[2], row[3], row[4],
                                     row[5], row[6], True, row[0])
 
-        data_table.append((row[0], table_obj))
+        data_table[row[0]] = table_obj
 
     cursor.close()
     cnx.close()

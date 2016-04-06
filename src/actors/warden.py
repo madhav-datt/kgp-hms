@@ -117,8 +117,7 @@ class Warden(object):
         # {hall_name : (single_room_occupancy, double_room_occupancy)}
         occupancy_table = {}
         for key in hall_table:
-            occupancy_table.append((hall_table[key].name,
-            (hall_table[key].single_room_occupancy,
-            hall_table[key].double_room_occupancy)))
+            occupancy_table[hall_table[key].name] = \
+            (hall_table[key].single_room_occupancy, hall_table[key].double_room_occupancy)
 
         return occupancy_table
