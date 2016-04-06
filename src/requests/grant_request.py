@@ -34,10 +34,10 @@ class GrantRequest(object):
         # If false, a new data row is added to the specific table
         if rebuild == False:
             self.grant_ID = db.add("grant_request",
-            "repair_charge" = self.repair_charge,
-            "other_charge" = self.other_charge,
-            "salary_charge" = self.salary_charge,
-            "hall_ID" = self.hall_ID)
+            repair_charge = self.repair_charge,
+            other_charge = self.other_charge,
+            salary_charge = self.salary_charge,
+            hall_ID = self.hall_ID)
         else:
             self.grant_ID = grant_ID
 
