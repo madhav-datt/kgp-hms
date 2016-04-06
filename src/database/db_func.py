@@ -11,7 +11,7 @@ import warnings
 import ctypes
 import mysql.connector
 from mysql.connector import errorcode
-from halls import hall.Hall
+from halls import hall
 from actors import student, warden, hall_management
 from requests import complaint, grant_request
 from workers import attendant, clerk, mess_manager, worker
