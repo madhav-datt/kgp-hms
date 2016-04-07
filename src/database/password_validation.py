@@ -8,7 +8,6 @@
 """
 
 import bcrypt
-import re
 
 def hash_password(password):
     """

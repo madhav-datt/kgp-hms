@@ -7,6 +7,9 @@
 @ authors: Madhav Datt (14CS30015), Avikalp Srivastava (14CS10008)
 """
 
+import password_validation as pv
+import re
+import db_rebuild as dbr
 from workers import clerk, mess_manager
 
 def is_valid(password):
@@ -34,39 +37,39 @@ def authenticate(table, user_ID, password):
     """
 
     if table == "clerk":
-        table_data = db.build("worker")
+        table_data = dbr.rebuild("worker")
         for key in table_data:
             if table_data[key].worker_ID == user_ID and \
             isinstance(table_data[key], clerk.Clerk) and \
-            check_password(password, table_data[key].password):
+            pv.check_password(password, table_data[key].password):
                 return True
 
     elif table == "mess_manager":
-        table_data = db.build("worker")
+        table_data = dbr.rebuild("worker")
         for key in table_data:
             if table_data[key].worker_ID == user_ID and \
             isinstance(table_data[key], mess_manager.MessManager) and \
-            check_password(password, table_data[key].password):
+            pv.check_password(password, table_data[key].password):
                 return True
 
     elif table == "student":
-        table_data = db.build(table)
+        table_data = dbr.rebuild(table)
         for key in table_data:
             if table_data[key].student_ID == user_ID and \
-            check_password(password, table_data[key].password):
+            pv.check_password(password, table_data[key].password):
                 return True
 
     elif table == "warden":
-        table_data = db.build(table)
+        table_data = dbr.rebuild(table)
         for key in table_data:
             if table_data[key].warden_ID == user_ID and \
-            check_password(password, table_data[key].password):
+            pv.check_password(password, table_data[key].password):
                 return True
 
     elif table == "hmc":
-        table_data = db.build(table)
+        table_data = dbr.rebuild(table)
         for key in table_data:
-            if check_password(password, table_data[key].password):
+            if pv.check_password(password, table_data[key].password):
                 return True
 
     return False
