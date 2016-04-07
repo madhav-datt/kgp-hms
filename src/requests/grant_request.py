@@ -19,7 +19,7 @@ class GrantRequest(object):
         other_charge: Float
     """
 
-    def __init__(self, hall_ID, repair_charge, other_charge, rebuild = false,
+    def __init__(self, hall_ID, repair_charge, other_charge, rebuild = False,
                 grant_ID = None):
         """
         Init GrantRequest Object with details from Warden
@@ -31,7 +31,7 @@ class GrantRequest(object):
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
-        # If false, a new data row is added to the specific table
+        # If False, a new data row is added to the specific table
         if rebuild == False:
             self.grant_ID = db.add("grant_request",
             repair_charge = self.repair_charge,

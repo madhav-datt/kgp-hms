@@ -4,12 +4,14 @@ from PyQt4.QtCore import *
 from PyQt4 import QtCore, QtGui
 #from database import password_validation as pv
 import HMC_Window
-from actors import student, warden
-from workers import mess_manager, clerk
-from requests import grant_request
-from database import db_func as db
-from halls import hall
-from database import input_validation
+from ..actors.student import *
+from actors.warden import *
+from workers.clerk import *
+from workers.mess_manager import *
+from requests.grant_request import *
+from database.db_func import rebuild as db
+from halls.hall import *
+from database.input_validation import *
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
