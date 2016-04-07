@@ -8,6 +8,7 @@
 """
 
 from database import db_func as db
+from database import db_rebuild as dbr
 from database import password_validation as pv
 import worker
 import warnings
@@ -71,7 +72,7 @@ class MessManager(worker.Worker):
         Sum of each student resident's mess charge
         """
 
-        student_table = db.rebuild("student")
+        student_table = dbr.rebuild("student")
         mess_total = 0.
 
         for key in student_table:

@@ -4,14 +4,12 @@ from PyQt4.QtCore import *
 from PyQt4 import QtCore, QtGui
 #from database import password_validation as pv
 import HMC_Window
-from ..actors.student import *
-from actors.warden import *
-from workers.clerk import *
-from workers.mess_manager import *
-from requests.grant_request import *
-from database.db_func import rebuild as db
-from halls.hall import *
-from database.input_validation import *
+from actors.student import student, warden
+from workers import clerk, mess_manager
+from requests import grant_request
+from database import db_rebuild as dbr
+from halls import hall
+from database import input_validation
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -20,7 +18,7 @@ except AttributeError:
         return s
 
 
-student_list = db.rebuild("student")
+student_list = dbr.rebuild("student")
 
 class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
     def __init__(self):
@@ -31,7 +29,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         Custom UI starting, based on data available in the databases
         '''
 
-        hmc_dict = db.rebuild("hmc")
+        hmc_dict = dbr.rebuild("hmc")
         for key in hmc_dict:
             if hmc_dict[key].payment_is_active == True:
                 self.pushButton_5.setEnabled(False)
@@ -64,11 +62,11 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         student_list.update({new_student.student_ID, new_student})
 
     def activate_payment_link(self):
-        hmc_obj = db.rebuild("hmc")
+        hmc_obj = dbr.rebuild("hmc")
         hmc_obj.activate_payment_link()
 
     def deactivate_payment_link(self):
-        hmc_obj = db.rebuild("hmc")
+        hmc_obj = dbr.rebuild("hmc")
         hmc_obj.activate_payment_link()
 
 
@@ -114,8 +112,8 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
     Setting up the listWidget, showing hall names with a pending grant request
     '''
     def set_list(self):
-        hall_dict = db.rebuild("hall")
-        grant_req_dict = db.rebuild("grant_request")
+        hall_dict = dbr.rebuild("hall")
+        grant_req_dict = dbr.rebuild("grant_request")
         self.listWidget.clear()
         hall_names = [grant_req_dict[req].name for req in grant_req_dict]
         self.listWidget.addItems(hall_names)
@@ -124,7 +122,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
     To be invoked upon pushing "View Request" button
     '''
     def get_warden_req(self):
-        grant_req_dict = db.rebuild("grant_request")
+        grant_req_dict = dbr.rebuild("grant_request")
         hall_name = self.listWidget.currentItem()
         hall_ID = find_hall_ID_by_name(hall_name)
         self.label_23.setText(hall_name)
@@ -143,7 +141,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
     def issue_grant(self):
         if self.label_23.text() == "":
             return
-        grant_req_dict = db.rebuild("grant_request")
+        grant_req_dict = dbr.rebuild("grant_request")
         hall_name = self.label_23.text()
         hall_ID = find_hall_ID_by_name(hall_name)
         for req in grant_req_dict:
@@ -155,7 +153,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
     def reject_grant(self):
         if self.label_23.text() == "":
             return
-        grant_req_dict = db.rebuild("grant_request")
+        grant_req_dict = dbr.rebuild("grant_request")
         hall_name = self.label_23.text()
         hall_ID = find_hall_ID_by_name(hall_name)
         for req in grant_req_dict:
@@ -168,7 +166,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
 
 
 def find_hall_ID_by_name(self, name):
-    hall_dict = db.rebuild("hall")
+    hall_dict = dbr.rebuild("hall")
     for key in hall_dict:
         if hall_dict[key].name == name:
             return key
