@@ -8,6 +8,7 @@
 """
 
 from database import db_func as db
+from database import db_rebuild as dbr
 
 class GrantRequest(object):
     """Contains details of grant request made by warden
@@ -19,7 +20,7 @@ class GrantRequest(object):
         other_charge: Float
     """
 
-    def __init__(self, hall_ID, repair_charge, other_charge, rebuild = false,
+    def __init__(self, hall_ID, repair_charge, other_charge, rebuild = False,
                 grant_ID = None):
         """
         Init GrantRequest Object with details from Warden
@@ -31,7 +32,7 @@ class GrantRequest(object):
 
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
-        # If false, a new data row is added to the specific table
+        # If False, a new data row is added to the specific table
         if rebuild == False:
             self.grant_ID = db.add("grant_request",
             repair_charge = self.repair_charge,
@@ -74,7 +75,7 @@ class GrantRequest(object):
     # salary_charge getter and setter functions
     @property
     def salary_charge(self):
-        worker_table = db.rebuild("worker")
+        worker_table = dbr.rebuild("worker")
         total_salary = 0.
 
         for key in worker_table:
@@ -94,7 +95,7 @@ class GrantRequest(object):
         Amounts will be added to Hall Accounts based on approved request
         """
 
-        hall_table = db.rebuild("hall")
+        hall_table = dbr.rebuild("hall")
 
         hall_table[self.hall_ID].salary_account = \
         hall_table[self.hall_ID].salary_account + salary_charge

@@ -9,6 +9,7 @@
 
 from fpdf import FPDF
 from database import db_func as db
+from database import db_rebuild as dbr
 from workers import worker
 import warnings
 import time
@@ -70,7 +71,7 @@ def generate_salary_list(Hall, worker_list):
     pdf.multi_cell(0, 5, ('Hall Salary List: Hall %s', Hall.hall_ID))
     pdf.ln()
 
-    worker_list = db.rebuild("worker")
+    worker_list = dbr.rebuild("worker")
     for key in worker_list:
         if worker_list[key].hall_ID == Hall.hall_ID:
             if isinstance(worker_list[key].hall_ID, worker.MessManager):

@@ -8,6 +8,7 @@
 """
 
 from database import db_func as db
+from database import db_rebuild as dbr
 from database import password_validation as pv
 import warnings
 
@@ -110,7 +111,7 @@ class Warden(object):
         if self.controlling_warden == False:
             return None
 
-        hall_table = db.rebuild("hall")
+        hall_table = dbr.rebuild("hall")
 
         # Dictionary occupancy_table as elements in the following form
         # {hall_name : (single_room_occupancy, double_room_occupancy)}
@@ -119,4 +120,4 @@ class Warden(object):
             occupancy_table[hall_table[key].name] = \
             (hall_table[key].single_room_occupancy, hall_table[key].double_room_occupancy)
 
-        return occupancy_table
+    return occupancy_table
