@@ -87,7 +87,7 @@ class GrantRequest(object):
                     worker_table[key].daily_wage * \
                     worker_table[key].monthly_attendance
 
-    return total_salary
+        return total_salary
 
     def approve(self, salary_charge, other_charge, repair_charge):
         """

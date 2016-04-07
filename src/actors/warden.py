@@ -120,4 +120,4 @@ class Warden(object):
             occupancy_table[hall_table[key].name] = \
             (hall_table[key].single_room_occupancy, hall_table[key].double_room_occupancy)
 
-    return occupancy_table
+        return occupancy_table
