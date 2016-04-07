@@ -8,7 +8,7 @@
 """
 
 from database import db_func as db
-from database import pass_validation as pv
+from database import password_validation as pv
 import warnings
 import worker
 

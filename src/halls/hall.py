@@ -89,109 +89,181 @@ class Hall(object):
         else:
             self.hall_ID = hall_ID
 
-    # name setter functions
+    # name getter and setter functions
+    @property
+    def name(self):
+        return self._name
+
     @name.setter
     def name(self, name):
         self._name = name
         db.update("hall", self.hall_ID, "name", self.name)
 
-    # warden_ID setter functions
+    # warden_ID getter and setter functions
+    @property
+    def warden_ID(self):
+        return self._warden_ID
+
     @warden_ID.setter
     def warden_ID(self, warden_ID):
         self._warden_ID = warden_ID
         db.update("hall", self.hall_ID, "warden_ID", self.warden_ID)
 
-    # clerk_ID setter functions
+    # clerk_ID getter and setter functions
+    @property
+    def clerk_ID(self):
+        return self._clerk_ID
+
     @clerk_ID.setter
     def clerk_ID(self, clerk_ID):
         self._clerk_ID = clerk_ID
         db.update("hall", self.hall_ID, "clerk_ID", self.clerk_ID)
 
-    # mess_manager_ID setter functions
+    # mess_manager_ID getter and setter functions
+    @property
+    def mess_manager_ID(self):
+        return self._mess_manager_ID
+
     @mess_manager_ID.setter
     def mess_manager_ID(self, mess_manager_ID):
         self._mess_manager_ID = mess_manager_ID
         db.update("hall", self.hall_ID, "mess_manager_ID", self.mess_manager_ID)
 
-    # status setter functions
+    # status getter and setter functions
+    @property
+    def status(self):
+        return self._status
+
     @status.setter
     def status(self, status):
         self._status = status
         db.update("hall", self.hall_ID, "status", self.status)
 
-    # single_room_count setter functions
+    # single_room_count getter and setter functions
+    @property
+    def single_room_count(self):
+        return self._single_room_count
+
     @single_room_count.setter
     def single_room_count(self, single_room_count):
         self._single_room_count = single_room_count
         db.update("hall", self.hall_ID, "single_room_count", self.single_room_count)
 
-    # double_room_count setter functions
+    # double_room_count getter and setter functions
+    @property
+    def double_room_count(self):
+        return self._double_room_count
+
     @double_room_count.setter
     def double_room_count(self, double_room_count):
         self._double_room_count = double_room_count
         db.update("hall", self.hall_ID, "double_room_count", self.double_room_count)
 
-    # single_room_occupancy setter functions
+    # single_room_occupancy getter and setter functions
+    @property
+    def single_room_occupancy(self):
+        return self._single_room_occupancy
+
     @single_room_occupancy.setter
     def single_room_occupancy(self, single_room_occupancy):
         self._single_room_occupancy = single_room_occupancy
         db.update("hall", self.hall_ID, "single_room_occupancy", self.single_room_occupancy)
 
-    # double_room_occupancy setter functions
+    # double_room_occupancy getter and setter functions
+    @property
+    def double_room_occupancy(self):
+        return self._double_room_occupancy
+
     @double_room_occupancy.setter
     def double_room_occupancy(self, double_room_occupancy):
         self._double_room_occupancy = double_room_occupancy
         db.update("hall", self.hall_ID, "double_room_occupancy", self.double_room_occupancy)
 
-    # single_room_rent setter functions
+    # single_room_rent getter and setter functions
+    @property
+    def single_room_rent(self):
+        return self._single_room_rent
+
     @single_room_rent.setter
     def single_room_rent(self, single_room_rent):
         self._single_room_rent = single_room_rent
         db.update("hall", self.hall_ID, "single_room_rent", self.single_room_rent)
 
-    # double_room_rent setter functions
+    # double_room_rent getter and setter functions
+    @property
+    def double_room_rent(self):
+        return self._double_room_rent
+
     @double_room_rent.setter
     def double_room_rent(self, double_room_rent):
         self._double_room_rent = double_room_rent
         db.update("hall", self.hall_ID, "double_room_rent", self.double_room_rent)
 
-    # amenities_charge setter functions
+    # amenities_charge getter and setter functions
+    @property
+    def amenities_charge(self):
+        return self._amenities_charge
+
     @amenities_charge.setter
     def amenities_charge(self, amenities_charge):
         self._amenities_charge = amenities_charge
         db.update("hall", self.hall_ID, "amenities_charge", self.amenities_charge)
 
-    # mess_account setter functions
+    # mess_account getter and setter functions
+    @property
+    def mess_account(self):
+        return self._mess_account
+
     @mess_account.setter
     def mess_account(self, mess_account):
         self._mess_account = mess_account
         db.update("hall", self.hall_ID, "mess_account", self.mess_account)
 
-    # amenities_account setter functions
+    # amenities_account getter and setter functions
+    @property
+    def amenities_account(self):
+        return self._amenities_account
+
     @amenities_account.setter
     def amenities_account(self, amenities_account):
         self._amenities_account = amenities_account
         db.update("hall", self.hall_ID, "amenities_account", self.amenities_account)
 
-    # repair_account setter functions
+    # repair_account getter and setter functions
+    @property
+    def repair_account(self):
+        return self._repair_account
+
     @repair_account.setter
     def repair_account(self, repair_account):
         self._repair_account = repair_account
         db.update("hall", self.hall_ID, "repair_account", self.repair_account)
 
-    # salary_account setter functions
+    # salary_account getter and setter functions
+    @property
+    def salary_account(self):
+        return self._salary_account
+
     @salary_account.setter
     def salary_account(self, salary_account):
         self._salary_account = salary_account
         db.update("hall", self.hall_ID, "salary_account", self.salary_account)
 
-    # others_account setter functions
+    # others_account getter and setter functions
+    @property
+    def others_account(self):
+        return self._others_account
+
     @others_account.setter
     def others_account(self, others_account):
         self._others_account = others_account
         db.update("hall", self.hall_ID, "others_account", self.others_account)
 
-    # rent_account setter functions
+    # rent_account getter and setter functions
+    @property
+    def rent_account(self):
+        return self._rent_account
+
     @rent_account.setter
     def rent_account(self, rent_account):
         self._rent_account = rent_account

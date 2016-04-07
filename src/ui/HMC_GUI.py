@@ -4,7 +4,7 @@ from PyQt4.QtCore import *
 from PyQt4 import QtCore, QtGui
 from database import password_validation as pv
 import HMC_Window
-from actors.student import student, warden
+from actors import student, warden
 from workers import clerk, mess_manager
 from requests import grant_request
 from database import db_rebuild as dbr
