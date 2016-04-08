@@ -63,11 +63,11 @@ def add(table, **param):
     add_student = ("INSERT INTO student "
                    "(password, name, address, contact_number, hall_ID, room_no, \
                     mess_charge, room_type) "
-                   "VALUES ({}, {}, {}, {}, {}, {}, {}, {})")
+                   "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
 
     add_warden = ("INSERT INTO warden "
                   "(password, name, email, hall_ID, controlling_warden) "
-                  "VALUES ({}, {}, {}, {}, {})")
+                  "VALUES (%s, %s, %s, %s, %s)")
 
     add_hall = ("INSERT INTO hall "
                 "(name, warden_ID, clerk_ID, mess_manager_ID, status, \
@@ -75,25 +75,25 @@ def add(table, **param):
                 double_room_occupancy, single_room_rent, double_room_rent, \
                 amenities_charge, mess_account, amenities_account, repair_account, \
                 salary_account, others_account, rent_account) "
-                "VALUES ({}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
-                {}, {}, {}, {}, {})")
+                "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, \
+                %s, %s, %s, %s, %s)")
 
     add_worker = ("INSERT INTO worker "
                   "(password, name, worker_type, monthly_salary, daily_wage, \
-                    hall_ID, monthly_attendance) "
-                  "VALUES ({}, {}, {}, {}, {}, {}, {})")
+                  hall_ID, monthly_attendance) "
+                  "VALUES (%s, %s, %s, %s, %s, %s, %s)")
 
     add_complaint = ("INSERT INTO complaint "
                      "(student_ID, action_status, description, action_report) "
-                     "VALUES ({}, {}, {}, {})")
+                     "VALUES (%s, %s, %s, %s)")
 
     add_hmc = ("INSERT INTO hmc "
                "(password, payment_is_active) "
-               "VALUES ({}, {})")
+               "VALUES (%s, %s)")
 
     add_grant_request = ("INSERT INTO grant_request "
                          "(repair_charge, other_charge, salary_charge, hall_ID) "
-                         "VALUES ({}, {}, {}, {})")
+                         "VALUES (%s, %s, %s, %s)")
 
     cnx = connect()
     cursor = cnx.cursor()
