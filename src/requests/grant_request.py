@@ -7,8 +7,9 @@
 @ authors: Madhav Datt (14CS30015), Avikalp Srivastava (14CS10008)
 """
 
-from database import db_func as db
-from database import db_rebuild as dbr
+from ..database import db_func as db
+from ..database import db_rebuild as dbr
+
 
 class GrantRequest(object):
     """Contains details of grant request made by warden
@@ -20,8 +21,8 @@ class GrantRequest(object):
         other_charge: Float
     """
 
-    def __init__(self, hall_ID, repair_charge, other_charge, rebuild = False,
-                grant_ID = None):
+    def __init__(self, hall_ID, repair_charge, other_charge, rebuild=False,
+                 grant_ID=None):
         """
         Init GrantRequest Object with details from Warden
         """
@@ -33,12 +34,12 @@ class GrantRequest(object):
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
         # If False, a new data row is added to the specific table
-        if rebuild == False:
+        if not rebuild:
             self.grant_ID = db.add("grant_request",
-            repair_charge = self.repair_charge,
-            other_charge = self.other_charge,
-            salary_charge = self.salary_charge,
-            hall_ID = self.hall_ID)
+                                   repair_charge=self.repair_charge,
+                                   other_charge=self.other_charge,
+                                   salary_charge=self.salary_charge,
+                                   hall_ID=self.hall_ID)
         else:
             self.grant_ID = grant_ID
 
@@ -84,8 +85,8 @@ class GrantRequest(object):
                     total_salary = total_salary + worker_table[key].monthly_salary
                 else:
                     total_salary = total_salary + \
-                    worker_table[key].daily_wage * \
-                    worker_table[key].monthly_attendance
+                                   worker_table[key].daily_wage * \
+                                   worker_table[key].monthly_attendance
 
         return total_salary
 
@@ -98,11 +99,11 @@ class GrantRequest(object):
         hall_table = dbr.rebuild("hall")
 
         hall_table[self.hall_ID].salary_account = \
-        hall_table[self.hall_ID].salary_account + salary_charge
+            hall_table[self.hall_ID].salary_account + salary_charge
         hall_table[self.hall_ID].other_charge = \
-        hall_table[self.hall_ID].other_charge + other_charge
+            hall_table[self.hall_ID].other_charge + other_charge
         hall_table[self.hall_ID].repair_charge = \
-        hall_table[self.hall_ID].repair_charge + repair_charge
+            hall_table[self.hall_ID].repair_charge + repair_charge
 
         db.delete("grant_request", self.grant_ID)
         del self

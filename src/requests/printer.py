@@ -8,11 +8,11 @@
 """
 
 from fpdf import FPDF
-from database import db_func as db
-from database import db_rebuild as dbr
-from workers import worker
-import warnings
+from ..database import db_func as db
+from ..database import db_rebuild as dbr
+from ..workers import worker
 import time
+
 
 def print_statement(Hall):
     """
@@ -38,6 +38,7 @@ def print_statement(Hall):
     # Write generated output file to PDF
     pdf.output(('hall_statement_%s', Hall.hall_ID), 'F')
 
+
 def issue_cheque(name, amount):
     """
     Print salary and payment cheques with worker_ID
@@ -58,6 +59,7 @@ def issue_cheque(name, amount):
 
     # Write generated output file to PDF
     pdf.output(('cheque_%s', name), 'F')
+
 
 def generate_salary_list(Hall, worker_list):
     """
@@ -90,6 +92,7 @@ def generate_salary_list(Hall, worker_list):
 
     # Write generated output file to PDF
     pdf.output(('hall_salary_%s', Hall.hall_ID), 'F')
+
 
 def print_receipt(Student):
     """
@@ -125,6 +128,7 @@ def print_receipt(Student):
 
     # Write generated output file to PDF
     pdf.output(('receipt_%s', Student.hall_ID), 'F')
+
 
 def issue_student_admission_letter(Student, body):
     """

@@ -7,9 +7,8 @@
 @ authors: Madhav Datt (14CS30015), Avikalp Srivastava (14CS10008)
 """
 
-from database import db_func as db
-from database import password_validation as pv
-import warnings
+from ..database import db_func as db
+
 
 class Student(object):
     """Contains details of Complaint lodged by Student
@@ -23,7 +22,7 @@ class Student(object):
     """
 
     def __init__(self, student_ID, action_status, description, action_report,
-                rebuild = False, complaint_ID = None):
+                 rebuild=False, complaint_ID=None):
         """
         Init Complaint with details given by Student
         """
@@ -36,10 +35,10 @@ class Student(object):
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
         # If False, a new data row is added to the specific table
-        if rebuild == False:
-            self.complaint_ID = db.add("complaint", student_ID = self.student_ID,
-            action_status = self.action_status, description = self.description,
-            action_report = self.action_report)
+        if not rebuild:
+            self.complaint_ID = db.add("complaint", student_ID=self.student_ID,
+                                       action_status=self.action_status, description=self.description,
+                                       action_report=self.action_report)
         else:
             self.complaint_ID = complaint_ID
 
@@ -88,15 +87,14 @@ class Student(object):
         self._action_report = action_report
         db.update("complaint", self.complaint_ID, "action_report", self.action_report)
 
-
     def view(self):
         """
         Return formatted string with details of complaint
         String includes complaint_ID, description, action_status & action_report
         """
 
-        complaint_string = ("%d: %s\n\n" \
-                            "Action Status: %s\n"\
+        complaint_string = ("%d: %s\n\n"
+                            "Action Status: %s\n"
                             "Action Report: %s")
 
         # Designate Action Status details
@@ -106,7 +104,7 @@ class Student(object):
             action_status_report = "Taken"
 
         return (complaint_string, (self.complaint_ID, self.description,
-                action_status_report, self.action_report))
+                                   action_status_report, self.action_report))
 
     def remove(self):
         """
