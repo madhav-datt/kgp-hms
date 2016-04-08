@@ -10,7 +10,7 @@
 from ..database import db_func as db
 
 
-class Student(object):
+class Complaint(object):
     """Contains details of Complaint lodged by Student
 
     Attributes:

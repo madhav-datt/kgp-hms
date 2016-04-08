@@ -8,7 +8,6 @@
 """
 
 from ..database import db_func as db
-from ..database import db_rebuild as dbr
 
 
 class GrantRequest(object):
@@ -73,10 +72,14 @@ class GrantRequest(object):
         self._other_charge = other_charge
         db.update("grant_request", self.grant_ID, "other_charge", self.other_charge)
 
-    # salary_charge getter and setter functions
-    @property
-    def salary_charge(self):
-        worker_table = dbr.rebuild("worker")
+    def salary_charge(self, worker_table):
+        """
+        salary_charge getter function
+        Calculate and return total salary
+        worker_table = dbr.rebuild("worker") passed as parameter
+        grant_request_object.salary_charge(dbr.rebuild("worker"))
+        """
+
         total_salary = 0.
 
         for key in worker_table:
@@ -90,13 +93,12 @@ class GrantRequest(object):
 
         return total_salary
 
-    def approve(self, salary_charge, other_charge, repair_charge):
+    def approve(self, salary_charge, other_charge, repair_charge, hall_table):
         """
         Approve GrantRequest by HMC
         Amounts will be added to Hall Accounts based on approved request
+        Pass parameter hall_table = dbr.rebuild("hall")
         """
-
-        hall_table = dbr.rebuild("hall")
 
         hall_table[self.hall_ID].salary_account = \
             hall_table[self.hall_ID].salary_account + salary_charge

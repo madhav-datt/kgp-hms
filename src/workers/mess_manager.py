@@ -8,7 +8,6 @@
 """
 
 from ..database import db_func as db
-from ..database import db_rebuild as dbr
 from ..database import password_validation as pv
 import worker
 
@@ -66,13 +65,13 @@ class MessManager(worker.Worker):
         self._monthly_salary = monthly_salary
         db.update("worker", self.worker_ID, "monthly_salary", self.monthly_salary)
 
-    def compute_mess_payment(self):
+    def compute_mess_payment(self, student_table):
         """
         Compute total money due to hall in form of mess payments
         Sum of each student resident's mess charge
+        Pass parameter student_table = dbr.rebuild("student")
         """
 
-        student_table = dbr.rebuild("student")
         mess_total = 0.
 
         for key in student_table:
