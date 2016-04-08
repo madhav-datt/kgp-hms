@@ -7,8 +7,8 @@
 @ authors: Madhav Datt (14CS30015), Avikalp Srivastava (14CS10008)
 """
 
-from database import db_func as db
-from database import password_validation as pv
+from ..database import db_func as db
+from ..database import password_validation as pv
 
 
 class HallManagement(object):

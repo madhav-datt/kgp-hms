@@ -10,7 +10,7 @@
 import password_validation as pv
 import re
 import db_rebuild as dbr
-from workers import clerk, mess_manager
+from ..workers import clerk, mess_manager
 
 
 def is_valid(password):

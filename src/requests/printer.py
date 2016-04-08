@@ -8,9 +8,9 @@
 """
 
 from fpdf import FPDF
-from database import db_func as db
-from database import db_rebuild as dbr
-from workers import worker
+from ..database import db_func as db
+from ..database import db_rebuild as dbr
+from ..workers import worker
 import time
 
 

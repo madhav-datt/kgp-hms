@@ -9,10 +9,10 @@
 
 import ctypes
 import db_func
-from halls import hall
-from actors import student, warden, hall_management
-from requests import complaint, grant_request
-from workers import attendant, clerk, mess_manager, worker
+from ..halls import hall
+from ..actors import student, warden, hall_management
+from ..requests import complaint, grant_request
+from ..workers import attendant, clerk, mess_manager, worker
 
 
 def rebuild(table):

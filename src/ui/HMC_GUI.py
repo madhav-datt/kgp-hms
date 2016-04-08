@@ -3,12 +3,12 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from PyQt4 import QtCore, QtGui
 import HMC_Window
-from actors import student, warden
-from workers import clerk, mess_manager
-from requests import grant_request
-from database import db_rebuild as dbr
-from halls import hall
-from database import input_validation
+from ..actors import student, warden
+from ..workers import clerk, mess_manager
+from ..requests import grant_request
+from ..database import db_rebuild as dbr
+from ..halls import hall
+from ..database import input_validation
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -30,7 +30,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
 
         hmc_dict = dbr.rebuild("hmc")
         for key in hmc_dict:
-            if hmc_dict[key].payment_is_active == True:
+            if hmc_dict[key].payment_is_active:
                 self.pushButton_5.setEnabled(False)
             else:
                 self.pushButton_5.setEnabled(True)
@@ -41,7 +41,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         self.pushButton_4.clicked.connect(self.issue_admission_letter)
 
     '''
-    Adding specific ui elements for student functionalities tab
+    Adding specific ui elements for student functionality tab
     '''
 
     def issue_admission_letter(self):
@@ -66,7 +66,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
 
     def deactivate_payment_link(self):
         hmc_obj = dbr.rebuild("hmc")
-        hmc_obj.activate_payment_link()
+        hmc_obj.deactivate_payment_link()
 
     '''
     Adding specific ui elements for add hall tab
@@ -93,7 +93,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         clerk_pw = self.lineEdit_17.text()
         clerk_salary = self.doubleSpinBox_4.text()
         new_warden = warden.Warden(warden_pw, warden_name, "warden_kgp@gmail.com",
-                                   0)  # TODO : default email fro warden = ?
+                                   0)
         new_mess_manager = mess_manager.MessManager(manager_name, 0, manager_pw, manager_salary)
         new_clerk = clerk.Clerk(clerk_name, 0, clerk_pw, clerk_salary)
         new_hall = hall.Hall(name, status, single_room_count, double_room_count,
@@ -102,7 +102,6 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         new_warden.hall_ID = new_hall.hall_ID
         new_mess_manager.hall_ID = new_hall.hall_ID
         new_clerk.hall_ID = new_hall.hall_ID
-        # TODO : confirm that above setters update db
 
     '''
     Adding custom ui for grant request tab
