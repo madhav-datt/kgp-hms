@@ -9,6 +9,7 @@
 
 import re
 
+
 def valid_email(email):
     """
     Check if email string entered is valid
@@ -28,6 +29,7 @@ def valid_phone(contact_number):
         return True
     return False
 
+
 def int_input(input_str):
     """
     Parse passed text string input to integer
@@ -40,6 +42,7 @@ def int_input(input_str):
         input_val = None
 
     return input_val
+
 
 def float_input(input_str):
     """

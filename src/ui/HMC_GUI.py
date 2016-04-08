@@ -2,7 +2,6 @@ import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from PyQt4 import QtCore, QtGui
-#from database import password_validation as pv
 import HMC_Window
 from actors import student, warden
 from workers import clerk, mess_manager
@@ -17,8 +16,8 @@ except AttributeError:
     def _fromUtf8(s):
         return s
 
-
 student_list = dbr.rebuild("student")
+
 
 class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
     def __init__(self):
@@ -41,10 +40,10 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         '''
         self.pushButton_4.clicked.connect(self.issue_admission_letter)
 
-
     '''
     Adding specific ui elements for student functionalities tab
     '''
+
     def issue_admission_letter(self):
         name = self.lineEdit_16.text()
         gender = self.comboBox.currentText()
@@ -69,10 +68,10 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         hmc_obj = dbr.rebuild("hmc")
         hmc_obj.activate_payment_link()
 
-
     '''
     Adding specific ui elements for add hall tab
     '''
+
     def add_hall(self):
         name = self.lineEdit_4.text()
         status = self.comboBox_4.currentText()
@@ -93,7 +92,8 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         clerk_name = self.lineEdit_14.text()
         clerk_pw = self.lineEdit_17.text()
         clerk_salary = self.doubleSpinBox_4.text()
-        new_warden = warden.Warden(warden_pw, warden_name, "warden_kgp@gmail.com", 0) #TODO : default email fro warden = ?
+        new_warden = warden.Warden(warden_pw, warden_name, "warden_kgp@gmail.com",
+                                   0)  # TODO : default email fro warden = ?
         new_mess_manager = mess_manager.MessManager(manager_name, 0, manager_pw, manager_salary)
         new_clerk = clerk.Clerk(clerk_name, 0, clerk_pw, clerk_salary)
         new_hall = hall.Hall(name, status, single_room_count, double_room_count,
@@ -102,7 +102,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         new_warden.hall_ID = new_hall.hall_ID
         new_mess_manager.hall_ID = new_hall.hall_ID
         new_clerk.hall_ID = new_hall.hall_ID
-        #TODO : confirm that above setters update db
+        # TODO : confirm that above setters update db
 
     '''
     Adding custom ui for grant request tab
@@ -111,6 +111,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
     '''
     Setting up the listWidget, showing hall names with a pending grant request
     '''
+
     def set_list(self):
         hall_dict = dbr.rebuild("hall")
         grant_req_dict = dbr.rebuild("grant_request")
@@ -121,6 +122,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
     '''
     To be invoked upon pushing "View Request" button
     '''
+
     def get_warden_req(self):
         grant_req_dict = dbr.rebuild("grant_request")
         hall_name = self.listWidget.currentItem()
@@ -138,6 +140,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
     '''
     To be invoked on  pushing the issue grant button
     '''
+
     def issue_grant(self):
         if self.label_23.text() == "":
             return
@@ -146,7 +149,8 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         hall_ID = find_hall_ID_by_name(hall_name)
         for req in grant_req_dict:
             if grant_req_dict[req].hall_ID == hall_ID:
-                grant_req_dict[req].approve(self.doubleSpinBox_6.value(), self.doubleSpinBox_8.value(), self.doubleSpinBox_7.value()) #TODO : check if value works and change .text() above
+                grant_req_dict[req].approve(self.doubleSpinBox_6.value(), self.doubleSpinBox_8.value(),
+                                            self.doubleSpinBox_7.value())  # TODO : check if value works and change .text() above
                 self.set_list()
                 self.label_23.setText("")
 
@@ -161,8 +165,6 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
                 grant_req_dict[req].reject()
                 self.set_list()
                 self.label_23.setText("")
-
-
 
 
 def find_hall_ID_by_name(self, name):

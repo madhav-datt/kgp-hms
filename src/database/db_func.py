@@ -11,6 +11,7 @@ import ctypes
 import mysql.connector
 from mysql.connector import errorcode
 
+
 def connect():
     """
     Set initial connection with MySQL server, with hmsuser credentials
@@ -20,10 +21,10 @@ def connect():
 
     # Sign-in credentials for MySQL server
     config = {
-      'user': 'hmsuser',
-      'password': 'hmspasstmp',
-      'host': 'localhost',
-      'database': 'hmskgp',
+        'user': 'hmsuser',
+        'password': 'hmspasstmp',
+        'host': 'localhost',
+        'database': 'hmskgp',
     }
 
     try:
@@ -32,13 +33,13 @@ def connect():
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
             ctypes.windll.user32.MessageBoxA(0, "Incorrect credentials, please contact your administrator",
-            "Database Error", 1)
+                                             "Database Error", 1)
         elif err.errno == errorcode.ER_BAD_DB_ERROR:
             ctypes.windll.user32.MessageBoxA(0, "Database does not exist, please contact your administrator",
-            "Database Error", 1)
+                                             "Database Error", 1)
         else:
             ctypes.windll.user32.MessageBoxA(0, err + " Please contact your administrator",
-            "Database Error", 1)
+                                             "Database Error", 1)
 
     else:
         return cnx
@@ -60,13 +61,13 @@ def add(table, **param):
     # MySQL statements to add to tables
     # Passed parameters must exactly match attribute order
     add_student = ("INSERT INTO student "
-                    "(password, name, address, contact_number, hall_ID, room_no, \
+                   "(password, name, address, contact_number, hall_ID, room_no, \
                     mess_charge, room_type) "
-                    "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
+                   "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
 
     add_warden = ("INSERT INTO warden "
-                    "(password, name, email, hall_ID, controlling_warden) "
-                    "VALUES (%s, %s, %s, %s, %s)")
+                  "(password, name, email, hall_ID, controlling_warden) "
+                  "VALUES (%s, %s, %s, %s, %s)")
 
     add_hall = ("INSERT INTO hall "
                 "(name, warden_ID, clerk_ID, mess_manager_ID, status, \
@@ -78,21 +79,21 @@ def add(table, **param):
                 %s, %s, %s, %s, %s)")
 
     add_worker = ("INSERT INTO worker "
-                    "(password, name, worker_type, monthly_salary, daily_wage, \
+                  "(password, name, worker_type, monthly_salary, daily_wage, \
                     hall_ID, monthly_attendance) "
-                    "VALUES (%s, %s, %s, %s, %s, %s, %s)")
+                  "VALUES (%s, %s, %s, %s, %s, %s, %s)")
 
     add_complaint = ("INSERT INTO complaint "
-                    "(student_ID, action_status, description, action_report) "
-                    "VALUES (%s, %s, %s, %s)")
+                     "(student_ID, action_status, description, action_report) "
+                     "VALUES (%s, %s, %s, %s)")
 
     add_hmc = ("INSERT INTO hmc "
-                "(password, payment_is_active) "
-                "VALUES (%s, %s)")
+               "(password, payment_is_active) "
+               "VALUES (%s, %s)")
 
     add_grant_request = ("INSERT INTO grant_request "
-                        "(repair_charge, other_charge, salary_charge, hall_ID) "
-                        "VALUES (%s, %s, %s, %s)")
+                         "(repair_charge, other_charge, salary_charge, hall_ID) "
+                         "VALUES (%s, %s, %s, %s)")
 
     cnx = connect()
     cursor = cnx.cursor()
@@ -114,7 +115,7 @@ def add(table, **param):
         cursor.execute(add_grant_request, param)
     else:
         ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Insert failed",
-        "Database Error", 1)
+                                         "Database Error", 1)
         print
         return None
 
@@ -156,7 +157,7 @@ def update(table, primary_key, field, value):
         cursor.execute(update_row, (table, field, value, "grant_ID", primary_key))
     else:
         ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Update failed",
-        "Database Error", 1)
+                                         "Database Error", 1)
 
     cursor.close()
     cnx.close()
@@ -190,14 +191,14 @@ def get(table, primary_key, field):
         cursor.execute(query, (field, table, "password", primary_key))
     else:
         ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Query failed",
-        "Database Error", 1)
+                                         "Database Error", 1)
 
         cursor.close()
         cnx.close()
         return None
 
     # Get queried value as array with one data value
-    queried = curson.fetchone()
+    queried = cursor.fetchone()
 
     cursor.close()
     cnx.close()
@@ -229,7 +230,7 @@ def delete(table, primary_key):
         cursor.execute(delete_row, (table, "grant_ID", primary_key))
     else:
         ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Delete failed",
-        "Database Error", 1)
+                                         "Database Error", 1)
 
     cursor.close()
     cnx.close()

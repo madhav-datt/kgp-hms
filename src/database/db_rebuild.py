@@ -7,11 +7,13 @@
 @ authors: Madhav Datt (14CS30015), Avikalp Srivastava (14CS10008)
 """
 
+import ctypes
 import db_func
 from halls import hall
 from actors import student, warden, hall_management
 from requests import complaint, grant_request
 from workers import attendant, clerk, mess_manager, worker
+
 
 def rebuild(table):
     """
@@ -30,7 +32,7 @@ def rebuild(table):
         cursor.execute(query, table)
     else:
         ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Object build failed",
-        "Database Error", 1)
+                                         "Database Error", 1)
         return None
 
     cursor.fetchall()
@@ -38,14 +40,14 @@ def rebuild(table):
         # Insert new row of data into table
         if table == "student":
             table_obj = student.Student(row[1], row[2], row[3], row[4], row[5],
-                                row[6], row[8], True, row[0])
+                                        row[6], row[8], True, row[0])
 
         elif table == "warden":
             table_obj = warden.Warden(row[1], row[2], row[3], row[4], row[5], True, row[0])
 
         elif table == "hall":
             table_obj = hall.Hall(row[1], row[5], row[6], row[7], row[10], row[11],
-                            row[2], row[4], row[3], row[12], True, row[0])
+                                  row[2], row[4], row[3], row[12], True, row[0])
 
             table_obj.mess_account = row[13]
             table_obj.amenities_account = row[14]
@@ -70,7 +72,10 @@ def rebuild(table):
 
         elif table == "grant_request":
             table_obj = grant_request.GrantRequest(row[7], row[1], row[2], row[3], row[4],
-                                                    row[5], row[6], True, row[0])
+                                                   row[5], row[6], True, row[0])
+
+        else:
+            table_obj = None
 
         data_table[row[0]] = table_obj
 

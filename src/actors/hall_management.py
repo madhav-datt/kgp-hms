@@ -9,8 +9,7 @@
 
 from database import db_func as db
 from database import password_validation as pv
-from requests import printer
-import warnings
+
 
 class HallManagement(object):
     """Contains details of HallManagement

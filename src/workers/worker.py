@@ -9,7 +9,7 @@
 
 from database import db_func as db
 from database import password_validation as pv
-import warnings
+
 
 class Worker(object):
     """Contains details of Worker Instance
@@ -23,13 +23,13 @@ class Worker(object):
         monthly_attendance: Integer with monthly attendance count for daily workers
     """
 
-    def __init__(self, name, hall_ID, password = None, monthly_salary = None,
-                daily_wage = None, monthly_attendance = None):
+    def __init__(self, name, hall_ID, password=None, monthly_salary=None,
+                 daily_wage=None, monthly_attendance=None):
         """
         Init Worker with details as recruited by HMC or Warden
         """
 
-        self.password = None
+        self.password = pv.hash_password(password)
         self.name = name
         self.hall_ID = hall_ID
         self.monthly_salary = monthly_salary

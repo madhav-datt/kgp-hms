@@ -11,7 +11,7 @@ from database import db_func as db
 from database import db_rebuild as dbr
 from database import password_validation as pv
 import worker
-import warnings
+
 
 class MessManager(worker.Worker):
     """Contains details of Worker Instance
@@ -27,7 +27,7 @@ class MessManager(worker.Worker):
     """
 
     def __init__(self, name, hall_ID, password, monthly_salary,
-                rebuild = False, worker_ID = None):
+                 rebuild=False, worker_ID=None):
         """
         Init MessManager with details as recruited by HMC or Warden
         """
@@ -37,11 +37,11 @@ class MessManager(worker.Worker):
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
         # If False, a new data row is added to the specific table
-        if rebuild == False:
+        if not rebuild:
             self.password = pv.hash_password(password)
-            self.worker_ID = db.add("Worker", password = self.password, name = self.name,
-            worker_type = "M", monthly_salary = self.monthly_salary,
-            daily_wage = 0, hall_ID = self.hall_ID, monthly_attendance = 0)
+            self.worker_ID = db.add("Worker", password=self.password, name=self.name,
+                                    worker_type="M", monthly_salary=self.monthly_salary,
+                                    daily_wage=0, hall_ID=self.hall_ID, monthly_attendance=0)
         else:
             self.password = password
             self.worker_ID = worker_ID

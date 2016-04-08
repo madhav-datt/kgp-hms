@@ -1,4 +1,3 @@
-
 # Software Engineering Lab - Assignment 5
 # IIT Kharagpur - Hall Management System
 #
@@ -8,8 +7,8 @@
 """
 
 from database import db_func as db
-import warnings
 import worker
+
 
 class Attendant(worker.Worker):
     """Contains details of Worker Instance
@@ -25,7 +24,7 @@ class Attendant(worker.Worker):
     """
 
     def __init__(self, name, hall_ID, daily_wage, monthly_attendance,
-                rebuild = False, worker_ID = None):
+                 rebuild=False, worker_ID=None):
         """
         Init MessManager with details as recruited by HMC or Warden
         """
@@ -36,10 +35,10 @@ class Attendant(worker.Worker):
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
         # If False, a new data row is added to the specific table
-        if rebuild == False:
-            self.worker_ID = db.add("Worker", name = self.name,
-            worker_type = "A", monthly_salary = 0, daily_wage = self.daily_wage,
-            hall_ID = self.hall_ID, monthly_attendance = self.monthly_attendance)
+        if not rebuild:
+            self.worker_ID = db.add("Worker", name=self.name,
+                                    worker_type="A", monthly_salary=0, daily_wage=self.daily_wage,
+                                    hall_ID=self.hall_ID, monthly_attendance=self.monthly_attendance)
         else:
             self.worker_ID = worker_ID
 

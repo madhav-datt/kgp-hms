@@ -7,9 +7,9 @@
 @ authors: Madhav Datt (14CS30015), Avikalp Srivastava (14CS10008)
 """
 
-from database import db_func as db
-from database import password_validation as pv
-import warnings
+from database.db_func import db_func as db
+from database.db_func import password_validation as pv
+
 
 class Student(object):
     """Contains details of Student
@@ -29,7 +29,7 @@ class Student(object):
     """
 
     def __init__(self, password, name, address, contact_number,
-                hall_ID, room_no, room_type, rebuild = False, student_ID = None):
+                 hall_ID, room_no, room_type, rebuild=False, student_ID=None):
         """
         Init Student with details from Admission Letter
         """
@@ -56,13 +56,13 @@ class Student(object):
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
         # If False, a new data row is added to the specific table
-        if rebuild == False:
+        if not rebuild:
             self.password = pv.hash_password(password)
-            self.student_ID = db.add("student", password = self.password,
-            name = self.name, address = self.address,
-            contact_number = self.contact_number, hall_ID = self.hall_ID,
-            room_no = self.room_no, mess_charge = self.mess_charge,
-            room_type = self.room_type)
+            self.student_ID = db.add("student", password=self.password,
+                                     name=self.name, address=self.address,
+                                     contact_number=self.contact_number, hall_ID=self.hall_ID,
+                                     room_no=self.room_no, mess_charge=self.mess_charge,
+                                     room_type=self.room_type)
         else:
             self.password = password
             self.student_ID = student_ID
@@ -165,5 +165,5 @@ class Student(object):
         elif self.room_type == "D":
             room_rent = db.get("hall", self.hall_ID, "double_room_rent")
 
-        return self.mess_charge + self.room_rent +\
-        db.get("hall", self.hall_ID, "amenities_charges")
+        return self.mess_charge + self.room_rent + \
+               db.get("hall", self.hall_ID, "amenities_charges")

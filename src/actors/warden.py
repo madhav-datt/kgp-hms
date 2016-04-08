@@ -10,7 +10,7 @@
 from database import db_func as db
 from database import db_rebuild as dbr
 from database import password_validation as pv
-import warnings
+
 
 class Warden(object):
     """Contains details of Warden
@@ -83,7 +83,7 @@ class Warden(object):
 
     # email getter and setter functions
     @property
-    def address(self):
+    def email(self):
         return self._email
 
     @email.setter
