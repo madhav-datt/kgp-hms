@@ -23,13 +23,13 @@ def rebuild(table):
     cnx = db_func.connect()
     cursor = cnx.cursor()
 
-    query = "SELECT * from %s;"
+    query = "SELECT * FROM %s"
     data_table = {}
 
     if table == "student" or table == "warden" or table == "hmc" or \
                     table == "hall" or table == "grant_request" or table == "worker" or \
                     table == "complaint":
-        cursor.execute(query, (table))
+        cursor.execute(query, (table,))
     else:
         ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Object build failed",
                                          "Database Error", 1)
@@ -83,4 +83,3 @@ def rebuild(table):
     cnx.close()
 
     return data_table
-

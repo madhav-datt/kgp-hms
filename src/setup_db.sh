@@ -61,8 +61,7 @@ CREATE TABLE student(
    room_no VARCHAR(5),
    mess_charge FLOAT(10,2),
    room_type CHAR,
-   PRIMARY KEY (student_ID),
-   FOREIGN KEY (hall_ID) REFERENCES hall(hall_ID)
+   PRIMARY KEY (student_ID)
    );
 EOF
 
@@ -77,9 +76,8 @@ CREATE TABLE warden(
    name VARCHAR(50),
    email VARCHAR(50),
    hall_ID INT NOT NULL,
-   controlling_warden VARCHAR(6)
-   PRIMARY KEY (warden_ID),
-   FOREIGN KEY (hall_ID) REFERENCES hall(hall_ID)
+   controlling_warden VARCHAR(6),
+   PRIMARY KEY (warden_ID)
    );
 EOF
 
@@ -94,8 +92,7 @@ CREATE TABLE grant_request(
    other_charge FLOAT(10,2),
    salary_charge FLOAT(10,2),
    hall_ID INT NOT NULL,
-   PRIMARY KEY (grant_ID),
-   FOREIGN KEY (hall_ID) REFERENCES hall(hall_ID)
+   PRIMARY KEY (grant_ID)
    );
 EOF
 
@@ -115,7 +112,7 @@ echo ""
 echo "Creating Halls Table..."
 cat << EOF | /usr/bin/mysql --login-path=local
 USE hmskgp;
-CREATE TABLE student(
+CREATE TABLE hall(
    hall_ID INT NOT NULL AUTO_INCREMENT,
    name VARCHAR(50),
    warden_ID INT NOT NULL,
@@ -135,10 +132,7 @@ CREATE TABLE student(
    salary_account FLOAT(10,2),
    others_account FLOAT(10,2),
    rent_account FLOAT(10,2),
-   PRIMARY KEY (hall_ID),
-   FOREIGN KEY (warden_ID) REFERENCES warden(warden_ID),
-   FOREIGN KEY (clerk_ID) REFERENCES worker(worker_ID),
-   FOREIGN KEY (mess_manager_ID) REFERENCES worker(worker_ID)
+   PRIMARY KEY (hall_ID)
    );
 EOF
 
@@ -156,8 +150,7 @@ CREATE TABLE worker(
    daily_wage FLOAT(10,2),
    hall_ID INT NOT NULL,
    monthly_attendance INT,
-   PRIMARY KEY (worker_ID),
-   FOREIGN KEY (hall_ID) REFERENCES hall(hall_ID)
+   PRIMARY KEY (worker_ID)
    );
 EOF
 
@@ -172,7 +165,6 @@ CREATE TABLE complaint(
    action_status CHAR,
    description BLOB,
    action_report BLOB,
-   PRIMARY KEY (worker_ID),
-   FOREIGN KEY (student_ID) REFERENCES student(student_ID)
+   PRIMARY KEY (complaint_ID)
    );
 EOF
