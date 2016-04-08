@@ -38,7 +38,7 @@ def connect():
             ctypes.windll.user32.MessageBoxA(0, "Database does not exist, please contact your administrator",
                                              "Database Error", 1)
         else:
-            ctypes.windll.user32.MessageBoxA(0, err + " Please contact your administrator",
+            ctypes.windll.user32.MessageBoxA(0, err, " Please contact your administrator",
                                              "Database Error", 1)
 
     else:
@@ -63,11 +63,11 @@ def add(table, **param):
     add_student = ("INSERT INTO student "
                    "(password, name, address, contact_number, hall_ID, room_no, \
                     mess_charge, room_type) "
-                   "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
+                   "VALUES ({}, {}, {}, {}, {}, {}, {}, {})")
 
     add_warden = ("INSERT INTO warden "
                   "(password, name, email, hall_ID, controlling_warden) "
-                  "VALUES (%s, %s, %s, %s, %s)")
+                  "VALUES ({}, {}, {}, {}, {})")
 
     add_hall = ("INSERT INTO hall "
                 "(name, warden_ID, clerk_ID, mess_manager_ID, status, \
@@ -75,25 +75,25 @@ def add(table, **param):
                 double_room_occupancy, single_room_rent, double_room_rent, \
                 amenities_charge, mess_account, amenities_account, repair_account, \
                 salary_account, others_account, rent_account) "
-                "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, \
-                %s, %s, %s, %s, %s)")
+                "VALUES ({}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
+                {}, {}, {}, {}, {})")
 
     add_worker = ("INSERT INTO worker "
                   "(password, name, worker_type, monthly_salary, daily_wage, \
                     hall_ID, monthly_attendance) "
-                  "VALUES (%s, %s, %s, %s, %s, %s, %s)")
+                  "VALUES ({}, {}, {}, {}, {}, {}, {})")
 
     add_complaint = ("INSERT INTO complaint "
                      "(student_ID, action_status, description, action_report) "
-                     "VALUES (%s, %s, %s, %s)")
+                     "VALUES ({}, {}, {}, {})")
 
     add_hmc = ("INSERT INTO hmc "
                "(password, payment_is_active) "
-               "VALUES (%s, %s)")
+               "VALUES ({}, {})")
 
     add_grant_request = ("INSERT INTO grant_request "
                          "(repair_charge, other_charge, salary_charge, hall_ID) "
-                         "VALUES (%s, %s, %s, %s)")
+                         "VALUES ({}, {}, {}, {})")
 
     cnx = connect()
     cursor = cnx.cursor()
@@ -116,7 +116,6 @@ def add(table, **param):
     else:
         ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Insert failed",
                                          "Database Error", 1)
-        print
         return None
 
     # Commit to database
@@ -138,23 +137,23 @@ def update(table, primary_key, field, value):
     cnx = connect()
     cursor = cnx.cursor()
 
-    update_row = ("UPDATE %s SET %s = %s WHERE %s = %s")
+    update_row = "UPDATE {} SET {} = {} WHERE {} = {}"
 
     # Update row of data from table
     if table == "student":
-        cursor.execute(update_row, (table, field, value, "student_ID", primary_key))
+        cursor.execute(update_row.format(table, field, value, "student_ID", primary_key))
     elif table == "warden":
-        cursor.execute(update_row, (table, field, value, "warden_ID", primary_key))
+        cursor.execute(update_row.format(table, field, value, "warden_ID", primary_key))
     elif table == "hall":
-        cursor.execute(update_row, (table, field, value, "hall_ID", primary_key))
+        cursor.execute(update_row.format(table, field, value, "hall_ID", primary_key))
     elif table == "worker":
-        cursor.execute(update_row, (table, field, value, "worker_ID", primary_key))
+        cursor.execute(update_row.format(table, field, value, "worker_ID", primary_key))
     elif table == "complaint":
-        cursor.execute(update_row, (table, field, value, "complaint_ID", primary_key))
+        cursor.execute(update_row.format(table, field, value, "complaint_ID", primary_key))
     elif table == "hmc":
-        cursor.execute(update_row, (table, field, value, "password", primary_key))
+        cursor.execute(update_row.format(table, field, value, "password", primary_key))
     elif table == "grant_request":
-        cursor.execute(update_row, (table, field, value, "grant_ID", primary_key))
+        cursor.execute(update_row.format(table, field, value, "grant_ID", primary_key))
     else:
         ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Update failed",
                                          "Database Error", 1)
@@ -172,23 +171,23 @@ def get(table, primary_key, field):
     cnx = connect()
     cursor = cnx.cursor()
 
-    query = ("SELECT %s FROM %s WHERE %s = %s")
+    query = "SELECT {} FROM {} WHERE {} = {}"
 
     # Query data from table
     if table == "student":
-        cursor.execute(query, (field, table, "student_ID", primary_key))
+        cursor.execute(query.format(field, table, "student_ID", primary_key))
     elif table == "warden":
-        cursor.execute(query, (field, table, "warden_ID", primary_key))
+        cursor.execute(query.format(field, table, "warden_ID", primary_key))
     elif table == "hall":
-        cursor.execute(query, (field, table, "hall_ID", primary_key))
+        cursor.execute(query.format(field, table, "hall_ID", primary_key))
     elif table == "worker":
-        cursor.execute(query, (field, table, "worker_ID", primary_key))
+        cursor.execute(query.format(field, table, "worker_ID", primary_key))
     elif table == "complaint":
-        cursor.execute(query, (field, table, "complaint_ID", primary_key))
+        cursor.execute(query.format(field, table, "complaint_ID", primary_key))
     elif table == "grant_request":
-        cursor.execute(query, (field, table, "grant_ID", primary_key))
+        cursor.execute(query.format(field, table, "grant_ID", primary_key))
     elif table == "hmc":
-        cursor.execute(query, (field, table, "password", primary_key))
+        cursor.execute(query.format(field, table, "password", primary_key))
     else:
         ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Query failed",
                                          "Database Error", 1)
@@ -213,21 +212,21 @@ def delete(table, primary_key):
     cnx = connect()
     cursor = cnx.cursor()
 
-    delete_row = ("DELETE FROM %s WHERE %s = %s")
+    delete_row = "DELETE FROM {} WHERE {} = {}"
 
     # Delete row of data from table
     if table == "student":
-        cursor.execute(delete_row, (table, "student_ID", primary_key))
+        cursor.execute(delete_row.format(table, "student_ID", primary_key))
     elif table == "warden":
-        cursor.execute(delete_row, (table, "warden_ID", primary_key))
+        cursor.execute(delete_row.format(table, "warden_ID", primary_key))
     elif table == "hall":
-        cursor.execute(delete_row, (table, "hall_ID", primary_key))
+        cursor.execute(delete_row.format(table, "hall_ID", primary_key))
     elif table == "worker":
-        cursor.execute(delete_row, (table, "worker_ID", primary_key))
+        cursor.execute(delete_row.format(table, "worker_ID", primary_key))
     elif table == "complaint":
-        cursor.execute(delete_row, (table, "complaint_ID", primary_key))
+        cursor.execute(delete_row.format(table, "complaint_ID", primary_key))
     elif table == "grant_request":
-        cursor.execute(delete_row, (table, "grant_ID", primary_key))
+        cursor.execute(delete_row.format(table, "grant_ID", primary_key))
     else:
         ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Delete failed",
                                          "Database Error", 1)

@@ -25,6 +25,7 @@ class GrantRequest(object):
         """
         Init GrantRequest Object with details from Warden
         """
+
         self.hall_ID = hall_ID
         self.repair_charge = repair_charge
         self.other_charge = other_charge
