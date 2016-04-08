@@ -8,7 +8,6 @@
 """
 
 from ..database import db_func as db
-from ..database import db_rebuild as dbr
 from ..database import password_validation as pv
 
 
@@ -23,8 +22,8 @@ class Warden(object):
         hall_ID: Integer to identify hall of residence
     """
 
-    def __init__(self, password, name, email, hall_ID, controlling_warden = False,
-                rebuild = False, warden_ID = None):
+    def __init__(self, password, name, email, hall_ID, controlling_warden=False,
+                 rebuild=False, warden_ID=None):
         """
         Init Warden with details for object creation
         """
@@ -37,11 +36,11 @@ class Warden(object):
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
         # If False, a new data row is added to the specific table
-        if rebuild == False:
+        if not rebuild:
             self.password = pv.hash_password(password)
-            self.warden_ID = db.add("warden", password = self.password,
-            name = self.name, email = self.email, hall_ID = self.hall_ID,
-            controlling_warden = self.controlling_warden)
+            self.warden_ID = db.add("warden", password=self.password,
+                                    name=self.name, email=self.email, hall_ID=self.hall_ID,
+                                    controlling_warden=self.controlling_warden)
         else:
             self.password = password
             self.warden_ID = warden_ID
@@ -101,23 +100,22 @@ class Warden(object):
         self._hall_ID = hall_ID
         db.update("warden", self.warden_ID, "hall_ID", self.hall_ID)
 
-    def total_occupancy(self):
+    def total_occupancy(self, hall_table):
         """
         Return dictionary with occupancy of all Halls
         Works only if called on object with controlling_warden = True
+        hall_table = dbr.rebuild("hall") is passed as parameter
         Return None if not called by controlling_warden object
         """
 
-        if self.controlling_warden == False:
+        if not self.controlling_warden:
             return None
-
-        hall_table = dbr.rebuild("hall")
 
         # Dictionary occupancy_table as elements in the following form
         # {hall_name : (single_room_occupancy, double_room_occupancy)}
         occupancy_table = {}
         for key in hall_table:
             occupancy_table[hall_table[key].name] = \
-            (hall_table[key].single_room_occupancy, hall_table[key].double_room_occupancy)
+                (hall_table[key].single_room_occupancy, hall_table[key].double_room_occupancy)
 
         return occupancy_table
