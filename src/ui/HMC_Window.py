@@ -491,7 +491,7 @@ class Ui_Form(object):
         self.stackedWidget.addWidget(self.page_2)
 
         self.retranslateUi(Form)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
