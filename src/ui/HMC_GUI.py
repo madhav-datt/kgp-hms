@@ -24,9 +24,9 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
 
-        self.label_32.setPixmap(QtGui.QPixmap(_fromUtf8('bkd1edit2.jpg')))
+        self.label_32.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
         self.label_32.setScaledContents(True)
-        self.label_33.setPixmap(QtGui.QPixmap(_fromUtf8('iit.jpg')))
+        self.label_33.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/iit.jpg')))
         self.label_33.setScaledContents(True)
         self.pushButton_8.clicked.connect(self.password_validate)
         '''
@@ -40,9 +40,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
             else:
                 self.pushButton_5.setEnabled(True)
 
-        '''
-        Linking "Issue Admission Letter Button to its functionality
-        '''
+        # Linking "Issue Admission Letter Button to its functionality
         self.pushButton_4.clicked.connect(self.issue_admission_letter)
 
     def display(self, i):
@@ -58,6 +56,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
     '''
     Adding specific ui elements for student functionality tab
     '''
+
     def issue_admission_letter(self):
         name = self.lineEdit_16.text()
         gender = self.comboBox.currentText()
@@ -84,6 +83,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
     '''
     Adding specific ui elements for add hall tab
     '''
+
     def add_hall(self):
         name = self.lineEdit_4.text()
         status = self.comboBox_4.currentText()
@@ -148,6 +148,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
     '''
     To be invoked on  pushing the issue grant button
     '''
+
     def issue_grant(self):
         if self.label_23.text() == "":
             return
@@ -172,6 +173,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
                 grant_req_dict[req].reject()
                 self.set_list()
                 self.label_23.setText("")
+
 
 def find_hall_ID_by_name(self, name):
     hall_dict = dbr.rebuild("hall")

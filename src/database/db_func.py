@@ -13,7 +13,6 @@ import time
 from mysql.connector import errorcode
 from datetime import date
 
-
 def connect():
     """
     Set initial connection with MySQL server, with hmsuser credentials
@@ -204,7 +203,8 @@ def get_attend_date():
 
     cursor.close()
     cnx.close()
-    return date(queried[0])
+
+    return queried[0]
 
 
 def get(table, primary_key, field):
@@ -243,7 +243,7 @@ def get(table, primary_key, field):
         return None
 
     # Get queried value as array with one data value
-    queried = cursor.fetchone()
+    queried = cursor.fetchall()
 
     cursor.close()
     cnx.close()
