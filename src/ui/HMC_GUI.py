@@ -177,11 +177,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
                 self.label_23.setText("")
 
 
-<<<<<<< HEAD
 def find_hall_ID_by_name(name):
-=======
-def find_hall_ID_by_name(self, name):
->>>>>>> 50187756085be7114f3e303160e3a89c9825b357
     hall_dict = dbr.rebuild("hall")
     for key in hall_dict:
         if hall_dict[key].name == name:
