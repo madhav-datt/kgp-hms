@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0a869d99-4bbd-4a72-9cea-88f9c7d74b97" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actors/hall_management.py" afterPath="$PROJECT_DIR$/src/actors/hall_management.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/db_func.py" afterPath="$PROJECT_DIR$/src/database/db_func.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/db_rebuild.py" afterPath="$PROJECT_DIR$/src/database/db_rebuild.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/password_validation.py" afterPath="$PROJECT_DIR$/src/database/password_validation.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/setup_db.sh" afterPath="$PROJECT_DIR$/src/setup_db.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/HMC_GUI.py" afterPath="$PROJECT_DIR$/src/ui/HMC_GUI.py" />
     </list>
     <ignored path="kgp-hms.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,12 +27,22 @@
       <file leaf-file-name="HMC_GUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/HMC_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
+            <state relative-caret-position="270">
+              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-                <marker date="1460201351903" expanded="false" signature="0:372" placeholder="import ..." />
+                <marker date="1460205520895" expanded="false" signature="0:372" placeholder="import ..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Student_Main_Window_GUI.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -52,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db_rebuild.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="db_rebuild.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/database/db_rebuild.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="61" column="94" selection-start-line="61" selection-start-column="94" selection-end-line="61" selection-end-column="94" />
+            <state relative-caret-position="209">
+              <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -72,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="password_validation.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="password_validation.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/database/password_validation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+            <state relative-caret-position="533">
+              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -113,13 +118,13 @@
         <option value="$PROJECT_DIR$/src/workers/worker.py" />
         <option value="$PROJECT_DIR$/src/workers/mess_manager.py" />
         <option value="$PROJECT_DIR$/src/actors/student.py" />
-        <option value="$PROJECT_DIR$/src/ui/HMC_GUI.py" />
         <option value="$PROJECT_DIR$/src/database/login.py" />
-        <option value="$PROJECT_DIR$/src/database/db_rebuild.py" />
         <option value="$PROJECT_DIR$/src/actors/hall_management.py" />
         <option value="$PROJECT_DIR$/src/database/db_func.py" />
         <option value="$PROJECT_DIR$/src/setup_db.sh" />
         <option value="$PROJECT_DIR$/src/database/password_validation.py" />
+        <option value="$PROJECT_DIR$/src/database/db_rebuild.py" />
+        <option value="$PROJECT_DIR$/src/ui/HMC_GUI.py" />
       </list>
     </option>
   </component>
@@ -839,29 +844,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/HMC_GUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-            <marker date="1460201351903" expanded="false" signature="0:372" placeholder="import ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/database/login.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="497">
           <caret line="72" column="30" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/db_rebuild.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="61" column="94" selection-start-line="61" selection-start-column="94" selection-end-line="61" selection-end-column="94" />
           <folding />
         </state>
       </provider>
@@ -902,8 +888,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/password_validation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+        <state relative-caret-position="533">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/HMC_GUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <marker date="1460205520895" expanded="false" signature="0:372" placeholder="import ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/db_rebuild.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
           <folding />
         </state>
       </provider>
