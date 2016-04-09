@@ -157,6 +157,17 @@ CREATE TABLE worker(
    );
 EOF
 
+# Create Worker Attendance Date Table
+echo ""
+echo "Creating Worker Attendance Date Table..."
+cat << EOF | /usr/bin/mysql --login-path=local
+USE hmskgp;
+CREATE TABLE attend_date(
+   last_attend DATE
+   );
+INSERT INTO attend_date VALUES (2000-01-01);
+EOF
+
 # Create Complaint Attendance table
 echo ""
 echo "Creating Student Complaints Table..."
