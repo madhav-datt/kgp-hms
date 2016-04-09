@@ -9,9 +9,9 @@
 
 import ctypes
 import mysql.connector
-from PyQt4 import QtGui
+import time
 from mysql.connector import errorcode
-
+from datetime import date
 
 def connect():
     """
@@ -34,7 +34,6 @@ def connect():
 
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-           # QtGui.QMessageBox.information('Delete?', 'Are you sure you want to delete this item?')
             ctypes.windll.user32.MessageBoxA(0, "Incorrect credentials, please contact your administrator",
                                              "Database Error", 1)
         elif err.errno == errorcode.ER_BAD_DB_ERROR:
@@ -171,6 +170,43 @@ def update(table, primary_key, field, value):
     cnx.close()
 
 
+def update_attend_date():
+    """
+    Update last date where worker attendance is marked
+    """
+
+    cnx = connect()
+    cursor = cnx.cursor()
+
+    update_row = "UPDATE attend_date SET last_attend = '{}'"
+    cursor.execute(update_row.format(time.strftime('%Y-%m-%d')))
+
+    # Commit to database
+    cnx.commit()
+    cursor.close()
+    cnx.close()
+
+
+def get_attend_date():
+    """
+    Query database to get last date where worker attendance is marked
+    """
+
+    cnx = connect()
+    cursor = cnx.cursor()
+
+    query = "SELECT {} FROM {}"
+    cursor.execute(query.format("last_attend", "attend_date"))
+
+    # Get queried value as array with one data value
+    queried = cursor.fetchone()
+
+    cursor.close()
+    cnx.close()
+
+    return queried[0]
+
+
 def get(table, primary_key, field):
     """
     Query database to get field from a particular table using Primary Key value
@@ -207,7 +243,7 @@ def get(table, primary_key, field):
         return None
 
     # Get queried value as array with one data value
-    queried = cursor.fetchone()
+    queried = cursor.fetchall()
 
     cursor.close()
     cnx.close()

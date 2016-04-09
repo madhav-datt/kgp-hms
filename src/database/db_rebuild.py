@@ -12,7 +12,7 @@ import db_func
 from ..halls import hall
 from ..actors import student, warden, hall_management
 from ..requests import complaint, grant_request
-from ..workers import attendant, clerk, mess_manager, worker
+from ..workers import attendant, clerk, mess_manager
 
 
 def rebuild(table):
@@ -37,7 +37,6 @@ def rebuild(table):
         return None
 
     for row in cursor:
-        print row
         # Insert new row of data into table
         if table == "student":
             table_obj = student.Student(row[1], row[2], row[3], row[4], row[5],
