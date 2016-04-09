@@ -2,6 +2,7 @@ import sys
 from PyQt4 import QtCore, QtGui
 from ..database import db_func as db
 from ..database import db_rebuild as dbr
+from ..database import login
 from ..workers import attendant
 import Clerk_Window
 import time
@@ -11,8 +12,6 @@ try:
 except AttributeError:
     def _fromUtf8(s):
         return s
-
-clerk_ID = 0
 
 
 class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
@@ -31,17 +30,10 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
         self.setupUi(self)
         self.bkdLabel.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd4.jpg')))
         self.bkdLabel.setScaledContents(True)
+        self.bkdLabel_2.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd4.jpg')))
+        self.bkdLabel_2.setScaledContents(True)
         self.label_8.setText("Today's Date : " + time.strftime("%x"))
-
-        # Set text fields with value from databases
-        self.lineEdit.setText(str(clerk_ID))
-        if clerk_ID:
-            self.lineEdit_2.setText(str(db.get("worker", clerk_ID, "name")))
-            self.label_2.setText("Welcome " + str(db.get("worker", clerk_ID, "name")))
-            self.lineEdit_3.setText(str(db.get("worker", clerk_ID, "hall_ID")))
-        else:
-            self.lineEdit_2.setText("Name")
-            self.lineEdit_3.setText("Hall_ID")
+        self.pushButton_2.clicked.connect(self.password_validate)
 
         # Build table from worker database
         worker_list = dbr.rebuild("worker")
@@ -78,6 +70,26 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
 
         self.pushButton.isEnabled(False)
         db.update_attend_date()
+
+    def password_validate(self):
+        """
+        Check password for login
+        """
+        user_ID = self.lineEdit_4.text()
+        password = self.lineEdit_5.text()
+        if login.authenticate("clerk", user_ID, password):
+            clerk_ID = user_ID
+
+            # Set text fields with value from databases
+            self.lineEdit.setText(str(clerk_ID))
+            self.lineEdit_2.setText(str(db.get("worker", clerk_ID, "name")))
+            self.label_2.setText("Welcome " + str(db.get("worker", clerk_ID, "name")))
+            self.lineEdit_3.setText(str(db.get("worker", clerk_ID, "hall_ID")))
+
+            self.display(0)
+        else:
+            self.label.setText("Authentication Failed. Please try again")
+
 
 app = QtGui.QApplication(sys.argv)
 Form = ClerkWindowClass()
