@@ -495,7 +495,7 @@ class Ui_Form(object):
         self.pushButton_8.setGeometry(QtCore.QRect(220, 250, 171, 23))
         self.pushButton_8.setObjectName(_fromUtf8("pushButton_8"))
         self.label_28 = QtGui.QLabel(self.page_2)
-        self.label_28.setGeometry(QtCore.QRect(70, 300, 491, 20))
+        self.label_28.setGeometry(QtCore.QRect(120, 300, 491, 20))
         self.label_28.setStyleSheet(_fromUtf8("color : rgb(255, 255, 255)"))
         self.label_28.setText(_fromUtf8(""))
         self.label_28.setObjectName(_fromUtf8("label_28"))
