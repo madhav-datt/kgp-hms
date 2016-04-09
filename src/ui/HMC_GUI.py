@@ -102,12 +102,18 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         clerk_name = self.lineEdit_14.text()
         clerk_pw = self.lineEdit_17.text()
         clerk_salary = self.doubleSpinBox_4.text()
-        new_warden = warden.Warden(warden_pw, warden_name, "warden_kgp@gmail.com",
-                                   0)
+
+        if name == "" or status == "" or amenities_charge == 0. or single_room_count == 0 or single_room_rent == 0 \
+            or double_room_count == 0 or double_room_rent == 0 or warden_name == "" or warden_pw == "" or \
+            manager_name == "" or manager_pw == "" or manager_salary == 0. or clerk_name == "" or clerk_pw == "" \
+            or clerk_salary == 0.:
+            choice = QtGui.QMessageBox.question(self, 'Error', "No Field can be left blank")
+
+        new_warden = warden.Warden(warden_pw, warden_name, "warden_kgp@gmail.com", 0)
         new_mess_manager = mess_manager.MessManager(manager_name, 0, manager_pw, manager_salary)
         new_clerk = clerk.Clerk(clerk_name, 0, clerk_pw, clerk_salary)
         new_hall = hall.Hall(name, status, single_room_count, double_room_count,
-                             single_room_rent, double_room_rent, new_warden.warden_ID, new_mess_manager.mess_manager_ID,
+                             single_room_rent, double_room_rent, new_warden.warden_ID, new_mess_manager.worker_ID,
                              new_clerk.worker_ID, amenities_charge)
         new_warden.hall_ID = new_hall.hall_ID
         new_mess_manager.hall_ID = new_hall.hall_ID
