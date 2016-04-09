@@ -97,14 +97,17 @@ CREATE TABLE grant_request(
 EOF
 
 # Create HallManagement table
+# Set password to hmspasstmp
 echo ""
 echo "Creating Hall Management Table..."
+echo "HMC Password is set to: hmspasstmp"
 cat << EOF | /usr/bin/mysql --login-path=local
 USE hmskgp;
 CREATE TABLE hmc(
    password VARCHAR(200) NOT NULL,
-   payment_is_active CHAR
+   payment_is_active VARCHAR(6)
    );
+INSERT INTO hmc (password, payment_is_active) VALUES ("$2b$12$9o0bBUrbxu3j3x8Nyhai3eQWIglNGtjiXQlaMOmZEsyb.XKo4Gu/W", "False");
 EOF
 
 # Create Hall table

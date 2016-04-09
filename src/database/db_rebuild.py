@@ -29,9 +29,8 @@ def rebuild(table):
     if table == "student" or table == "warden" or table == "hmc" or \
                     table == "hall" or table == "grant_request" or table == "worker" or \
                     table == "complaint":
-        #cursor.execute("SELECT * FROM hmc")
         cursor.execute(query.format(table))
-        #cursor.execute(query, (table,))
+
     else:
         ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Object build failed",
                                          "Database Error", 1)

@@ -18,23 +18,25 @@ class Worker(object):
         worker_ID: Integer to uniquely identify worker
         name: String
         hall_ID: Integer to uniquely identify hall
-        monthly_salary: Float
-        daily_wage: Float
-        monthly_attendance: Integer with monthly attendance count for daily workers
     """
 
-    def __init__(self, name, hall_ID, password=None, monthly_salary=None,
-                 daily_wage=None, monthly_attendance=None):
+    def __init__(self, worker_ID, name, hall_ID):
         """
         Init Worker with details as recruited by HMC or Warden
         """
 
-        self.password = pv.hash_password(password)
+        self.worker_ID = worker_ID
         self.name = name
         self.hall_ID = hall_ID
-        self.monthly_salary = monthly_salary
-        self.daily_wage = daily_wage
-        self.monthly_attendance = monthly_attendance
+
+    # worker_ID getter and setter functions
+    @property
+    def worker_ID(self):
+        return self._worker_ID
+
+    @worker_ID.setter
+    def worker_ID(self, worker_ID):
+        self._worker_ID = worker_ID
 
     # name getter and setter functions
     @property

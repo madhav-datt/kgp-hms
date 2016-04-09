@@ -15,6 +15,7 @@ def hash_password(password):
     Hash a password for the first time using bcrypt from pypi
     Add a randomly-generated salt
     """
+
     return bcrypt.hashpw(password, bcrypt.gensalt())
 
 

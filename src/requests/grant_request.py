@@ -26,22 +26,27 @@ class GrantRequest(object):
         Init GrantRequest Object with details from Warden
         """
 
+        # The rebuild flag, if true, denotes that the object is being made from
+        # data already present in the database
+        # If False, a new data row is added to the specific table
+        if not rebuild:
+            self.grant_ID = db.add("grant_request")
+        else:
+            self.grant_ID = grant_ID
+
         self.hall_ID = hall_ID
         self.repair_charge = repair_charge
         self.other_charge = other_charge
         self.salary_charge = 0.
 
-        # The rebuild flag, if true, denotes that the object is being made from
-        # data already present in the database
-        # If False, a new data row is added to the specific table
-        if not rebuild:
-            self.grant_ID = db.add("grant_request",
-                                   repair_charge=self.repair_charge,
-                                   other_charge=self.other_charge,
-                                   salary_charge=self.salary_charge,
-                                   hall_ID=self.hall_ID)
-        else:
-            self.grant_ID = grant_ID
+    # grant_ID getter and setter functions
+    @property
+    def grant_ID(self):
+        return self._grant_ID
+
+    @grant_ID.setter
+    def grant_ID(self, grant_ID):
+        self._grant_ID = grant_ID
 
     # hall_ID getter and setter functions
     @property

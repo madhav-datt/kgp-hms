@@ -27,25 +27,27 @@ class Complaint(object):
         Init Complaint with details given by Student
         """
 
+        # The rebuild flag, if true, denotes that the object is being made from
+        # data already present in the database
+        # If False, a new data row is added to the specific table
+        if not rebuild:
+            self.complaint_ID = db.add("complaint")
+        else:
+            self.complaint_ID = complaint_ID
+
         self.student_ID = student_ID
         self.action_status = action_status
         self.description = description
         self.action_report = action_report
 
-        # The rebuild flag, if true, denotes that the object is being made from
-        # data already present in the database
-        # If False, a new data row is added to the specific table
-        if not rebuild:
-            self.complaint_ID = db.add("complaint", student_ID=self.student_ID,
-                                       action_status=self.action_status, description=self.description,
-                                       action_report=self.action_report)
-        else:
-            self.complaint_ID = complaint_ID
-
     # complaint_ID getter functions
     @property
     def complaint_ID(self):
         return self._complaint_ID
+
+    @complaint_ID.setter
+    def complaint_ID(self, complaint_ID):
+        self._complaint_ID = complaint_ID
 
     # student_ID getter and setter functions
     @property
