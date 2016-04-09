@@ -31,19 +31,19 @@ class Clerk(worker.Worker):
         Init Clerk with details as recruited by HMC or Warden
         """
 
-        worker.Worker.__init__(self, name, hall_ID, password, monthly_salary, 0, 0)
-
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
         # If False, a new data row is added to the specific table
         if not rebuild:
+            self.worker_ID = db.add("worker")
+            db.update("worker", self.worker_ID, "worker_type", "C")
             self.password = pv.hash_password(password)
-            self.worker_ID = db.add("Worker", password=self.password, name=self.name,
-                                    worker_type="C", monthly_salary=self.monthly_salary,
-                                    daily_wage=0, hall_ID=self.hall_ID, monthly_attendance=0)
         else:
-            self.password = password
             self.worker_ID = worker_ID
+            self.password = password
+
+        self.monthly_salary = monthly_salary
+        worker.Worker.__init__(self, worker_ID, name, hall_ID)
 
     # password getter and setter functions
     @property

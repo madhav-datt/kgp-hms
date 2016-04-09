@@ -62,20 +62,6 @@ class Student(object):
             curr_occupancy = db.get("hall", self.hall_ID, "double_room_occupancy")
             db.update("hall", self.hall_ID, "double_room_occupancy", int(curr_occupancy) + 1)
 
-        # The rebuild flag, if true, denotes that the object is being made from
-        # data already present in the database
-        # If False, a new data row is added to the specific table
-        # if not rebuild:
-        #     self._password = pv.hash_password(password)
-        #     self._student_ID = db.add("student", password=self.password,
-        #                              name=self.name, address=self.address,
-        #                              contact_number=self.contact_number, hall_ID=self.hall_ID,
-        #                              room_no=self.room_no, mess_charge=self.mess_charge,
-        #                              room_type=self.room_type)
-        # else:
-        #     self._password = password
-        #     self._student_ID = student_ID
-
     # student_ID getter functions
     @property
     def student_ID(self):

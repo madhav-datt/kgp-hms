@@ -29,18 +29,18 @@ class Attendant(worker.Worker):
         Init MessManager with details as recruited by HMC or Warden
         """
 
-        worker.Worker.__init__(self, name, hall_ID, 0, 0, daily_wage, monthly_attendance)
-        self.total_wage = 0.
-
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
         # If False, a new data row is added to the specific table
         if not rebuild:
-            self.worker_ID = db.add("Worker", name=self.name,
-                                    worker_type="A", monthly_salary=0, daily_wage=self.daily_wage,
-                                    hall_ID=self.hall_ID, monthly_attendance=self.monthly_attendance)
+            self.worker_ID = db.add("worker")
+            db.update("worker", self.worker_ID, "worker_type", "A")
         else:
             self.worker_ID = worker_ID
+
+        self.daily_wage = daily_wage
+        self.monthly_attendance = monthly_attendance
+        worker.Worker.__init__(self, worker_ID, name, hall_ID)
 
     # daily_wage getter and setter functions
     @property
