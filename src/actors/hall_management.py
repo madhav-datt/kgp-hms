@@ -31,7 +31,7 @@ class HallManagement(object):
             db.add("hmc")
             self.password = pv.hash_password(password)
         else:
-            self.password = password
+            self._password = password
 
         self.payment_is_active = payment_is_active
 

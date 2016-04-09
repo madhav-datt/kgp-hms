@@ -32,12 +32,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         '''
         Custom UI starting, based on data available in the databases
         '''
-<<<<<<< HEAD
-=======
-        student.Student("password", "name", "address", "contact_number", "hall_ID", "room_no",
-                        "room_type", False)
 
->>>>>>> 4756a9c3a2f1ef0ab1dcbaa9d1f847e6a04dcb3e
         hmc_dict = dbr.rebuild("hmc")
         for key in hmc_dict:
             if hmc_dict[key].payment_is_active:

@@ -36,8 +36,8 @@ def rebuild(table):
                                          "Database Error", 1)
         return None
 
-    cursor.fetchall()
     for row in cursor:
+        print row
         # Insert new row of data into table
         if table == "student":
             table_obj = student.Student(row[1], row[2], row[3], row[4], row[5],
@@ -69,7 +69,7 @@ def rebuild(table):
             table_obj = complaint.Complaint(row[1], row[2], row[3], row[4], True, row[0])
 
         elif table == "hmc":
-            table_obj = hall_management.HallManagement(row[0], row[1])
+            table_obj = hall_management.HallManagement(row[0], True, row[1])
 
         elif table == "grant_request":
             table_obj = grant_request.GrantRequest(row[4], row[1], row[2], True, row[0])

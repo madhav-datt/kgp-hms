@@ -157,7 +157,8 @@ def update(table, primary_key, field, value):
     elif table == "complaint":
         cursor.execute(update_row.format(table, field, value, "complaint_ID", primary_key))
     elif table == "hmc":
-        cursor.execute(update_row.format(table, field, value, "password", primary_key))
+        update_row = "UPDATE {} SET {} = '{}'"
+        cursor.execute(update_row.format(table, field, value))
     elif table == "grant_request":
         cursor.execute(update_row.format(table, field, value, "grant_ID", primary_key))
     else:
