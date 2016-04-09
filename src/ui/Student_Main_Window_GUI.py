@@ -43,6 +43,16 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.pushButton_10.clicked.connect(self.password_validate)
         self.pushButton_11.clicked.connect(self.display_student_main_win)
         self.pushButton_3.clicked.connect(self.new_complaint_button)
+        self.pushButton_7.clicked.connect(self.display_student_main_win)
+        self.pushButton_6.clicked.connect(self.pay_dues_button)
+
+    def pay_dues_button(self):
+        stud_dict = dbr.rebuild("student")
+        stud_obj = stud_dict[student_ID]
+        hall_dict = dbr.rebuild("hall")
+        hall_obj =  hall_dict[stud_obj.hall_ID]
+        hall_obj.mess_account = float(hall_obj.mess_account) + float(self.lineEdit_11.text())
+        hall_obj.amenities_account
 
     def new_complaint_button(self):
         self.display_complaint_frame()
@@ -70,8 +80,31 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         if login.authenticate("student", id, pwd):
             student_ID = id
             self.display(0)
+            self.set_list()
+            self.set_dues()
         else:
             self.label_36.setText("Wrong ID or Password. Please try again.")
+
+    def set_dues(self):
+        student_dict = dbr.rebuild("student")
+        stud_obj = student_dict[student_ID]
+        hall_dict = dbr.rebuild("hall")
+        hall_ID = student_dict[student_ID].hall_ID
+        if stud_obj.mess_charge == 0:
+            self.lineEdit_8.setText(str(stud_obj.mess_charge))
+            self.lineEdit_9.setText("0")
+            self.lineEdit_10.setText("0")
+            self.lineEdit_11.setText("0")
+            self.pushButton_6.setEnabled(False)
+        else:
+            self.lineEdit_8.setText(str(stud_obj.mess_charge))
+            self.lineEdit_9.setText(str(hall_dict[hall_ID].amenities_charge))
+            if(stud_obj.room_type == "S"):
+                self.lineEdit_10.setText(str(hall_dict[hall_ID].single_room_rent))
+            else:
+                self.lineEdit_10.setText(str(hall_dict[hall_ID].double_room_rent))
+            self.lineEdit_11.setText(str(float(self.lineEdit_8) + float(self.lineEdit_9) + float(self.lineEdit_10)))
+            self.pushButton_6.setEnabled(True)
 
     def display_complaint_frame(self):
         self.display(3)

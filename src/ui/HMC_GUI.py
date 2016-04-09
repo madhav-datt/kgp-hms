@@ -29,6 +29,10 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         self.label_33.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/iit.jpg')))
         self.label_33.setScaledContents(True)
         self.pushButton_8.clicked.connect(self.password_validate)
+        self.pushButton_2.clicked.connect(self.display_home)
+        self.pushButton.clicked.connect(self.add_hall)
+        self.pushButton_5.clicked.connect(self.activate_payment_link)
+        self.pushButton_6.clicked.connect(self.deactivate_payment_link)
         '''
         Custom UI starting, based on data available in the databases
         '''
@@ -45,6 +49,9 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         # Linking "Issue Admission Letter Button to its functionality
         self.pushButton_4.clicked.connect(self.issue_admission_letter)
 
+    def display_home(self):
+        self.display(0)
+
     def display(self, i):
         self.stackedWidget.setCurrentIndex(i)
 
@@ -52,6 +59,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         password_entered = self.lineEdit_5.text()
         if login.authenticate("hmc", 0, password_entered):
             self.display(0)
+            self.set_list()
         else:
             self.label_28.setText("Wrong Password. Please try again")
 
@@ -72,15 +80,26 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         else:
             room_type = 'D'
         password = self.lineEdit_12.text()
-        new_student = student.Student(password, name, address, contact, student_hall_ID, room_no, room_type)
+        if name == "" or address == "" or contact == "" or room_no == "" or room_type == "":
+            choice = QtGui.QMessageBox.question(self, 'Error', "No Field can be left blank")
+        elif not input_validation.valid_phone(contact):
+            choice = QtGui.QMessageBox.question(self, 'Error', "Invalid contact number")
+        else:
+            new_student = student.Student(password, name, address, contact, student_hall_ID, room_no, room_type)
 
     def activate_payment_link(self):
         hmc_obj = dbr.rebuild("hmc")
-        hmc_obj.activate_payment_link()
+        for key in hmc_obj:
+            hmc_obj[key].activate_payment_link()
+        self.pushButton_6.setEnabled(True)
+        self.pushButton_5.setEnabled(False)
 
     def deactivate_payment_link(self):
         hmc_obj = dbr.rebuild("hmc")
-        hmc_obj.deactivate_payment_link()
+        for key in hmc_obj:
+            hmc_obj[key].deactivate_payment_link()
+        self.pushButton_6.setEnabled(False)
+        self.pushButton_5.setEnabled(True)
 
     '''
     Adding specific ui elements for add hall tab
@@ -89,27 +108,28 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
     def add_hall(self):
         name = self.lineEdit_4.text()
         status = self.comboBox_4.currentText()
-        amenities_charge = self.doubleSpinBox_5.text()
-        single_room_count = self.spinBox_8.text()
-        single_room_rent = self.doubleSpinBox.text()
-        double_room_count = self.spinBox_9.text()
-        double_room_rent = self.doubleSpinBox_2.text()
+        amenities_charge = self.doubleSpinBox_5.value()
+        single_room_count = self.spinBox_8.value()
+        single_room_rent = self.doubleSpinBox.value()
+        double_room_count = self.spinBox_9.value()
+        double_room_rent = self.doubleSpinBox_2.value()
         warden_name = self.lineEdit_8.text()
         warden_pw = self.lineEdit_9.text()
         manager_name = self.lineEdit_10.text()
         manager_pw = self.lineEdit_11.text()
-        manager_salary = self.doubleSpinBox_3.text()
+        manager_salary = self.doubleSpinBox_3.value()
         clerk_name = self.lineEdit_14.text()
         clerk_pw = self.lineEdit_17.text()
-        clerk_salary = self.doubleSpinBox_4.text()
+        clerk_salary = self.doubleSpinBox_4.value()
 
         if name == "" or status == "" or amenities_charge == 0. or single_room_count == 0 or single_room_rent == 0 \
-            or double_room_count == 0 or double_room_rent == 0 or warden_name == "" or warden_pw == "" or \
-            manager_name == "" or manager_pw == "" or manager_salary == 0. or clerk_name == "" or clerk_pw == "" \
-            or clerk_salary == 0.:
+                or double_room_count == 0 or double_room_rent == 0 or warden_name == "" or warden_pw == "" or \
+                manager_name == "" or manager_pw == "" or manager_salary == 0. or clerk_name == "" or clerk_pw == "" \
+                or clerk_salary == 0.:
             choice = QtGui.QMessageBox.question(self, 'Error', "No Field can be left blank")
 
         new_warden = warden.Warden(warden_pw, warden_name, "warden_kgp@gmail.com", 0)
+
         new_mess_manager = mess_manager.MessManager(manager_name, 0, manager_pw, manager_salary)
         new_clerk = clerk.Clerk(clerk_name, 0, clerk_pw, clerk_salary)
         new_hall = hall.Hall(name, status, single_room_count, double_room_count,
