@@ -35,19 +35,6 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
         self.label_8.setText("Today's Date : " + time.strftime("%x"))
         self.pushButton_2.clicked.connect(self.password_validate)
 
-        # Build table from worker database
-        worker_list = dbr.rebuild("worker")
-        for key in worker_list:
-            if isinstance(worker_list[key], attendant.Attendant):
-                i = 0
-                item = self.tableWidget.verticalHeaderItem(i)
-                item.setText("0")
-                item = self.tableWidget.item(i, 0)
-                item.setText(str(worker_list[key].worker_ID))
-                item = self.tableWidget.item(i, 1)
-                item.setText(worker_list[key].name)
-                i += 1
-
         # Deactivate attendance button if last attendance recorded is on same day
         if db.get_attend_date() == time.strftime('%Y-%m-%d'):
             self.pushButton.isEnabled(False)
@@ -62,8 +49,8 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
 
         worker_list = dbr.rebuild("worker")
 
-        for i in range(self.tableWidget.rowCount()):
-            worker_sel_ID = self.tableWidget.item(i, 0)
+        for worker_obj in self.tableWidget.selectedItems():
+            worker_sel_ID = worker_obj[0]
             for key in worker_list:
                 if worker_sel_ID == worker_list[key].worker_ID:
                     worker_list[key].monthly_attendance += 1
@@ -85,6 +72,20 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
             self.lineEdit_2.setText(str(db.get("worker", clerk_ID, "name")))
             self.label_2.setText("Welcome " + str(db.get("worker", clerk_ID, "name")))
             self.lineEdit_3.setText(str(db.get("worker", clerk_ID, "hall_ID")))
+
+            # Build table from worker database
+            worker_list = dbr.rebuild("worker")
+            i = 0
+            for key in worker_list:
+                if isinstance(worker_list[key], attendant.Attendant) and \
+                                worker_list[key].hall_ID == db.get("worker", clerk_ID, "hall_ID"):
+                    item = self.tableWidget.verticalHeaderItem(i)
+                    item.setText("0")
+                    item = self.tableWidget.item(i, 0)
+                    item.setText(str(worker_list[key].worker_ID))
+                    item = self.tableWidget.item(i, 1)
+                    item.setText(worker_list[key].name)
+                    i += 1
 
             self.display(0)
         else:
