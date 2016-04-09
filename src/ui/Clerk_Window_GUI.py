@@ -1,6 +1,4 @@
 import sys
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
 from PyQt4 import QtCore, QtGui
 from ..database import db_func as db
 from ..database import db_rebuild as dbr
@@ -15,9 +13,6 @@ except AttributeError:
         return s
 
 clerk_ID = 0
-
-
-# TODO Login screen + Set non-editable fields + Change Welcome Torwaltz label
 
 
 class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
@@ -42,6 +37,7 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
         self.lineEdit.setText(str(clerk_ID))
         if clerk_ID:
             self.lineEdit_2.setText(str(db.get("worker", clerk_ID, "name")))
+            self.label_2.setText("Welcome " + str(db.get("worker", clerk_ID, "name")))
             self.lineEdit_3.setText(str(db.get("worker", clerk_ID, "hall_ID")))
         else:
             self.lineEdit_2.setText("Name")
@@ -82,11 +78,6 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
 
         self.pushButton.isEnabled(False)
         db.update_attend_date()
-
-
-
-
-
 
 app = QtGui.QApplication(sys.argv)
 Form = ClerkWindowClass()
