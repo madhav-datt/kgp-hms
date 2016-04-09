@@ -28,9 +28,9 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
 
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
-        self.bkdLabel.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd4.jpg')))
+        self.bkdLabel.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
         self.bkdLabel.setScaledContents(True)
-        self.bkdLabel_2.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd4.jpg')))
+        self.bkdLabel_2.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
         self.bkdLabel_2.setScaledContents(True)
         self.label_8.setText("Today's Date : " + time.strftime("%x"))
         self.pushButton_2.clicked.connect(self.password_validate)
