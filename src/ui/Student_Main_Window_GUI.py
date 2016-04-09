@@ -7,6 +7,7 @@ import Student_Main_Window
 from Complaint_GUI import ComplaintWindowClass
 from ..database import login
 from ..database import db_rebuild as dbr
+from ..requests import complaint
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -36,9 +37,32 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.pushButton_7.clicked.connect(self.display_student_main_win)
         self.pushButton_5.clicked.connect(self.display_pwchange_frame)
         self.pushButton_9.clicked.connect(self.display_student_main_win)
+        self.pushButton_8.clicked.connect(self.save_button_new_password())
         self.pushButton_3.clicked.connect(self.display_complaint_frame)
         self.buttonBox.rejected.connect(self.display_student_main_win)
         self.pushButton_10.clicked.connect(self.password_validate)
+        self.pushButton_11.clicked.connect(self.display_student_main_win)
+        self.pushButton_3.clicked.connect(self.new_complaint_button)
+
+    def new_complaint_button(self):
+        self.display_complaint_frame()
+        self.label_26.setVisible(True)
+        self.lineEdit_15.setVisible(False)
+        self.lineEdit_18.setText(self.lineEdit_7.text())
+        self.lineEdit_17.setText(self.lineEdit_4.text())
+        self.lineEdit_16.setText("P")
+        self.plainTextEdit_2.setPlainText("")
+        self.buttonBox.setVisible(True)
+        self.pushButton_11.setVisible(False)
+        self.buttonBox.accepted.connect(self.create_new_complaint)
+
+    def create_new_complaint(self):
+        description = self.plainTextEdit.toPlainText()
+        action_report = ""
+        new_complaint = complaint(student_ID, "P", description, action_report)
+        self.display_student_main_win()
+        self.set_list()
+
 
     def password_validate(self):
         id = self.lineEdit_19.text()
@@ -86,20 +110,58 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
     def set_list(self):
         self.listWidget.clear()
         complaint_ids = []
-        complaint_dict = dbr.rebuild("comaplaint")
+        complaint_dict = dbr.rebuild("complaint")
         for key in complaint_dict:
             if complaint_dict[key].student_ID == student_ID:
                 complaint_ids.append(complaint_dict[key].complaint_ID)
         self.listWidget.addItems(complaint_ids)
 
-    def view_complaint(self):
+    def view_complaint_button(self):
+        self.pushButton_11.setVisible(True)
+        self.buttonBox.setVisible(False)
         if self.listWidget.currentItem() is None:
             return
         else:
             curr_complaint_ID = int(self.listWidget.currentItem().text())
             self.display_complaint_frame()
+            self.set_complaint_details(curr_complaint_ID)
 
-def find_hall_ID_by_name(self, name):
+    def set_complaint_details(self, complaint_ID):
+        complaint_dict = dbr.rebuild("complaint")
+        student_dict = dbr.rebuild("student")
+        hall_dict = dbr.rebuild("hall")
+        self.lineEdit_15.setText(str(complaint_ID))
+        self.lineEdit_18.setText(str(complaint_dict[complaint_ID].student_ID))
+        self.lineEdit_17.setText(str(hall_dict[student_dict[complaint_dict[complaint_ID].student_ID].hall_ID].name))
+        self.plainTextEdit.setPlainText(str(complaint_dict[complaint_ID].description))
+        self.lineEdit_16.setText(str(complaint_dict[complaint_ID].action_status))
+        self.plainTextEdit_2.setPlainText(str(complaint_dict[complaint_ID].action_report))
+
+    def delete_complaint_button(self):
+        if self.listWidget.currentItem() is None:
+            return
+        else:
+            curr_complaint_ID = int(self.listWidget.currentItem().text())
+            complaint_dict = dbr.rebuild("complaint")
+            complaint_dict[curr_complaint_ID].remove()
+            del complaint_dict[curr_complaint_ID]
+            item = self.listWidget.takeItem(self.listWidget.currentRow())
+            item = None
+
+    def save_button_new_password(self):
+        student_dict = dbr.rebuild("student")
+        pwd_entered = str(self.lineEdit_12.text())
+        new_pwd = str(self.lineEdit_13.text())
+        new_pwd_1 = str(self.lineEdit_14.text())
+        if login.authenticate("student", student_ID, pwd_entered) and new_pwd == new_pwd_1:
+            self.label_23.setText("Password Successfully Changed!")
+            student_dict[student_ID].password = pwd_entered
+        elif new_pwd == new_pwd_1:
+            self.label_23.setText("Original password doesn't match entered password")
+        else:
+            self.label_23.setText("Password don not match")
+
+def find_hall_ID_by_name(name):
     hall_dict = dbr.rebuild("hall")
     for key in hall_dict:
         if hall_dict[key].name == name:

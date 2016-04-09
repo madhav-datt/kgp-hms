@@ -37,8 +37,10 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         for key in hmc_dict:
             if hmc_dict[key].payment_is_active:
                 self.pushButton_5.setEnabled(False)
+                self.pushButton_6.setEnabled(True)
             else:
                 self.pushButton_5.setEnabled(True)
+                self.pushButton_6.setEnabled(False)
 
         '''
         Linking "Issue Admission Letter Button to its functionality
@@ -173,7 +175,8 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
                 self.set_list()
                 self.label_23.setText("")
 
-def find_hall_ID_by_name(self, name):
+
+def find_hall_ID_by_name(name):
     hall_dict = dbr.rebuild("hall")
     for key in hall_dict:
         if hall_dict[key].name == name:
