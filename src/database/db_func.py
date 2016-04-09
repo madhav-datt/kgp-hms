@@ -9,6 +9,7 @@
 
 import ctypes
 import mysql.connector
+from PyQt4 import QtGui
 from mysql.connector import errorcode
 
 
@@ -33,6 +34,7 @@ def connect():
 
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+           # QtGui.QMessageBox.information('Delete?', 'Are you sure you want to delete this item?')
             ctypes.windll.user32.MessageBoxA(0, "Incorrect credentials, please contact your administrator",
                                              "Database Error", 1)
         elif err.errno == errorcode.ER_BAD_DB_ERROR:
@@ -193,7 +195,8 @@ def get(table, primary_key, field):
     elif table == "grant_request":
         cursor.execute(query.format(field, table, "grant_ID", primary_key))
     elif table == "hmc":
-        cursor.execute(query.format(field, table, "password", primary_key))
+        query = "SELECT {} FROM {}"
+        cursor.execute(query.format(field, table))
     else:
         ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Query failed",
                                          "Database Error", 1)
