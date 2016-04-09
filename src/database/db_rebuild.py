@@ -23,13 +23,15 @@ def rebuild(table):
     cnx = db_func.connect()
     cursor = cnx.cursor()
 
-    query = "SELECT * from %s;"
+    query = "SELECT * FROM {}"
     data_table = {}
 
     if table == "student" or table == "warden" or table == "hmc" or \
                     table == "hall" or table == "grant_request" or table == "worker" or \
                     table == "complaint":
-        cursor.execute(query, (table))
+        #cursor.execute("SELECT * FROM hmc")
+        cursor.execute(query.format(table))
+        #cursor.execute(query, (table,))
     else:
         ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Object build failed",
                                          "Database Error", 1)
@@ -71,8 +73,7 @@ def rebuild(table):
             table_obj = hall_management.HallManagement(row[0], row[1])
 
         elif table == "grant_request":
-            table_obj = grant_request.GrantRequest(row[7], row[1], row[2], row[3], row[4],
-                                                   row[5], row[6], True, row[0])
+            table_obj = grant_request.GrantRequest(row[4], row[1], row[2], True, row[0])
 
         else:
             table_obj = None
@@ -83,4 +84,3 @@ def rebuild(table):
     cnx.close()
 
     return data_table
-

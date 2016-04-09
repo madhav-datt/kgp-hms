@@ -21,6 +21,7 @@ except AttributeError:
         return s
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 =======
@@ -30,6 +31,8 @@ student_list = dbr.rebuild("student")
 =======
 student_list = dbr.rebuild("student")
 
+=======
+>>>>>>> dc98a9949ef9bb480a456e953c8de7cb3f553c3a
 
 >>>>>>> 6e6b9f7787080bb3fce01fc107742cceb2993ed5
 class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
@@ -71,8 +74,11 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
             room_type = 'D'
         password = self.lineEdit_12.text()
         new_student = student.Student(password, name, address, contact, student_hall_ID, room_no, room_type)
+<<<<<<< HEAD
         student_list = db.rebuild("student")
         student_list.update({new_student.student_ID, new_student})
+=======
+>>>>>>> dc98a9949ef9bb480a456e953c8de7cb3f553c3a
 
     def activate_payment_link(self):
         hmc_obj = dbr.rebuild("hmc")
