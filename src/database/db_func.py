@@ -29,6 +29,7 @@ def connect():
 
     try:
         cnx = mysql.connector.connect(**config)
+        cnx.autocommit = True
 
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
@@ -60,14 +61,17 @@ def add(table, **param):
 
     # MySQL statements to add to tables
     # Passed parameters must exactly match attribute order
+    # Creates row with default values:
+    #   string_parameter: 'parameter'
+    #   numerical_value: 0
+    #   boolean_value: 'False'
     add_student = ("INSERT INTO student "
-                   "(password, name, address, contact_number, hall_ID, room_no, \
-                    mess_charge, room_type) "
-                   "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
+                   "(password, name, address, contact_number, hall_ID, room_no, mess_charge, room_type) "
+                   "VALUES ('password', 'name', 'address', 'contact', 0, 'room', 0, 'U')")
 
     add_warden = ("INSERT INTO warden "
                   "(password, name, email, hall_ID, controlling_warden) "
-                  "VALUES (%s, %s, %s, %s, %s)")
+                  "VALUES ('password', 'name', 'email', 0, 'False')")
 
     add_hall = ("INSERT INTO hall "
                 "(name, warden_ID, clerk_ID, mess_manager_ID, status, \
@@ -75,32 +79,32 @@ def add(table, **param):
                 double_room_occupancy, single_room_rent, double_room_rent, \
                 amenities_charge, mess_account, amenities_account, repair_account, \
                 salary_account, others_account, rent_account) "
-                "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, \
-                %s, %s, %s, %s, %s)")
+                "VALUES ('name', 0, 0, 0, 'U', 0, 0, 0, 0, 0, 0, 0, 0, \
+                0, 0, 0, 0, 0)")
 
     add_worker = ("INSERT INTO worker "
                   "(password, name, worker_type, monthly_salary, daily_wage, \
                   hall_ID, monthly_attendance) "
-                  "VALUES (%s, %s, %s, %s, %s, %s, %s)")
+                  "VALUES ('password', 'name', 'U', 0, 0, 0, 0)")
 
     add_complaint = ("INSERT INTO complaint "
                      "(student_ID, action_status, description, action_report) "
-                     "VALUES (%s, %s, %s, %s)")
+                     "VALUES (0, 'U', 'description', 'action report')")
 
     add_hmc = ("INSERT INTO hmc "
                "(password, payment_is_active) "
-               "VALUES (%s, %s)")
+               "VALUES ('password', 'False')")
 
     add_grant_request = ("INSERT INTO grant_request "
                          "(repair_charge, other_charge, salary_charge, hall_ID) "
-                         "VALUES (%s, %s, %s, %s)")
+                         "VALUES (0, 0, 0, 0)")
 
     cnx = connect()
     cursor = cnx.cursor()
 
     # Insert new row of data into table
     if table == "student":
-        cursor.execute(add_student, param)
+        cursor.execute(add_student)  # , param)
     elif table == "warden":
         cursor.execute(add_warden, param)
     elif table == "hall":
@@ -121,7 +125,7 @@ def add(table, **param):
     # Commit to database
     cnx.commit()
 
-    primary_key = cursor.lastrowid()
+    primary_key = cursor.lastrowid
     cursor.close()
     cnx.close()
 
@@ -137,7 +141,7 @@ def update(table, primary_key, field, value):
     cnx = connect()
     cursor = cnx.cursor()
 
-    update_row = "UPDATE {} SET {} = {} WHERE {} = {}"
+    update_row = "UPDATE {} SET {} = '{}' WHERE {} = {}"
 
     # Update row of data from table
     if table == "student":
@@ -158,6 +162,8 @@ def update(table, primary_key, field, value):
         ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Update failed",
                                          "Database Error", 1)
 
+    # Commit to database
+    cnx.commit()
     cursor.close()
     cnx.close()
 
@@ -231,5 +237,6 @@ def delete(table, primary_key):
         ctypes.windll.user32.MessageBoxA(0, "Table not recognized. Delete failed",
                                          "Database Error", 1)
 
+    cnx.commit()
     cursor.close()
     cnx.close()

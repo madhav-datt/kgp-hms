@@ -20,7 +20,6 @@ class Student(object):
         name: String
         address: String
         contact_number: String
-        photograph: Image
         hall_ID: Integer to identify hall of residence
         room_no: String
         room_type: "S" for single, "D" for double room
@@ -33,6 +32,16 @@ class Student(object):
         """
         Init Student with details from Admission Letter
         """
+
+        # The rebuild flag, if true, denotes that the object is being made from
+        # data already present in the database
+        # If False, a new data row is added to the specific table
+        if not rebuild:
+            self.student_ID = db.add("student")
+            self._password = pv.hash_password(password)
+        else:
+            self.student_ID = student_ID
+            self.password = password
 
         self.name = name
         self.address = address
@@ -56,21 +65,25 @@ class Student(object):
         # The rebuild flag, if true, denotes that the object is being made from
         # data already present in the database
         # If False, a new data row is added to the specific table
-        if not rebuild:
-            self.password = pv.hash_password(password)
-            self.student_ID = db.add("student", password=self.password,
-                                     name=self.name, address=self.address,
-                                     contact_number=self.contact_number, hall_ID=self.hall_ID,
-                                     room_no=self.room_no, mess_charge=self.mess_charge,
-                                     room_type=self.room_type)
-        else:
-            self.password = password
-            self.student_ID = student_ID
+        # if not rebuild:
+        #     self._password = pv.hash_password(password)
+        #     self._student_ID = db.add("student", password=self.password,
+        #                              name=self.name, address=self.address,
+        #                              contact_number=self.contact_number, hall_ID=self.hall_ID,
+        #                              room_no=self.room_no, mess_charge=self.mess_charge,
+        #                              room_type=self.room_type)
+        # else:
+        #     self._password = password
+        #     self._student_ID = student_ID
 
     # student_ID getter functions
     @property
     def student_ID(self):
         return self._student_ID
+
+    @student_ID.setter
+    def student_ID(self, student_ID):
+        self._student_ID = student_ID
 
     # password getter and setter functions
     @property
@@ -153,17 +166,17 @@ class Student(object):
         db.update("student", self.student_ID, "mess_charge", self.mess_charge)
 
     # total_dues getter function
-    @property
-    def total_dues(self):
-        """
-        Calculate total dues payable by student
-        total_dues = room_rent + mess_charges + amenities_charges
-        """
-
-        if self.room_type == "S":
-            room_rent = db.get("hall", self.hall_ID, "single_room_rent")
-        elif self.room_type == "D":
-            room_rent = db.get("hall", self.hall_ID, "double_room_rent")
-
-        return self.mess_charge + self.room_rent + \
-               db.get("hall", self.hall_ID, "amenities_charges")
+    # @property
+    # def total_dues(self):
+    #     """
+    #     Calculate total dues payable by student
+    #     total_dues = room_rent + mess_charges + amenities_charges
+    #     """
+    #
+    #     if self.room_type == "S":
+    #         room_rent = db.get("hall", self.hall_ID, "single_room_rent")
+    #     elif self.room_type == "D":
+    #         room_rent = db.get("hall", self.hall_ID, "double_room_rent")
+    #
+    #     return self.mess_charge + self.room_rent + \
+    #            db.get("hall", self.hall_ID, "amenities_charges")

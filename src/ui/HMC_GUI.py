@@ -7,6 +7,7 @@ from ..actors import student, warden
 from ..workers import clerk, mess_manager
 from ..requests import grant_request
 from ..database import db_rebuild as dbr
+from ..database import db_func as db
 from ..halls import hall
 from ..database import input_validation
 
@@ -25,6 +26,8 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         '''
         Custom UI starting, based on data available in the databases
         '''
+        student.Student("password", "name", "address", "contact_number", "hall_ID", "room_no",
+                        "room_type", False)
 
         hmc_dict = dbr.rebuild("hmc")
         for key in hmc_dict:
@@ -50,7 +53,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         student_hall = self.comboBox_2.currentText()
         student_hall_ID = 1
         room_no = self.lineEdit_13.text()
-        if self.comboBox_3.currentText() == "Single":
+        if self.comboBox_2.currentText() == "Single":
             room_type = 'S'
         else:
             room_type = 'D'
