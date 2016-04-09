@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="0a869d99-4bbd-4a72-9cea-88f9c7d74b97" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actors/student.py" afterPath="$PROJECT_DIR$/src/actors/student.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actors/hall_management.py" afterPath="$PROJECT_DIR$/src/actors/hall_management.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/db_func.py" afterPath="$PROJECT_DIR$/src/database/db_func.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/db_rebuild.py" afterPath="$PROJECT_DIR$/src/database/db_rebuild.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/password_validation.py" afterPath="$PROJECT_DIR$/src/database/password_validation.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/setup_db.sh" afterPath="$PROJECT_DIR$/src/setup_db.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/HMC_GUI.py" afterPath="$PROJECT_DIR$/src/ui/HMC_GUI.py" />
     </list>
     <ignored path="kgp-hms.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +32,51 @@
       <file leaf-file-name="HMC_GUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/HMC_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+            <state relative-caret-position="216">
+              <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+                <marker date="1460201351903" expanded="false" signature="0:372" placeholder="import ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/database/login.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="497">
+              <caret line="72" column="30" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db_rebuild.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/database/db_rebuild.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="61" column="94" selection-start-line="61" selection-start-column="94" selection-end-line="61" selection-end-column="94" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hall_management.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/actors/hall_management.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="21" column="73" selection-start-line="21" selection-start-column="73" selection-end-line="21" selection-end-column="73" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="password_validation.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/database/password_validation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -40,21 +85,11 @@
       <file leaf-file-name="db_func.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/database/db_func.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-205">
-              <caret line="198" column="48" selection-start-line="198" selection-start-column="48" selection-end-line="198" selection-end-column="48" />
+            <state relative-caret-position="281">
+              <caret line="153" column="55" selection-start-line="153" selection-start-column="55" selection-end-line="153" selection-end-column="55" />
               <folding>
                 <element signature="e#164#177#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="setup_db.sh" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/setup_db.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -68,10 +103,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/database/input_validation.py" />
-        <option value="$PROJECT_DIR$/src/database/login.py" />
         <option value="$PROJECT_DIR$/src/requests/printer.py" />
-        <option value="$PROJECT_DIR$/src/database/db_rebuild.py" />
-        <option value="$PROJECT_DIR$/src/actors/hall_management.py" />
         <option value="$PROJECT_DIR$/src/actors/warden.py" />
         <option value="$PROJECT_DIR$/src/halls/hall.py" />
         <option value="$PROJECT_DIR$/src/requests/complaint.py" />
@@ -81,10 +113,13 @@
         <option value="$PROJECT_DIR$/src/workers/worker.py" />
         <option value="$PROJECT_DIR$/src/workers/mess_manager.py" />
         <option value="$PROJECT_DIR$/src/actors/student.py" />
-        <option value="$PROJECT_DIR$/src/database/password_validation.py" />
-        <option value="$PROJECT_DIR$/src/setup_db.sh" />
         <option value="$PROJECT_DIR$/src/ui/HMC_GUI.py" />
+        <option value="$PROJECT_DIR$/src/database/login.py" />
+        <option value="$PROJECT_DIR$/src/database/db_rebuild.py" />
+        <option value="$PROJECT_DIR$/src/actors/hall_management.py" />
         <option value="$PROJECT_DIR$/src/database/db_func.py" />
+        <option value="$PROJECT_DIR$/src/setup_db.sh" />
+        <option value="$PROJECT_DIR$/src/database/password_validation.py" />
       </list>
     </option>
   </component>
@@ -291,7 +326,7 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="Python.Student_login_GUI">
+  <component name="RunManager" selected="Python.Integrated">
     <configuration default="false" name="HMC_GUI" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -520,10 +555,10 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Student_login_GUI" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Integrated" />
         <item index="1" class="java.lang.String" itemvalue="Python.Student_Main_Window_GUI" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Mess_Manager_Window" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Integrated" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Student_login_GUI" />
+        <item index="3" class="java.lang.String" itemvalue="Python.Mess_Manager_Window" />
         <item index="4" class="java.lang.String" itemvalue="Python.HMC_GUI" />
       </list>
     </recent_temporary>
@@ -734,16 +769,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/db_rebuild.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1271">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding>
-            <element signature="e#164#177#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/requests/complaint.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -756,14 +781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
           <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/workers/attendant.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="42" column="62" selection-start-line="42" selection-start-column="62" selection-end-line="42" selection-end-column="62" />
           <folding />
         </state>
       </provider>
@@ -804,30 +821,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actors/hall_management.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/login.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="48" column="33" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/password_validation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/actors/student.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="684">
@@ -848,26 +841,69 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/HMC_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+        <state relative-caret-position="216">
+          <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <marker date="1460201351903" expanded="false" signature="0:372" placeholder="import ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/login.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="72" column="30" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/db_rebuild.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="61" column="94" selection-start-line="61" selection-start-column="94" selection-end-line="61" selection-end-column="94" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/db_func.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-205">
-          <caret line="198" column="48" selection-start-line="198" selection-start-column="48" selection-end-line="198" selection-end-column="48" />
+        <state relative-caret-position="281">
+          <caret line="153" column="55" selection-start-line="153" selection-start-column="55" selection-end-line="153" selection-end-column="55" />
           <folding>
             <element signature="e#164#177#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/actors/hall_management.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="21" column="73" selection-start-line="21" selection-start-column="73" selection-end-line="21" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/workers/attendant.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="42" column="62" selection-start-line="42" selection-start-column="62" selection-end-line="42" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/setup_db.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+        <state relative-caret-position="162">
+          <caret line="96" column="3" selection-start-line="96" selection-start-column="3" selection-end-line="96" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/password_validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
           <folding />
         </state>
       </provider>

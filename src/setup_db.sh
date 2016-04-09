@@ -107,7 +107,7 @@ CREATE TABLE hmc(
    password VARCHAR(200) NOT NULL,
    payment_is_active VARCHAR(6)
    );
-INSERT INTO hmc (password, payment_is_active) VALUES ("$2b$12$9o0bBUrbxu3j3x8Nyhai3eQWIglNGtjiXQlaMOmZEsyb.XKo4Gu/W", "False");
+INSERT INTO hmc (password, payment_is_active) VALUES ("$2b$12$hV/Uk9ejKp70wSHhqT3.reyx7oPIkKQaN5mXanWJ3usYt3VwlENwK", "False");
 EOF
 
 # Create Hall table

@@ -16,14 +16,15 @@ def hash_password(password):
     Add a randomly-generated salt
     """
 
-    return bcrypt.hashpw(password, bcrypt.gensalt())
+    return bcrypt.hashpw(password, bcrypt.gensalt()).encode('utf-8')
 
 
 def check_password(password, correct_password):
     """
-    Check that a unhashed password matches one that has previously been
+    Check that a un-hashed password matches one that has previously been
     """
-    if bcrypt.hashpw(password, correct_password) == correct_password:
+
+    if bcrypt.hashpw(str(password), correct_password.encode('utf-8')) == correct_password.encode('utf-8'):
         return True
 
     return False
