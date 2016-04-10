@@ -20,6 +20,7 @@ def print_statement(Hall):
     """
 
     pdf = FPDF('P', 'mm', 'A4')
+    pdf.add_page('P')
     pdf.set_font('Times', 'B', 14)
 
     pdf.multi_cell(0, 5, ('Hall Account Statement for Hall: %s' % Hall.name))
@@ -46,6 +47,7 @@ def issue_cheque(name, amount):
     """
 
     pdf = FPDF('P', 'mm', 'A4')
+    pdf.add_page('P')
     pdf.set_font('Times', 'B', 14)
 
     pdf.multi_cell(0, 5, 'Cheque Payment System')
@@ -104,6 +106,7 @@ def print_receipt(Student):
     """
 
     pdf = FPDF('P', 'mm', 'A4')
+    pdf.add_page('P')
     pdf.set_font('Times', 'B', 14)
 
     pdf.multi_cell(0, 5, 'Student Dues Payment Receipt')
@@ -140,6 +143,7 @@ def issue_student_admission_letter(Student, body):
     """
 
     pdf = FPDF('P', 'mm', 'A4')
+    pdf.add_page('P')
     pdf.set_font('Times', 'B', 14)
 
     pdf.multi_cell(0, 5, 'Student Admission Letter')

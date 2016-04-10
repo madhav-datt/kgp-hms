@@ -87,7 +87,9 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         """
 
         worker_table = dbr.rebuild("worker")
-        worker_ID = self.tableWidget.selectedItems()[0][0]
+        worker_ID = 0
+        if self.tableWidget.selectedItems():
+            worker_ID = self.tableWidget.selectedItems()[0][0]
 
         if worker_ID in worker_table:
             # Remove worker from table and database
@@ -151,10 +153,6 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
             # View Room Occupancy Tab - add labels and values from database
             self.lineEdit_8.setText(str(db.get("hall", hall_ID, "single_room_count")[0]))
             self.lineEdit_9.setText(str(db.get("hall", hall_ID, "single_room_occupancy")[0]))
-            self.lineEdit_8.setText(str(int(self.lineEdit_8.text()) - int(self.lineEdit_9.text())))
-
-            self.lineEdit_8.setText(db.get("hall", hall_ID, "single_room_count")[0])
-            self.lineEdit_9.setText(db.get("hall", hall_ID, "single_room_occupancy")[0])
             self.lineEdit_10.setText(str(int(self.lineEdit_8.text()) - int(self.lineEdit_9.text())))
 
             self.lineEdit_17.setText(str(db.get("hall", hall_ID, "double_room_count")[0]))
@@ -189,10 +187,11 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
                 total_occ = this_warden.total_occupancy(dbr.rebuild("hall"))
                 self.lineEdit_24.setText(str(total_occ['single_total']))
                 self.lineEdit_25.setText(str(total_occ['single_occupy']))
-                self.lineEdit_26.setText(str(int(self.label_24.text()) - int(self.label_25.text())))
+                self.lineEdit_26.setText(str(int(self.lineEdit_24.text()) - int(self.lineEdit_25.text())))
+
                 self.lineEdit_27.setText(str(total_occ['double_total']))
                 self.lineEdit_28.setText(str(total_occ['double_occupy']))
-                self.lineEdit_29.setText(str(int(self.label_24.text()) - int(self.label_25.text())))
+                self.lineEdit_29.setText(str(int(self.lineEdit_24.text()) - int(self.lineEdit_25.text())))
 
             self.stackedWidget.setCurrentIndex(0)
         else:
