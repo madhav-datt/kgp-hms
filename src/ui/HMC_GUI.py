@@ -210,7 +210,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         grant_req_dict = dbr.rebuild("grant_request")
         self.listWidget.clear()
         hall_IDS = [grant_req_dict[req].hall_ID for req in grant_req_dict]
-        hall_names = [hall_dict[hall_ID] for hall_ID in hall_IDS]
+        hall_names = [hall_dict[hall_ID].name for hall_ID in hall_IDS]
         self.listWidget.addItems(hall_names)
         self.label_23.setText("")
 
