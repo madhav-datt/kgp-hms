@@ -56,6 +56,7 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         self.pushButton_5.clicked.connect(self.pay_salaries)
         self.pushButton_6.clicked.connect(self.gen_salary_list)
         self.pushButton_7.clicked.connect(self.view_complaint_button)
+        self.pushButton_8.clicked.connect(self.post_atr_button())
 
     def view_complaint_button(self):
         comp_dict = dbr.rebuild("complaint")
