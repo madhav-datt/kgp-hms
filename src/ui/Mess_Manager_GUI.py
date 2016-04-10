@@ -4,6 +4,7 @@ from ..database import db_func as db
 from ..database import db_rebuild as dbr
 from ..database import login
 from PyQt4 import QtCore, QtGui
+from ..workers import mess_manager
 import Mess_Manager_Window
 
 try:
@@ -19,7 +20,7 @@ class MessManagerWindowClass(QtGui.QWidget, Mess_Manager_Window.Ui_Form):
         self.setupUi(self)
         self.label_7.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
         self.label_7.setScaledContents(True)
-
+        mess_manager.MessManager("mmm", 0, "b", 1000)
         self.label_12.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
         self.label_12.setScaledContents(True)
         self.pushButton_2.clicked.connect(self.password_validate)
@@ -45,16 +46,16 @@ class MessManagerWindowClass(QtGui.QWidget, Mess_Manager_Window.Ui_Form):
         Check password for login
         """
 
-        user_ID = self.lineEdit_4.text()
+        user_ID = int(self.lineEdit_4.text())
         password = self.lineEdit_5.text()
-        if login.authenticate("clerk", user_ID, password):
+        if login.authenticate("mess_manager", user_ID, password):
             mess_manager_ID = user_ID
 
             # Set text fields with value from databases
             self.lineEdit.setText(str(mess_manager_ID))
-            self.lineEdit_2.setText(str(db.get("worker", mess_manager_ID, "name")))
-            self.label_2.setText("Welcome " + str(db.get("worker", mess_manager_ID, "name")))
-            self.lineEdit_3.setText(str(db.get("worker", mess_manager_ID, "hall_ID")))
+            self.lineEdit_2.setText(str(db.get("worker", mess_manager_ID, "name")[0]))
+            self.label_2.setText("Welcome " + db.get("worker", mess_manager_ID, "name")[0])
+            self.lineEdit_3.setText(str(db.get("worker", mess_manager_ID, "hall_ID")[0]))
 
             # Build table from student database
             student_list = dbr.rebuild("student")
@@ -69,7 +70,7 @@ class MessManagerWindowClass(QtGui.QWidget, Mess_Manager_Window.Ui_Form):
                     item.setText(student_list[key].name)
                     i += 1
 
-            self.display(0)
+            self.stackedWidget.setCurrentIndex(0)
         else:
             self.label_11.setText("Authentication Failed. Please try again")
 

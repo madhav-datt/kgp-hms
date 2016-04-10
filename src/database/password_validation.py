@@ -23,9 +23,7 @@ def check_password(password, correct_password):
     """
     Check that a un-hashed password matches one that has previously been
     """
-    print password
-    print correct_password.encode('utf-8')
-    print bcrypt.hashpw(str(password), correct_password.encode('utf-8'))
+
     if bcrypt.hashpw(str(password), correct_password.encode('utf-8')) == correct_password.encode('utf-8'):
         return True
 

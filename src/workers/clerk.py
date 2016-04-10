@@ -19,10 +19,7 @@ class Clerk(worker.Worker):
         worker_ID: Integer to uniquely identify worker
         name: String
         hall_ID: Integer to uniquely identify hall
-        email: String
         monthly_salary: Float
-        daily_wage: Float
-        monthly_attendance: Integer with monthly attendance count for daily workers
     """
 
     def __init__(self, name, hall_ID, password, monthly_salary, rebuild=False,
@@ -37,13 +34,13 @@ class Clerk(worker.Worker):
         if not rebuild:
             self.worker_ID = db.add("worker")
             db.update("worker", self.worker_ID, "worker_type", "C")
-            self.password = pv.hash_password(password)
+            self.password = password
         else:
             self.worker_ID = worker_ID
-            self.password = password
+            self._password = password
 
         self.monthly_salary = monthly_salary
-        worker.Worker.__init__(self, worker_ID, name, hall_ID)
+        worker.Worker.__init__(self, self.worker_ID, name, hall_ID)
 
     # password getter and setter functions
     @property
@@ -53,7 +50,7 @@ class Clerk(worker.Worker):
     @password.setter
     def password(self, password):
         self._password = pv.hash_password(password)
-        db.update("warden", self.warden_ID, "password", self.password)
+        db.update("worker", self.worker_ID, "password", self.password)
 
     # monthly_salary getter and setter functions
     @property
