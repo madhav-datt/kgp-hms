@@ -63,7 +63,8 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         hall_ID = this_warden.hall_ID
         hall_dict = dbr.rebuild("hall")
         hall_obj = hall_dict[hall_ID]
-        total_salary = this_warden.salary_charge
+        total_salary = this_warden.salary_charge(dbr.rebuild("worker"))
+
         if total_salary > hall_obj.salary_account:
             choice = QtGui.QMessageBox.question(self, 'Error',
                                                 "Insufficient funds in hall's salary account. Consider a grant request.")

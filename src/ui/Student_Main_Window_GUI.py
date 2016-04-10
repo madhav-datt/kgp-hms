@@ -32,6 +32,9 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
 
         self.label_32.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
         self.label_32.setScaledContents(True)
+
+        self.label_31.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
+        self.label_31.setScaledContents(True)
         self.label_36.setText(" ")
 
         #self.pushButton_3.clicked.connect(self.show_complaint_window)
@@ -47,6 +50,7 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.pushButton_3.clicked.connect(self.new_complaint_button)
         self.pushButton_7.clicked.connect(self.display_student_main_win)
         self.pushButton_6.clicked.connect(self.pay_dues_button)
+        self.pushButton.clicked.connect(self.view_complaint_button)
 
     def pay_dues_button(self):
         stud_dict = dbr.rebuild("student")
@@ -104,6 +108,8 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         hall_dict = dbr.rebuild("hall")
         hall_ID = student_dict[student_ID].hall_ID
         if stud_obj.mess_charge == 0:
+            print stud_obj.name
+            print stud_obj.mess_charge
             self.lineEdit_8.setText(str(stud_obj.mess_charge))
             self.lineEdit_9.setText("0")
             self.lineEdit_10.setText("0")
@@ -111,6 +117,8 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
             self.pushButton_6.setEnabled(False)
         else:
             self.lineEdit_8.setText(str(stud_obj.mess_charge))
+            print stud_obj.name
+            print stud_obj.mess_charge
             self.lineEdit_9.setText(str(hall_dict[hall_ID].amenities_charge))
             if(stud_obj.room_type == "S"):
                 self.lineEdit_10.setText(str(hall_dict[hall_ID].single_room_rent))
@@ -158,7 +166,7 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         complaint_dict = dbr.rebuild("complaint")
         for key in complaint_dict:
             if complaint_dict[key].student_ID == student_ID:
-                complaint_ids.append(complaint_dict[key].complaint_ID)
+                complaint_ids.append(str(complaint_dict[key].complaint_ID))
         self.listWidget.addItems(complaint_ids)
 
     def view_complaint_button(self):
@@ -166,10 +174,12 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.pushButton_11.setVisible(True)
         self.buttonBox.setVisible(False)
         if self.listWidget.currentItem() is None:
+            print "yolo"
             return
         else:
             curr_complaint_ID = int(self.listWidget.currentItem().text())
-            self.display_complaint_frame()
+            self.display(4)
+            print "JI"
             self.set_complaint_details(curr_complaint_ID)
 
     def set_complaint_details(self, complaint_ID):
@@ -202,11 +212,12 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         new_pwd_1 = str(self.lineEdit_14.text())
         if login.authenticate("student", student_ID, pwd_entered) and new_pwd == new_pwd_1:
             self.label_23.setText("Password Successfully Changed!")
-            student_dict[student_ID].password = pwd_entered
+            student_dict[student_ID].password = new_pwd
         elif new_pwd == new_pwd_1:
             self.label_23.setText("Original password doesn't match entered password")
         else:
-            self.label_23.setText("Password don not match")
+            self.label_23.setText("Password don't match")
+
 
 def find_hall_ID_by_name(name):
     hall_dict = dbr.rebuild("hall")
