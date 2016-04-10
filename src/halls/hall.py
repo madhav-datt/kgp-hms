@@ -65,12 +65,12 @@ class Hall(object):
         self.amenities_charge = amenities_charge
 
         # Initialize accounts with 0.
-        self.mess_account = 0.
-        self.amenities_account = 0.
-        self.repair_account = 0.
-        self.salary_account = 0.
-        self.rent_account = 0.
-        self.others_account = 0.
+        self.mess_account = 50000.
+        self.amenities_account = 50000.
+        self.repair_account = 50000.
+        self.salary_account = 50000.
+        self.rent_account = 50000.
+        self.others_account = 50000.
 
     # name getter and setter functions
     @property
