@@ -39,6 +39,7 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         self.label_32.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
         self.label_32.setScaledContents(True)
 
+<<<<<<< HEAD
         warden.Warden("a", "War", "who cares", 0)
         self.pushButton_10.clicked.connect(self.password_validate)
 
@@ -53,6 +54,11 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
             
         else:
             self.label_42.setText("Authentication Failed. Please try again")
+=======
+        
+
+
+>>>>>>> a4776a1fa2e77439e0bd96787bedf74d535c81be
 
 app = QApplication(sys.argv)
 form = WardenWindowClass()
