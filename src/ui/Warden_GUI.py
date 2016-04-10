@@ -15,7 +15,6 @@ except AttributeError:
     def _fromUtf8(s):
         return s
 
-
 # Build Warden Object
 global this_warden
 
@@ -53,6 +52,38 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         self.pushButton_3.clicked.connect(self.hire_new_worker)
 
         self.pushButton_4.clicked.connect(self.print_account_statement)
+
+        self.pushButton_5.clicked.connect(self.pay_salaries)
+
+        self.pushButton_6.clicked.connect(self.gen_salary_list)
+
+    def gen_salary_list(self):
+        hall_dict = dbr.rebuild("hall")
+        hall_obj = hall_dict[this_warden.hall_ID]
+        printer.generate_salary_list(hall_obj)
+        choice = QtGui.QMessageBox.information(self, 'Success', "PDF of salary list has been generated.")
+
+    def pay_salaries(self):
+        hall_ID = this_warden.hall_ID
+        hall_dict = dbr.rebuild("hall")
+        hall_obj = hall_dict[hall_ID]
+        total_salary = this_warden.salary_charge
+        if total_salary > hall_obj.salary_account:
+            choice = QtGui.QMessageBox.question(self, 'Error',
+                                                "Insufficient funds in hall's salary account. Consider a grant request.")
+        else:
+            hall_obj.salary_account -= total_salary
+            printer.issue_cheque("Workers", total_salary)
+            choice = QtGui.QMessageBox.information(self, 'Success',
+                                                   "An amount of " + str(total_salary) +
+                                                   " Rs has been deducted from hall's salary account. Print command "
+                                                   "for cheques has been given.")
+            worker_dict = dbr.rebuild("worker")
+            for key in worker_dict:
+                worker = worker_dict[key]
+                if worker.hall_ID == hall_ID and isinstance(worker, attendant.Attendant):
+                    worker.monthly_attendance = 0
+
 
     def print_account_statement(self):
         """
@@ -150,6 +181,7 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         attendant.Attendant(worker_name, hall_ID, worker_wage, 0)
         self.lineEdit_22.setText("")
         self.doubleSpinBox.setValue(0.00)
+
 
 app = QApplication(sys.argv)
 form = WardenWindowClass()

@@ -11,6 +11,7 @@ from ..database import db_func as db
 from ..halls import hall
 from ..database import input_validation
 from ..database import login
+from ..requests import printer
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -90,6 +91,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         else:
             new_student = student.Student(password, name, address, contact, student_hall_ID, room_no, room_type)
             choice = QtGui.QMessageBox.information(self, 'Success', "Student Letter successfully issued.")
+            printer.issue_student_admission_letter(new_student, str(self.plainTextEdit.toPlainText()))
             self.lineEdit_16.setText("")
             self.lineEdit_15.setText("")
             self.lineEdit_18.setText("")

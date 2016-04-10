@@ -91,6 +91,7 @@ class Ui_Form(object):
         self.label_6.setObjectName(_fromUtf8("label_6"))
         self.tableWidget = QtGui.QTableWidget(self.page)
         self.tableWidget.setGeometry(QtCore.QRect(10, 260, 301, 151))
+        self.tableWidget.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
         self.tableWidget.setSelectionMode(QtGui.QAbstractItemView.SingleSelection)
         self.tableWidget.setSelectionBehavior(QtGui.QAbstractItemView.SelectRows)
         self.tableWidget.setObjectName(_fromUtf8("tableWidget"))

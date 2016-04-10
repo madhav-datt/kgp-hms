@@ -61,7 +61,7 @@ def issue_cheque(name, amount):
     pdf.output(('cheque_%s', name), 'F')
 
 
-def generate_salary_list(Hall, worker_list):
+def generate_salary_list(Hall):
     """
     Print list of all employees and respective salary details for specified hall
     Take dict of Worker objects as parameter
