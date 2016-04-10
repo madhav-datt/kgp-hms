@@ -5,6 +5,7 @@ from ..database import db_rebuild as dbr
 from ..database import login
 from ..requests import grant_request
 from ..actors import warden
+from ..workers import attendant
 from PyQt4 import QtCore, QtGui
 import warden_window
 
@@ -44,7 +45,16 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         self.label_32.setScaledContents(True)
 
         self.pushButton_10.clicked.connect(self.password_validate)
+
         self.pushButton.clicked.connect(self.submit_grant_request)
+
+        self.pushButton_3.clicked.connect(self.hire_new_worker)
+
+        self.pushButton_4.clicked.connect(self.print_account_statement)
+
+    def print_account_statement(self):
+        pass
+        #TODO : link to printing of account statements
 
     def check_grant_button(self):
         """
@@ -101,8 +111,37 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
             # Grant Request Tab - add labels and values from database
             self.lineEdit.setText(str(this_warden.salary_charge(dbr.rebuild("worker"))))
             self.check_grant_button()
+
+            # View Overall Occupancy Tab - add conditions
+            if not this_warden.controlling_warden:
+                self.label_4.setVisible(True)
+                self.groupBox_7.setVisible(False)
+                self.groupBox_8.setVisible(False)
+            else:
+                self.label_4.setVisible(False)
+                self.groupBox_7.setVisible(True)
+                self.groupBox_8.setVisible(True)
+                #TODO : set data for occupancies
+                # self.label_24.setText(str())
+                # self.label_25.setText(str())
+                # self.label_26.setText(str(int(self.label_24.text()) - int(self.label_25.text())))
+                # self.label_27.setText(str())
+                # self.label_28.setText(str())
+                # self.label_29.setText(str(int(self.label_24.text()) - int(self.label_25.text())))
+
         else:
             self.label_42.setText("Authentication Failed. Please try again")
+
+    def hire_new_worker(self):
+        global this_warden
+        hall_ID = this_warden.hall_ID
+        worker_name = self.lineEdit_22.text()
+        worker_wage = self.doubleSpinBox.value()
+        attendant.Attendant(worker_name, hall_ID, worker_wage, 0)
+        self.lineEdit_22.setText("")
+        self.doubleSpinBox.setValue(0.00)
+
+
 
 app = QApplication(sys.argv)
 form = WardenWindowClass()
