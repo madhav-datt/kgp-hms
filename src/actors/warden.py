@@ -114,11 +114,13 @@ class Warden(object):
             return None
 
         # Dictionary occupancy_table as elements in the following form
-        # {hall_name : (single_room_occupancy, double_room_occupancy)}
-        occupancy_table = {}
+        # {hall_ID : (single_room_occupancy, double_room_occupancy)}
+        occupancy_table = {'single_total': 0, 'single_occupy': 0, 'double_total': 0, 'double_occupy': 0}
         for key in hall_table:
-            occupancy_table[hall_table[key].name] = \
-                (hall_table[key].single_room_occupancy, hall_table[key].double_room_occupancy)
+            occupancy_table['single_total'] += hall_table[key].single_room_count
+            occupancy_table['single_occupy'] += hall_table[key].single_room_occupancy
+            occupancy_table['double_total'] += hall_table[key].double_room_count
+            occupancy_table['double_occupy'] += hall_table[key].double_room_occupancy
 
         return occupancy_table
 

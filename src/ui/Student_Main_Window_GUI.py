@@ -6,7 +6,7 @@ import Student_Main_Window
 from Complaint_GUI import ComplaintWindowClass
 from ..database import login
 from ..database import db_rebuild as dbr
-from ..requests import complaint
+from ..requests import complaint, printer
 from ..actors import student
 
 try:
@@ -17,6 +17,7 @@ except AttributeError:
 
 global student_ID
 global curr_complaint_ID
+
 
 class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
     def __init__(self):
@@ -53,8 +54,10 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         hall_dict = dbr.rebuild("hall")
         hall_obj = hall_dict[stud_obj.hall_ID]
         hall_obj.mess_account = float(hall_obj.mess_account) + float(self.lineEdit_8.text())
+        stud_obj.mess_charge -= float(self.lineEdit_8.text())
         hall_obj.amenities_account = float(hall_obj.amenities_account) + float(self.lineEdit_9.text())
         hall_obj.rent_account = float(hall_obj.rent_account) + float(self.lineEdit_10.text())
+        printer.print_receipt(stud_obj)
         self.set_dues()
 
     def new_complaint_button(self):

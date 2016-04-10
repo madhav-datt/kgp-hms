@@ -124,7 +124,15 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         double_room_rent = self.doubleSpinBox_2.value()
         warden_name = self.lineEdit_8.text()
         warden_pw = self.lineEdit_9.text()
-        is_control_warden = self.checkBox.isChecked() #TODO : Add condtion that no previous controlloing warden is previously existing
+
+        # No previous controlling warden is previously existing
+        is_control_warden = self.checkBox.isChecked()
+        warden_dict = dbr.rebuild("warden")
+        for key in warden_dict:
+            if warden_dict[key].controlling_warden:
+                is_control_warden = False
+                break
+
         manager_name = self.lineEdit_10.text()
         manager_pw = self.lineEdit_11.text()
         manager_salary = self.doubleSpinBox_3.value()
