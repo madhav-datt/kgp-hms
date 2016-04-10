@@ -117,7 +117,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
     '''
 
     def add_hall(self):
-        name = self.lineEdit_4.text()
+        name = self.lineEdit_2.text()
         status = self.comboBox_4.currentText()
         amenities_charge = self.doubleSpinBox_5.value()
         single_room_count = self.spinBox_8.value()
@@ -125,7 +125,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         double_room_count = self.spinBox_9.value()
         double_room_rent = self.doubleSpinBox_2.value()
         warden_name = self.lineEdit_8.text()
-        warden_pw = self.lineEdit_9.text()
+        warden_pw = str(self.lineEdit_9.text())
 
         # No previous controlling warden is previously existing
         is_control_warden = self.checkBox.isChecked()
@@ -136,13 +136,13 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
                 break
 
         manager_name = self.lineEdit_10.text()
-        manager_pw = self.lineEdit_11.text()
+        manager_pw = str(self.lineEdit_11.text())
         manager_salary = self.doubleSpinBox_3.value()
         clerk_name = self.lineEdit_14.text()
-        clerk_pw = self.lineEdit_17.text()
+        clerk_pw = str(self.lineEdit_17.text())
         clerk_salary = self.doubleSpinBox_4.value()
 
-        if name == "" or status == "" or amenities_charge == 0. or single_room_count == 0 or single_room_rent == 0 \
+        if name == "" or amenities_charge == 0. or single_room_count == 0 or single_room_rent == 0 \
                 or double_room_count == 0 or double_room_rent == 0 or warden_name == "" or warden_pw == "" or \
                 manager_name == "" or manager_pw == "" or manager_salary == 0. or clerk_name == "" or clerk_pw == "" \
                 or clerk_salary == 0.:
@@ -160,9 +160,9 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
             choice = QtGui.QMessageBox.information(self, 'Success', "Hall Successfull setup")
             self.lineEdit_4.setText("")
             self.doubleSpinBox_5.setValue(0.0)
-            self.spinBox_8.setValue("")
+            self.spinBox_8.setValue(0.0)
             self.doubleSpinBox.setValue(0.00)
-            self.spinBox_9.setValue("")
+            self.spinBox_9.setValue(0.0)
             self.doubleSpinBox_2.setValue(0.00)
             self.lineEdit_8.setText("")
             self.lineEdit_9.setText("")
