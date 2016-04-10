@@ -18,6 +18,7 @@ except AttributeError:
 # Build Warden Object
 global this_warden
 
+
 class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
     def __init__(self):
         QtGui.QWidget.__init__(self)
@@ -94,6 +95,7 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
             self.lineEdit_8.setText(db.get("hall", hall_ID, "single_room_count")[0])
             self.lineEdit_9.setText(db.get("hall", hall_ID, "single_room_occupancy")[0])
             self.lineEdit_8.setText(str(int(self.lineEdit_8.text()) - int(self.lineEdit_9.text())))
+
             self.lineEdit_17.setText(db.get("hall", hall_ID, "double_room_count")[0])
             self.lineEdit_18.setText(db.get("hall", hall_ID, "double_room_occupancy")[0])
             self.lineEdit_21.setText(str(int(self.lineEdit_17.text()) - int(self.lineEdit_18.text())))

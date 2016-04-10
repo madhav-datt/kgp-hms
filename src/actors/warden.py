@@ -114,7 +114,7 @@ class Warden(object):
             return None
 
         # Dictionary occupancy_table as elements in the following form
-        # {hall_name : (single_room_occupancy, double_room_occupancy)}
+        # {hall_ID : (single_room_occupancy, double_room_occupancy)}
         occupancy_table = {}
         for key in hall_table:
             occupancy_table[hall_table[key].name] = \
