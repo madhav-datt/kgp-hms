@@ -328,12 +328,12 @@ class Ui_Form(object):
         self.label_35.setStyleSheet(_fromUtf8("color : rgb(255, 255, 255)"))
         self.label_35.setObjectName(_fromUtf8("label_35"))
         self.label_36 = QtGui.QLabel(self.page_2)
-        self.label_36.setGeometry(QtCore.QRect(20, 240, 511, 16))
+        self.label_36.setGeometry(QtCore.QRect(30, 250, 511, 16))
         self.label_36.setStyleSheet(_fromUtf8("color : rgb(255, 255, 255)"))
         self.label_36.setText(_fromUtf8(""))
         self.label_36.setObjectName(_fromUtf8("label_36"))
         self.label_32 = QtGui.QLabel(self.page_2)
-        self.label_32.setGeometry(QtCore.QRect(-20, 10, 701, 451))
+        self.label_32.setGeometry(QtCore.QRect(0, 0, 701, 451))
         self.label_32.setStyleSheet(_fromUtf8("background-color: rgba(255, 255, 255, 0);"))
         self.label_32.setObjectName(_fromUtf8("label_32"))
         self.pushButton_10 = QtGui.QPushButton(self.page_2)
@@ -374,7 +374,7 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
         self.stackedWidget.setCurrentIndex(1)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
