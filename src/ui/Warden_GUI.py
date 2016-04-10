@@ -50,10 +50,7 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         self.pushButton_2.clicked.connect(self.fire_worker)
         self.pushButton_3.clicked.connect(self.hire_new_worker)
         self.pushButton_4.clicked.connect(self.print_account_statement)
-
-<<<<<<< HEAD
         self.pushButton_5.clicked.connect(self.pay_salaries)
-
         self.pushButton_6.clicked.connect(self.gen_salary_list)
 
     def gen_salary_list(self):
@@ -83,7 +80,6 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
                 if worker.hall_ID == hall_ID and isinstance(worker, attendant.Attendant):
                     worker.monthly_attendance = 0
 
-=======
     def fire_worker(self):
         """
         Fire selected worker from Hall
@@ -97,7 +93,6 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         del worker_table[worker_ID]
         row_num = self.tableWidget.selectedIndexes()
         self.tableWidget.removeRow(row_num - 1)
->>>>>>> bf43d5d1babeb489fe80827bef53c4f9cdd323d5
 
     def print_account_statement(self):
         """
@@ -155,7 +150,7 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
             # View Room Occupancy Tab - add labels and values from database
             self.lineEdit_8.setText(db.get("hall", hall_ID, "single_room_count")[0])
             self.lineEdit_9.setText(db.get("hall", hall_ID, "single_room_occupancy")[0])
-            self.lineEdit_8.setText(str(int(self.lineEdit_8.text()) - int(self.lineEdit_9.text())))
+            self.lineEdit_10.setText(str(int(self.lineEdit_8.text()) - int(self.lineEdit_9.text())))
 
             self.lineEdit_17.setText(db.get("hall", hall_ID, "double_room_count")[0])
             self.lineEdit_18.setText(db.get("hall", hall_ID, "double_room_occupancy")[0])
@@ -187,12 +182,12 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
 
                 # Set data for total occupancies
                 total_occ = this_warden.total_occupancy(dbr.rebuild("hall"))
-                self.label_24.setText(str(total_occ['single_total']))
-                self.label_25.setText(str(total_occ['single_occupy']))
-                self.label_26.setText(str(int(self.label_24.text()) - int(self.label_25.text())))
-                self.label_27.setText(str(total_occ['double_total']))
-                self.label_28.setText(str(total_occ['double_occupy']))
-                self.label_29.setText(str(int(self.label_24.text()) - int(self.label_25.text())))
+                self.lineEdit_24.setText(str(total_occ['single_total']))
+                self.lineEdit_25.setText(str(total_occ['single_occupy']))
+                self.lineEdit_26.setText(str(int(self.label_24.text()) - int(self.label_25.text())))
+                self.lineEdit_27.setText(str(total_occ['double_total']))
+                self.lineEdit_28.setText(str(total_occ['double_occupy']))
+                self.lineEdit_29.setText(str(int(self.label_24.text()) - int(self.label_25.text())))
 
         else:
             self.label_42.setText("Authentication Failed. Please try again")
@@ -202,9 +197,14 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         hall_ID = this_warden.hall_ID
         worker_name = self.lineEdit_22.text()
         worker_wage = self.doubleSpinBox.value()
-        attendant.Attendant(worker_name, hall_ID, worker_wage, 0)
-        self.lineEdit_22.setText("")
-        self.doubleSpinBox.setValue(0.00)
+        if worker_name == "":
+            choice = QtGui.QMessageBox.question(self, 'Error', "Worker name can't be blank")
+        elif worker_wage == 0.:
+            choice = QtGui.QMessageBox.question(self, 'Error', "Worker wage can't be 0")
+        else:
+            attendant.Attendant(worker_name, hall_ID, worker_wage, 0)
+            self.lineEdit_22.setText("")
+            self.doubleSpinBox.setValue(0.00)
 
 
 app = QApplication(sys.argv)
