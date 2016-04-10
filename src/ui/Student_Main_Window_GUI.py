@@ -18,26 +18,28 @@ except AttributeError:
 student_ID = 0
 curr_complaint_ID = 0
 
+
 class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
     def __init__(self):
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
 
-        self.label.setPixmap(QtGui.QPixmap(_fromUtf8('bkd1edit2.jpg')))
+        self.label.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
         self.label.setScaledContents(True)
 
-        self.label_10.setPixmap(QtGui.QPixmap(_fromUtf8('bkd1edit2.jpg')))
+        self.label_10.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
         self.label_10.setScaledContents(True)
 
-        self.label_31.setPixmap(QtGui.QPixmap(_fromUtf8('bkd1edit2.jpg')))
-        self.label_31.setScaledContents(True)
+        self.label_32.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
+        self.label_32.setScaledContents(True)
+        self.label_36.setText(" ")
 
         #self.pushButton_3.clicked.connect(self.show_complaint_window)
         self.pushButton_4.clicked.connect(self.display_dues_frame)
         self.pushButton_7.clicked.connect(self.display_student_main_win)
         self.pushButton_5.clicked.connect(self.display_pwchange_frame)
         self.pushButton_9.clicked.connect(self.display_student_main_win)
-        self.pushButton_8.clicked.connect(self.save_button_new_password())
+        self.pushButton_8.clicked.connect(self.save_button_new_password)
         self.pushButton_3.clicked.connect(self.display_complaint_frame)
         self.buttonBox.rejected.connect(self.display_student_main_win)
         self.pushButton_10.clicked.connect(self.password_validate)
@@ -50,7 +52,7 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         stud_dict = dbr.rebuild("student")
         stud_obj = stud_dict[student_ID]
         hall_dict = dbr.rebuild("hall")
-        hall_obj =  hall_dict[stud_obj.hall_ID]
+        hall_obj = hall_dict[stud_obj.hall_ID]
         hall_obj.mess_account = float(hall_obj.mess_account) + float(self.lineEdit_11.text())
         hall_obj.amenities_account
 
@@ -69,16 +71,16 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
     def create_new_complaint(self):
         description = self.plainTextEdit.toPlainText()
         action_report = ""
-        new_complaint = complaint(student_ID, "P", description, action_report)
+        new_complaint = complaint.Complaint(student_ID, "P", description, action_report)
         self.display_student_main_win()
         self.set_list()
 
-
     def password_validate(self):
-        id = self.lineEdit_19.text()
-        pwd = self.lineEdit_20.text()
-        if login.authenticate("student", id, pwd):
-            student_ID = id
+        user_ID = self.lineEdit_19.text()
+        password = str(self.lineEdit_20.text())
+        self.label_36.setText(" ")
+        if login.authenticate("student", user_ID, passwordd):
+            student_ID = user_ID
             self.display(0)
             self.set_list()
             self.set_dues()
