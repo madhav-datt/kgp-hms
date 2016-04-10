@@ -25,7 +25,7 @@
         <entry file="file://$PROJECT_DIR$/ui/HMC_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="128">
-              <caret line="99" column="49" selection-start-line="99" selection-start-column="49" selection-end-line="99" selection-end-column="49" />
+              <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -33,21 +33,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="input_validation.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="input_validation.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/input_validation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
+            <state relative-caret-position="986">
               <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Student_Main_Window_GUI.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Student_Main_Window_GUI.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ui/Student_Main_Window_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="54" column="34" selection-start-line="54" selection-start-column="34" selection-end-line="54" selection-end-column="34" />
+            <state relative-caret-position="34">
+              <caret line="49" column="22" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
               <folding>
                 <element signature="e#1#11#0" expanded="true" />
               </folding>
@@ -102,8 +102,8 @@
         <option value="$PROJECT_DIR$/halls/hall.py" />
         <option value="$PROJECT_DIR$/ui/Mess_Manager_GUI.py" />
         <option value="$PROJECT_DIR$/ui/Clerk_Window_GUI.py" />
-        <option value="$PROJECT_DIR$/ui/Student_Main_Window_GUI.py" />
         <option value="$PROJECT_DIR$/ui/HMC_GUI.py" />
+        <option value="$PROJECT_DIR$/ui/Student_Main_Window_GUI.py" />
       </list>
     </option>
   </component>
@@ -877,16 +877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/Student_Main_Window_GUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="54" column="34" selection-start-line="54" selection-start-column="34" selection-end-line="54" selection-end-column="34" />
-          <folding>
-            <element signature="e#1#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ui/Mess_Manager_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="311">
@@ -900,7 +890,7 @@
     <entry file="file://$PROJECT_DIR$/ui/HMC_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
-          <caret line="99" column="49" selection-start-line="99" selection-start-column="49" selection-end-line="99" selection-end-column="49" />
+          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -909,9 +899,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/input_validation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
+        <state relative-caret-position="986">
           <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/Student_Main_Window_GUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="49" column="22" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
+          <folding>
+            <element signature="e#1#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

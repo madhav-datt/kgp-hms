@@ -37,7 +37,7 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.pushButton_7.clicked.connect(self.display_student_main_win)
         self.pushButton_5.clicked.connect(self.display_pwchange_frame)
         self.pushButton_9.clicked.connect(self.display_student_main_win)
-        self.pushButton_8.clicked.connect(self.save_button_new_password())
+        self.pushButton_8.clicked.connect(self.save_button_new_password)
         self.pushButton_3.clicked.connect(self.display_complaint_frame)
         self.buttonBox.rejected.connect(self.display_student_main_win)
         self.pushButton_10.clicked.connect(self.password_validate)
