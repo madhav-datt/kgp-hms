@@ -142,7 +142,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         clerk_pw = self.lineEdit_17.text()
         clerk_salary = self.doubleSpinBox_4.value()
 
-        if name == "" or status == "" or amenities_charge == 0. or single_room_count == 0 or single_room_rent == 0 \
+        if name == "" or amenities_charge == 0. or single_room_count == 0 or single_room_rent == 0 \
                 or double_room_count == 0 or double_room_rent == 0 or warden_name == "" or warden_pw == "" or \
                 manager_name == "" or manager_pw == "" or manager_salary == 0. or clerk_name == "" or clerk_pw == "" \
                 or clerk_salary == 0.:
