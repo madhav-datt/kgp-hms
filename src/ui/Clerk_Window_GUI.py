@@ -48,12 +48,11 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
         """
 
         worker_list = dbr.rebuild("worker")
+        rows = sorted(set(index.row() for index in self.tableWidget.selectedIndexes()))
 
-        for worker_obj in self.tableWidget.selectedItems():
-            worker_sel_ID = worker_obj[0]
-            for key in worker_list:
-                if worker_sel_ID == worker_list[key].worker_ID:
-                    worker_list[key].monthly_attendance += 1
+        for row in rows:
+            worker_sel_ID = self.tableWidget.item(row, 0).text()
+            worker_list[int(worker_sel_ID)].monthly_attendance += 1
 
         self.pushButton.setEnabled(False)
         db.update_attend_date()

@@ -1,4 +1,3 @@
-
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from PyQt4 import QtCore, QtGui
@@ -37,7 +36,7 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.label_31.setScaledContents(True)
         self.label_36.setText(" ")
 
-        #self.pushButton_3.clicked.connect(self.show_complaint_window)
+        # self.pushButton_3.clicked.connect(self.show_complaint_window)
         self.pushButton_4.clicked.connect(self.display_dues_frame)
         self.pushButton_7.clicked.connect(self.display_student_main_win)
         self.pushButton_5.clicked.connect(self.display_pwchange_frame)
@@ -51,17 +50,18 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.pushButton_7.clicked.connect(self.display_student_main_win)
         self.pushButton_6.clicked.connect(self.pay_dues_button)
         self.pushButton.clicked.connect(self.view_complaint_button)
+        self.pushButton_2.clicked.connect(self.delete_complaint_button)
 
     def pay_dues_button(self):
         stud_dict = dbr.rebuild("student")
         stud_obj = stud_dict[student_ID]
         hall_dict = dbr.rebuild("hall")
         hall_obj = hall_dict[stud_obj.hall_ID]
+        printer.print_receipt(stud_obj)
         hall_obj.mess_account = float(hall_obj.mess_account) + float(self.lineEdit_8.text())
         stud_obj.mess_charge -= float(self.lineEdit_8.text())
         hall_obj.amenities_account = float(hall_obj.amenities_account) + float(self.lineEdit_9.text())
         hall_obj.rent_account = float(hall_obj.rent_account) + float(self.lineEdit_10.text())
-        printer.print_receipt(stud_obj)
         self.set_dues()
 
     def new_complaint_button(self):
@@ -107,9 +107,8 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         stud_obj = student_dict[student_ID]
         hall_dict = dbr.rebuild("hall")
         hall_ID = student_dict[student_ID].hall_ID
+
         if stud_obj.mess_charge == 0:
-            print stud_obj.name
-            print stud_obj.mess_charge
             self.lineEdit_8.setText(str(stud_obj.mess_charge))
             self.lineEdit_9.setText("0")
             self.lineEdit_10.setText("0")
@@ -117,14 +116,15 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
             self.pushButton_6.setEnabled(False)
         else:
             self.lineEdit_8.setText(str(stud_obj.mess_charge))
-            print stud_obj.name
-            print stud_obj.mess_charge
             self.lineEdit_9.setText(str(hall_dict[hall_ID].amenities_charge))
-            if(stud_obj.room_type == "S"):
+
+            if stud_obj.room_type == "S":
                 self.lineEdit_10.setText(str(hall_dict[hall_ID].single_room_rent))
             else:
                 self.lineEdit_10.setText(str(hall_dict[hall_ID].double_room_rent))
-            self.lineEdit_11.setText(str(float(self.lineEdit_8) + float(self.lineEdit_9) + float(self.lineEdit_10)))
+
+            self.lineEdit_11.setText(str(float(self.lineEdit_8.text()) + float(self.lineEdit_9.text()) + \
+                                         float(self.lineEdit_10.text())))
 
     def display_complaint_frame(self):
         self.display(4)
@@ -142,7 +142,7 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.window.show()
 
     def display_dues_frame(self):
-        #self.resize(400, 490)
+        # self.resize(400, 490)
         self.display(2)
 
     def display(self, i):
@@ -174,12 +174,10 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.pushButton_11.setVisible(True)
         self.buttonBox.setVisible(False)
         if self.listWidget.currentItem() is None:
-            print "yolo"
             return
         else:
             curr_complaint_ID = int(self.listWidget.currentItem().text())
             self.display(4)
-            print "JI"
             self.set_complaint_details(curr_complaint_ID)
 
     def set_complaint_details(self, complaint_ID):
@@ -225,6 +223,8 @@ def find_hall_ID_by_name(name):
         if hall_dict[key].name == name:
             return key
     return 0
+
+
 '''
 app = QApplication(sys.argv)
 form = StudentMainWindowClass()

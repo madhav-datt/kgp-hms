@@ -40,7 +40,7 @@ def rebuild(table):
         # Insert new row of data into table
         if table == "student":
             table_obj = student.Student(row[1], row[2], row[3], row[4], row[5],
-                                        row[6], row[8], True, row[0])
+                                        row[6], row[8], row[7], True, row[0])
 
         elif table == "warden":
             table_obj = warden.Warden(row[1], row[2], row[3], row[4], row[5], True, row[0])
