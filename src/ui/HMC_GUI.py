@@ -223,7 +223,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
             choice = QtGui.QMessageBox.question(self, 'Error', "Please select a grant request!")
             return
         else:
-            hall_name = self.listWidget.currentItem().text()
+            hall_name = self.listWidget.currentItem().text()[[]]
             hall_ID = find_hall_ID_by_name(hall_name)
             self.label_23.setText(hall_name)
             for req in grant_req_dict:
