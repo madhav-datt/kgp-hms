@@ -39,28 +39,31 @@ class Student(object):
         if not rebuild:
             self.student_ID = db.add("student")
             self.password = pv.hash_password(password)
+            self.room_type = room_type
+            self.hall_ID = hall_ID
+
+            # Update hall room occupancy based on room allocation to Student if rebuild is False
+            # if self.room_type == "S":
+            #     curr_occupancy = db.get("hall", self.hall_ID, "single_room_occupancy")
+            #     db.update("hall", self.hall_ID, "single_room_occupancy", int(curr_occupancy) + 1)
+            # elif self.room_type == "D":
+            #     curr_occupancy = db.get("hall", self.hall_ID, "double_room_occupancy")
+            #     db.update("hall", self.hall_ID, "double_room_occupancy", int(curr_occupancy) + 1)
         else:
             self.student_ID = student_ID
-            self.password = password
+            self._password = password
+            self._hall_ID = hall_ID
+            self._room_type = room_type
 
         self.name = name
         self.address = address
         self.contact_number = contact_number
-        self.hall_ID = hall_ID
         self.room_no = room_no
         self.room_type = room_type
 
         # Mess charges payable by student
         self.mess_charge = 0.
         self.total_dues = 0.
-
-        # Update hall room occupancy based on room allocation to Student
-        if self.room_type == "S":
-            curr_occupancy = db.get("hall", self.hall_ID, "single_room_occupancy")
-            db.update("hall", self.hall_ID, "single_room_occupancy", int(curr_occupancy) + 1)
-        elif self.room_type == "D":
-            curr_occupancy = db.get("hall", self.hall_ID, "double_room_occupancy")
-            db.update("hall", self.hall_ID, "double_room_occupancy", int(curr_occupancy) + 1)
 
     # student_ID getter functions
     @property
