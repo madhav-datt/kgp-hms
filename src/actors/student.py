@@ -38,7 +38,7 @@ class Student(object):
         # If False, a new data row is added to the specific table
         if not rebuild:
             self.student_ID = db.add("student")
-            self.password = pv.hash_password(password)
+            self.password = password
             self.room_type = room_type
             self.hall_ID = hall_ID
 

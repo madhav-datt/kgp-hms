@@ -3,7 +3,7 @@ from PyQt4 import QtCore, QtGui
 from ..database import db_func as db
 from ..database import db_rebuild as dbr
 from ..database import login
-from ..workers import attendant
+from ..workers import attendant, clerk
 import Clerk_Window
 import time
 
@@ -62,7 +62,7 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
         """
         Check password for login
         """
-        user_ID = self.lineEdit_4.text()
+        user_ID = int(self.lineEdit_4.text())
         password = self.lineEdit_5.text()
         if login.authenticate("clerk", user_ID, password):
             clerk_ID = user_ID

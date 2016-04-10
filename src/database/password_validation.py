@@ -16,7 +16,7 @@ def hash_password(password):
     Add a randomly-generated salt
     """
 
-    return bcrypt.hashpw(password, bcrypt.gensalt()).encode('utf-8')
+    return bcrypt.hashpw(password, bcrypt.gensalt())
 
 
 def check_password(password, correct_password):

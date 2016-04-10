@@ -40,38 +40,33 @@ def authenticate(table, user_ID, password):
 
     if table == "clerk":
         table_data = dbr.rebuild("worker")
-        for key in table_data:
-            if table_data[key].worker_ID == user_ID and \
-                    isinstance(table_data[key], clerk.Clerk):
-                if pv.check_password(password, table_data[key].password):
-                    return True
+        if user_ID not in table_data:
+            return False
+        if isinstance(table_data[user_ID], clerk.Clerk):
+            if pv.check_password(password, table_data[user_ID].password):
+                return True
 
     elif table == "mess_manager":
         table_data = dbr.rebuild("worker")
-        for key in table_data:
-            if table_data[key].worker_ID == user_ID and \
-                    isinstance(table_data[key], mess_manager.MessManager):
-                if pv.check_password(password, table_data[key].password):
-                    return True
+        if user_ID not in table_data:
+            return False
+        if isinstance(table_data[user_ID], mess_manager.MessManager):
+            if pv.check_password(password, table_data[user_ID].password):
+                return True
 
     elif table == "student":
         table_data = dbr.rebuild(table)
-        for key in table_data:
-            print table_data[key].student_ID
-            print user_ID
-            print table_data[key].password
-            print ""
-            if table_data[key].student_ID == user_ID:
-                print "YAAYYAYYYA"
-                if pv.check_password(password, table_data[key].password):
-                    return True
+        if user_ID not in table_data:
+            return False
+        if pv.check_password(password, table_data[user_ID].password):
+            return True
 
     elif table == "warden":
         table_data = dbr.rebuild(table)
-        for key in table_data:
-            if table_data[key].warden_ID == user_ID:
-                if pv.check_password(password, table_data[key].password):
-                    return True
+        if user_ID not in table_data:
+            return False
+        if pv.check_password(password, table_data[user_ID].password):
+            return True
 
     elif table == "hmc":
         table_data = dbr.rebuild(table)
