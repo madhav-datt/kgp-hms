@@ -318,7 +318,7 @@ class Ui_Form(object):
         self.lineEdit_20 = QtGui.QLineEdit(self.page_2)
         self.lineEdit_20.setGeometry(QtCore.QRect(120, 120, 201, 20))
         self.lineEdit_20.setEchoMode(QtGui.QLineEdit.Password)
-        self.lineEdit_20.setReadOnly(True)
+        self.lineEdit_20.setReadOnly(False)
         self.lineEdit_20.setObjectName(_fromUtf8("lineEdit_20"))
         self.label_35 = QtGui.QLabel(self.page_2)
         self.label_35.setGeometry(QtCore.QRect(30, 80, 81, 21))
