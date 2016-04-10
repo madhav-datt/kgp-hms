@@ -71,7 +71,7 @@ def rebuild(table):
             table_obj = hall_management.HallManagement(row[0], True, row[1])
 
         elif table == "grant_request":
-            table_obj = grant_request.GrantRequest(row[4], row[1], row[2], True, row[0])
+            table_obj = grant_request.GrantRequest(row[4], row[3], row[1], row[2], True, row[0])
 
         else:
             table_obj = None
