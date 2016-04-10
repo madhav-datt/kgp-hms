@@ -93,7 +93,7 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
 
         if worker_ID in worker_table:
             # Remove worker from table and database
-            del worker_table[worker_ID]
+            worker_table[worker_ID].remove()
             self.update_worker_table()
 
     def print_account_statement(self):

@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0a869d99-4bbd-4a72-9cea-88f9c7d74b97" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actors/student.py" afterPath="$PROJECT_DIR$/src/actors/student.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/requests/grant_request.py" afterPath="$PROJECT_DIR$/src/requests/grant_request.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/HMC_GUI.py" afterPath="$PROJECT_DIR$/src/ui/HMC_GUI.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py" afterPath="$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/Warden_GUI.py" afterPath="$PROJECT_DIR$/src/ui/Warden_GUI.py" />
     </list>
     <ignored path="kgp-hms.iws" />
@@ -27,10 +31,44 @@
       <file leaf-file-name="HMC_GUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/HMC_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="180" column="71" selection-start-line="180" selection-start-column="71" selection-end-line="180" selection-end-column="71" />
+            <state relative-caret-position="129">
+              <caret line="117" column="14" selection-start-line="117" selection-start-column="14" selection-end-line="117" selection-end-column="14" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Student_Main_Window_GUI.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="89" column="26" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="26" />
+              <folding>
+                <element signature="e#1#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="grant_request.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/requests/grant_request.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="student.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/actors/student.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="251">
+              <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+              <folding>
+                <element signature="e#164#200#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -51,22 +89,32 @@
       <file leaf-file-name="hall.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/halls/hall.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+            <state relative-caret-position="324">
+              <caret line="72" column="27" selection-start-line="72" selection-start-column="13" selection-end-line="72" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Warden_GUI.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Warden_GUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/Warden_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="96" column="37" selection-start-line="96" selection-start-column="37" selection-end-line="96" selection-end-column="37" />
+            <state relative-caret-position="142">
+              <caret line="89" column="21" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-                <marker date="1460293123482" expanded="true" signature="517:9349" placeholder="..." />
+                <marker date="1460293487970" expanded="true" signature="517:10239" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="worker.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/workers/worker.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-532">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -103,17 +151,17 @@
         <option value="$PROJECT_DIR$/src/workers/mess_manager.py" />
         <option value="$PROJECT_DIR$/src/workers/clerk.py" />
         <option value="$PROJECT_DIR$/src/workers/attendant.py" />
-        <option value="$PROJECT_DIR$/src/actors/student.py" />
-        <option value="$PROJECT_DIR$/src/requests/grant_request.py" />
         <option value="$PROJECT_DIR$/src/database/db_rebuild.py" />
-        <option value="$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py" />
         <option value="$PROJECT_DIR$/src/ui/Clerk_Window_GUI.py" />
         <option value="$PROJECT_DIR$/src/ui/Mess_Manager_GUI.py" />
-        <option value="$PROJECT_DIR$/src/ui/HMC_GUI.py" />
         <option value="$PROJECT_DIR$/src/halls/hall.py" />
         <option value="$PROJECT_DIR$/src/actors/warden.py" />
         <option value="$PROJECT_DIR$/src/requests/printer.py" />
         <option value="$PROJECT_DIR$/src/ui/Warden_GUI.py" />
+        <option value="$PROJECT_DIR$/src/requests/grant_request.py" />
+        <option value="$PROJECT_DIR$/src/actors/student.py" />
+        <option value="$PROJECT_DIR$/src/ui/HMC_GUI.py" />
+        <option value="$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py" />
       </list>
     </option>
   </component>
@@ -575,7 +623,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23787168" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -584,7 +632,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32561728" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40123457" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3919753" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39940387" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -912,16 +960,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actors/student.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
-          <folding>
-            <element signature="e#164#200#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/setup_db.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
@@ -936,16 +974,6 @@
           <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
           <folding>
             <element signature="e#164#177#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
-          <folding>
-            <element signature="e#1#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -965,32 +993,6 @@
         <state relative-caret-position="34">
           <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/requests/grant_request.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-284">
-          <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/workers/worker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-272">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/HMC_GUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="180" column="71" selection-start-line="180" selection-start-column="71" selection-end-line="180" selection-end-column="71" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1020,14 +1022,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/halls/hall.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/Clerk_Window_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1468">
@@ -1048,13 +1042,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/workers/worker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-532">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/halls/hall.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="72" column="27" selection-start-line="72" selection-start-column="13" selection-end-line="72" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/Warden_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="96" column="37" selection-start-line="96" selection-start-column="37" selection-end-line="96" selection-end-column="37" />
+        <state relative-caret-position="142">
+          <caret line="89" column="21" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <marker date="1460293123482" expanded="true" signature="517:9349" placeholder="..." />
+            <marker date="1460293487970" expanded="true" signature="517:10239" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/requests/grant_request.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actors/student.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+          <folding>
+            <element signature="e#164#200#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/HMC_GUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="117" column="14" selection-start-line="117" selection-start-column="14" selection-end-line="117" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="89" column="26" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="26" />
+          <folding>
+            <element signature="e#1#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
