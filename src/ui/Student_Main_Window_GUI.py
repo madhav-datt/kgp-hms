@@ -78,6 +78,7 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
 
     def password_validate(self):
         global student_ID
+        hmc_dict = dbr.rebuild("hmc")
         user_ID = int(self.lineEdit_19.text())
         password = self.lineEdit_20.text()
         self.label_36.setText(" ")
@@ -86,6 +87,11 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
             self.display(0)
             self.set_list(student_ID)
             self.set_dues(student_ID)
+            for key in hmc_dict:
+                if hmc_dict[key].payment_is_active:
+                    self.pushButton_6.setEnabled(True)
+                else:
+                    self.pushButton_6.setEnabled(False)
         else:
             self.label_36.setText("Wrong ID or Password. Please try again.")
 
@@ -108,7 +114,6 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
             else:
                 self.lineEdit_10.setText(str(hall_dict[hall_ID].double_room_rent))
             self.lineEdit_11.setText(str(float(self.lineEdit_8) + float(self.lineEdit_9) + float(self.lineEdit_10)))
-            self.pushButton_6.setEnabled(True)
 
     def display_complaint_frame(self):
         self.display(3)

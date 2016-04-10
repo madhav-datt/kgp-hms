@@ -33,6 +33,9 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         self.pushButton.clicked.connect(self.add_hall)
         self.pushButton_5.clicked.connect(self.activate_payment_link)
         self.pushButton_6.clicked.connect(self.deactivate_payment_link)
+        self.pushButton_7.clicked.connect(self.issue_grant)
+        self.pushButton_9.clicked.connect(self.reject_grant)
+        self.pushButton_3.clicked.connect(self.get_warden_req)
         '''
         Custom UI starting, based on data available in the databases
         '''
@@ -86,6 +89,12 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
             choice = QtGui.QMessageBox.question(self, 'Error', "Invalid contact number")
         else:
             new_student = student.Student(password, name, address, contact, student_hall_ID, room_no, room_type)
+            choice = QtGui.QMessageBox.information(self, 'Success', "Student Letter successfully issued.")
+            self.lineEdit_16.setText("")
+            self.lineEdit_15.setText("")
+            self.lineEdit_18.setText("")
+            self.lineEdit_13.setText("")
+            self.lineEdit_12.setText("")
 
     def activate_payment_link(self):
         hmc_obj = dbr.rebuild("hmc")
@@ -115,6 +124,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         double_room_rent = self.doubleSpinBox_2.value()
         warden_name = self.lineEdit_8.text()
         warden_pw = self.lineEdit_9.text()
+        is_control_warden = self.checkBox.isChecked() #TODO : Add condtion that no previous controlloing warden is previously existing
         manager_name = self.lineEdit_10.text()
         manager_pw = self.lineEdit_11.text()
         manager_salary = self.doubleSpinBox_3.value()
@@ -127,18 +137,31 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
                 manager_name == "" or manager_pw == "" or manager_salary == 0. or clerk_name == "" or clerk_pw == "" \
                 or clerk_salary == 0.:
             choice = QtGui.QMessageBox.question(self, 'Error', "No Field can be left blank")
-
-        new_warden = warden.Warden(warden_pw, warden_name, "warden_kgp@gmail.com", 0)
-
-        new_mess_manager = mess_manager.MessManager(manager_name, 0, manager_pw, manager_salary)
-        new_clerk = clerk.Clerk(clerk_name, 0, clerk_pw, clerk_salary)
-        new_hall = hall.Hall(name, status, single_room_count, double_room_count,
-                             single_room_rent, double_room_rent, new_warden.warden_ID, new_mess_manager.worker_ID,
-                             new_clerk.worker_ID, amenities_charge)
-        new_warden.hall_ID = new_hall.hall_ID
-        new_mess_manager.hall_ID = new_hall.hall_ID
-        new_clerk.hall_ID = new_hall.hall_ID
-
+        else:
+            new_warden = warden.Warden(warden_pw, warden_name, "warden_kgp@gmail.com", 0, is_control_warden)
+            new_mess_manager = mess_manager.MessManager(manager_name, 0, manager_pw, manager_salary)
+            new_clerk = clerk.Clerk(clerk_name, 0, clerk_pw, clerk_salary)
+            new_hall = hall.Hall(name, status, single_room_count, double_room_count,
+                                 single_room_rent, double_room_rent, new_warden.warden_ID, new_mess_manager.worker_ID,
+                                 new_clerk.worker_ID, amenities_charge)
+            new_warden.hall_ID = new_hall.hall_ID
+            new_mess_manager.hall_ID = new_hall.hall_ID
+            new_clerk.hall_ID = new_hall.hall_ID
+            choice = QtGui.QMessageBox.information(self, 'Success', "Hall Successfull setup")
+            self.lineEdit_4.setText("")
+            self.doubleSpinBox_5.setValue(0.0)
+            self.spinBox_8.setValue("")
+            self.doubleSpinBox.setValue(0.00)
+            self.spinBox_9.setValue("")
+            self.doubleSpinBox_2.setValue(0.00)
+            self.lineEdit_8.setText("")
+            self.lineEdit_9.setText("")
+            self.lineEdit_10.setText("")
+            self.lineEdit_11.setText("")
+            self.doubleSpinBox_3.setValue(0.00)
+            self.lineEdit_14.setText("")
+            self.lineEdit_17.setText("")
+            self.doubleSpinBox_4.setValue(0.00)
     '''
     Adding custom ui for grant request tab
     '''
@@ -150,8 +173,10 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         hall_dict = dbr.rebuild("hall")
         grant_req_dict = dbr.rebuild("grant_request")
         self.listWidget.clear()
-        hall_names = [grant_req_dict[req].name for req in grant_req_dict]
+        hall_IDS = [grant_req_dict[req].hall_ID for req in grant_req_dict]
+        hall_names = [hall_dict[hall_ID] for hall_ID in hall_IDS]
         self.listWidget.addItems(hall_names)
+        self.label_23.setText("")
 
     def get_warden_req(self):
         """
@@ -159,6 +184,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         """
         grant_req_dict = dbr.rebuild("grant_request")
         if self.listWidget.currentItem() is None:
+            choice = QtGui.QMessageBox.question(self, 'Error', "Please select a grant request!")
             return
         else:
             hall_name = self.listWidget.currentItem().text()
@@ -166,12 +192,23 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
             self.label_23.setText(hall_name)
             for req in grant_req_dict:
                 if grant_req_dict[req].hall_ID == hall_ID:
-                    self.lineEdit.setText(grant_req_dict[req].salary_charge())
+                    self.lineEdit.setText(grant_req_dict[req].salary_charge)
                     self.doubleSpinBox_6.setValue(input_validation.float_input(self.lineEdit.text()))
-                    self.lineEdit_3.setText(grant_req_dict[req].repair_charge())
+                    self.lineEdit_3.setText(grant_req_dict[req].repair_charge)
                     self.doubleSpinBox_7.setValue(input_validation.float_input(self.lineEdit_3.text()))
-                    self.lineEdit_4.setText(grant_req_dict[req].other_charge())
+                    self.lineEdit_4.setText(grant_req_dict[req].other_charge)
                     self.doubleSpinBox_8.setValue(input_validation.float_input(self.lineEdit_4.text()))
+                    break
+
+    def reset_grant_request(self):
+        self.lineEdit.setText("")
+        self.doubleSpinBox_6.setValue(0.00)
+        self.lineEdit_3.setText("")
+        self.doubleSpinBox_7.setValue(0.00)
+        self.lineEdit_4.setText("")
+        self.doubleSpinBox_8.setValue(0.00)
+        self.set_list()
+        self.label_23.setText("")
 
     '''
     To be invoked on  pushing the issue grant button
@@ -179,6 +216,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
 
     def issue_grant(self):
         if self.label_23.text() == "":
+            choice = QtGui.QMessageBox.question(self, 'Error', "Please select a grant request to approve!")
             return
         grant_req_dict = dbr.rebuild("grant_request")
         hall_name = self.label_23.text()
@@ -187,8 +225,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
             if grant_req_dict[req].hall_ID == hall_ID:
                 grant_req_dict[req].approve(self.doubleSpinBox_6.value(), self.doubleSpinBox_8.value(),
                                             self.doubleSpinBox_7.value())  # TODO : check if value works and change .text() above
-                self.set_list()
-                self.label_23.setText("")
+        self.reset_grant_request()
 
     def reject_grant(self):
         if self.label_23.text() == "":
@@ -199,9 +236,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         for req in grant_req_dict:
             if grant_req_dict[req].hall_ID == hall_ID:
                 grant_req_dict[req].reject()
-                self.set_list()
-                self.label_23.setText("")
-
+                self.reset_grant_request()
 
 def find_hall_ID_by_name(name):
     hall_dict = dbr.rebuild("hall")
