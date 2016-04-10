@@ -87,9 +87,9 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.label_36.setText(" ")
         if login.authenticate("student", user_ID, password):
             student_ID = user_ID
-            self.display(0)
-            self.set_list(student_ID)
-            self.set_dues(student_ID)
+            self.display(1)
+            self.set_list()
+            self.set_dues()
             for key in hmc_dict:
                 if hmc_dict[key].payment_is_active:
                     self.pushButton_6.setEnabled(True)
@@ -150,7 +150,7 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
             self.lineEdit_4.setText(str(hall_name))
             self.lineEdit_5.setText(student_dict[student_ID].room_no)
             self.lineEdit_6.setText(student_dict[student_ID].room_type)
-            self.lineEdit_7.setText(student_ID)
+            self.lineEdit_7.setText(str(student_ID))
 
     def set_list(self):
         self.listWidget.clear()

@@ -101,7 +101,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         gender = self.comboBox.currentText()
         contact = self.lineEdit_15.text()
         address = self.lineEdit_18.text()
-        student_hall = str(self.comboBox_2.currentText())
+        student_hall = str(self.comboBox_3.currentText())
         student_hall_ID = find_hall_ID_by_name(student_hall)
         room_no = self.lineEdit_13.text()
         if self.comboBox_2.currentText() == "Single":
@@ -122,6 +122,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
             self.lineEdit_18.setText("")
             self.lineEdit_13.setText("")
             self.lineEdit_12.setText("")
+            self.plainTextEdit.setPlainText("")
 
     def activate_payment_link(self):
         hmc_obj = dbr.rebuild("hmc")
@@ -228,12 +229,12 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
             self.label_23.setText(hall_name)
             for req in grant_req_dict:
                 if grant_req_dict[req].hall_ID == hall_ID:
-                    self.lineEdit.setText(grant_req_dict[req].salary_charge)
-                    self.doubleSpinBox_6.setValue(input_validation.float_input(self.lineEdit.text()))
-                    self.lineEdit_3.setText(grant_req_dict[req].repair_charge)
-                    self.doubleSpinBox_7.setValue(input_validation.float_input(self.lineEdit_3.text()))
-                    self.lineEdit_4.setText(grant_req_dict[req].other_charge)
-                    self.doubleSpinBox_8.setValue(input_validation.float_input(self.lineEdit_4.text()))
+                    self.lineEdit.setText(str(grant_req_dict[req].salary_charge))
+                    self.doubleSpinBox_6.setValue(float(self.lineEdit.text()))
+                    self.lineEdit_3.setText(str(grant_req_dict[req].repair_charge))
+                    self.doubleSpinBox_7.setValue(float(self.lineEdit_3.text()))
+                    self.lineEdit_4.setText(str(grant_req_dict[req].other_charge))
+                    self.doubleSpinBox_8.setValue(float(self.lineEdit_4.text()))
                     break
 
     def reset_grant_request(self):
@@ -260,7 +261,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         for req in grant_req_dict:
             if grant_req_dict[req].hall_ID == hall_ID:
                 grant_req_dict[req].approve(self.doubleSpinBox_6.value(), self.doubleSpinBox_8.value(),
-                                            self.doubleSpinBox_7.value())  # TODO : check if value works and change .text() above
+                                            self.doubleSpinBox_7.value(), dbr.rebuild("hall"))
         self.reset_grant_request()
 
     def reject_grant(self):

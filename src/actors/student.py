@@ -44,10 +44,10 @@ class Student(object):
 
             # Update hall room occupancy based on room allocation to Student if rebuild is False
             if self.room_type == "S":
-                curr_occupancy = db.get("hall", self.hall_ID, "single_room_occupancy")
+                curr_occupancy = db.get("hall", self.hall_ID, "single_room_occupancy")[0]
                 db.update("hall", self.hall_ID, "single_room_occupancy", int(curr_occupancy) + 1)
             elif self.room_type == "D":
-                curr_occupancy = db.get("hall", self.hall_ID, "double_room_occupancy")
+                curr_occupancy = db.get("hall", self.hall_ID, "double_room_occupancy")[0]
                 db.update("hall", self.hall_ID, "double_room_occupancy", int(curr_occupancy) + 1)
         else:
             self.student_ID = student_ID
