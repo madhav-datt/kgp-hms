@@ -50,10 +50,7 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         self.pushButton_2.clicked.connect(self.fire_worker)
         self.pushButton_3.clicked.connect(self.hire_new_worker)
         self.pushButton_4.clicked.connect(self.print_account_statement)
-
-<<<<<<< HEAD
         self.pushButton_5.clicked.connect(self.pay_salaries)
-
         self.pushButton_6.clicked.connect(self.gen_salary_list)
 
     def gen_salary_list(self):
@@ -83,7 +80,6 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
                 if worker.hall_ID == hall_ID and isinstance(worker, attendant.Attendant):
                     worker.monthly_attendance = 0
 
-=======
     def fire_worker(self):
         """
         Fire selected worker from Hall
@@ -93,11 +89,11 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         worker_table = dbr.rebuild("worker")
         worker_ID = self.tableWidget.selectedItems()[0][0]
 
-        # Remove worker from table and database
-        del worker_table[worker_ID]
-        row_num = self.tableWidget.selectedIndexes()
-        self.tableWidget.removeRow(row_num - 1)
->>>>>>> bf43d5d1babeb489fe80827bef53c4f9cdd323d5
+        if worker_ID in worker_table:
+            # Remove worker from table and database
+            del worker_table[worker_ID]
+            row_num = self.tableWidget.selectedIndexes()
+            self.tableWidget.removeRow(row_num - 1)
 
     def print_account_statement(self):
         """
@@ -153,12 +149,12 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
             hall_ID = this_warden.hall_ID
 
             # View Room Occupancy Tab - add labels and values from database
-            self.lineEdit_8.setText(db.get("hall", hall_ID, "single_room_count")[0])
-            self.lineEdit_9.setText(db.get("hall", hall_ID, "single_room_occupancy")[0])
+            self.lineEdit_8.setText(str(db.get("hall", hall_ID, "single_room_count")[0]))
+            self.lineEdit_9.setText(str(db.get("hall", hall_ID, "single_room_occupancy")[0]))
             self.lineEdit_8.setText(str(int(self.lineEdit_8.text()) - int(self.lineEdit_9.text())))
 
-            self.lineEdit_17.setText(db.get("hall", hall_ID, "double_room_count")[0])
-            self.lineEdit_18.setText(db.get("hall", hall_ID, "double_room_occupancy")[0])
+            self.lineEdit_17.setText(str(db.get("hall", hall_ID, "double_room_count")[0]))
+            self.lineEdit_18.setText(str(db.get("hall", hall_ID, "double_room_occupancy")[0]))
             self.lineEdit_21.setText(str(int(self.lineEdit_17.text()) - int(self.lineEdit_18.text())))
 
             # Worker Details Table - add labels and values from database
@@ -194,6 +190,7 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
                 self.label_28.setText(str(total_occ['double_occupy']))
                 self.label_29.setText(str(int(self.label_24.text()) - int(self.label_25.text())))
 
+            self.stackedWidget.setCurrentIndex(0)
         else:
             self.label_42.setText("Authentication Failed. Please try again")
 
