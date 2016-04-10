@@ -1,5 +1,4 @@
 
-import sys
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from PyQt4 import QtCore, QtGui
@@ -80,7 +79,7 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
     def password_validate(self):
         global student_ID
         user_ID = int(self.lineEdit_19.text())
-        password = str(self.lineEdit_20.text())
+        password = self.lineEdit_20.text()
         self.label_36.setText(" ")
         if login.authenticate("student", user_ID, password):
             student_ID = user_ID
@@ -129,7 +128,6 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
     def display_dues_frame(self):
         #self.resize(400, 490)
         self.display(1)
-
 
     def display(self, i):
         self.stackedWidget.setCurrentIndex(i)
