@@ -22,21 +22,21 @@ def print_statement(Hall):
     pdf = FPDF('P', 'mm', 'A4')
     pdf.set_font('Times', 'B', 14)
 
-    pdf.multi_cell(0, 5, ('Hall Account Statement for Hall: %s', Hall.name))
+    pdf.multi_cell(0, 5, ('Hall Account Statement for Hall: %s' % Hall.name))
     pdf.ln()
-    pdf.multi_cell(0, 5, ('Mess Account: %s', Hall.mess_account))
+    pdf.multi_cell(0, 5, ('Mess Account: %s' % Hall.mess_account))
     pdf.ln()
-    pdf.multi_cell(0, 5, ('Salary Account: %s', Hall.salary_account))
+    pdf.multi_cell(0, 5, ('Salary Account: %s' % Hall.salary_account))
     pdf.ln()
-    pdf.multi_cell(0, 5, ('Repair Account: %s', Hall.repair_account))
+    pdf.multi_cell(0, 5, ('Repair Account: %s' % Hall.repair_account))
     pdf.ln()
-    pdf.multi_cell(0, 5, ('Rent Account: %s', Hall.rent_account))
+    pdf.multi_cell(0, 5, ('Rent Account: %s' % Hall.rent_account))
     pdf.ln()
-    pdf.multi_cell(0, 5, ('Others Account: %s', Hall.others_account))
+    pdf.multi_cell(0, 5, ('Others Account: %s' % Hall.others_account))
     pdf.ln()
 
     # Write generated output file to PDF
-    pdf.output(('hall_statement_%s', Hall.hall_ID), 'F')
+    pdf.output(('hall_statement_%s.pdf' % Hall.hall_ID), 'F')
 
 
 def issue_cheque(name, amount):
@@ -50,15 +50,15 @@ def issue_cheque(name, amount):
 
     pdf.multi_cell(0, 5, 'Cheque Payment System')
     pdf.ln()
-    pdf.multi_cell(0, 5, ('Pay: %s', name))
+    pdf.multi_cell(0, 5, ('Pay: %s' % name))
     pdf.ln()
-    pdf.multi_cell(0, 5, ('The amount of: Rs. %s', amount))
+    pdf.multi_cell(0, 5, ('The amount of: Rs. %s' % str(amount)))
     pdf.ln()
-    pdf.multi_cell(0, 5, ('Issued on: %s', time.strftime("%d/%m/%Y")))
+    pdf.multi_cell(0, 5, ('Issued on: %s' % str(time.strftime("%d/%m/%Y"))))
     pdf.ln()
 
     # Write generated output file to PDF
-    pdf.output(('cheque_%s', name), 'F')
+    pdf.output(('cheque_%s.pdf' % name), 'F')
 
 
 def generate_salary_list(Hall):
@@ -116,9 +116,9 @@ def print_receipt(Student):
     pdf.ln()
 
     if Student.room_type == "S":
-        room_rent = db.get("hall", Student.hall_ID, "single_room_rent")
+        room_rent = db.get("hall", Student.hall_ID, "single_room_rent")[0]
     elif Student.room_type == "D":
-        room_rent = db.get("hall", Student.hall_ID, "double_room_rent")
+        room_rent = db.get("hall", Student.hall_ID, "double_room_rent")[0]
 
     pdf.multi_cell(0, 5, ('Room Rent: %s' % room_rent))
     pdf.ln()
@@ -130,7 +130,7 @@ def print_receipt(Student):
     pdf.ln()
 
     # Write generated output file to PDF
-    pdf.output(('receipt_%s' % Student.hall_ID), 'F')
+    pdf.output(('receipt_%s.pdf' % Student.hall_ID), 'F')
 
 
 def issue_student_admission_letter(Student, body):
@@ -144,19 +144,19 @@ def issue_student_admission_letter(Student, body):
 
     pdf.multi_cell(0, 5, 'Student Admission Letter')
     pdf.ln()
-    pdf.multi_cell(0, 5, ('Name: %s', Student.name))
+    pdf.multi_cell(0, 5, ('Name: %s' % Student.name))
     pdf.ln()
-    pdf.multi_cell(0, 5, ('Address: %s', Student.address))
+    pdf.multi_cell(0, 5, ('Address: %s' % Student.address))
     pdf.ln()
-    pdf.multi_cell(0, 5, ('Contact Number: %s', Student.contact_number))
+    pdf.multi_cell(0, 5, ('Contact Number: %s' % Student.contact_number))
     pdf.ln()
-    pdf.multi_cell(0, 5, ('Hall Allotted: %s', db.get("hall", Student.hall_ID, "name")))
+    pdf.multi_cell(0, 5, ('Hall Allotted: %s' % str(db.get("hall", Student.hall_ID, "name")[0])))
     pdf.ln()
-    pdf.multi_cell(0, 5, ('Room Allotted: %s', Student.room_no))
+    pdf.multi_cell(0, 5, ('Room Allotted: %s' % Student.room_no))
     pdf.ln()
     pdf.ln()
-    pdf.multi_cell(0, 5, ('%s', body))
+    pdf.multi_cell(0, 5, ('%s' % body))
     pdf.ln()
 
     # Write generated output file to PDF
-    pdf.output(('admission_letter_%s', Student.student_ID), 'F')
+    pdf.output(('admission_letter_%s' % Student.student_ID), 'F')
