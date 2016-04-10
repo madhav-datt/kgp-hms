@@ -166,11 +166,11 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
             self.label_23.setText(hall_name)
             for req in grant_req_dict:
                 if grant_req_dict[req].hall_ID == hall_ID:
-                    self.lineEdit.setText(grant_req_dict[req].salary_charge())
+                    self.lineEdit.setText(grant_req_dict[req].salary_charge)
                     self.doubleSpinBox_6.setValue(input_validation.float_input(self.lineEdit.text()))
-                    self.lineEdit_3.setText(grant_req_dict[req].repair_charge())
+                    self.lineEdit_3.setText(grant_req_dict[req].repair_charge)
                     self.doubleSpinBox_7.setValue(input_validation.float_input(self.lineEdit_3.text()))
-                    self.lineEdit_4.setText(grant_req_dict[req].other_charge())
+                    self.lineEdit_4.setText(grant_req_dict[req].other_charge)
                     self.doubleSpinBox_8.setValue(input_validation.float_input(self.lineEdit_4.text()))
 
     '''
