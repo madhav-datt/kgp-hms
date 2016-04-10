@@ -8,6 +8,7 @@ from Complaint_GUI import ComplaintWindowClass
 from ..database import login
 from ..database import db_rebuild as dbr
 from ..requests import complaint
+from ..actors import student
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -76,10 +77,10 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.set_list()
 
     def password_validate(self):
-        user_ID = self.lineEdit_19.text()
+        user_ID = int(self.lineEdit_19.text())
         password = str(self.lineEdit_20.text())
         self.label_36.setText(" ")
-        if login.authenticate("student", user_ID, passwordd):
+        if login.authenticate("student", user_ID, password):
             student_ID = user_ID
             self.display(0)
             self.set_list()
