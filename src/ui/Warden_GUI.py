@@ -3,6 +3,7 @@ from PyQt4.QtGui import *
 from ..database import db_func as db
 from ..database import db_rebuild as dbr
 from ..database import login
+from ..actors import warden
 from PyQt4 import QtCore, QtGui
 import warden_window
 
@@ -13,7 +14,7 @@ except AttributeError:
         return s
 
 
-class MessManagerWindowClass(QtGui.QWidget, warden_window.Ui_Form):
+class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
     def __init__(self):
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
@@ -38,8 +39,22 @@ class MessManagerWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         self.label_32.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
         self.label_32.setScaledContents(True)
 
+        warden.Warden("a", "War", "who cares", 0)
+        self.pushButton_10.clicked.connect(self.password_validate)
+
+    def password_validate(self):
+        """
+        Check password for login
+        """
+
+        user_ID = int(self.lineEdit_19.text())
+        password = self.lineEdit_20.text()
+        if login.authenticate("warden", user_ID, password):
+            
+        else:
+            self.label_42.setText("Authentication Failed. Please try again")
 
 app = QApplication(sys.argv)
-form = MessManagerWindowClass()
+form = WardenWindowClass()
 form.show()
 app.exec_()
