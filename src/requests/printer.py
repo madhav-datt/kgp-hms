@@ -10,7 +10,7 @@
 from fpdf import FPDF
 from ..database import db_func as db
 from ..database import db_rebuild as dbr
-from ..workers import worker
+from ..workers import worker, attendant, clerk, mess_manager
 import time
 
 
@@ -76,13 +76,13 @@ def generate_salary_list(Hall):
     worker_list = dbr.rebuild("worker")
     for key in worker_list:
         if worker_list[key].hall_ID == Hall.hall_ID:
-            if isinstance(worker_list[key].hall_ID, worker.MessManager):
+            if isinstance(worker_list[key].hall_ID, mess_manager.MessManager):
                 title = "Mess Manager"
                 wage = worker_list[key].monthly_salary
-            elif isinstance(worker_list[key].hall_ID, worker.Clerk):
+            elif isinstance(worker_list[key].hall_ID, clerk.Clerk):
                 title = "Clerk"
                 wage = worker_list[key].monthly_salary
-            elif isinstance(worker_list[key].hall_ID, worker.Attendant):
+            elif isinstance(worker_list[key].hall_ID, attendant.Attendant):
                 title = "Attendant"
                 wage = worker_list[key].daily_wage
 
