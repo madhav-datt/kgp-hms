@@ -3,7 +3,7 @@ from PyQt4 import QtCore, QtGui
 from ..database import db_func as db
 from ..database import db_rebuild as dbr
 from ..database import login
-from ..workers import attendant, clerk
+from ..workers import attendant
 import Clerk_Window
 import time
 

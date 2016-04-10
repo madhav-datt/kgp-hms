@@ -4,7 +4,6 @@ from ..database import db_func as db
 from ..database import db_rebuild as dbr
 from ..database import login
 from PyQt4 import QtCore, QtGui
-from ..workers import mess_manager
 import Mess_Manager_Window
 
 try:
@@ -20,7 +19,7 @@ class MessManagerWindowClass(QtGui.QWidget, Mess_Manager_Window.Ui_Form):
         self.setupUi(self)
         self.label_7.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
         self.label_7.setScaledContents(True)
-        mess_manager.MessManager("mmm", 0, "b", 1000)
+
         self.label_12.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
         self.label_12.setScaledContents(True)
         self.pushButton_2.clicked.connect(self.password_validate)
