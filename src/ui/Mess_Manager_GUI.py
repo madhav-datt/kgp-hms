@@ -31,14 +31,19 @@ class MessManagerWindowClass(QtGui.QWidget, Mess_Manager_Window.Ui_Form):
         """
 
         student_list = dbr.rebuild("student")
+        student_sel_ID = 0
+        if self.tableWidget.selectedItems():
+            student_sel_ID = int(self.tableWidget.selectedItems()[0].text())
 
-        student_sel_ID = self.tableWidget.selectedItems()[0][0]
         for key in student_list:
             if student_sel_ID == student_list[key].student_ID:
                 amount = self.doubleSpinBox.value()
                 student_list[key].mess_charge += amount
                 db.update("hall", student_list[key].hall_ID, "mess_account",
-                          float(db.get("hall", student_list[key].hall_ID, "mess_account")) - amount)
+                          float(db.get("hall", student_list[key].hall_ID, "mess_account")[0]) - amount)
+
+        self.doubleSpinBox.setValue(0.0)
+        choice = QtGui.QMessageBox.information(self, 'Success', "Mess Charge submitted")
 
     def password_validate(self):
         """
