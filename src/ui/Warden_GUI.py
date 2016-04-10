@@ -89,13 +89,12 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         worker_table = dbr.rebuild("worker")
         worker_ID = 0
         if self.tableWidget.selectedItems():
-            worker_ID = self.tableWidget.selectedItems()[0][0]
+            worker_ID = int(self.tableWidget.selectedItems()[0].text())
 
         if worker_ID in worker_table:
             # Remove worker from table and database
             del worker_table[worker_ID]
-            row_num = self.tableWidget.selectedIndexes()
-            self.tableWidget.removeRow(row_num - 1)
+            self.update_worker_table()
 
     def print_account_statement(self):
         """
