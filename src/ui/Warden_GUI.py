@@ -3,7 +3,7 @@ from PyQt4.QtGui import *
 from ..database import db_func as db
 from ..database import db_rebuild as dbr
 from ..database import login
-from ..requests import grant_request
+from ..requests import grant_request, printer
 from ..actors import warden
 from ..workers import attendant
 from PyQt4 import QtCore, QtGui
@@ -24,6 +24,7 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
     def __init__(self):
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
+
         self.label.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
         self.label.setScaledContents(True)
 
@@ -54,8 +55,12 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         self.pushButton_4.clicked.connect(self.print_account_statement)
 
     def print_account_statement(self):
-        pass
-        #TODO : link to printing of account statements
+        """
+        Print Hall Account Statement
+        """
+
+        hall_dict = dbr.rebuild("hall")
+        printer.print_statement(hall_dict[this_warden.hall_ID])
 
     def check_grant_button(self):
         """
@@ -87,6 +92,7 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
     def password_validate(self):
         """
         Check password for login
+        Set labels for various fields
         """
         global this_warden
 
@@ -123,13 +129,15 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
                 self.label_4.setVisible(False)
                 self.groupBox_7.setVisible(True)
                 self.groupBox_8.setVisible(True)
-                #TODO : set data for occupancies
-                # self.label_24.setText(str())
-                # self.label_25.setText(str())
-                # self.label_26.setText(str(int(self.label_24.text()) - int(self.label_25.text())))
-                # self.label_27.setText(str())
-                # self.label_28.setText(str())
-                # self.label_29.setText(str(int(self.label_24.text()) - int(self.label_25.text())))
+
+                # Set data for total occupancies
+                total_occ = this_warden.total_occupancy(dbr.rebuild("hall"))
+                self.label_24.setText(str(total_occ['single_total']))
+                self.label_25.setText(str(total_occ['single_occupy']))
+                self.label_26.setText(str(int(self.label_24.text()) - int(self.label_25.text())))
+                self.label_27.setText(str(total_occ['double_total']))
+                self.label_28.setText(str(total_occ['double_occupy']))
+                self.label_29.setText(str(int(self.label_24.text()) - int(self.label_25.text())))
 
         else:
             self.label_42.setText("Authentication Failed. Please try again")
@@ -142,8 +150,6 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         attendant.Attendant(worker_name, hall_ID, worker_wage, 0)
         self.lineEdit_22.setText("")
         self.doubleSpinBox.setValue(0.00)
-
-
 
 app = QApplication(sys.argv)
 form = WardenWindowClass()
