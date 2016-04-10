@@ -28,7 +28,7 @@ class Student(object):
     """
 
     def __init__(self, password, name, address, contact_number,
-                 hall_ID, room_no, room_type, rebuild=False, student_ID=None):
+                 hall_ID, room_no, room_type, mess_charge, rebuild=False, student_ID=None):
         """
         Init Student with details from Admission Letter
         """
@@ -62,8 +62,7 @@ class Student(object):
         self.room_type = room_type
 
         # Mess charges payable by student
-        self.mess_charge = 0.
-        self.total_dues = 0.
+        self.mess_charge = mess_charge
 
     # student_ID getter functions
     @property
@@ -155,17 +154,17 @@ class Student(object):
         db.update("student", self.student_ID, "mess_charge", self.mess_charge)
 
     # total_dues getter function
-    # @property
-    # def total_dues(self):
-    #     """
-    #     Calculate total dues payable by student
-    #     total_dues = room_rent + mess_charges + amenities_charges
-    #     """
-    #
-    #     if self.room_type == "S":
-    #         room_rent = db.get("hall", self.hall_ID, "single_room_rent")
-    #     elif self.room_type == "D":
-    #         room_rent = db.get("hall", self.hall_ID, "double_room_rent")
-    #
-    #     return self.mess_charge + self.room_rent + \
-    #            db.get("hall", self.hall_ID, "amenities_charges")
+    @property
+    def total_dues(self):
+        """
+        Calculate total dues payable by student
+        total_dues = room_rent + mess_charges + amenities_charges
+        """
+
+        if self.room_type == "S":
+            room_rent = db.get("hall", self.hall_ID, "single_room_rent")[0]
+        elif self.room_type == "D":
+            room_rent = db.get("hall", self.hall_ID, "double_room_rent")[0]
+
+        return self.mess_charge + room_rent + \
+               db.get("hall", self.hall_ID, "amenities_charge")[0]

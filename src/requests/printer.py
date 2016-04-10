@@ -129,7 +129,7 @@ def print_receipt(Student):
     pdf.multi_cell(0, 5, ('Amenities Charge: %s' % str(db.get("hall", Student.hall_ID, "amenities_charge")[0])))
     pdf.ln()
 
-    pdf.multi_cell(0, 5, ('Total Amount Paid: %s' % str(Student.total_dues())))
+    pdf.multi_cell(0, 5, ('Total Amount Paid: %s' % str(Student.total_dues)))
     pdf.ln()
 
     # Write generated output file to PDF
