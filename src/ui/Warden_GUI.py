@@ -42,6 +42,9 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         self.label_7.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
         self.label_7.setScaledContents(True)
 
+        self.label_9.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
+        self.label_9.setScaledContents(True)
+
         self.label_32.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
         self.label_32.setScaledContents(True)
 
@@ -52,6 +55,36 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         self.pushButton_4.clicked.connect(self.print_account_statement)
         self.pushButton_5.clicked.connect(self.pay_salaries)
         self.pushButton_6.clicked.connect(self.gen_salary_list)
+        self.pushButton_7.clicked.connect(self.view_complaint_button)
+        self.pushButton_8.clicked.connect(self.post_atr_button())
+
+    def view_complaint_button(self):
+        comp_dict = dbr.rebuild("complaint")
+        if self.listWidget.currentItem() is None:
+            choice = QtGui.QMessageBox.question(self, 'Error', "Please select a complaint first!")
+            return
+        else:
+            comp_id = int(self.listWidget.currentItem().text())
+            comp_obj = comp_dict[comp_id]
+            self.lineEdit_15.setText(str(comp_obj.complaint_ID))
+            self.lineEdit_23.setText(str(comp_obj.student_ID))
+            self.plainTextEdit_2.setPlainText(comp_obj.description)
+            self.plainTextEdit.setPlainText("")
+
+    def post_atr_button(self):
+        comp_dict = dbr.rebuild("complaint")
+        atr = self.plainTextEdit.toPlainText()
+        comp_id = int(self.lineEdit_15.text())
+        comp_obj = comp_dict[comp_id]
+        comp_obj.action_report = atr
+        comp_obj.action_status = "T"
+        choice = QtGui.QMessageBox.information(self, 'Success', "ATR Successfully posted")
+        self.update_comp_list()
+        self.lineEdit_15.setText("")
+        self.lineEdit_23.setText("")
+        self.plainTextEdit_2.setPlainText("")
+        self.plainTextEdit.setPlainText("")
+
 
     def gen_salary_list(self):
         hall_dict = dbr.rebuild("hall")
@@ -177,6 +210,15 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
             self.lineEdit.setText(str(this_warden.salary_charge(worker_table)))
             self.check_grant_button()
 
+            # View Complaints Tab - add conditions
+            comp_dict = dbr.rebuild("complaint")
+            comp_ids_strs = []
+            for key in comp_dict:
+                if comp_dict[key].hall_ID == hall_ID and comp_dict[key].action_status == "P":
+                    comp_ids_strs.append(str(comp_dict[key].complaint_ID))
+            self.listWidget.addItems(comp_ids_strs)
+            self.label_49.setText("")
+
             # View Overall Occupancy Tab - add conditions
             if not this_warden.controlling_warden:
                 self.label_4.setVisible(True)
@@ -200,6 +242,16 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
             self.stackedWidget.setCurrentIndex(0)
         else:
             self.label_42.setText("Authentication Failed. Please try again")
+
+    def update_comp_list(self):
+        hall_ID = this_warden.hall_ID
+        comp_dict = dbr.rebuild("complaint")
+        comp_ids_strs = []
+        for key in comp_dict:
+            if comp_dict[key].hall_ID == hall_ID and comp_dict[key].action_status == "P":
+                comp_ids_strs.append(str(comp_dict[key].complaint_ID))
+        self.listWidget.addItems(comp_ids_strs)
+        self.label_49.setText("")
 
     def update_worker_table(self):
         self.clear_worker_table()
