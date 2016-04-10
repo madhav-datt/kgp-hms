@@ -78,7 +78,7 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
             i = 0
             for key in worker_list:
                 if isinstance(worker_list[key], attendant.Attendant) and \
-                                worker_list[key].hall_ID == db.get("worker", clerk_ID, "hall_ID"):
+                                worker_list[key].hall_ID == db.get("worker", clerk_ID, "hall_ID")[0]:
                     item = self.tableWidget.verticalHeaderItem(i)
                     item.setText("0")
                     item = self.tableWidget.item(i, 0)
