@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a869d99-4bbd-4a72-9cea-88f9c7d74b97" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actors/warden.py" afterPath="$PROJECT_DIR$/src/actors/warden.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/requests/printer.py" afterPath="$PROJECT_DIR$/src/requests/printer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.idea/workspace.xml" afterPath="$PROJECT_DIR$/src/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/HMC_GUI.py" afterPath="$PROJECT_DIR$/src/ui/HMC_GUI.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/Warden_GUI.py" afterPath="$PROJECT_DIR$/src/ui/Warden_GUI.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/warden_window.py" afterPath="$PROJECT_DIR$/src/ui/warden_window.py" />
     </list>
     <ignored path="kgp-hms.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,8 +29,8 @@
       <file leaf-file-name="HMC_GUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/HMC_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-18">
-              <caret line="154" column="75" selection-start-line="154" selection-start-column="75" selection-end-line="154" selection-end-column="75" />
+            <state relative-caret-position="450">
+              <caret line="180" column="71" selection-start-line="180" selection-start-column="71" selection-end-line="180" selection-end-column="71" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -60,24 +60,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Warden_GUI.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Warden_GUI.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ui/Warden_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="143" column="87" selection-start-line="143" selection-start-column="87" selection-end-line="143" selection-end-column="87" />
+            <state relative-caret-position="136">
+              <caret line="206" column="60" selection-start-line="206" selection-start-column="60" selection-end-line="206" selection-end-column="60" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-                <marker date="1460289625042" expanded="true" signature="517:8765" placeholder="..." />
+                <marker date="1460290482822" expanded="true" signature="517:9329" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="printer.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="printer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/requests/printer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="67">
-              <caret line="96" column="58" selection-start-line="96" selection-start-column="58" selection-end-line="96" selection-end-column="58" />
+            <state relative-caret-position="355">
+              <caret line="112" column="53" selection-start-line="112" selection-start-column="53" selection-end-line="112" selection-end-column="53" />
               <folding>
                 <element signature="e#164#185#0" expanded="true" />
               </folding>
@@ -126,8 +126,8 @@
         <option value="$PROJECT_DIR$/src/ui/HMC_GUI.py" />
         <option value="$PROJECT_DIR$/src/halls/hall.py" />
         <option value="$PROJECT_DIR$/src/actors/warden.py" />
-        <option value="$PROJECT_DIR$/src/ui/Warden_GUI.py" />
         <option value="$PROJECT_DIR$/src/requests/printer.py" />
+        <option value="$PROJECT_DIR$/src/ui/Warden_GUI.py" />
       </list>
     </option>
   </component>
@@ -1008,8 +1008,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/HMC_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-18">
-          <caret line="154" column="75" selection-start-line="154" selection-start-column="75" selection-end-line="154" selection-end-column="75" />
+        <state relative-caret-position="450">
+          <caret line="180" column="71" selection-start-line="180" selection-start-column="71" selection-end-line="180" selection-end-column="71" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -1044,17 +1044,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/Warden_GUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="143" column="87" selection-start-line="143" selection-start-column="87" selection-end-line="143" selection-end-column="87" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-            <marker date="1460289625042" expanded="true" signature="517:8765" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hall_salary_1">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1065,10 +1054,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/requests/printer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="96" column="58" selection-start-line="96" selection-start-column="58" selection-end-line="96" selection-end-column="58" />
+        <state relative-caret-position="355">
+          <caret line="112" column="53" selection-start-line="112" selection-start-column="53" selection-end-line="112" selection-end-column="53" />
           <folding>
             <element signature="e#164#185#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Warden_GUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="206" column="60" selection-start-line="206" selection-start-column="60" selection-end-line="206" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <marker date="1460290482822" expanded="true" signature="517:9329" placeholder="..." />
           </folding>
         </state>
       </provider>

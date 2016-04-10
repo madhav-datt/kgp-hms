@@ -30,7 +30,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         self.label_33.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/iit.jpg')))
         self.label_33.setScaledContents(True)
         self.pushButton_8.clicked.connect(self.password_validate)
-        self.pushButton_2.clicked.connect(self.display_home)
+        self.pushButton_2.clicked.connect(self.cancel)
         self.pushButton.clicked.connect(self.add_hall)
         self.pushButton_5.clicked.connect(self.activate_payment_link)
         self.pushButton_6.clicked.connect(self.deactivate_payment_link)
@@ -53,6 +53,23 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         # Linking "Issue Admission Letter Button to its functionality
         self.pushButton_4.clicked.connect(self.issue_admission_letter)
 
+    def cancel(self):
+        self.set_hall_options()
+        self.lineEdit_4.setText("")
+        self.doubleSpinBox_5.setValue(0.0)
+        self.spinBox_8.setValue(0.0)
+        self.doubleSpinBox.setValue(0.00)
+        self.spinBox_9.setValue(0.0)
+        self.doubleSpinBox_2.setValue(0.00)
+        self.lineEdit_8.setText("")
+        self.lineEdit_9.setText("")
+        self.lineEdit_10.setText("")
+        self.lineEdit_11.setText("")
+        self.doubleSpinBox_3.setValue(0.00)
+        self.lineEdit_14.setText("")
+        self.lineEdit_17.setText("")
+        self.doubleSpinBox_4.setValue(0.00)
+
     def display_home(self):
         self.display(0)
 
@@ -64,8 +81,16 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         if login.authenticate("hmc", 0, password_entered):
             self.display(0)
             self.set_list()
+            self.set_hall_options()
         else:
             self.label_28.setText("Wrong Password. Please try again")
+
+    def set_hall_options(self):
+        hall_dict = dbr.rebuild("hall")
+        hall_names = []
+        for key in hall_dict:
+            hall_names.append(hall_dict[key].name)
+        self.comboBox_3.addItems(hall_names)
 
     '''
     Adding specific ui elements for student functionality tab
@@ -76,14 +101,14 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         gender = self.comboBox.currentText()
         contact = self.lineEdit_15.text()
         address = self.lineEdit_18.text()
-        student_hall = self.comboBox_2.currentText()
-        student_hall_ID = 1
+        student_hall = str(self.comboBox_2.currentText())
+        student_hall_ID = find_hall_ID_by_name(student_hall)
         room_no = self.lineEdit_13.text()
         if self.comboBox_2.currentText() == "Single":
             room_type = 'S'
         else:
             room_type = 'D'
-        password = self.lineEdit_12.text()
+        password = str(self.lineEdit_12.text())
         if name == "" or address == "" or contact == "" or room_no == "" or room_type == "":
             choice = QtGui.QMessageBox.question(self, 'Error', "No Field can be left blank")
         elif not input_validation.valid_phone(contact):
@@ -157,7 +182,8 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
             new_warden.hall_ID = new_hall.hall_ID
             new_mess_manager.hall_ID = new_hall.hall_ID
             new_clerk.hall_ID = new_hall.hall_ID
-            choice = QtGui.QMessageBox.information(self, 'Success', "Hall Successfull setup")
+            choice = QtGui.QMessageBox.information(self, 'Success', "Hall Successfully setup")
+            self.set_hall_options()
             self.lineEdit_4.setText("")
             self.doubleSpinBox_5.setValue(0.0)
             self.spinBox_8.setValue(0.0)

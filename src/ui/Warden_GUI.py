@@ -153,6 +153,10 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
             self.lineEdit_9.setText(str(db.get("hall", hall_ID, "single_room_occupancy")[0]))
             self.lineEdit_8.setText(str(int(self.lineEdit_8.text()) - int(self.lineEdit_9.text())))
 
+            self.lineEdit_8.setText(db.get("hall", hall_ID, "single_room_count")[0])
+            self.lineEdit_9.setText(db.get("hall", hall_ID, "single_room_occupancy")[0])
+            self.lineEdit_10.setText(str(int(self.lineEdit_8.text()) - int(self.lineEdit_9.text())))
+
             self.lineEdit_17.setText(str(db.get("hall", hall_ID, "double_room_count")[0]))
             self.lineEdit_18.setText(str(db.get("hall", hall_ID, "double_room_occupancy")[0]))
             self.lineEdit_21.setText(str(int(self.lineEdit_17.text()) - int(self.lineEdit_18.text())))
@@ -183,12 +187,12 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
 
                 # Set data for total occupancies
                 total_occ = this_warden.total_occupancy(dbr.rebuild("hall"))
-                self.label_24.setText(str(total_occ['single_total']))
-                self.label_25.setText(str(total_occ['single_occupy']))
-                self.label_26.setText(str(int(self.label_24.text()) - int(self.label_25.text())))
-                self.label_27.setText(str(total_occ['double_total']))
-                self.label_28.setText(str(total_occ['double_occupy']))
-                self.label_29.setText(str(int(self.label_24.text()) - int(self.label_25.text())))
+                self.lineEdit_24.setText(str(total_occ['single_total']))
+                self.lineEdit_25.setText(str(total_occ['single_occupy']))
+                self.lineEdit_26.setText(str(int(self.label_24.text()) - int(self.label_25.text())))
+                self.lineEdit_27.setText(str(total_occ['double_total']))
+                self.lineEdit_28.setText(str(total_occ['double_occupy']))
+                self.lineEdit_29.setText(str(int(self.label_24.text()) - int(self.label_25.text())))
 
             self.stackedWidget.setCurrentIndex(0)
         else:
@@ -199,9 +203,14 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         hall_ID = this_warden.hall_ID
         worker_name = self.lineEdit_22.text()
         worker_wage = self.doubleSpinBox.value()
-        attendant.Attendant(worker_name, hall_ID, worker_wage, 0)
-        self.lineEdit_22.setText("")
-        self.doubleSpinBox.setValue(0.00)
+        if worker_name == "":
+            choice = QtGui.QMessageBox.question(self, 'Error', "Worker name can't be blank")
+        elif worker_wage == 0.:
+            choice = QtGui.QMessageBox.question(self, 'Error', "Worker wage can't be 0")
+        else:
+            attendant.Attendant(worker_name, hall_ID, worker_wage, 0)
+            self.lineEdit_22.setText("")
+            self.doubleSpinBox.setValue(0.00)
 
 
 app = QApplication(sys.argv)
