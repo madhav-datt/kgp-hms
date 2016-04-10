@@ -37,7 +37,7 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
 
         # Deactivate attendance button if last attendance recorded is on same day
         if db.get_attend_date() == time.strftime('%Y-%m-%d'):
-            self.pushButton.isEnabled(False)
+            self.pushButton.setEnabled(False)
 
         self.pushButton.clicked.connect(self.give_attendance)
 
@@ -55,7 +55,7 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
                 if worker_sel_ID == worker_list[key].worker_ID:
                     worker_list[key].monthly_attendance += 1
 
-        self.pushButton.isEnabled(False)
+        self.pushButton.setEnabled(False)
         db.update_attend_date()
 
     def password_validate(self):
@@ -69,9 +69,9 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
 
             # Set text fields with value from databases
             self.lineEdit.setText(str(clerk_ID))
-            self.lineEdit_2.setText(str(db.get("worker", clerk_ID, "name")))
-            self.label_2.setText("Welcome " + str(db.get("worker", clerk_ID, "name")))
-            self.lineEdit_3.setText(str(db.get("worker", clerk_ID, "hall_ID")))
+            self.lineEdit_2.setText(str(db.get("worker", clerk_ID, "name")[0]))
+            self.label_2.setText("Welcome " + db.get("worker", clerk_ID, "name")[0])
+            self.lineEdit_3.setText(str(db.get("worker", clerk_ID, "hall_ID")[0]))
 
             # Build table from worker database
             worker_list = dbr.rebuild("worker")
@@ -87,7 +87,7 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
                     item.setText(worker_list[key].name)
                     i += 1
 
-            self.display(0)
+            self.stackedWidget.setCurrentIndex(0)
         else:
             self.label.setText("Authentication Failed. Please try again")
 
