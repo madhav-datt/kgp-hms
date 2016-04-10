@@ -61,7 +61,7 @@ class MessManagerWindowClass(QtGui.QWidget, Mess_Manager_Window.Ui_Form):
             student_list = dbr.rebuild("student")
             i = 0
             for key in student_list:
-                if student_list[key].hall_ID == db.get("worker", mess_manager_ID, "hall_ID"):
+                if student_list[key].hall_ID == db.get("worker", mess_manager_ID, "hall_ID")[0]:
                     item = self.tableWidget.verticalHeaderItem(i)
                     item.setText("0")
                     item = self.tableWidget.item(i, 0)
@@ -73,6 +73,7 @@ class MessManagerWindowClass(QtGui.QWidget, Mess_Manager_Window.Ui_Form):
             self.stackedWidget.setCurrentIndex(0)
         else:
             self.label_11.setText("Authentication Failed. Please try again")
+
 
 app = QApplication(sys.argv)
 form = MessManagerWindowClass()

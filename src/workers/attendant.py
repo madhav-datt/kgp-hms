@@ -17,8 +17,6 @@ class Attendant(worker.Worker):
         worker_ID: Integer to uniquely identify worker
         name: String
         hall_ID: Integer to uniquely identify hall
-        email: String
-        monthly_salary: Float
         daily_wage: Float
         monthly_attendance: Integer with monthly attendance count for daily workers
     """
@@ -40,7 +38,7 @@ class Attendant(worker.Worker):
 
         self.daily_wage = daily_wage
         self.monthly_attendance = monthly_attendance
-        worker.Worker.__init__(self, worker_ID, name, hall_ID)
+        worker.Worker.__init__(self, self.worker_ID, name, hall_ID)
 
     # daily_wage getter and setter functions
     @property
