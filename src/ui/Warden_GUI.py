@@ -201,6 +201,21 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         else:
             self.label_42.setText("Authentication Failed. Please try again")
 
+    def update_worker_table(self):
+        self.clear_worker_table()
+        worker_table = dbr.rebuild("worker")
+        for key in worker_table:
+            if worker_table[key].hall_ID == this_warden.hall_ID \
+                    and isinstance(worker_table[key], attendant.Attendant):
+                rowPosition = self.tableWidget.rowCount()
+                self.tableWidget.insertRow(rowPosition)
+                self.tableWidget.setItem(rowPosition, 0, QtGui.QTableWidgetItem(str(worker_table[key].worker_ID)))
+                self.tableWidget.setItem(rowPosition, 1, QtGui.QTableWidgetItem(worker_table[key].name))
+
+    def clear_worker_table(self):
+        while(self.tableWidget.rowCount()>0):
+            self.tableWidget.removeRow(0)
+
     def hire_new_worker(self):
         global this_warden
         hall_ID = this_warden.hall_ID
@@ -212,6 +227,8 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
             choice = QtGui.QMessageBox.question(self, 'Error', "Worker wage can't be 0")
         else:
             attendant.Attendant(worker_name, hall_ID, worker_wage, 0)
+            choice = QtGui.QMessageBox.information(self, 'Succeess', "Worker successfully hired.")
+            self.update_worker_table()
             self.lineEdit_22.setText("")
             self.doubleSpinBox.setValue(0.00)
 
