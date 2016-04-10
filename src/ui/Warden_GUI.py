@@ -15,7 +15,6 @@ except AttributeError:
     def _fromUtf8(s):
         return s
 
-
 # Build Warden Object
 global this_warden
 
@@ -47,12 +46,24 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         self.label_32.setScaledContents(True)
 
         self.pushButton_10.clicked.connect(self.password_validate)
-
         self.pushButton.clicked.connect(self.submit_grant_request)
-
+        self.pushButton_2.clicked.connect(self.fire_worker)
         self.pushButton_3.clicked.connect(self.hire_new_worker)
-
         self.pushButton_4.clicked.connect(self.print_account_statement)
+
+    def fire_worker(self):
+        """
+        Fire selected worker from Hall
+        Update worker table
+        """
+
+        worker_table = dbr.rebuild("worker")
+        worker_ID = self.tableWidget.selectedItems()[0][0]
+
+        # Remove worker from table and database
+        del worker_table[worker_ID]
+        row_num = self.tableWidget.selectedIndexes()
+        self.tableWidget.removeRow(row_num - 1)
 
     def print_account_statement(self):
         """
@@ -116,8 +127,18 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
             self.lineEdit_18.setText(db.get("hall", hall_ID, "double_room_occupancy")[0])
             self.lineEdit_21.setText(str(int(self.lineEdit_17.text()) - int(self.lineEdit_18.text())))
 
+            # Worker Details Table - add labels and values from database
+            worker_table = dbr.rebuild("worker")
+            for key in worker_table:
+                if worker_table[key].hall_ID == this_warden.hall_ID \
+                        and isinstance(worker_table[key], attendant.Attendant):
+                    rowPosition = self.tableWidget.rowCount()
+                    self.tableWidget.insertRow(rowPosition)
+                    self.tableWidget.setItem(rowPosition, 0, QtGui.QTableWidgetItem(str(worker_table[key].worker_ID)))
+                    self.tableWidget.setItem(rowPosition, 1, QtGui.QTableWidgetItem(worker_table[key].name))
+
             # Grant Request Tab - add labels and values from database
-            self.lineEdit.setText(str(this_warden.salary_charge(dbr.rebuild("worker"))))
+            self.lineEdit.setText(str(this_warden.salary_charge(worker_table)))
             self.check_grant_button()
 
             # View Overall Occupancy Tab - add conditions
@@ -150,6 +171,7 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         attendant.Attendant(worker_name, hall_ID, worker_wage, 0)
         self.lineEdit_22.setText("")
         self.doubleSpinBox.setValue(0.00)
+
 
 app = QApplication(sys.argv)
 form = WardenWindowClass()

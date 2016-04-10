@@ -79,13 +79,10 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
             for key in worker_list:
                 if isinstance(worker_list[key], attendant.Attendant) and \
                                 worker_list[key].hall_ID == db.get("worker", clerk_ID, "hall_ID")[0]:
-                    item = self.tableWidget.verticalHeaderItem(i)
-                    item.setText("0")
-                    item = self.tableWidget.item(i, 0)
-                    item.setText(str(worker_list[key].worker_ID))
-                    item = self.tableWidget.item(i, 1)
-                    item.setText(worker_list[key].name)
-                    i += 1
+                    rowPosition = self.tableWidget.rowCount()
+                    self.tableWidget.insertRow(rowPosition)
+                    self.tableWidget.setItem(rowPosition, 0, QtGui.QTableWidgetItem(str(worker_list[key].worker_ID)))
+                    self.tableWidget.setItem(rowPosition, 1, QtGui.QTableWidgetItem(worker_list[key].name))
 
             self.stackedWidget.setCurrentIndex(0)
         else:

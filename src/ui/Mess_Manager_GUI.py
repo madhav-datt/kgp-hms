@@ -30,7 +30,7 @@ class MessManagerWindowClass(QtGui.QWidget, Mess_Manager_Window.Ui_Form):
         Add mess charge to Student's total amount due
         """
 
-        student_list = dbr.rebuild("worker")
+        student_list = dbr.rebuild("student")
 
         student_sel_ID = self.tableWidget.selectedItems()[0][0]
         for key in student_list:
@@ -58,16 +58,12 @@ class MessManagerWindowClass(QtGui.QWidget, Mess_Manager_Window.Ui_Form):
 
             # Build table from student database
             student_list = dbr.rebuild("student")
-            i = 0
             for key in student_list:
                 if student_list[key].hall_ID == db.get("worker", mess_manager_ID, "hall_ID")[0]:
-                    item = self.tableWidget.verticalHeaderItem(i)
-                    item.setText("0")
-                    item = self.tableWidget.item(i, 0)
-                    item.setText(str(student_list[key].student_ID))
-                    item = self.tableWidget.item(i, 1)
-                    item.setText(student_list[key].name)
-                    i += 1
+                    rowPosition = self.tableWidget.rowCount()
+                    self.tableWidget.insertRow(rowPosition)
+                    self.tableWidget.setItem(rowPosition, 0, QtGui.QTableWidgetItem(str(student_list[key].student_ID)))
+                    self.tableWidget.setItem(rowPosition, 1, QtGui.QTableWidgetItem(student_list[key].name))
 
             self.stackedWidget.setCurrentIndex(0)
         else:
