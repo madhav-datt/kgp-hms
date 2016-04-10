@@ -121,3 +121,24 @@ class Warden(object):
                 (hall_table[key].single_room_occupancy, hall_table[key].double_room_occupancy)
 
         return occupancy_table
+
+    def salary_charge(self, worker_table):
+        """
+        salary_charge getter function
+        Calculate and return total salary
+        worker_table = dbr.rebuild("worker") passed as parameter
+        grant_request_object.salary_charge(dbr.rebuild("worker"))
+        """
+
+        total_salary = 0.
+
+        for key in worker_table:
+            if worker_table[key].hall_ID == self.hall_ID:
+                if worker_table[key].daily_wage == 0:
+                    total_salary = total_salary + worker_table[key].monthly_salary
+                else:
+                    total_salary = total_salary + \
+                                   worker_table[key].daily_wage * \
+                                   worker_table[key].monthly_attendance
+
+        return total_salary

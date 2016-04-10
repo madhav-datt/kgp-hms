@@ -3,6 +3,7 @@ from PyQt4.QtGui import *
 from ..database import db_func as db
 from ..database import db_rebuild as dbr
 from ..database import login
+from ..requests import grant_request
 from ..actors import warden
 from PyQt4 import QtCore, QtGui
 import warden_window
@@ -13,6 +14,9 @@ except AttributeError:
     def _fromUtf8(s):
         return s
 
+
+# Build Warden Object
+global this_warden
 
 class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
     def __init__(self):
@@ -39,18 +43,64 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         self.label_32.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
         self.label_32.setScaledContents(True)
 
-        warden.Warden("a", "War", "who cares", 0)
         self.pushButton_10.clicked.connect(self.password_validate)
+        self.pushButton.clicked.connect(self.submit_grant_request)
+
+    def check_grant_button(self):
+        """
+        Check if grant request from hall is pending in database
+        Disable button if pending
+        """
+
+        grant_table = dbr.rebuild("grant_request")
+
+        for key in grant_table:
+            if grant_table[key].hall_ID == this_warden.hall_ID:
+                self.pushButton.setEnabled(False)
+
+    def submit_grant_request(self):
+        """
+        Submit grant request for HMC approval
+        """
+
+        other_charge = self.doubleSpinBox_2.value()
+        repair_charge = self.doubleSpinBox_3.value()
+
+        if other_charge == 0. or repair_charge == 0.:
+            choice = QtGui.QMessageBox.question(self, 'Error', "No Field can be left blank")
+        else:
+            grant_request.GrantRequest(this_warden.hall_ID, this_warden.salary_charge(dbr.rebuild("worker")),
+                                       repair_charge, other_charge)
+            self.check_grant_button()
 
     def password_validate(self):
         """
         Check password for login
         """
+        global this_warden
 
         user_ID = int(self.lineEdit_19.text())
         password = self.lineEdit_20.text()
+
         if login.authenticate("warden", user_ID, password):
-            pass
+            this_warden = warden.Warden(password, db.get("warden", user_ID, "name")[0],
+                                        db.get("warden", user_ID, "email")[0],
+                                        db.get("warden", user_ID, "hall_ID")[0],
+                                        db.get("warden", user_ID, "controlling_warden")[0],
+                                        True, user_ID)
+            hall_ID = this_warden.hall_ID
+
+            # View Room Occupancy Tab - add labels and values from database
+            self.lineEdit_8.setText(db.get("hall", hall_ID, "single_room_count")[0])
+            self.lineEdit_9.setText(db.get("hall", hall_ID, "single_room_occupancy")[0])
+            self.lineEdit_8.setText(str(int(self.lineEdit_8.text()) - int(self.lineEdit_9.text())))
+            self.lineEdit_17.setText(db.get("hall", hall_ID, "double_room_count")[0])
+            self.lineEdit_18.setText(db.get("hall", hall_ID, "double_room_occupancy")[0])
+            self.lineEdit_21.setText(str(int(self.lineEdit_17.text()) - int(self.lineEdit_18.text())))
+
+            # Grant Request Tab - add labels and values from database
+            self.lineEdit.setText(str(this_warden.salary_charge(dbr.rebuild("worker"))))
+            self.check_grant_button()
         else:
             self.label_42.setText("Authentication Failed. Please try again")
 

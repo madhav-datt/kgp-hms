@@ -20,7 +20,7 @@ class GrantRequest(object):
         other_charge: Float
     """
 
-    def __init__(self, hall_ID, repair_charge, other_charge, rebuild=False,
+    def __init__(self, hall_ID, salary_charge, repair_charge, other_charge, rebuild=False,
                  grant_ID=None):
         """
         Init GrantRequest Object with details from Warden
@@ -37,7 +37,7 @@ class GrantRequest(object):
         self.hall_ID = hall_ID
         self.repair_charge = repair_charge
         self.other_charge = other_charge
-        self.salary_charge = 0.
+        self.salary_charge = salary_charge
 
     # grant_ID getter and setter functions
     @property
@@ -78,26 +78,15 @@ class GrantRequest(object):
         self._other_charge = other_charge
         db.update("grant_request", self.grant_ID, "other_charge", self.other_charge)
 
-    def salary_charge(self, worker_table):
-        """
-        salary_charge getter function
-        Calculate and return total salary
-        worker_table = dbr.rebuild("worker") passed as parameter
-        grant_request_object.salary_charge(dbr.rebuild("worker"))
-        """
+    # salary_charge getter and setter functions
+    @property
+    def salary_charge(self):
+        return self._salary_charge
 
-        total_salary = 0.
-
-        for key in worker_table:
-            if worker_table[key].hall_ID == self.hall_ID:
-                if worker_table[key].daily_wage == 0:
-                    total_salary = total_salary + worker_table[key].monthly_salary
-                else:
-                    total_salary = total_salary + \
-                                   worker_table[key].daily_wage * \
-                                   worker_table[key].monthly_attendance
-
-        return total_salary
+    @salary_charge.setter
+    def salary_charge(self, salary_charge):
+        self._salary_charge = salary_charge
+        db.update("grant_request", self.grant_ID, "salary_charge", self.salary_charge)
 
     def approve(self, salary_charge, other_charge, repair_charge, hall_table):
         """
