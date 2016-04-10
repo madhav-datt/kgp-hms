@@ -9,6 +9,7 @@
 
 from ..database import db_func as db
 from ..database import password_validation as pv
+from ..workers import  attendant
 
 
 class Warden(object):
@@ -135,12 +136,15 @@ class Warden(object):
         total_salary = 0.
 
         for key in worker_table:
-            if worker_table[key].hall_ID == self.hall_ID:
+            if worker_table[key].hall_ID == self.hall_ID and isinstance(worker_table[key], attendant.Attendant):
                 if worker_table[key].daily_wage == 0:
                     total_salary = total_salary + worker_table[key].monthly_salary
                 else:
                     total_salary = total_salary + \
                                    worker_table[key].daily_wage * \
                                    worker_table[key].monthly_attendance
+
+            elif worker_table[key].hall_ID == self.hall_ID:
+                total_salary += worker_table[key].monthly_salary
 
         return total_salary
