@@ -202,6 +202,7 @@ class Ui_Form(object):
         self.lineEdit_4.setObjectName(_fromUtf8("lineEdit_4"))
         self.lineEdit_5 = QtGui.QLineEdit(self.page_2)
         self.lineEdit_5.setGeometry(QtCore.QRect(130, 110, 161, 20))
+        self.lineEdit_5.setReadOnly(True)
         self.lineEdit_5.setObjectName(_fromUtf8("lineEdit_5"))
         self.pushButton_2 = QtGui.QPushButton(self.page_2)
         self.pushButton_2.setGeometry(QtCore.QRect(20, 170, 161, 23))

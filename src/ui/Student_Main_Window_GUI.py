@@ -16,9 +16,8 @@ except AttributeError:
     def _fromUtf8(s):
         return s
 
-student_ID = 0
-curr_complaint_ID = 0
-
+global student_ID
+global curr_complaint_ID
 
 class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
     def __init__(self):
@@ -54,8 +53,10 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         stud_obj = stud_dict[student_ID]
         hall_dict = dbr.rebuild("hall")
         hall_obj = hall_dict[stud_obj.hall_ID]
-        hall_obj.mess_account = float(hall_obj.mess_account) + float(self.lineEdit_11.text())
-        hall_obj.amenities_account
+        hall_obj.mess_account = float(hall_obj.mess_account) + float(self.lineEdit_8.text())
+        hall_obj.amenities_account = float(hall_obj.amenities_account) + float(self.lineEdit_9.text())
+        hall_obj.rent_account = float(hall_obj.rent_account) + float(self.lineEdit_10.text())
+        self.set_dues()
 
     def new_complaint_button(self):
         self.display_complaint_frame()
@@ -77,14 +78,15 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.set_list()
 
     def password_validate(self):
+        global student_ID
         user_ID = int(self.lineEdit_19.text())
         password = str(self.lineEdit_20.text())
         self.label_36.setText(" ")
         if login.authenticate("student", user_ID, password):
             student_ID = user_ID
             self.display(0)
-            self.set_list()
-            self.set_dues()
+            self.set_list(student_ID)
+            self.set_dues(student_ID)
         else:
             self.label_36.setText("Wrong ID or Password. Please try again.")
 
@@ -153,6 +155,7 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.listWidget.addItems(complaint_ids)
 
     def view_complaint_button(self):
+        global curr_complaint_ID
         self.pushButton_11.setVisible(True)
         self.buttonBox.setVisible(False)
         if self.listWidget.currentItem() is None:
@@ -174,6 +177,7 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.plainTextEdit_2.setPlainText(str(complaint_dict[complaint_ID].action_report))
 
     def delete_complaint_button(self):
+        global curr_complaint_ID
         if self.listWidget.currentItem() is None:
             return
         else:
