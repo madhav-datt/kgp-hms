@@ -119,15 +119,15 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
             self.lineEdit_11.setText(str(float(self.lineEdit_8) + float(self.lineEdit_9) + float(self.lineEdit_10)))
 
     def display_complaint_frame(self):
-        self.display(3)
+        self.display(4)
 
     def display_pwchange_frame(self):
-        self.display(2)
+        self.display(3)
         self.resize(581, 344)
 
     def display_student_main_win(self):
         self.resize(581, 544)
-        self.display(0)
+        self.display(1)
 
     def show_complaint_window(self):
         self.window = ComplaintWindowClass()
@@ -135,13 +135,13 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
 
     def display_dues_frame(self):
         #self.resize(400, 490)
-        self.display(1)
+        self.display(2)
 
     def display(self, i):
         self.stackedWidget.setCurrentIndex(i)
         hall_dict = dbr.rebuild("hall")
         student_dict = dbr.rebuild("student")
-        if i == 0:
+        if i == 1:
             self.label_2.setText("WELCOME " + student_dict[student_ID].name)
             self.lineEdit.setText(student_dict[student_ID].name)
             self.lineEdit_2.setText(student_dict[student_ID].address)

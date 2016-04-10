@@ -21,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HMC_GUI.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HMC_GUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ui/HMC_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="249" column="38" selection-start-line="249" selection-start-column="34" selection-end-line="249" selection-end-column="38" />
+            <state relative-caret-position="196">
+              <caret line="73" column="22" selection-start-line="73" selection-start-column="22" selection-end-line="73" selection-end-column="22" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -39,6 +39,18 @@
             <state relative-caret-position="417">
               <caret line="219" column="37" selection-start-line="219" selection-start-column="37" selection-end-line="219" selection-end-column="37" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Student_Main_Window_GUI.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ui/Student_Main_Window_GUI.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="94">
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <folding>
+                <element signature="e#1#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,10 +79,10 @@
         <option value="$PROJECT_DIR$/halls/hall.py" />
         <option value="$PROJECT_DIR$/ui/Mess_Manager_GUI.py" />
         <option value="$PROJECT_DIR$/ui/Clerk_Window_GUI.py" />
-        <option value="$PROJECT_DIR$/ui/Student_Main_Window_GUI.py" />
         <option value="$PROJECT_DIR$/requests/printer.py" />
         <option value="$PROJECT_DIR$/ui/Warden_GUI.py" />
         <option value="$PROJECT_DIR$/ui/HMC_GUI.py" />
+        <option value="$PROJECT_DIR$/ui/Student_Main_Window_GUI.py" />
       </list>
     </option>
   </component>
@@ -452,9 +464,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16837482" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16837482" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -510,7 +522,7 @@
         <state relative-caret-position="170">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
-            <marker date="1460272267126" expanded="true" signature="5351:5412" placeholder="..." />
+            <marker date="1460295291328" expanded="true" signature="5357:5418" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -572,7 +584,7 @@
         <state relative-caret-position="170">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
-            <marker date="1460272267126" expanded="true" signature="5351:5412" placeholder="..." />
+            <marker date="1460295291328" expanded="true" signature="5357:5418" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -746,7 +758,7 @@
         <state relative-caret-position="187">
           <caret line="52" column="41" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
           <folding>
-            <marker date="1460272267126" expanded="true" signature="5351:5412" placeholder="..." />
+            <marker date="1460295291328" expanded="true" signature="5357:5418" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -843,21 +855,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/Student_Main_Window_GUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-484">
-          <caret line="37" column="49" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="49" />
-          <folding>
-            <element signature="e#1#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requests/printer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="952">
           <caret line="63" column="29" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/HMC_GUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="73" column="22" selection-start-line="73" selection-start-column="22" selection-end-line="73" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -869,12 +881,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/HMC_GUI.py">
+    <entry file="file://$PROJECT_DIR$/ui/Student_Main_Window_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="249" column="38" selection-start-line="249" selection-start-column="34" selection-end-line="249" selection-end-column="38" />
+        <state relative-caret-position="94">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#1#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
