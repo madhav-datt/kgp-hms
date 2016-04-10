@@ -101,6 +101,7 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
 
         hall_dict = dbr.rebuild("hall")
         printer.print_statement(hall_dict[this_warden.hall_ID])
+        choice = QtGui.QMessageBox.information(self, 'Success', "PDF Generated")
 
     def check_grant_button(self):
         """
@@ -128,6 +129,9 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
             grant_request.GrantRequest(this_warden.hall_ID, this_warden.salary_charge(dbr.rebuild("worker")),
                                        repair_charge, other_charge)
             self.check_grant_button()
+            choice = QtGui.QMessageBox.information(self, 'Success', "Grant Request submitted")
+            self.doubleSpinBox_2.setValue(0.00)
+            self.doubleSpinBox_3.setValue(0.00)
 
     def password_validate(self):
         """
