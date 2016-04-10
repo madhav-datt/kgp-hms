@@ -2,8 +2,49 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a869d99-4bbd-4a72-9cea-88f9c7d74b97" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/HMS - SA SD Document.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/HMS - SRS Document.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Activity Diagrams/Complaint System Activity Diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Activity Diagrams/Hall Setup Activity Diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Activity Diagrams/Request Grant Activity Diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Activity Diagrams/Student Admission and Hall Allocation Activity Diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Activity Diagrams/Student Due Payment Activity Diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Activity Diagrams/Worker Salary Payment .png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Class Diagram/Basic Class Diagram.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Class Diagram/Class Diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Class Diagram/TLClassDiagram.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Collaboration Diagrams/Complaint System Collaboration Diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Collaboration Diagrams/Grant Request Collaboration Diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Collaboration Diagrams/Hall Setup Collaboration Diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Collaboration Diagrams/Student Admission and Hall Allocation.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Collaboration Diagrams/Student Due Payment Collaboration Diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Collaboration Diagrams/Worker Payment Collaboration Diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Project XML/TLClassDiagram/data.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Project XML/TLClassDiagram/project.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Project XML/data.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Project XML/project.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Sequence Diagrams/Complaint System.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Sequence Diagrams/Grant Request and Issuance.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Sequence Diagrams/Hall Finances.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Sequence Diagrams/Setting up a Residence Hall.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Sequence Diagrams/Student Admission &amp; Hall Allocation.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Sequence Diagrams/Student Due Payment.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/State Chart Diagrams/Complaint State Diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/State Chart Diagrams/MessManager State Diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/State Chart Diagrams/Student State Diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/State Chart Diagrams/Warden State Diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/State Chart Diagrams/Worker State Diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Use Case Diagrams/Hall Management Functionalities.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Use Case Diagrams/Misc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Use Case Diagrams/Package.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Use Case Diagrams/Student.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Use Case Diagrams/Warden.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ui/Student_login.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ui/Student_login_GUI.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/HMC_GUI.py" afterPath="$PROJECT_DIR$/src/ui/HMC_GUI.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py" afterPath="$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/Warden_GUI.py" afterPath="$PROJECT_DIR$/src/ui/Warden_GUI.py" />
     </list>
     <ignored path="kgp-hms.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,11 +80,21 @@
       <file leaf-file-name="Warden_GUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/Warden_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="94" column="37" selection-start-line="94" selection-start-column="37" selection-end-line="94" selection-end-column="37" />
+            <state relative-caret-position="61">
+              <caret line="212" column="25" selection-start-line="212" selection-start-column="19" selection-end-line="212" selection-end-column="25" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="complaint.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/requests/complaint.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -60,11 +111,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HMC_GUI.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HMC_GUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/HMC_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="277" column="0" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
+            <state relative-caret-position="84">
+              <caret line="73" column="23" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -72,12 +123,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Student_Main_Window_GUI.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="hall_management.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/actors/hall_management.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Student_Main_Window_GUI.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
-              <folding />
+            <state relative-caret-position="1127">
+              <caret line="174" column="0" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -106,13 +169,13 @@
         <option value="$PROJECT_DIR$/src/actors/warden.py" />
         <option value="$PROJECT_DIR$/src/requests/grant_request.py" />
         <option value="$PROJECT_DIR$/src/ui/Mess_Manager_GUI.py" />
-        <option value="$PROJECT_DIR$/src/ui/Warden_GUI.py" />
         <option value="$PROJECT_DIR$/src/database/db_rebuild.py" />
         <option value="$PROJECT_DIR$/src/actors/student.py" />
         <option value="$PROJECT_DIR$/src/requests/printer.py" />
-        <option value="$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py" />
         <option value="$PROJECT_DIR$/src/ui/Clerk_Window_GUI.py" />
+        <option value="$PROJECT_DIR$/src/ui/Warden_GUI.py" />
         <option value="$PROJECT_DIR$/src/ui/HMC_GUI.py" />
+        <option value="$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py" />
       </list>
     </option>
   </component>
@@ -195,114 +258,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kgp-hms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kgp-hms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="workers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kgp-hms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kgp-hms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kgp-hms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kgp-hms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="requests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kgp-hms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kgp-hms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="halls" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kgp-hms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kgp-hms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kgp-hms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kgp-hms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actors" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -574,7 +529,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23787168" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -583,7 +538,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32561728" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2638889" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36574075" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39940387" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -615,7 +570,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="6" />
+      <option name="time" value="7" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -821,22 +776,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/requests/complaint.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/actors/hall_management.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="21" column="73" selection-start-line="21" selection-start-column="73" selection-end-line="21" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/Mess_Manager_Window.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -991,14 +930,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/Mess_Manager_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
@@ -1017,16 +948,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/Warden_GUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="94" column="37" selection-start-line="94" selection-start-column="37" selection-end-line="94" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/Clerk_Window_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
@@ -1037,12 +958,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/HMC_GUI.py">
+    <entry file="file://$PROJECT_DIR$/src/requests/complaint.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="277" column="0" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
+        <state relative-caret-position="286">
+          <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Warden_GUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="212" column="25" selection-start-line="212" selection-start-column="19" selection-end-line="212" selection-end-column="25" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actors/hall_management.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/HMC_GUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="73" column="23" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1127">
+          <caret line="174" column="0" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>

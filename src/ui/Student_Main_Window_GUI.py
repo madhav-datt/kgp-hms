@@ -5,6 +5,7 @@ import Student_Main_Window
 from Complaint_GUI import ComplaintWindowClass
 from ..database import login
 from ..database import db_rebuild as dbr
+from ..database import db_func as db
 from ..requests import complaint, printer
 from ..actors import student
 
@@ -75,6 +76,7 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.buttonBox.setVisible(True)
         self.pushButton_11.setVisible(False)
         self.buttonBox.accepted.connect(self.create_new_complaint)
+        self.plainTextEdit.setPlainText("")
 
     def create_new_complaint(self):
         description = self.plainTextEdit.toPlainText()
@@ -95,10 +97,12 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
             self.set_list()
             self.set_dues()
             for key in hmc_dict:
-                if hmc_dict[key].payment_is_active:
+                if hmc_dict[key].payment_is_active == "T":
                     self.pushButton_6.setEnabled(True)
                 else:
                     self.pushButton_6.setEnabled(False)
+            if db.get("student", student_ID, "mess_charge")[0] == 0.:
+                self.pushButton_6.setEnabled(False)
         else:
             self.label_36.setText("Wrong ID or Password. Please try again.")
 

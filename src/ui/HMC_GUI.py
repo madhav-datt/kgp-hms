@@ -82,6 +82,14 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
             self.display(0)
             self.set_list()
             self.set_hall_options()
+            hmc_dict = dbr.rebuild("hmc")
+            for key in hmc_dict:
+                if hmc_dict[key].payment_is_active == 'T':
+                    self.pushButton_5.setEnabled(False)
+                    self.pushButton_6.setEnabled(True)
+                else:
+                    self.pushButton_6.setEnabled(False)
+                    self.pushButton_5.setEnabled(True)
         else:
             self.label_28.setText("Wrong Password. Please try again")
 
