@@ -58,8 +58,8 @@
       <file leaf-file-name="Student_Main_Window_GUI.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ui/Student_Main_Window_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="146" column="31" selection-start-line="146" selection-start-column="31" selection-end-line="146" selection-end-column="31" />
+            <state relative-caret-position="282">
+              <caret line="143" column="50" selection-start-line="143" selection-start-column="50" selection-end-line="143" selection-end-column="50" />
               <folding>
                 <element signature="e#1#26#0" expanded="true" />
               </folding>
@@ -949,8 +949,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ui/Student_Main_Window_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="146" column="31" selection-start-line="146" selection-start-column="31" selection-end-line="146" selection-end-column="31" />
+        <state relative-caret-position="282">
+          <caret line="143" column="50" selection-start-line="143" selection-start-column="50" selection-end-line="143" selection-end-column="50" />
           <folding>
             <element signature="e#1#26#0" expanded="true" />
           </folding>

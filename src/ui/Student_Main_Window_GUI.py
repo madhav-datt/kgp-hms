@@ -131,14 +131,15 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
 
     def display(self, i):
         self.stackedWidget.setCurrentIndex(i)
+        hall_dict = dbr.rebuild("hall")
         student_dict = dbr.rebuild("student")
         if i == 0:
             self.label_2.setText("WELCOME " + student_dict[student_ID].name)
             self.lineEdit.setText(student_dict[student_ID].name)
             self.lineEdit_2.setText(student_dict[student_ID].address)
             self.lineEdit_3.setText(student_dict[student_ID].contact_number)
-            #hall_name = find_hall_ID_by_name(student_dict[student_ID].hall_ID)
-            self.lineEdit_4.setText(student_dict[student_ID].hall_ID)
+            hall_name = hall_dict[student_dict[student_ID].hall_ID].name
+            self.lineEdit_4.setText(str(hall_name))
             self.lineEdit_5.setText(student_dict[student_ID].room_no)
             self.lineEdit_6.setText(student_dict[student_ID].room_type)
             self.lineEdit_7.setText(student_ID)
@@ -204,7 +205,7 @@ def find_hall_ID_by_name(name):
     for key in hall_dict:
         if hall_dict[key].name == name:
             return key
-    return -1
+    return 0
 '''
 app = QApplication(sys.argv)
 form = StudentMainWindowClass()
