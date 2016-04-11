@@ -1,3 +1,15 @@
+#
+# IIT Kharagpur - Hall Management System
+# System to manage Halls of residences, Warden grant requests, student complaints
+# hall worker attendances and salary payments
+#
+# MIT License
+#
+
+"""
+@ authors: Madhav Datt, Avikalp Srivastava
+"""
+
 import sys
 from PyQt4.QtGui import *
 from ..database import db_func as db
@@ -84,7 +96,6 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         self.lineEdit_23.setText("")
         self.plainTextEdit_2.setPlainText("")
         self.plainTextEdit.setPlainText("")
-
 
     def gen_salary_list(self):
         hall_dict = dbr.rebuild("hall")

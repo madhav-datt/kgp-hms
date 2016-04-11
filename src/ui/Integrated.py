@@ -1,4 +1,16 @@
-from PyQt4 import QtCore, QtGui
+#
+# IIT Kharagpur - Hall Management System
+# System to manage Halls of residences, Warden grant requests, student complaints
+# hall worker attendances and salary payments
+#
+# MIT License
+#
+
+"""
+@ authors: Madhav Datt, Avikalp Srivastava
+"""
+
+from PyQt4 import QtCore
 from PyQt4.QtGui import QApplication
 
 import Student_Main_Window_GUI

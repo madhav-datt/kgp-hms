@@ -1,10 +1,13 @@
 #
-# Software Engineering Lab - Assignment 5
 # IIT Kharagpur - Hall Management System
+# System to manage Halls of residences, Warden grant requests, student complaints
+# hall worker attendances and salary payments
+#
+# MIT License
 #
 
 """
-@ authors: Madhav Datt (14CS30015), Avikalp Srivastava (14CS10008)
+@ authors: Madhav Datt, Avikalp Srivastava
 """
 
 from fpdf import FPDF

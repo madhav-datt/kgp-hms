@@ -1,13 +1,22 @@
+#
+# IIT Kharagpur - Hall Management System
+# System to manage Halls of residences, Warden grant requests, student complaints
+# hall worker attendances and salary payments
+#
+# MIT License
+#
+
+"""
+@ authors: Madhav Datt, Avikalp Srivastava
+"""
+
 import sys
 from PyQt4.QtGui import *
-from PyQt4.QtCore import *
 from PyQt4 import QtCore, QtGui
 import HMC_Window
 from ..actors import student, warden
 from ..workers import clerk, mess_manager
-from ..requests import grant_request
 from ..database import db_rebuild as dbr
-from ..database import db_func as db
 from ..halls import hall
 from ..database import input_validation
 from ..database import login

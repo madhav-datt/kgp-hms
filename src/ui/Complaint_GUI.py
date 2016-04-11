@@ -1,9 +1,17 @@
-import sys
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
+#
+# IIT Kharagpur - Hall Management System
+# System to manage Halls of residences, Warden grant requests, student complaints
+# hall worker attendances and salary payments
+#
+# MIT License
+#
+
+"""
+@ authors: Madhav Datt, Avikalp Srivastava
+"""
+
 from PyQt4 import QtCore, QtGui
 import Complaint
-import Student_Main_Window
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8

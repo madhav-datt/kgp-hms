@@ -3,10 +3,12 @@
 # Script to download and install miscellaneous libraries required for HMS
 # Must be run as superuser with sudo
 #
-# Software Engineering Lab - Assignment 5
 # IIT Kharagpur - Hall Management System
+# System to manage Halls of residences, Warden grant requests, student complaints
+# hall worker attendances and salary payments
 #
-# authors: Madhav Datt (14CS30015), Avikalp Srivastava (14CS10008)
+# authors: Madhav Datt, Avikalp Srivastava
+# MIT License
 #
 
 # Install bcrypt for password hashing and authentication
