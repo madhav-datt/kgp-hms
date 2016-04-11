@@ -2,49 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a869d99-4bbd-4a72-9cea-88f9c7d74b97" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/HMS - SA SD Document.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/HMS - SRS Document.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Activity Diagrams/Complaint System Activity Diagram.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Activity Diagrams/Hall Setup Activity Diagram.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Activity Diagrams/Request Grant Activity Diagram.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Activity Diagrams/Student Admission and Hall Allocation Activity Diagram.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Activity Diagrams/Student Due Payment Activity Diagram.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Activity Diagrams/Worker Salary Payment .png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Class Diagram/Basic Class Diagram.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Class Diagram/Class Diagram.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Class Diagram/TLClassDiagram.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Collaboration Diagrams/Complaint System Collaboration Diagram.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Collaboration Diagrams/Grant Request Collaboration Diagram.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Collaboration Diagrams/Hall Setup Collaboration Diagram.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Collaboration Diagrams/Student Admission and Hall Allocation.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Collaboration Diagrams/Student Due Payment Collaboration Diagram.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Collaboration Diagrams/Worker Payment Collaboration Diagram.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Project XML/TLClassDiagram/data.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Project XML/TLClassDiagram/project.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Project XML/data.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Project XML/project.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Sequence Diagrams/Complaint System.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Sequence Diagrams/Grant Request and Issuance.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Sequence Diagrams/Hall Finances.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Sequence Diagrams/Setting up a Residence Hall.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Sequence Diagrams/Student Admission &amp; Hall Allocation.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Sequence Diagrams/Student Due Payment.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/State Chart Diagrams/Complaint State Diagram.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/State Chart Diagrams/MessManager State Diagram.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/State Chart Diagrams/Student State Diagram.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/State Chart Diagrams/Warden State Diagram.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/State Chart Diagrams/Worker State Diagram.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Use Case Diagrams/Hall Management Functionalities.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Use Case Diagrams/Misc.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Use Case Diagrams/Package.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Use Case Diagrams/Student.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/design_docs/UMLDiagrams/Use Case Diagrams/Warden.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ui/Student_login.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ui/Student_login_GUI.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/.idea/src.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ui/.idea/Test.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ui/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ui/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ui/.idea/workspace.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/HMC_GUI.py" afterPath="$PROJECT_DIR$/src/ui/HMC_GUI.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py" afterPath="$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/Warden_GUI.py" afterPath="$PROJECT_DIR$/src/ui/Warden_GUI.py" />
     </list>
     <ignored path="kgp-hms.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -68,7 +34,7 @@
       <file leaf-file-name="Clerk_Window_GUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/Clerk_Window_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
+            <state relative-caret-position="954">
               <caret line="60" column="11" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="11" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
@@ -80,7 +46,7 @@
       <file leaf-file-name="Warden_GUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/Warden_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="61">
+            <state relative-caret-position="3654">
               <caret line="212" column="25" selection-start-line="212" selection-start-column="19" selection-end-line="212" selection-end-column="25" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
@@ -92,7 +58,7 @@
       <file leaf-file-name="complaint.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/requests/complaint.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
+            <state relative-caret-position="846">
               <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
               <folding />
             </state>
@@ -102,7 +68,7 @@
       <file leaf-file-name="Mess_Manager_GUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/Mess_Manager_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
+            <state relative-caret-position="540">
               <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
@@ -114,7 +80,7 @@
       <file leaf-file-name="HMC_GUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/HMC_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
+            <state relative-caret-position="1080">
               <caret line="73" column="23" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
@@ -126,7 +92,7 @@
       <file leaf-file-name="hall_management.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/actors/hall_management.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
+            <state relative-caret-position="990">
               <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
               <folding />
             </state>
@@ -136,8 +102,8 @@
       <file leaf-file-name="Student_Main_Window_GUI.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1127">
-              <caret line="174" column="0" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
+            <state relative-caret-position="65">
+              <caret line="115" column="19" selection-start-line="115" selection-start-column="19" selection-end-line="115" selection-end-column="19" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -181,9 +147,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="24" />
+    <option name="y" value="-4" />
     <option name="width" value="1301" />
-    <option name="height" value="744" />
+    <option name="height" value="772" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -258,6 +224,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kgp-hms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kgp-hms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -528,7 +512,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1301" height="744" extended-state="6" />
+    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23787168" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -536,18 +520,18 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32561728" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36574075" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39940387" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39940387" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32561728" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39940387" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -579,7 +563,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
-          <folding />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -587,7 +573,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -595,7 +583,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
-          <folding />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -603,9 +593,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1242">
           <caret line="72" column="30" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="30" />
-          <folding>
-            <element signature="e#164#196#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -613,7 +600,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -629,7 +615,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -637,9 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2754">
           <caret line="153" column="55" selection-start-line="153" selection-start-column="55" selection-end-line="153" selection-end-column="55" />
-          <folding>
-            <element signature="e#164#177#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -647,7 +629,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
-          <folding />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -655,9 +639,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#164#200#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -665,7 +646,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -673,7 +653,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
           <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -681,8 +660,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1116">
           <caret line="64" column="42" selection-start-line="63" selection-start-column="21" selection-end-line="64" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/HMC_GUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#164#177#0" expanded="false" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -691,15 +677,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/HMC_GUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -714,7 +694,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -722,9 +704,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-          <folding>
-            <element signature="e#164#200#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -732,9 +711,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1728">
           <caret line="99" column="31" selection-start-line="99" selection-start-column="31" selection-end-line="99" selection-end-column="31" />
-          <folding>
-            <element signature="e#164#200#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -742,9 +718,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3582">
           <caret line="201" column="18" selection-start-line="201" selection-start-column="18" selection-end-line="201" selection-end-column="18" />
-          <folding>
-            <element signature="e#164#177#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -780,7 +753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -788,7 +760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -806,9 +777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#31#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -816,9 +784,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="e#164#200#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -826,9 +791,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-          <folding>
-            <element signature="e#164#196#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -836,7 +798,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -844,7 +805,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -852,7 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-268">
           <caret line="9" column="36" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -860,25 +819,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-          <folding>
-            <element signature="e#164#200#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hall_salary_1">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/hall_salary_1" />
     <entry file="file://$PROJECT_DIR$/src/workers/worker.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-532">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -886,7 +834,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="72" column="27" selection-start-line="72" selection-start-column="13" selection-end-line="72" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -894,7 +841,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -902,7 +848,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
           <caret line="92" column="10" selection-start-line="92" selection-start-column="10" selection-end-line="92" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -910,7 +855,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-738">
           <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -918,7 +862,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
           <caret line="168" column="27" selection-start-line="168" selection-start-column="27" selection-end-line="168" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -926,13 +869,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="107">
           <caret line="131" column="74" selection-start-line="131" selection-start-column="74" selection-end-line="131" selection-end-column="74" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/Mess_Manager_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
+        <state relative-caret-position="540">
           <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
@@ -944,13 +886,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="42" column="64" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/Clerk_Window_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
+        <state relative-caret-position="954">
           <caret line="60" column="11" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="11" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
@@ -960,7 +901,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/requests/complaint.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
+        <state relative-caret-position="846">
           <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
           <folding />
         </state>
@@ -968,7 +909,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/Warden_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
+        <state relative-caret-position="3654">
           <caret line="212" column="25" selection-start-line="212" selection-start-column="19" selection-end-line="212" selection-end-column="25" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
@@ -978,7 +919,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/actors/hall_management.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
+        <state relative-caret-position="990">
           <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding />
         </state>
@@ -986,7 +927,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/HMC_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
+        <state relative-caret-position="1080">
           <caret line="73" column="23" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
@@ -996,8 +937,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/Student_Main_Window_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1127">
-          <caret line="174" column="0" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
+        <state relative-caret-position="65">
+          <caret line="115" column="19" selection-start-line="115" selection-start-column="19" selection-end-line="115" selection-end-column="19" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
