@@ -1,2 +1,2 @@
 # kgp-hms
-IIT Kharagpur Hall Management System.
+Hall Management System for IIT Kharagpur.
