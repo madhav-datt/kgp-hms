@@ -47,28 +47,33 @@ class Student(object):
 
             # Update hall room occupancy based on room allocation to Student if rebuild is False
             if self.room_type == "S":
-                print "S hai"
-                curr_occupancy = db.get("hall", self.hall_ID, "single_room_occupancy")[0]
-                print curr_occupancy
+                curr_occupancy = int(db.get("hall", self.hall_ID, "single_room_occupancy")[0])
                 db.update("hall", self.hall_ID, "single_room_occupancy", int(curr_occupancy) + 1)
             elif self.room_type == "D":
-                print "D hai"
-                curr_occupancy = db.get("hall", self.hall_ID, "double_room_occupancy")[0]
+                curr_occupancy = int(db.get("hall", self.hall_ID, "double_room_occupancy")[0])
                 db.update("hall", self.hall_ID, "double_room_occupancy", int(curr_occupancy) + 1)
+
+            self.name = name
+            self.address = address
+            self.contact_number = contact_number
+            self.room_no = room_no
+            self.room_type = room_type
+
+            # Mess charges payable by student
+            self.mess_charge = mess_charge
         else:
             self.student_ID = student_ID
             self._password = password
             self._hall_ID = hall_ID
             self._room_type = room_type
+            self._name = name
+            self._address = address
+            self._contact_number = contact_number
+            self._room_no = room_no
+            self._room_type = room_type
 
-        self.name = name
-        self.address = address
-        self.contact_number = contact_number
-        self.room_no = room_no
-        self.room_type = room_type
-
-        # Mess charges payable by student
-        self.mess_charge = mess_charge
+            # Mess charges payable by student
+            self._mess_charge = mess_charge
 
     # student_ID getter functions
     @property

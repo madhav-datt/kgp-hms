@@ -199,12 +199,28 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
             hall_ID = this_warden.hall_ID
 
             # View Room Occupancy Tab - add labels and values from database
+            student_table = dbr.rebuild("student")
+            single_count = 0
+            double_count = 0
+            total_single_count = 0
+            total_double_count = 0
+            for key in student_table:
+                if student_table[key].room_type == "S":
+                    total_single_count += 1
+                else:
+                    total_double_count += 1
+                if student_table[key].hall_ID == hall_ID:
+                    if student_table[key].room_type == "S":
+                        single_count += 1
+                    else:
+                        double_count += 1
+
             self.lineEdit_8.setText(str(db.get("hall", hall_ID, "single_room_count")[0]))
-            self.lineEdit_9.setText(str(db.get("hall", hall_ID, "single_room_occupancy")[0]))
+            self.lineEdit_9.setText(str(single_count))
             self.lineEdit_10.setText(str(int(self.lineEdit_8.text()) - int(self.lineEdit_9.text())))
 
             self.lineEdit_17.setText(str(db.get("hall", hall_ID, "double_room_count")[0]))
-            self.lineEdit_18.setText(str(db.get("hall", hall_ID, "double_room_occupancy")[0]))
+            self.lineEdit_18.setText(str(double_count))
             self.lineEdit_21.setText(str(int(self.lineEdit_17.text()) - int(self.lineEdit_18.text())))
 
             # Worker Details Table - add labels and values from database
@@ -222,7 +238,7 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
             self.check_grant_button()
 
             # View Complaints Tab - add conditions
-            student_dict = dbr.rebuild("student")
+            student_dict = student_table
             comp_dict = dbr.rebuild("complaint")
             comp_ids_strs = []
             for key in comp_dict:
@@ -244,12 +260,12 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
                 # Set data for total occupancies
                 total_occ = this_warden.total_occupancy(dbr.rebuild("hall"))
                 self.lineEdit_24.setText(str(total_occ['single_total']))
-                self.lineEdit_25.setText(str(total_occ['single_occupy']))
+                self.lineEdit_25.setText(str(total_single_count))
                 self.lineEdit_26.setText(str(int(self.lineEdit_24.text()) - int(self.lineEdit_25.text())))
 
                 self.lineEdit_27.setText(str(total_occ['double_total']))
-                self.lineEdit_28.setText(str(total_occ['double_occupy']))
-                self.lineEdit_29.setText(str(int(self.lineEdit_24.text()) - int(self.lineEdit_25.text())))
+                self.lineEdit_28.setText(str(total_double_count))
+                self.lineEdit_29.setText(str(int(self.lineEdit_27.text()) - int(self.lineEdit_28.text())))
 
             self.stackedWidget.setCurrentIndex(0)
         else:
@@ -291,7 +307,7 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
             choice = QtGui.QMessageBox.question(self, 'Error', "Worker wage can't be 0")
         else:
             attendant.Attendant(worker_name, hall_ID, worker_wage, 0)
-            choice = QtGui.QMessageBox.information(self, 'Succeess', "Worker successfully hired.")
+            choice = QtGui.QMessageBox.information(self, 'Success', "Worker successfully hired.")
             self.update_worker_table()
             self.lineEdit_22.setText("")
             self.doubleSpinBox.setValue(0.00)

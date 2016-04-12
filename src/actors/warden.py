@@ -38,14 +38,18 @@ class Warden(object):
         if not rebuild:
             self.warden_ID = db.add("warden")
             self.password = password
+            self.name = name
+            self.email = email
+            self.hall_ID = hall_ID
+            self.controlling_warden = controlling_warden
         else:
             self.warden_ID = warden_ID
             self._password = password
+            self._name = name
+            self._email = email
+            self._hall_ID = hall_ID
+            self._controlling_warden = controlling_warden
 
-        self.name = name
-        self.email = email
-        self.hall_ID = hall_ID
-        self.controlling_warden = controlling_warden
 
     # warden_ID getter and setter functions
     @property

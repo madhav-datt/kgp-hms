@@ -33,10 +33,10 @@ class HallManagement(object):
         if not rebuild:
             db.add("hmc")
             self.password = pv.hash_password(password)
+            self.payment_is_active = payment_is_active
         else:
             self._password = password
-
-        self.payment_is_active = payment_is_active
+            self._payment_is_active = payment_is_active
 
     # password getter and setter functions
     @property

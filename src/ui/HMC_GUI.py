@@ -126,6 +126,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
             room_type = 'S'
         else:
             room_type = 'D'
+        print room_type
         password = str(self.lineEdit_12.text())
         if name == "" or address == "" or contact == "" or room_no == "" or room_type == "":
             choice = QtGui.QMessageBox.question(self, 'Error', "No Field can be left blank")
@@ -278,10 +279,10 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         hall_ID = find_hall_ID_by_name(hall_name)
         for req in grant_req_dict:
             if grant_req_dict[req].hall_ID == hall_ID:
-                choice = QtGui.QMessageBox.information(self, 'Success', "Grant Issued")
                 grant_req_dict[req].approve(self.doubleSpinBox_6.value(), self.doubleSpinBox_8.value(),
                                             self.doubleSpinBox_7.value(), dbr.rebuild("hall"))
         self.reset_grant_request()
+        choice = QtGui.QMessageBox.information(self, 'Success', "Grant Issued")
 
     def reject_grant(self):
         if self.label_23.text() == "":
@@ -291,9 +292,9 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         hall_ID = find_hall_ID_by_name(hall_name)
         for req in grant_req_dict:
             if grant_req_dict[req].hall_ID == hall_ID:
-                choice = QtGui.QMessageBox.information(self, 'Success', "Grant Rejected")
                 grant_req_dict[req].reject()
                 self.reset_grant_request()
+                choice = QtGui.QMessageBox.information(self, 'Success', "Grant Rejected")
 
 
 def find_hall_ID_by_name(name):

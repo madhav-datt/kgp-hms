@@ -51,29 +51,49 @@ class Hall(object):
         # If False, a new data row is added to the specific table
         if not rebuild:
             self.hall_ID = db.add("hall")
+            self.name = name
+            self.status = status
+            self.single_room_count = single_room_count
+            self.double_room_count = double_room_count
+            self.single_room_occupancy = 0
+            self.double_room_occupancy = 0
+            self.single_room_rent = single_room_rent
+            self.double_room_rent = double_room_rent
+            self.warden_ID = warden_ID
+            self.mess_manager_ID = mess_manager_ID
+            self.clerk_ID = clerk_ID
+            self.amenities_charge = amenities_charge
+
+            # Initialize accounts with 0.
+            self.mess_account = 50000.
+            self.amenities_account = 50000.
+            self.repair_account = 50000.
+            self.salary_account = 50000.
+            self.rent_account = 50000.
+            self.others_account = 50000.
+
         else:
             self.hall_ID = hall_ID
+            self._name = name
+            self._status = status
+            self._single_room_count = single_room_count
+            self._double_room_count = double_room_count
+            self._single_room_occupancy = 0
+            self._double_room_occupancy = 0
+            self._single_room_rent = single_room_rent
+            self._double_room_rent = double_room_rent
+            self._warden_ID = warden_ID
+            self._mess_manager_ID = mess_manager_ID
+            self._clerk_ID = clerk_ID
+            self._amenities_charge = amenities_charge
 
-        self.name = name
-        self.status = status
-        self.single_room_count = single_room_count
-        self.double_room_count = double_room_count
-        self.single_room_occupancy = 0
-        self.double_room_occupancy = 0
-        self.single_room_rent = single_room_rent
-        self.double_room_rent = double_room_rent
-        self.warden_ID = warden_ID
-        self.mess_manager_ID = mess_manager_ID
-        self.clerk_ID = clerk_ID
-        self.amenities_charge = amenities_charge
-
-        # Initialize accounts with 0.
-        self.mess_account = 50000.
-        self.amenities_account = 50000.
-        self.repair_account = 50000.
-        self.salary_account = 50000.
-        self.rent_account = 50000.
-        self.others_account = 50000.
+            # Initialize accounts with 0.
+            self._mess_account = 50000.
+            self._amenities_account = 50000.
+            self._repair_account = 50000.
+            self._salary_account = 50000.
+            self._rent_account = 50000.
+            self._others_account = 50000.
 
     # name getter and setter functions
     @property

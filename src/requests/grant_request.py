@@ -34,13 +34,16 @@ class GrantRequest(object):
         # If False, a new data row is added to the specific table
         if not rebuild:
             self.grant_ID = db.add("grant_request")
+            self.hall_ID = hall_ID
+            self.repair_charge = repair_charge
+            self.other_charge = other_charge
+            self.salary_charge = salary_charge
         else:
             self.grant_ID = grant_ID
-
-        self.hall_ID = hall_ID
-        self.repair_charge = repair_charge
-        self.other_charge = other_charge
-        self.salary_charge = salary_charge
+            self._hall_ID = hall_ID
+            self._repair_charge = repair_charge
+            self._other_charge = other_charge
+            self._salary_charge = salary_charge
 
     # grant_ID getter and setter functions
     @property

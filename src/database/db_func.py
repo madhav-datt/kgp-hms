@@ -152,9 +152,9 @@ def update(table, primary_key, field, value):
         cursor.execute(update_row.format(table, field, value, "student_ID", primary_key))
     elif table == "warden":
         cursor.execute(update_row.format(table, field, value, "warden_ID", primary_key))
+        print "abhi bhi ho raha hai bc"
     elif table == "hall":
         cursor.execute(update_row.format(table, field, value, "hall_ID", primary_key))
-        print "update kiya"
     elif table == "worker":
         cursor.execute(update_row.format(table, field, value, "worker_ID", primary_key))
     elif table == "complaint":

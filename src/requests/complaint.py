@@ -35,13 +35,16 @@ class Complaint(object):
         # If False, a new data row is added to the specific table
         if not rebuild:
             self.complaint_ID = db.add("complaint")
+            self.student_ID = student_ID
+            self.action_status = action_status
+            self.description = description
+            self.action_report = action_report
         else:
             self.complaint_ID = complaint_ID
-
-        self.student_ID = student_ID
-        self.action_status = action_status
-        self.description = description
-        self.action_report = action_report
+            self._student_ID = student_ID
+            self._action_status = action_status
+            self._description = description
+            self._action_report = action_report
 
     # complaint_ID getter functions
     @property
