@@ -13,7 +13,7 @@
 from fpdf import FPDF
 from ..database import db_func as db
 from ..database import db_rebuild as dbr
-from ..workers import worker, attendant, clerk, mess_manager
+from ..workers import attendant, clerk, mess_manager
 import time
 
 
@@ -166,4 +166,4 @@ def issue_student_admission_letter(Student, body):
     pdf.ln()
 
     # Write generated output file to PDF
-    pdf.output(('admission_letter_%s' % Student.student_ID), 'F')
+    pdf.output(('admission_letter_%s.pdf' % Student.student_ID), 'F')

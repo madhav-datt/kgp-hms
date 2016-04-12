@@ -107,6 +107,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         hall_names = []
         for key in hall_dict:
             hall_names.append(hall_dict[key].name)
+        self.comboBox_3.clear()
         self.comboBox_3.addItems(hall_names)
 
     '''
@@ -131,7 +132,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         elif not input_validation.valid_phone(contact):
             choice = QtGui.QMessageBox.question(self, 'Error', "Invalid contact number")
         else:
-            new_student = student.Student(password, name, address, contact, student_hall_ID, room_no, room_type)
+            new_student = student.Student(password, name, address, contact, student_hall_ID, room_no, room_type, 0)
             choice = QtGui.QMessageBox.information(self, 'Success', "Student Letter successfully issued.")
             printer.issue_student_admission_letter(new_student, str(self.plainTextEdit.toPlainText()))
             self.lineEdit_16.setText("")
@@ -174,7 +175,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         is_control_warden = self.checkBox.isChecked()
         warden_dict = dbr.rebuild("warden")
         for key in warden_dict:
-            if warden_dict[key].controlling_warden:
+            if warden_dict[key].controlling_warden == "T":
                 is_control_warden = False
                 break
 
@@ -277,6 +278,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         hall_ID = find_hall_ID_by_name(hall_name)
         for req in grant_req_dict:
             if grant_req_dict[req].hall_ID == hall_ID:
+                choice = QtGui.QMessageBox.information(self, 'Success', "Grant Issued")
                 grant_req_dict[req].approve(self.doubleSpinBox_6.value(), self.doubleSpinBox_8.value(),
                                             self.doubleSpinBox_7.value(), dbr.rebuild("hall"))
         self.reset_grant_request()
@@ -289,6 +291,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         hall_ID = find_hall_ID_by_name(hall_name)
         for req in grant_req_dict:
             if grant_req_dict[req].hall_ID == hall_ID:
+                choice = QtGui.QMessageBox.information(self, 'Success', "Grant Rejected")
                 grant_req_dict[req].reject()
                 self.reset_grant_request()
 
