@@ -76,7 +76,7 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
 
     def new_complaint_button(self):
         self.display_complaint_frame()
-        self.label_26.setVisible(True)
+        self.label_26.setVisible(False)
         self.lineEdit_15.setVisible(False)
         self.lineEdit_18.setText(self.lineEdit_7.text())
         self.lineEdit_17.setText(self.lineEdit_4.text())
@@ -88,7 +88,7 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.plainTextEdit.setPlainText("")
 
     def create_new_complaint(self):
-        description = self.plainTextEdit.toPlainText()
+        description = str(self.plainTextEdit.toPlainText())
         action_report = ""
         new_complaint = complaint.Complaint(student_ID, "P", description, action_report)
         self.display_student_main_win()
@@ -224,6 +224,10 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         if login.authenticate("student", student_ID, pwd_entered) and new_pwd == new_pwd_1:
             self.label_23.setText("Password Successfully Changed!")
             student_dict[student_ID].password = new_pwd
+            self.lineEdit_12.setText(" ")
+            self.lineEdit_13.setText(" ")
+            self.lineEdit_14.setText(" ")
+            self.label_23.setText(" ")
         elif new_pwd == new_pwd_1:
             self.label_23.setText("Original password doesn't match entered password")
         else:

@@ -68,6 +68,7 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
 
         self.pushButton.setEnabled(False)
         db.update_attend_date()
+        choice = QtGui.QMessageBox.information(self, 'Success', "Attendance for today submitted")
 
     def password_validate(self):
         """

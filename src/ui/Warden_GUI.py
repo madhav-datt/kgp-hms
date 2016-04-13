@@ -75,17 +75,26 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         if self.listWidget.currentItem() is None:
             choice = QtGui.QMessageBox.question(self, 'Error', "Please select a complaint first!")
             return
-        else:
-            comp_id = int(self.listWidget.currentItem().text())
-            comp_obj = comp_dict[comp_id]
-            self.lineEdit_15.setText(str(comp_obj.complaint_ID))
-            self.lineEdit_23.setText(str(comp_obj.student_ID))
-            self.plainTextEdit_2.setPlainText(str(comp_obj.description))
-            self.plainTextEdit.setPlainText("")
+
+        comp_id = int(self.listWidget.currentItem().text())
+        comp_obj = comp_dict[comp_id]
+        self.lineEdit_15.setText(str(comp_obj.complaint_ID))
+        self.lineEdit_23.setText(str(comp_obj.student_ID))
+        self.plainTextEdit_2.setPlainText(str(comp_obj.description))
+        self.plainTextEdit.setPlainText("")
 
     def post_atr_button(self):
         comp_dict = dbr.rebuild("complaint")
         atr = self.plainTextEdit.toPlainText()
+
+        if self.lineEdit_15.text() == "":
+            choice = QtGui.QMessageBox.question(self, 'Error', "Please select a complaint first!")
+            return
+
+        elif atr == "":
+            choice = QtGui.QMessageBox.critical(self, 'Error', "ATR cannot be blank")
+            return
+
         comp_id = int(self.lineEdit_15.text())
         comp_obj = comp_dict[comp_id]
         comp_obj.action_report = atr
@@ -272,8 +281,10 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
             self.label_42.setText("Authentication Failed. Please try again")
 
     def update_comp_list(self):
+        self.listWidget.clear()
         student_dict = dbr.rebuild("student")
         comp_dict = dbr.rebuild("complaint")
+        hall_ID = this_warden.hall_ID
         comp_ids_strs = []
         for key in comp_dict:
             if student_dict[comp_dict[key].student_ID].hall_ID == hall_ID and comp_dict[key].action_status == "P":

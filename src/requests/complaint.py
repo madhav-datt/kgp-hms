@@ -95,25 +95,6 @@ class Complaint(object):
         self._action_report = action_report
         db.update("complaint", self.complaint_ID, "action_report", self.action_report)
 
-    def view(self):
-        """
-        Return formatted string with details of complaint
-        String includes complaint_ID, description, action_status & action_report
-        """
-
-        complaint_string = ("%d: %s\n\n"
-                            "Action Status: %s\n"
-                            "Action Report: %s")
-
-        # Designate Action Status details
-        if self.action_status == "P":
-            action_status_report = "Pending"
-        else:
-            action_status_report = "Taken"
-
-        return (complaint_string, (self.complaint_ID, self.description,
-                                   action_status_report, self.action_report))
-
     def remove(self):
         """
         Delete object from database, consequently from the system

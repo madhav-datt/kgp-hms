@@ -16,6 +16,7 @@ import time
 from mysql.connector import errorcode
 from datetime import date
 
+
 def connect():
     """
     Set initial connection with MySQL server, with hmsuser credentials
@@ -142,6 +143,13 @@ def update(table, primary_key, field, value):
     Can only update one field at a time
     """
 
+    # Sanitizing database inputs
+    value = str(value).replace("\'", " ")
+    value = str(value).replace("\"", " ")
+    value = str(value).replace("-", " ")
+    value = str(value).replace(";", " ")
+    value = str(value).replace("*", " ")
+
     cnx = connect()
     cursor = cnx.cursor()
 
@@ -152,7 +160,6 @@ def update(table, primary_key, field, value):
         cursor.execute(update_row.format(table, field, value, "student_ID", primary_key))
     elif table == "warden":
         cursor.execute(update_row.format(table, field, value, "warden_ID", primary_key))
-        print "abhi bhi ho raha hai bc"
     elif table == "hall":
         cursor.execute(update_row.format(table, field, value, "hall_ID", primary_key))
     elif table == "worker":
