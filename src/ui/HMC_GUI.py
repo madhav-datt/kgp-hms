@@ -176,7 +176,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         is_control_warden = self.checkBox.isChecked()
         warden_dict = dbr.rebuild("warden")
         for key in warden_dict:
-            if warden_dict[key].controlling_warden == "T":
+            if warden_dict[key].controlling_warden == "True":
                 is_control_warden = False
                 break
 

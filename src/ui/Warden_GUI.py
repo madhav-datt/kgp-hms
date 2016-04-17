@@ -257,7 +257,7 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
             self.label_49.setText("")
 
             # View Overall Occupancy Tab - add conditions
-            if this_warden.controlling_warden == "F":
+            if this_warden.controlling_warden == "False":
                 self.label_4.setVisible(True)
                 self.groupBox_7.setVisible(False)
                 self.groupBox_8.setVisible(False)
