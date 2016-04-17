@@ -12,7 +12,7 @@
 
 from ..database import db_func as db
 from ..database import password_validation as pv
-from ..workers import  attendant
+from ..workers import attendant
 
 
 class Warden(object):
