@@ -1,5 +1,6 @@
 # kgp-hms
 
+[![Build Status](https://travis-ci.org/madhav-datt/kgp-hms.svg?branch=master)](https://travis-ci.org/madhav-datt/kgp-hms)
 [![Code Climate](https://codeclimate.com/github/madhav-datt/kgp-hms/badges/gpa.svg)](https://codeclimate.com/github/madhav-datt/kgp-hms)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)]()
 
