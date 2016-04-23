@@ -1,0 +1,14 @@
+# Alias to run Warden system from the HMS Software
+alias warden='. /etc/kgp-hms/runtime_scripts/warden'
+
+# Alias to run Student system from the HMS Software
+alias student='. /etc/kgp-hms/runtime_scripts/student'
+
+# Alias to run Hall Mess Manager system from the HMS Software
+alias mess_manager='. /etc/kgp-hms/runtime_scripts/mess_manager'
+
+# Alias to run Hall Office Clerk system from the HMS Software
+alias clerk='. /etc/kgp-hms/runtime_scripts/clerk'
+
+# Alias to run Hall Management Committee system from the HMS Software
+alias hmc='. /etc/kgp-hms/runtime_scripts/hmc'
