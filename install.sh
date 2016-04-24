@@ -1,4 +1,3 @@
-
 #!/bin/bash
 #
 # Script to install HMS program and set-up all requirements and dependencies
@@ -28,6 +27,15 @@ chmod 755 setup_lib.sh
 cat aliases.txt >> ~/.bash_aliases
 . ~/.bashrc
 
+# Grant execute permissions to Program Component launch shell scripts
+cd runtime_scripts
+chmod 755 warden.sh
+chmod 755 student.sh
+chmod 755 hmc.sh
+chmod 755 clerk.sh
+chmod 755 mess_manager.sh
+
 # Clean downloaded folders
 rm -rf ~/Downloads/kgp-hms
 rm ~/Downloads/kgp-hms-v1.0.zip
+
