@@ -32,6 +32,12 @@ global this_warden
 
 
 class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
+    """Contains elements for the Warden GUI Window
+
+    Sets up all elements of various function windows
+    Opens with Login Window
+    """
+
     def __init__(self):
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
