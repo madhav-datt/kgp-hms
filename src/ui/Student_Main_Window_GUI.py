@@ -29,7 +29,16 @@ global curr_complaint_ID
 
 
 class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
+    """Student Window GUI and Functionality
+
+        Opens with login screen
+    """
+
     def __init__(self):
+        """
+        Init Student GUI as part of Integrated
+        """
+
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
 
@@ -63,6 +72,11 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.pushButton_2.clicked.connect(self.delete_complaint_button)
 
     def pay_dues_button(self):
+        """
+        Pay calculated dues by student
+        Add amount to hall accounts
+        """
+
         stud_dict = dbr.rebuild("student")
         stud_obj = stud_dict[student_ID]
         hall_dict = dbr.rebuild("hall")
@@ -75,6 +89,11 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.set_dues()
 
     def new_complaint_button(self):
+        """
+        Set labels for complaint creation interface
+        Switch display to complaint interface
+        """
+
         self.display_complaint_frame()
         self.label_26.setVisible(False)
         self.lineEdit_15.setVisible(False)
@@ -88,6 +107,10 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.plainTextEdit.setPlainText("")
 
     def create_new_complaint(self):
+        """
+        Create new complaint
+        """
+
         description = str(self.plainTextEdit.toPlainText())
         action_report = ""
         new_complaint = complaint.Complaint(student_ID, "P", description, action_report)
@@ -95,6 +118,10 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.set_list()
 
     def password_validate(self):
+        """
+        Authenticate password for login
+        """
+
         global student_ID
         hmc_dict = dbr.rebuild("hmc")
         user_ID = int(self.lineEdit_19.text())
@@ -116,6 +143,10 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
             self.label_36.setText("Wrong ID or Password. Please try again.")
 
     def set_dues(self):
+        """
+        Set amounts due to student payment interface
+        """
+
         student_dict = dbr.rebuild("student")
         stud_obj = student_dict[student_ID]
         hall_dict = dbr.rebuild("hall")
@@ -140,21 +171,41 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
                                          float(self.lineEdit_10.text())))
 
     def display_complaint_frame(self):
+        """
+        Switch to complaint display in stacked frames
+        """
+
         self.display(4)
 
     def display_pwchange_frame(self):
+        """
+        Switch to password change display in stacked frames
+        """
+
         self.display(3)
         self.resize(581, 344)
 
     def display_student_main_win(self):
+        """
+        Switch to main menu display in stacked frames
+        """
+
         self.resize(581, 544)
         self.display(1)
 
     def show_complaint_window(self):
+        """
+        Switch to complaint display in stacked frames
+        """
+
         self.window = ComplaintWindowClass()
         self.window.show()
 
     def display_dues_frame(self):
+        """
+        Switch to payment display in stacked frames
+        """
+
         # self.resize(400, 490)
         self.display(2)
 

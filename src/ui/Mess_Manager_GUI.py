@@ -26,7 +26,16 @@ except AttributeError:
 
 
 class MessManagerWindowClass(QtGui.QWidget, Mess_Manager_Window.Ui_Form):
+    """Mess Manager Window GUI and Functionality
+
+    Opens with login screen
+    """
+
     def __init__(self):
+        """
+        Init mess manager GUI
+        """
+
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
         self.label_7.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/resources/bkd1edit2.jpg')))
