@@ -34,9 +34,9 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
 
-        self.label_32.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
+        self.label_32.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/resources/bkd1edit2.jpg')))
         self.label_32.setScaledContents(True)
-        self.label_33.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/iit.jpg')))
+        self.label_33.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/resources/iit.jpg')))
         self.label_33.setScaledContents(True)
         self.pushButton_8.clicked.connect(self.password_validate)
         self.pushButton_2.clicked.connect(self.cancel)
