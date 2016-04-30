@@ -39,6 +39,10 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
     """
 
     def __init__(self):
+        """
+        Init Warden Window and set label values
+        """
+
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
 
@@ -77,7 +81,13 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         self.pushButton_8.clicked.connect(self.post_atr_button)
 
     def view_complaint_button(self):
+        """
+        Display selected complaint
+        """
+
         comp_dict = dbr.rebuild("complaint")
+
+        # Check if complaint is selected
         if self.listWidget.currentItem() is None:
             choice = QtGui.QMessageBox.question(self, 'Error', "Please select a complaint first!")
             return
@@ -90,6 +100,11 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         self.plainTextEdit.setPlainText("")
 
     def post_atr_button(self):
+        """
+        Post ATR for selected complaint
+        Update complaint status and complaint list
+        """
+
         comp_dict = dbr.rebuild("complaint")
         atr = self.plainTextEdit.toPlainText()
 
@@ -107,6 +122,8 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         comp_obj.action_status = "T"
         choice = QtGui.QMessageBox.information(self, 'Success', "ATR Successfully posted")
         self.update_comp_list()
+
+        # Reset labels and complaint text fields
         self.lineEdit_15.setText("")
         self.lineEdit_23.setText("")
         self.plainTextEdit_2.setPlainText("")
