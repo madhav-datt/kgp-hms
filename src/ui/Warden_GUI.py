@@ -36,28 +36,28 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
 
-        self.label.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
+        self.label.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/resources/bkd1edit2.jpg')))
         self.label.setScaledContents(True)
 
-        self.label_2.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
+        self.label_2.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/resources/bkd1edit2.jpg')))
         self.label_2.setScaledContents(True)
 
-        self.label_3.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
+        self.label_3.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/resources/bkd1edit2.jpg')))
         self.label_3.setScaledContents(True)
 
-        self.label_5.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
+        self.label_5.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/resources/bkd1edit2.jpg')))
         self.label_5.setScaledContents(True)
 
-        self.label_6.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
+        self.label_6.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/resources/bkd1edit2.jpg')))
         self.label_6.setScaledContents(True)
 
-        self.label_7.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
+        self.label_7.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/resources/bkd1edit2.jpg')))
         self.label_7.setScaledContents(True)
 
-        self.label_9.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
+        self.label_9.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/resources/bkd1edit2.jpg')))
         self.label_9.setScaledContents(True)
 
-        self.label_32.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
+        self.label_32.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/resources/bkd1edit2.jpg')))
         self.label_32.setScaledContents(True)
 
         self.pushButton_10.clicked.connect(self.password_validate)
