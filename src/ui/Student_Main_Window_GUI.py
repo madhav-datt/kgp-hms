@@ -33,16 +33,16 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
 
-        self.label.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
+        self.label.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/resources/bkd1edit2.jpg')))
         self.label.setScaledContents(True)
 
-        self.label_10.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
+        self.label_10.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/resources/bkd1edit2.jpg')))
         self.label_10.setScaledContents(True)
 
-        self.label_32.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
+        self.label_32.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/resources/bkd1edit2.jpg')))
         self.label_32.setScaledContents(True)
 
-        self.label_31.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
+        self.label_31.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/resources/bkd1edit2.jpg')))
         self.label_31.setScaledContents(True)
         self.label_36.setText(" ")
 
