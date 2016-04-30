@@ -40,9 +40,9 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
 
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
-        self.bkdLabel.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
+        self.bkdLabel.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/resources/bkd1edit2.jpg')))
         self.bkdLabel.setScaledContents(True)
-        self.bkdLabel_2.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/bkd1edit2.jpg')))
+        self.bkdLabel_2.setPixmap(QtGui.QPixmap(_fromUtf8('src/ui/resources/bkd1edit2.jpg')))
         self.bkdLabel_2.setScaledContents(True)
         self.label_8.setText("Today's Date : " + time.strftime("%x"))
         self.pushButton_2.clicked.connect(self.password_validate)
@@ -74,6 +74,7 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
         """
         Check password for login
         """
+
         user_ID = int(self.lineEdit_4.text())
         password = self.lineEdit_5.text()
         if login.authenticate("clerk", user_ID, password):
@@ -87,7 +88,6 @@ class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
 
             # Build table from worker database
             worker_list = dbr.rebuild("worker")
-            i = 0
             for key in worker_list:
                 if isinstance(worker_list[key], attendant.Attendant) and \
                                 worker_list[key].hall_ID == db.get("worker", clerk_ID, "hall_ID")[0]:
