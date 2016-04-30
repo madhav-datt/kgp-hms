@@ -28,8 +28,8 @@ except AttributeError:
 
 class ClerkWindowClass(QtGui.QWidget, Clerk_Window.Ui_Form):
     """
-    Clerk Window Class
-    Contain GUI and Functionality
+    Clerk Window GUI and Functionality
+    Opens with login screen
     """
 
     def __init__(self):
