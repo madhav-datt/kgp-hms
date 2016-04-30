@@ -210,6 +210,11 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.display(2)
 
     def display(self, i):
+        """
+        Display i th screen from stacked deck
+        Args: i = Number of screen to be displayed
+        """
+
         self.stackedWidget.setCurrentIndex(i)
         hall_dict = dbr.rebuild("hall")
         student_dict = dbr.rebuild("student")
@@ -225,6 +230,10 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
             self.lineEdit_7.setText(str(student_ID))
 
     def set_list(self):
+        """
+        Build complaints list from database
+        """
+
         self.listWidget.clear()
         complaint_ids = []
         complaint_dict = dbr.rebuild("complaint")
@@ -234,6 +243,10 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.listWidget.addItems(complaint_ids)
 
     def view_complaint_button(self):
+        """
+        Display selected complaint
+        """
+
         global curr_complaint_ID
         self.pushButton_11.setVisible(True)
         self.buttonBox.setVisible(False)
@@ -245,6 +258,10 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
             self.set_complaint_details(curr_complaint_ID)
 
     def set_complaint_details(self, complaint_ID):
+        """
+        Set labels with details of complaint from passed ID
+        """
+
         complaint_dict = dbr.rebuild("complaint")
         student_dict = dbr.rebuild("student")
         hall_dict = dbr.rebuild("hall")
@@ -256,6 +273,11 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
         self.plainTextEdit_2.setPlainText(str(complaint_dict[complaint_ID].action_report))
 
     def delete_complaint_button(self):
+        """
+        Delete selected complaint from database
+        Update complaint list interface
+        """
+
         global curr_complaint_ID
         if self.listWidget.currentItem() is None:
             return
@@ -268,6 +290,10 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
             item = None
 
     def save_button_new_password(self):
+        """
+        Update student password to entered one
+        """
+
         student_dict = dbr.rebuild("student")
         pwd_entered = str(self.lineEdit_12.text())
         new_pwd = str(self.lineEdit_13.text())
@@ -286,6 +312,10 @@ class StudentMainWindowClass(QtGui.QWidget, Student_Main_Window.Ui_Form):
 
 
 def find_hall_ID_by_name(name):
+    """
+    Return hall ID for passed hall name
+    """
+
     hall_dict = dbr.rebuild("hall")
     for key in hall_dict:
         if hall_dict[key].name == name:
