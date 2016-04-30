@@ -30,11 +30,15 @@ except AttributeError:
 
 
 class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
-    """
+    """Clerk Window GUI and Functionality
 
+    Opens with login screen
     """
 
     def __init__(self):
+        """
+        Init HMC GUI Window
+        """
 
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
@@ -66,6 +70,11 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         self.pushButton_4.clicked.connect(self.issue_admission_letter)
 
     def cancel(self):
+        """
+        Cancel hall setup
+        Clear all text fields
+        """
+
         self.set_hall_options()
         self.lineEdit_4.setText("")
         self.doubleSpinBox_5.setValue(0.0)
@@ -83,12 +92,25 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         self.doubleSpinBox_4.setValue(0.00)
 
     def display_home(self):
+        """
+        Display Home Screen from stacked deck
+        """
+
         self.display(0)
 
     def display(self, i):
+        """
+        Display i th screen from stacked deck
+        Args: i = Number of screen to be displayed
+        """
+
         self.stackedWidget.setCurrentIndex(i)
 
     def password_validate(self):
+        """
+        Validate password and login
+        """
+
         password_entered = self.lineEdit_5.text()
         if login.authenticate("hmc", 0, password_entered):
             self.display(0)
@@ -106,6 +128,10 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
             self.label_28.setText("Wrong Password. Please try again")
 
     def set_hall_options(self):
+        """
+        Build hall drop-down list with hall names
+        """
+
         hall_dict = dbr.rebuild("hall")
         hall_names = []
         for key in hall_dict:
@@ -113,11 +139,12 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         self.comboBox_3.clear()
         self.comboBox_3.addItems(hall_names)
 
-    '''
-    Adding specific ui elements for student functionality tab
-    '''
-
     def issue_admission_letter(self):
+        """
+        Add new student, allot hall
+        Print admission letter in PDF
+        """
+
         name = self.lineEdit_16.text()
         gender = self.comboBox.currentText()
         contact = self.lineEdit_15.text()
@@ -125,12 +152,14 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         student_hall = str(self.comboBox_3.currentText())
         student_hall_ID = find_hall_ID_by_name(student_hall)
         room_no = self.lineEdit_13.text()
+
         if self.comboBox_2.currentText() == "Single":
             room_type = 'S'
         else:
             room_type = 'D'
-        print room_type
+
         password = str(self.lineEdit_12.text())
+
         if name == "" or address == "" or contact == "" or room_no == "" or room_type == "":
             choice = QtGui.QMessageBox.question(self, 'Error', "No Field can be left blank")
         elif not input_validation.valid_phone(contact):
@@ -147,6 +176,10 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
             self.plainTextEdit.setPlainText("")
 
     def activate_payment_link(self):
+        """
+        Activate payment link in student interfaces
+        """
+
         hmc_obj = dbr.rebuild("hmc")
         for key in hmc_obj:
             hmc_obj[key].activate_payment_link()
@@ -154,17 +187,23 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         self.pushButton_5.setEnabled(False)
 
     def deactivate_payment_link(self):
+        """
+        Deactivate payment link in student interfaces
+        """
+
         hmc_obj = dbr.rebuild("hmc")
         for key in hmc_obj:
             hmc_obj[key].deactivate_payment_link()
         self.pushButton_6.setEnabled(False)
         self.pushButton_5.setEnabled(True)
 
-    '''
-    Adding specific ui elements for add hall tab
-    '''
-
     def add_hall(self):
+        """
+        Add ui elements for add hall tab
+        Create new hall
+        Assign warden, mess manager and hall office clerk
+        """
+
         name = self.lineEdit_2.text()
         status = self.comboBox_4.currentText()
         amenities_charge = self.doubleSpinBox_5.value()
@@ -190,6 +229,7 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         clerk_pw = str(self.lineEdit_17.text())
         clerk_salary = self.doubleSpinBox_4.value()
 
+        # Validate hall creation inputs
         if name == "" or amenities_charge == 0. or single_room_count == 0 or single_room_rent == 0 \
                 or double_room_count == 0 or double_room_rent == 0 or warden_name == "" or warden_pw == "" or \
                 manager_name == "" or manager_pw == "" or manager_salary == 0. or clerk_name == "" or clerk_pw == "" \
@@ -206,6 +246,8 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
             new_mess_manager.hall_ID = new_hall.hall_ID
             new_clerk.hall_ID = new_hall.hall_ID
             choice = QtGui.QMessageBox.information(self, 'Success', "Hall Successfully setup")
+
+            # Reset labels to blanks and text fields to blank on success
             self.set_hall_options()
             self.lineEdit_4.setText("")
             self.doubleSpinBox_5.setValue(0.0)
@@ -221,14 +263,14 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
             self.lineEdit_14.setText("")
             self.lineEdit_17.setText("")
             self.doubleSpinBox_4.setValue(0.00)
-    '''
-    Adding custom ui for grant request tab
-    '''
 
     def set_list(self):
         """
-        Setting up the listWidget, showing hall names with a pending grant request
+        Add custom ui for grant request tab
+        Set up listWidget
+        Show hall names with a pending grant request
         """
+
         hall_dict = dbr.rebuild("hall")
         grant_req_dict = dbr.rebuild("grant_request")
         self.listWidget.clear()
@@ -239,8 +281,10 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
 
     def get_warden_req(self):
         """
-        To be invoked upon pushing "View Request" button
+        Invoked upon pushing "View Request" button
+        Display selected grant request
         """
+
         grant_req_dict = dbr.rebuild("grant_request")
         if self.listWidget.currentItem() is None:
             choice = QtGui.QMessageBox.question(self, 'Error', "Please select a grant request!")
@@ -260,6 +304,10 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
                     break
 
     def reset_grant_request(self):
+        """
+        Clear grant request table
+        """
+
         self.lineEdit.setText("")
         self.doubleSpinBox_6.setValue(0.00)
         self.lineEdit_3.setText("")
@@ -269,11 +317,13 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         self.set_list()
         self.label_23.setText("")
 
-    '''
-    To be invoked on  pushing the issue grant button
-    '''
-
     def issue_grant(self):
+        """
+        Invoked on  pushing the issue grant button
+        Change grant request status
+        Add issued amounts to hall accounts
+        """
+
         if self.label_23.text() == "":
             choice = QtGui.QMessageBox.question(self, 'Error', "Please select a grant request to approve!")
             return
@@ -288,6 +338,11 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         choice = QtGui.QMessageBox.information(self, 'Success', "Grant Issued")
 
     def reject_grant(self):
+        """
+        Reject grant request
+        Remove from database
+        """
+
         if self.label_23.text() == "":
             return
         grant_req_dict = dbr.rebuild("grant_request")
@@ -301,6 +356,10 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
 
 
 def find_hall_ID_by_name(name):
+    """
+    Return hall ID for passed hall name
+    """
+
     hall_dict = dbr.rebuild("hall")
     for key in hall_dict:
         if hall_dict[key].name == name:
