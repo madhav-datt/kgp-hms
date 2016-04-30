@@ -130,12 +130,22 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         self.plainTextEdit.setPlainText("")
 
     def gen_salary_list(self):
+        """
+        Calculate total Worker salaries payable by Hall
+        Print to PDF
+        """
+
         hall_dict = dbr.rebuild("hall")
         hall_obj = hall_dict[this_warden.hall_ID]
         printer.generate_salary_list(hall_obj)
         choice = QtGui.QMessageBox.information(self, 'Success', "PDF of salary list has been generated.")
 
     def pay_salaries(self):
+        """
+        Issue Worker salaries for Hall payments
+        Deduct amount from Hall salary accounts
+        """
+
         hall_ID = this_warden.hall_ID
         hall_dict = dbr.rebuild("hall")
         hall_obj = hall_dict[hall_ID]
@@ -217,6 +227,7 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         Check password for login
         Set labels for various fields
         """
+
         global this_warden
 
         user_ID = int(self.lineEdit_19.text())
@@ -236,6 +247,7 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
             double_count = 0
             total_single_count = 0
             total_double_count = 0
+
             for key in student_table:
                 if student_table[key].room_type == "S":
                     total_single_count += 1
@@ -304,6 +316,10 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
             self.label_42.setText("Authentication Failed. Please try again")
 
     def update_comp_list(self):
+        """
+        Rebuild complaint list from database
+        """
+
         self.listWidget.clear()
         student_dict = dbr.rebuild("student")
         comp_dict = dbr.rebuild("complaint")
@@ -316,6 +332,10 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
         self.label_49.setText("")
 
     def update_worker_table(self):
+        """
+        Rebuild worker table from database
+        """
+
         self.clear_worker_table()
         worker_table = dbr.rebuild("worker")
         for key in worker_table:
@@ -327,14 +347,24 @@ class WardenWindowClass(QtGui.QWidget, warden_window.Ui_Form):
                 self.tableWidget.setItem(rowPosition, 1, QtGui.QTableWidgetItem(worker_table[key].name))
 
     def clear_worker_table(self):
-        while(self.tableWidget.rowCount()>0):
+        """
+        Clear worker table before refresh/update
+        """
+
+        while self.tableWidget.rowCount() > 0:
             self.tableWidget.removeRow(0)
 
     def hire_new_worker(self):
+        """
+        Hire new worker, update worker table
+        """
+
         global this_warden
         hall_ID = this_warden.hall_ID
         worker_name = self.lineEdit_22.text()
         worker_wage = self.doubleSpinBox.value()
+
+        # Validate entered input
         if worker_name == "":
             choice = QtGui.QMessageBox.question(self, 'Error', "Worker name can't be blank")
         elif worker_wage == 0.:
