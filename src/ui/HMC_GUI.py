@@ -30,7 +30,12 @@ except AttributeError:
 
 
 class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
+    """
+
+    """
+
     def __init__(self):
+
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
 
@@ -46,10 +51,8 @@ class HMCWindowClass(QtGui.QWidget, HMC_Window.Ui_Form):
         self.pushButton_7.clicked.connect(self.issue_grant)
         self.pushButton_9.clicked.connect(self.reject_grant)
         self.pushButton_3.clicked.connect(self.get_warden_req)
-        '''
-        Custom UI starting, based on data available in the databases
-        '''
 
+        # Start Custom UI based on data available in the databases
         hmc_dict = dbr.rebuild("hmc")
         for key in hmc_dict:
             if hmc_dict[key].payment_is_active:

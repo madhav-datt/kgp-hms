@@ -21,7 +21,16 @@ except AttributeError:
 
 
 class ComplaintWindowClass(QtGui.QWidget, Complaint.Ui_complaintWindow):
+    """Complaint Window Interface
+
+    Part of Integrated Student Interface
+    """
+
     def __init__(self):
+        """
+        Init Complaint functionalities
+        """
+
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
 
