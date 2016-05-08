@@ -25,11 +25,26 @@ To setup the software and configure the system to run, execute the following:
 
 ### Hall Management Committee
 
+    $ hmc
+
+
 ### Wardens
+
+    $ warden
+
 
 ### Hall Office Clerks
 
+    $ clerk
+
+
 ### Mess Managers
 
+    $ mess_manager
+
+
 ### Students
+
+    $ student
+
 
