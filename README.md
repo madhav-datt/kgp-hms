@@ -20,3 +20,16 @@ To setup the software and configure the system to run, execute the following:
     $ cd kgp-hms
     $ chmod 755 install.sh
     $ ./install.sh
+    
+## Usage
+
+### Hall Management Committee
+
+### Wardens
+
+### Hall Office Clerks
+
+### Mess Managers
+
+### Students
+
