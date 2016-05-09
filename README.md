@@ -27,24 +27,28 @@ To setup the software and configure the system to run, execute the following:
 
     $ hmc
 
+![hmc example screen](https://github.com/madhav-datt/kgp-hms/blob/master/src/ui/resources/hms.png)
 
 ### Wardens
 
     $ warden
 
+![warden example screen](https://github.com/madhav-datt/kgp-hms/blob/master/src/ui/resources/warden.png)
 
 ### Hall Office Clerks
 
     $ clerk
 
+![clerk example screen](https://github.com/madhav-datt/kgp-hms/blob/master/src/ui/resources/clerk.png)
 
 ### Mess Managers
 
     $ mess_manager
 
+![mess manager example screen](https://github.com/madhav-datt/kgp-hms/blob/master/src/ui/resources/mess_manager.png)
 
 ### Students
 
     $ student
 
-
+![student example screen](https://github.com/madhav-datt/kgp-hms/blob/master/src/ui/resources/student.png)
